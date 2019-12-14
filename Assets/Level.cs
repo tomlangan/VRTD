@@ -92,24 +92,145 @@ public class TurretPos
     }
 }
 
+public class EnemyInstance
+{
+    public EnemyDescription Desc;
+    public double Pos;
+    public double Health;
+    public double NextMovement;
+}
+
+public class WaveInstance
+{
+    public List<EnemyInstance> Enemies;
+    public EnemyWave Desc;
+    public double WaveStartTime;
+    public int SpawnedCount;
+    public double LastSpawnTime;
+
+    public WaveInstance(EnemyWave waveDescription)
+    {
+        Desc = waveDescription;
+        Enemies = new List<EnemyInstance>();
+    }
+
+
+}
+
+public class WaveManager
+{
+    public List<EnemyWave> Waves;
+    public int WavesStarted;
+    public WaveInstance CurrentWave;
+
+    public WaveManager(LevelDescription level)
+    {
+        WavesStarted = 0;
+        TotalTime = 0.0;
+        Waves = level.Waves;
+    }
+
+    public void AdvanceToNextWave()
+    {
+        Debug.Assert(WavesStarted < Waves.Count);
+
+        CurrentWave = new WaveInstance(Waves[WavesStarted]);
+
+        WavesStarted++;
+    }
+}
+
+public enum LevelState { Loading, WaveCountdown, Playing, StatsScreen }
+
 public class Level : MonoBehaviour
 {
+    const int WAVE_COUNTDOWN_TIME = 5.0;
     public LevelDescription LevelDesc;
     RoadPos Entry;
     RoadPos Exit;
     public List<RoadPos> Road;
     public List<TurretPos> Turrets;
     public delegate bool OnFound(int x, int y);
+    WaveManager Waves;
+    public double GameTime;
+    public LevelState State = LevelState.Loading;
 
     // Start is called before the first frame update
     void Start()
     {
-        LevelDesc = GetTestLevel();
-        LoadAndValidateLevel(LevelDesc);
+        State = LevelState.Loading;
+
     }
 
     // Update is called once per frame
     void Update()
+    {
+
+        switch (State)
+        {
+            case LevelState.Loading:
+                LevelDesc = GetTestLevel();
+                LoadAndValidateLevel(LevelDesc);
+                State = LevelState.WaveCountdown;
+                GameTime = 0.0;
+                break;
+
+            case LevelState.WaveCountdown:
+                TickWaveCountdown();
+                break;
+
+            case LevelState.Playing:
+                TickGameplay();
+                break;
+
+            case LevelState.StatsScreen:
+
+                break;
+        }
+
+
+        AdvanceEnemies(elapsed);
+        SpawnEnemies(elapsed);
+        CheckEndConditions();
+    }
+
+    void TickWaveCountdown()
+    {
+        double elapsed = Time.deltaTime;
+        GameTime += elapsed;
+
+        if (GameTime > WAVE_COUNTDOWN_TIME)
+        {
+            GameTime = 0.0;
+            Waves.Ad
+            State = LevelState.Playing;
+        }
+    }
+
+    void TickGameplay()
+    {
+        double elapsed = Time.deltaTime;
+        GameTime += elapsed;
+
+
+    }
+
+    void SpawnEnemies()
+    {
+
+    }
+
+    void AdvanceEnemies()
+    {
+        for (int i = 0; i < Enemies.Count; i++)
+        {
+            EnemyInstance e = Enemies[i];
+
+
+        }
+    }
+
+    void CheckEndConditions()
     {
 
     }
@@ -277,6 +398,8 @@ public class Level : MonoBehaviour
         });
 
         Road = WalkAndValidateRoad(level.Map, level.FieldWidth, level.FieldDepth, Entry, Exit);
+
+        Waves = new WaveManager(level);
     }
 
     void ReadFromFile(string levelFile)
