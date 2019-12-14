@@ -29,11 +29,11 @@ public class EnemyWave
 //
 // R = Road
 // T = Turret location
-// S = Source
-// F = Finish line
+// E = Entry
+// X = Exit
 // D = Decoration
 //
-public enum MapElement { R=0, T=1, S=2, F=3, D=4};
+public enum MapElement { R=0, T=1, S=2, X=3, D=4};
 
 public class Turret
 {
@@ -65,14 +65,14 @@ public class LevelDescription
 
 public class RoadPos
 {
-    public int[] p;
+    public int x;
+    public int y;
     public int e;
 
-    public RoadPos(int x, int y)
+    public RoadPos(int xpos, int ypos)
     {
-        p = new int[2];
-        p[0] = x;
-        p[1] = y;
+        x = xpos;
+        y = ypos;
         e = 0;
     } 
 }
@@ -80,14 +80,14 @@ public class RoadPos
 
 public class TurretPos
 {
-    public int[] p;
+    public int x;
+    public int y;
     public int e;
 
-    public TurretPos(int x, int y)
+    public TurretPos(int xpos, int ypos)
     {
-        p = new int[2];
-        p[0] = x;
-        p[y] = y;
+        x = xpos;
+        y = ypos;
         e = 0;
     }
 }
@@ -95,10 +95,10 @@ public class TurretPos
 public class Level : MonoBehaviour
 {
     public LevelDescription LevelDesc;
-    RoadPos entry;
-    RoadPos exit;
-    public List<RoadPos> road;
-    public List<TurretPos> turrets;
+    RoadPos Entry;
+    RoadPos Exit;
+    public List<RoadPos> Road;
+    public List<TurretPos> Turrets;
     public delegate bool OnFound(int x, int y);
 
     // Start is called before the first frame update
@@ -134,30 +134,149 @@ public class Level : MonoBehaviour
         }
     }
 
+
+    enum WalkDir { Up, Down, Left, Right, None };
+
+    List<RoadPos> WalkAndValidateRoad(List<char> map, int width, int height, RoadPos entry, RoadPos exit)
+    {
+        WalkDir previousDirection = WalkDir.None;
+        WalkDir thisDirection = WalkDir.None;
+        List<RoadPos> r = new List<RoadPos>();
+        RoadPos last = null;
+        RoadPos next = null;
+        int found = 0;
+        int max = (width * height) - 2;
+
+        r.Add(entry);
+        last = entry;
+
+
+        // Loop until we've found the exit
+        while (found < max)
+        {
+            //
+            // First check for road
+            //
+
+            // check left if we're not on the edge
+            if ((last.x > 0)
+                &&
+                // This isn't the previous item we just saw
+                (previousDirection != WalkDir.Right)
+                &&
+                // is the item to the left a road segment?
+                (('R' == map[(last.y * width) + (last.x - 1)])
+                ||
+                // is the item to the left the exit?
+                ((exit.x == (last.x-1)) && ( exit.y == last.y))))
+            {
+                thisDirection = WalkDir.Left;
+                next = new RoadPos(last.x - 1, last.y);
+            }
+
+            //check right if we're not at the bottom
+            if ((last.x < (width - 1))
+                &&
+                // This isn't the previous item we just saw
+                (previousDirection != WalkDir.Left)
+                &&
+                (('R' == map[((last.y) * width) + (last.x + 1)])
+                ||
+                ((exit.x == (last.x + 1)) && (exit.y == last.y))))
+            {
+                Debug.Assert(null == next);
+                thisDirection = WalkDir.Right;
+                next = new RoadPos(last.x + 1, last.y);
+            }
+
+            //check down if we're not at the bottom
+            if ((last.y < (height-1))
+                &&
+                // This isn't the previous item we just saw
+                (previousDirection != WalkDir.Up)
+                &&
+                (('R' == map[((last.y+1) * width) + (last.x)])
+                ||
+                // is the item downwards the exit?
+                ((exit.x == (last.x)) && (exit.y == (last.y+1)))))
+            {
+                Debug.Assert(null == next);
+                thisDirection = WalkDir.Down;
+                next = new RoadPos(last.x, last.y+1);
+            }
+
+            //check up if we're not at the bottom
+            if ((last.y > 0)
+                &&
+                // This isn't the previous item we just saw
+                (previousDirection != WalkDir.Down)
+                &&
+                (('R' == map[((last.y -1) * width) + (last.x)])
+                ||
+                // is the item upwards the exit?
+                ((exit.x == (last.x)) && (exit.y == (last.y - 1)))))
+            {
+                Debug.Assert(null == next);
+                thisDirection = WalkDir.Up;
+                next = new RoadPos(last.x, last.y - 1);
+            }
+
+
+            // We didn't find a next road segment!
+            Debug.Assert(null != next);
+
+            r.Add(next);
+            last = next;
+            next = null;
+            previousDirection = thisDirection;
+            thisDirection = WalkDir.None;
+
+            found++;
+
+            // If we found the exit, break
+            if ((exit.x == last.x) && (exit.y == last.y)) { break; }
+        }
+
+        // Something went wrong if we found this many items!
+        Debug.Assert(found != max);
+        // Something went wrong if we got here and never found the exit.
+        Debug.Assert(((exit.x == last.x) && (exit.y == last.y)));
+
+        return r;
+    }
+
     void LoadAndValidateLevel(LevelDescription level)
     {
-        entry = null;
-        exit = null;
-        road = new List<RoadPos>();
-        turrets = new List<TurretPos>();
+        Entry = null;
+        Exit = null;
+        Road = null;
+        Turrets = new List<TurretPos>();
 
         // Find the entry, ensure there are no dupes
         FindMapLocations(level.Map, level.FieldWidth, level.FieldDepth, 'E',  (x,y) =>
         {
-            Debug.Assert(null == entry);
-            entry = new RoadPos(x, y);
+            Debug.Assert(null == Entry);
+            Entry = new RoadPos(x, y);
             return true;
         });
 
 
         // Find the exit, ensure there are no dupes
-        FindMapLocations(level.Map, level.FieldWidth, level.FieldDepth, 'F', (x, y) =>
+        FindMapLocations(level.Map, level.FieldWidth, level.FieldDepth, 'X', (x, y) =>
         {
-            Debug.Assert(null == exit);
-            exit = new RoadPos(x, y);
+            Debug.Assert(null == Exit);
+            Exit = new RoadPos(x, y);
             return true;
         });
 
+        // Find all the turrets
+        FindMapLocations(level.Map, level.FieldWidth, level.FieldDepth, 'T', (x, y) =>
+        {
+            Turrets.Add(new TurretPos(x, y));
+            return true;
+        });
+
+        Road = WalkAndValidateRoad(level.Map, level.FieldWidth, level.FieldDepth, Entry, Exit);
     }
 
     void ReadFromFile(string levelFile)
@@ -232,7 +351,7 @@ public class Level : MonoBehaviour
             'D','D','D','D','T','D','R','D','D','D',
             'D','D','D','D','D','D','R','T','D','D',
             'D','D','D','D','D','D','R','D','D','D',
-            'D','D','D','D','D','D','F','D','D','D',
+            'D','D','D','D','D','D','X','D','D','D',
         };
 
 
