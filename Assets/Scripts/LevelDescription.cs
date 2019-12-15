@@ -35,6 +35,33 @@ public class EnemyWave
     //
 public enum MapElement { R = 0, T = 1, S = 2, X = 3, D = 4 };
 
+public enum ProjectileEffectType {  Damage, Slow }
+
+public class ProjectileEffect
+{
+    public ProjectileEffectType EffectType { get; set; }
+
+    public double EffectDuration { get; set;  }
+
+    public double EffectImpact { get; set; }
+}
+
+public class Projectile
+{ 
+    public string Name { get; set; }
+
+    public string Asset { get; set; }
+
+    public double AirSpeed { get; set; }
+
+    public List<ProjectileEffect> Effects;
+
+    public Projectile()
+    {
+        Effects = new List<ProjectileEffect>();
+    }
+}
+
 public class Turret
 {
     public string Name { get; set; }
@@ -43,9 +70,9 @@ public class Turret
 
     public double FireRate { get; set; }
 
-    public double Damage { get; set; }
-
     public double Range { get; set; }
+
+    public Projectile ProjectileType { get; set; }
 }
 
 
@@ -53,13 +80,13 @@ public class RoadPos
 {
     public int x;
     public int y;
-    public int e;
+
+    public List<EnemyInstance> EnemiesOccupying;
 
     public RoadPos(int xpos, int ypos)
     {
         x = xpos;
         y = ypos;
-        e = 0;
     }
 }
 
@@ -68,13 +95,11 @@ public class TurretPos
 {
     public int x;
     public int y;
-    public int e;
 
     public TurretPos(int xpos, int ypos)
     {
         x = xpos;
         y = ypos;
-        e = 0;
     }
 }
 

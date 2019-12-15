@@ -12,8 +12,9 @@ public class Level : MonoBehaviour
     const double WAVE_COUNTDOWN_TIME = 5.0;
     public LevelDescription LevelDesc;
     WaveManager Waves = null;
-    WaveInstance CurrentWave = null;
+    TurretManager Turrets = null;
     public double GameTime;
+    public double CountdownStartTime = 0.0;
     bool Loading = false;
     public LevelState State = LevelState.None;
 
@@ -27,12 +28,16 @@ public class Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        double elapsed = Time.deltaTime;
+        GameTime += elapsed;
+
         switch (State)
         {
             case LevelState.Loading:
                 if (!Loading)
                 {
                     State = LevelState.WaveCountdown;
+                    CountdownStartTime = GameTime;
                 }
                 break;
 
@@ -59,7 +64,8 @@ public class Level : MonoBehaviour
         {
             LevelDesc = LevelLoader.GetTestLevel();
             LevelLoader.LoadAndValidateLevel(LevelDesc);
-            Waves = new WaveManager(LevelDesc, Time.deltaTime);
+            Waves = new WaveManager(LevelDesc);
+            Turrets = new TurretManager(LevelDesc);
             Loading = false;
         });
         t.Start();
@@ -67,25 +73,21 @@ public class Level : MonoBehaviour
 
     void TickWaveCountdown()
     {
-        double elapsed = Time.deltaTime;
-        GameTime += elapsed;
+        Debug.Assert((GameTime - CountdownStartTime) > 0);
 
-        if (GameTime > WAVE_COUNTDOWN_TIME)
+        if ((GameTime - CountdownStartTime) > WAVE_COUNTDOWN_TIME)
         {
             GameTime = 0.0;
-            Waves.AdvanceToNextWave();
-            CurrentWave = Waves.GetCurrentWave();
+            Waves.AdvanceToNextWave(GameTime);
             State = LevelState.Playing;
         }
     }
 
     void TickGameplay()
     {
-        double elapsed = Time.deltaTime;
-        GameTime += elapsed;
+        Waves.CurrentWave.Advance(GameTime);
 
-        Debug.Assert(null != CurrentWave);
-        CurrentWave.Advance(GameTime);
+        Turrets.Fire(GameTime);
 
         CheckEndConditions();
     }
