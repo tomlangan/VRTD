@@ -14,6 +14,8 @@ public class Level : MonoBehaviour
     public GameObject RoadObject;
     public GameObject TerrainObject;
     public GameObject TurretSpaceObject;
+    public GameObject BasicEnemy;
+    public GameObject SwarmEnemy;
     public UnityEngine.UI.Text TimerUIText;
 
 
@@ -31,6 +33,7 @@ public class Level : MonoBehaviour
     {
         Debug.Log("Start()");
 
+
         Debug.Log("State ==> Loading");
         State = LevelState.Loading;
     }
@@ -46,6 +49,13 @@ public class Level : MonoBehaviour
             case LevelState.Loading:
                 GameTime = 0.0;
                 LoadLevel();
+
+                GameObjectFactory.InitializeObjects(
+                    LevelDesc,
+                    BasicEnemy,
+                    SwarmEnemy
+                    );
+
                 Debug.Log("State ==> WaveCountdown");
                 State = LevelState.WaveCountdown;
                 CountdownStartTime = GameTime;

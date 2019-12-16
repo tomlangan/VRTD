@@ -11,6 +11,7 @@ public class EnemyInstance
     public bool ReachedFinishLine;
     public MapPos MapPosition = null;
     public List<EffectInstance> ActiveEffects;
+    GameObject go;
 
     public bool IsActive
     {
@@ -27,6 +28,7 @@ public class EnemyInstance
         HealthRemaining = desc.HitPoints;
         Pos = 0.0;
         ReachedFinishLine = false;
+        go = GameObjectFactory.InstantiateObject(desc.Asset);
     }
 
     public void UpdateMapPosition(LevelDescription levelDesc)
@@ -34,6 +36,8 @@ public class EnemyInstance
         if (ReachedFinishLine)
         {
             MapPosition.EnemiesOccupying.Remove(this);
+            GameObjectFactory.Destroy(go);
+            go = null;
             MapPosition = null;
         }
         else
@@ -55,6 +59,8 @@ public class EnemyInstance
                 newMapPos.EnemiesOccupying.Add(this);
                 MapPosition = newMapPos;
             }
+
+            GameObjectFactory.SetPosMapRelative(go, MapPosition);
         }
     }
 }

@@ -188,11 +188,11 @@ public class LevelLoader
 
         EnemyWave wave = new EnemyWave();
         wave.EnemyType = new EnemyDescription();
-        wave.EnemyType.Name = "Easy";
+        wave.EnemyType.Name = "BasicEnemy";
         wave.EnemyType.MovementSpeed = 1.0;
         wave.EnemyType.SpawnRate = 1.0;
         wave.EnemyType.HitPoints = 2;
-        wave.EnemyType.Asset = "Cube";
+        wave.EnemyType.Asset = "BasicEnemy";
         wave.Count = 10;
         wave.DifficultyMultiplier = 1.0;
 
@@ -204,7 +204,7 @@ public class LevelLoader
         wave.EnemyType.MovementSpeed = 5.0;
         wave.EnemyType.SpawnRate = 5.0;
         wave.EnemyType.HitPoints = 1;
-        wave.EnemyType.Asset = "Cylinder";
+        wave.EnemyType.Asset = "SwarmEnemy";
         wave.Count = 20;
         wave.DifficultyMultiplier = 1.0;
 
