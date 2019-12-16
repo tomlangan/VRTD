@@ -25,10 +25,11 @@ public class GameObjectFactory : MonoBehaviour
 
     public static void CreateMapObjects(LevelDescription Desc, GameObject RoadTemplate, GameObject TerrainTemplate, GameObject TurretLocationTemplate)
     {
+        MapPos pos = new MapPos(0,0);
         for (int i = 0; i < Desc.Map.Count; i++)
         {
-            int x = i % Desc.FieldWidth;
-            int z = i / Desc.FieldWidth;
+            pos.x = i % Desc.FieldWidth;
+            pos.y = i / Desc.FieldWidth;
             GameObject template = null;
             switch (Desc.Map[i])
             {
@@ -50,7 +51,8 @@ public class GameObjectFactory : MonoBehaviour
             }
             Debug.Assert(null != template);
 
-            GameObject ro = Instantiate(template, new Vector3(x - MidPointWidth, 0.0f, MidPointDepth - z), Quaternion.identity);
+            GameObject ro = Instantiate(template);
+            ro.transform.SetPositionAndRotation(MapPosToVec3(pos), Quaternion.identity);
         }
     }
 
@@ -68,8 +70,12 @@ public class GameObjectFactory : MonoBehaviour
 
     public static void SetPosMapRelative(GameObject go, MapPos pos)
     {
-        Vector3 posAsVec3 = new Vector3(pos.x - MidPointWidth, 0.0f, MidPointDepth - pos.y);
-        Debug.Log("  Enemy (" + go.transform.position.x + "," + go.transform.position.z + ") => (" + posAsVec3.x + "," + posAsVec3.z + ")");
+        Vector3 posAsVec3 = MapPosToVec3(pos);
         go.transform.SetPositionAndRotation(posAsVec3, Quaternion.identity);
+    }
+
+    static Vector3 MapPosToVec3(MapPos pos)
+    {
+        return new Vector3(pos.x - MidPointWidth, 0.0f, MidPointDepth - pos.y);
     }
 }
