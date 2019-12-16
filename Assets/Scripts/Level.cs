@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine.UI;
+using System;
 
 
 
@@ -9,8 +11,14 @@ public enum LevelState { None, Loading, WaveCountdown, Playing, StatsScreen }
 
 public class Level : MonoBehaviour
 {
+    public GameObject RoadObject;
+    public GameObject TerrainObject;
+    public GameObject TurretSpaceObject;
+    public UnityEngine.UI.Text TimerUIText;
+
+
     const double WAVE_COUNTDOWN_TIME = 5.0;
-    public LevelDescription LevelDesc;
+    LevelDescription LevelDesc;
     WaveManager Waves = null;
     TurretManager Turrets = null;
     ProjectileManager Projectiles = null;
@@ -22,6 +30,9 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Start()");
+
+        Debug.Log("State ==> Loading");
         State = LevelState.Loading;
         GameTime = 0.0;
         LoadLevel();
@@ -38,6 +49,7 @@ public class Level : MonoBehaviour
             case LevelState.Loading:
                 if (!Loading)
                 {
+                    Debug.Log("State ==> WaveCountdown");
                     State = LevelState.WaveCountdown;
                     CountdownStartTime = GameTime;
                 }
@@ -77,10 +89,13 @@ public class Level : MonoBehaviour
     void TickWaveCountdown()
     {
         Debug.Assert((GameTime - CountdownStartTime) > 0);
+        TimerUIText.text = FormatTime(GameTime - CountdownStartTime);
 
         if ((GameTime - CountdownStartTime) > WAVE_COUNTDOWN_TIME)
         {
             Waves.AdvanceToNextWave(GameTime);
+
+            Debug.Log("State ==> Playing");
             State = LevelState.Playing;
         }
     }
@@ -99,14 +114,24 @@ public class Level : MonoBehaviour
         }
         else if (Waves.CurrentWave.IsCompleted)
         {
+
+            Debug.Log("State ==> WaveCountdown");
             State = LevelState.WaveCountdown;
             CountdownStartTime = GameTime;
         }
+        TimerUIText.text = FormatTime(GameTime - Waves.StartTime);
     }
     
     void OnLevelComplete()
     {
+        Debug.Log("State ==> StatsScreen");
         State = LevelState.StatsScreen;
     }
 
+    string FormatTime(double timeeInSec)
+    {
+        int minutes = Mathf.FloorToInt((float)timeeInSec / 60.0f);
+        int seconds = Mathf.FloorToInt((float)timeeInSec - minutes * 60.0f);
+        return string.Format("{0:0}:{1:00}", minutes, seconds);
+    }
 }
