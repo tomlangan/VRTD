@@ -28,6 +28,7 @@ public class EnemyInstance
         HealthRemaining = desc.HitPoints;
         Pos = 0.0;
         ReachedFinishLine = false;
+        ActiveEffects = new List<EffectInstance>();
         go = GameObjectFactory.InstantiateObject(desc.Asset);
     }
 
@@ -68,7 +69,7 @@ public class EnemyInstance
 public class WaveInstance
 {
     LevelDescription LevelDesc;
-    List<EnemyInstance> Enemies;
+    public List<EnemyInstance> Enemies;
     EnemyWave Desc;
     public int EnemiesThatSurvived;
     double WaveStartTime;
@@ -120,6 +121,7 @@ public class WaveInstance
             {
                 EnemyInstance newEnemy = new EnemyInstance(Desc.EnemyType, nextSpawnTime);
                 newEnemy.UpdateMapPosition(LevelDesc);
+                Enemies.Add(newEnemy);
                 LastSpawnTime = nextSpawnTime;
                 SpawnedCount++;
                 Debug.Log("     Spawned Enemy " + SpawnedCount);
@@ -198,6 +200,7 @@ public class WaveInstance
                 {
                     enemy.Pos = (double)RoadSegments;
                     enemy.ReachedFinishLine = true;
+                    EnemiesThatSurvived++;
                 }
                 else
                 {
