@@ -13,6 +13,7 @@ public class Level : MonoBehaviour
     public LevelDescription LevelDesc;
     WaveManager Waves = null;
     TurretManager Turrets = null;
+    ProjectileManager Projectiles = null;
     public double GameTime;
     public double CountdownStartTime = 0.0;
     bool Loading = false;
@@ -22,6 +23,7 @@ public class Level : MonoBehaviour
     void Start()
     {
         State = LevelState.Loading;
+        GameTime = 0.0;
         LoadLevel();
     }
 
@@ -66,6 +68,7 @@ public class Level : MonoBehaviour
             LevelLoader.LoadAndValidateLevel(LevelDesc);
             Waves = new WaveManager(LevelDesc);
             Turrets = new TurretManager(LevelDesc);
+            Projectiles = new ProjectileManager();
             Loading = false;
         });
         t.Start();
@@ -77,7 +80,6 @@ public class Level : MonoBehaviour
 
         if ((GameTime - CountdownStartTime) > WAVE_COUNTDOWN_TIME)
         {
-            GameTime = 0.0;
             Waves.AdvanceToNextWave(GameTime);
             State = LevelState.Playing;
         }
@@ -89,13 +91,22 @@ public class Level : MonoBehaviour
 
         Turrets.Fire(GameTime);
 
-        CheckEndConditions();
+        Projectiles.AdvanceAll(GameTime);
+
+        if (Waves.IsComplete)
+        {
+            OnLevelComplete();
+        }
+        else if (Waves.CurrentWave.IsCompleted)
+        {
+            State = LevelState.WaveCountdown;
+            CountdownStartTime = GameTime;
+        }
     }
     
-    void CheckEndConditions()
+    void OnLevelComplete()
     {
-
+        State = LevelState.StatsScreen;
     }
-
 
 }

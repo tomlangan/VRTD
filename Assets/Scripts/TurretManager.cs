@@ -8,27 +8,22 @@ using System.Threading.Tasks;
 
 class TurretInstance
 {
-    Turret TurretType;
-    public RoadPos Position;
-    List<RoadPos> RoadSegmentsInRange;
+    ProjectileManager Projectiles;
+    public Turret TurretType;
+    public MapPos Position;
+    List<MapPos> RoadSegmentsInRange;
     double LastShotTime;
 
-    public TurretInstance(Turret turretType, RoadPos position, LevelDescription levelDesc)
+    public TurretInstance(Turret turretType, MapPos position, LevelDescription levelDesc, ProjectileManager projectiles)
     {
+        Projectiles = projectiles;
         TurretType = turretType;
         Position = position;
-        RoadSegmentsInRange = new List<RoadPos>();
+        RoadSegmentsInRange = new List<MapPos>();
         LastShotTime = 0.0;
         CalculateRoadSegmentsInRangeByDistance(levelDesc);
     }
 
-    double RoadPosDistance(RoadPos roadPos)
-    {
-        // Pythagorian theorem:  a^2 + b^2 = c^2
-        double aSquared = Math.Pow(Math.Abs(Position.x - roadPos.x), 2);
-        double bSquared = Math.Pow(Math.Abs(Position.y - roadPos.y), 2);
-        return Math.Sqrt(aSquared + bSquared);
-    }
 
     void CalculateRoadSegmentsInRangeByDistance(LevelDescription levelDesc)
     {
@@ -36,10 +31,10 @@ class TurretInstance
 
         for (int i = 0; i < levelDesc.Road.Count; i++)
         {
-            RoadPos rp = levelDesc.Road[i];
+            MapPos rp = levelDesc.Road[i];
 
             // Calculate distance to road segment
-            double distance = RoadPosDistance(rp);
+            double distance = Position.DistanceTo(rp);
 
             if (distance <= TurretType.Range)
             {
@@ -75,7 +70,7 @@ class TurretInstance
         return nearestEnemyFound;
     }
 
-    public void CheckForEnemiesAndFire(ProjectileManager projectileManager, double waveTime)
+    public void CheckForEnemiesAndFire(double waveTime)
     {
         double timeSinceLastShot = (waveTime - LastShotTime);
         while (timeSinceLastShot >= TurretType.FireRate)
@@ -86,8 +81,8 @@ class TurretInstance
                 break;
             }
 
-            projectileManager.Fire();
-
+            LastShotTime = LastShotTime + TurretType.FireRate;
+            Projectiles.Fire(this, nearestEnemyInRange, LastShotTime);
             timeSinceLastShot = (waveTime - LastShotTime);
         }
     }
@@ -96,7 +91,6 @@ class TurretInstance
 
 class TurretManager
 {
-    public ProjectileManager Projectiles = new ProjectileManager();
     LevelDescription LevelDesc;
     public List<TurretInstance> Turrets = new List<TurretInstance>();
 
@@ -105,16 +99,16 @@ class TurretManager
         LevelDesc = levelDesc;
     }
 
-    public void AddTurret(Turret turretType, RoadPos position)
+    public void AddTurret(Turret turretType, MapPos position, ProjectileManager projectiles)
     {
-        Turrets.Add(new TurretInstance(turretType, position, LevelDesc));
+        Turrets.Add(new TurretInstance(turretType, position, LevelDesc, projectiles));
     }
 
     public void Fire(double gameTime)
     {
         for (int i = 0; i < Turrets.Count; i++)
         {
-            Turrets[i].CheckForEnemiesAndFire(Projectiles, gameTime);
+            Turrets[i].CheckForEnemiesAndFire(gameTime);
         }
     }
 }

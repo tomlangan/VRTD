@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyDescription
 {
@@ -76,30 +77,73 @@ public class Turret
 }
 
 
-public class RoadPos
+public class MapPos
 {
     public int x;
     public int y;
-
     public List<EnemyInstance> EnemiesOccupying;
 
-    public RoadPos(int xpos, int ypos)
+    public MapPos(int xpos, int ypos)
     {
         x = xpos;
         y = ypos;
     }
+
+    public MapPos(MapPos pos)
+    {
+        x = pos.x;
+        y = pos.y;
+    }
+
+    public double DistanceTo(MapPos pos)
+    {
+        // Pythagorian theorem:  a^2 + b^2 = c^2
+        double aSquared = Math.Pow(Math.Abs(x - pos.x), 2);
+        double bSquared = Math.Pow(Math.Abs(y - pos.y), 2);
+        return Math.Sqrt(aSquared + bSquared);
+    }
+
+    public double DistanceTo(RealPos pos)
+    {
+        // Pythagorian theorem:  a^2 + b^2 = c^2
+        double aSquared = Math.Pow(Math.Abs(x - pos.x), 2);
+        double bSquared = Math.Pow(Math.Abs(y - pos.y), 2);
+        return Math.Sqrt(aSquared + bSquared);
+    }
 }
 
 
-public class TurretPos
+public class RealPos
 {
-    public int x;
-    public int y;
+    public double x;
+    public double y;
+    public List<EnemyInstance> EnemiesOccupying;
 
-    public TurretPos(int xpos, int ypos)
+    public RealPos(double xpos, double ypos)
     {
         x = xpos;
         y = ypos;
+    }
+
+    public RealPos(RealPos pos)
+    {
+        x = pos.x;
+        y = pos.y;
+    }
+
+    public double DistanceTo(RealPos pos)
+    {
+        // Pythagorian theorem:  a^2 + b^2 = c^2
+        double aSquared = Math.Pow(Math.Abs(x - pos.x), 2);
+        double bSquared = Math.Pow(Math.Abs(y - pos.y), 2);
+        return Math.Sqrt(aSquared + bSquared);
+    }
+    public double DistanceTo(MapPos pos)
+    {
+        // Pythagorian theorem:  a^2 + b^2 = c^2
+        double aSquared = Math.Pow(Math.Abs(x - pos.x), 2);
+        double bSquared = Math.Pow(Math.Abs(y - pos.y), 2);
+        return Math.Sqrt(aSquared + bSquared);
     }
 }
 
@@ -117,8 +161,8 @@ public class LevelDescription
 
     public List<char> Map;
 
-    public RoadPos Entry;
-    public RoadPos Exit;
-    public List<RoadPos> Road;
-    public List<TurretPos> Turrets;
+    public MapPos Entry;
+    public MapPos Exit;
+    public List<MapPos> Road;
+    public List<MapPos> Turrets;
 }

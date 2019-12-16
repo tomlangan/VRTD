@@ -9,7 +9,7 @@ public class EnemyInstance
     public double Pos;
     public double HealthRemaining;
     public bool ReachedFinishLine;
-    public RoadPos RoadPosition = null;
+    public MapPos MapPosition = null;
     public List<EffectInstance> ActiveEffects;
 
     public bool IsActive
@@ -29,31 +29,31 @@ public class EnemyInstance
         ReachedFinishLine = false;
     }
 
-    public void UpdateRoadPosition(LevelDescription levelDesc)
+    public void UpdateMapPosition(LevelDescription levelDesc)
     {
         if (ReachedFinishLine)
         {
-            RoadPosition.EnemiesOccupying.Remove(this);
-            RoadPosition = null;
+            MapPosition.EnemiesOccupying.Remove(this);
+            MapPosition = null;
         }
         else
         {
             int posIndex = (int)Pos;
-            RoadPos newRoadPos = null;
+            MapPos newMapPos = null;
 
             Debug.Assert(posIndex < levelDesc.Road.Count);
 
-            newRoadPos = levelDesc.Road[posIndex];
+            newMapPos = levelDesc.Road[posIndex];
 
-            if (RoadPosition != newRoadPos)
+            if (MapPosition != newMapPos)
             {
-                if (null != RoadPosition)
+                if (null != MapPosition)
                 {
-                    RoadPosition.EnemiesOccupying.Remove(this);
+                    MapPosition.EnemiesOccupying.Remove(this);
                 }
 
-                newRoadPos.EnemiesOccupying.Add(this);
-                RoadPosition = newRoadPos;
+                newMapPos.EnemiesOccupying.Add(this);
+                MapPosition = newMapPos;
             }
         }
     }
@@ -61,15 +61,16 @@ public class EnemyInstance
 
 public class WaveInstance
 {
-    public LevelDescription LevelDesc;
-    public List<EnemyInstance> Enemies;
-    public EnemyWave Desc;
+    LevelDescription LevelDesc;
+    List<EnemyInstance> Enemies;
+    EnemyWave Desc;
     public int EnemiesThatSurvived;
-    public double WaveStartTime;
-    public int SpawnedCount;
-    public double LastSpawnTime;
-    public int RoadSegments;
+    double WaveStartTime;
+    int SpawnedCount;
+    double LastSpawnTime;
+    int RoadSegments;
     double speedWithEffectApplied;
+    public bool IsCompleted;
 
     public WaveInstance(LevelDescription levelDesc, EnemyWave waveDescription, int roadSegments, double gameTime)
     {
@@ -83,11 +84,22 @@ public class WaveInstance
 
     public void Advance(double waveTime)
     {
+        Debug.Assert(!IsCompleted);
+
+
         SpawnNewEnemies(waveTime);
 
         ApplyProjectileEffects(waveTime);
 
-        AdvanceEnemyPositions(waveTime);
+        bool enemiesAreActive = AdvanceEnemyPositionsAndReportIfAnyActive(waveTime);
+
+
+        // Check whether wave is complete
+        if ((SpawnedCount == Desc.Count) &&
+            !enemiesAreActive)
+        {
+            IsCompleted = true;
+        }
     }
 
     void SpawnNewEnemies(double waveTime)
@@ -101,7 +113,8 @@ public class WaveInstance
             if (waveTime > nextSpawnTime)
             {
                 EnemyInstance newEnemy = new EnemyInstance(Desc.EnemyType, nextSpawnTime);
-                newEnemy.UpdateRoadPosition(LevelDesc);
+                newEnemy.UpdateMapPosition(LevelDesc);
+                SpawnedCount++;
             }
             else
             {
@@ -114,6 +127,12 @@ public class WaveInstance
         for (int i = 0; i < Enemies.Count; i++)
         {
             EnemyInstance enemy = Enemies[i];
+
+            if (!enemy.IsActive)
+            {
+                continue;
+            }
+
             double damage = 0.0;
             double slowdown = 0.0;
 
@@ -157,8 +176,9 @@ public class WaveInstance
         }
     }
 
-    void AdvanceEnemyPositions(double waveTime)
-        {
+    bool AdvanceEnemyPositionsAndReportIfAnyActive(double waveTime)
+    {
+        bool isActive = false;
         for (int i = 0; i < Enemies.Count; i++)
         {
             EnemyInstance enemy = Enemies[i];
@@ -175,9 +195,12 @@ public class WaveInstance
                 {
                     enemy.Pos = newPosition;
                 }
-                enemy.UpdateRoadPosition(LevelDesc);
+                enemy.UpdateMapPosition(LevelDesc);
+                isActive = true;
             }
         }
+
+        return isActive;
     }
 }
 
@@ -188,6 +211,13 @@ public class WaveManager
     private WaveInstance _currentWave;
     public double StartTime;
     int RoadSegments;
+    public bool IsComplete
+    {
+        get
+        {
+            return ((WavesStarted == LevelDesc.Waves.Count) && _currentWave.IsCompleted);
+        }
+    }
 
     public WaveInstance CurrentWave
     {

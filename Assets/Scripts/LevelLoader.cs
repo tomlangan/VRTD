@@ -9,13 +9,13 @@ public class LevelLoader
 
     public delegate bool OnFound(int x, int y);
 
-    public static List<RoadPos> WalkAndValidateRoad(List<char> map, int width, int height, RoadPos entry, RoadPos exit)
+    public static List<MapPos> WalkAndValidateRoad(List<char> map, int width, int height, MapPos entry, MapPos exit)
     {
         WalkDir previousDirection = WalkDir.None;
         WalkDir thisDirection = WalkDir.None;
-        List<RoadPos> r = new List<RoadPos>();
-        RoadPos last = null;
-        RoadPos next = null;
+        List<MapPos> r = new List<MapPos>();
+        MapPos last = null;
+        MapPos next = null;
         int found = 0;
         int max = (width * height) - 2;
 
@@ -43,7 +43,7 @@ public class LevelLoader
                 ((exit.x == (last.x - 1)) && (exit.y == last.y))))
             {
                 thisDirection = WalkDir.Left;
-                next = new RoadPos(last.x - 1, last.y);
+                next = new MapPos(last.x - 1, last.y);
             }
 
             //check right if we're not at the bottom
@@ -52,13 +52,13 @@ public class LevelLoader
                 // This isn't the previous item we just saw
                 (previousDirection != WalkDir.Left)
                 &&
-                (('R' == map[((last.y) * width) + (last.x + 1)])
+                (('R' == map[(int)((last.y) * width) + (last.x + 1)])
                 ||
                 ((exit.x == (last.x + 1)) && (exit.y == last.y))))
             {
                 Debug.Assert(null == next);
                 thisDirection = WalkDir.Right;
-                next = new RoadPos(last.x + 1, last.y);
+                next = new MapPos(last.x + 1, last.y);
             }
 
             //check down if we're not at the bottom
@@ -74,7 +74,7 @@ public class LevelLoader
             {
                 Debug.Assert(null == next);
                 thisDirection = WalkDir.Down;
-                next = new RoadPos(last.x, last.y + 1);
+                next = new MapPos(last.x, last.y + 1);
             }
 
             //check up if we're not at the bottom
@@ -90,7 +90,7 @@ public class LevelLoader
             {
                 Debug.Assert(null == next);
                 thisDirection = WalkDir.Up;
-                next = new RoadPos(last.x, last.y - 1);
+                next = new MapPos(last.x, last.y - 1);
             }
 
 
@@ -122,14 +122,14 @@ public class LevelLoader
         level.Entry = null;
         level.Exit = null;
         level.Road = null;
-        level.Turrets = new List<TurretPos>();
+        level.Turrets = new List<MapPos>();
 
 
     // Find the entry, ensure there are no dupes
     FindMapLocations(level.Map, level.FieldWidth, level.FieldDepth, 'E', (x, y) =>
         {
             Debug.Assert(null == level.Entry);
-            level.Entry = new RoadPos(x, y);
+            level.Entry = new MapPos(x, y);
             return true;
         });
 
@@ -138,14 +138,14 @@ public class LevelLoader
         FindMapLocations(level.Map, level.FieldWidth, level.FieldDepth, 'X', (x, y) =>
         {
             Debug.Assert(null == level.Exit);
-            level.Exit = new RoadPos(x, y);
+            level.Exit = new MapPos(x, y);
             return true;
         });
 
         // Find all the turrets
         FindMapLocations(level.Map, level.FieldWidth, level.FieldDepth, 'T', (x, y) =>
         {
-            level.Turrets.Add(new TurretPos(x, y));
+            level.Turrets.Add(new MapPos(x, y));
             return true;
         });
 
@@ -215,11 +215,54 @@ public class LevelLoader
         Turret turret = new Turret();
         turret.Name = "Basic";
         turret.Asset = "None";
-        turret.Damage = 1.0;
         turret.FireRate = 1.0;
         turret.Range = 5;
-
+        Projectile projectile = new Projectile();
+        projectile.AirSpeed = 3.0;
+        projectile.Asset = "None";
+        projectile.Name = "Basic Bullet";
+        ProjectileEffect basicTurretDamangeEffect = new ProjectileEffect();
+        basicTurretDamangeEffect.EffectType = ProjectileEffectType.Damage;
+        basicTurretDamangeEffect.EffectDuration = 0.0;
+        basicTurretDamangeEffect.EffectImpact = 1.0;
+        projectile.Effects.Add(basicTurretDamangeEffect);
+        turret.ProjectileType = projectile;
         level.AllowedTurrets.Add(turret);
+
+        turret = new Turret();
+        turret.Name = "Ice";
+        turret.Asset = "None";
+        turret.FireRate = 5.0;
+        turret.Range = 3;
+        projectile = new Projectile();
+        projectile.AirSpeed = 1.0;
+        projectile.Asset = "None";
+        projectile.Name = "Ice Bullet";
+        ProjectileEffect iceTurretEffect = new ProjectileEffect();
+        iceTurretEffect.EffectType = ProjectileEffectType.Slow;
+        iceTurretEffect.EffectDuration = 2.0;
+        iceTurretEffect.EffectImpact = 1.0;
+        projectile.Effects.Add(iceTurretEffect);
+        turret.ProjectileType = projectile;
+        level.AllowedTurrets.Add(turret);
+
+        turret = new Turret();
+        turret.Name = "Ice";
+        turret.Asset = "None";
+        turret.FireRate = 1.0;
+        turret.Range = 6;
+        projectile = new Projectile();
+        projectile.AirSpeed = 2.0;
+        projectile.Asset = "None";
+        projectile.Name = "Fire Bullet";
+        ProjectileEffect fireTurretEffect = new ProjectileEffect();
+        fireTurretEffect.EffectType = ProjectileEffectType.Damage;
+        fireTurretEffect.EffectDuration = 5.0;
+        fireTurretEffect.EffectImpact = 0.2;
+        projectile.Effects.Add(iceTurretEffect);
+        turret.ProjectileType = projectile;
+        level.AllowedTurrets.Add(turret);
+
 
         level.FieldWidth = 10;
         level.FieldDepth = 20;
