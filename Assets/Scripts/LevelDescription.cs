@@ -87,6 +87,7 @@ public class MapPos
     {
         x = xpos;
         y = ypos;
+        EnemiesOccupying = new List<EnemyInstance>();
     }
 
     public MapPos(MapPos pos)
@@ -117,7 +118,6 @@ public class RealPos
 {
     public double x;
     public double y;
-    public List<EnemyInstance> EnemiesOccupying;
 
     public RealPos(double xpos, double ypos)
     {

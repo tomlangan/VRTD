@@ -24,7 +24,6 @@ public class Level : MonoBehaviour
     ProjectileManager Projectiles = null;
     public double GameTime;
     public double CountdownStartTime = 0.0;
-    bool Loading = false;
     public LevelState State = LevelState.None;
 
     // Start is called before the first frame update
@@ -34,8 +33,6 @@ public class Level : MonoBehaviour
 
         Debug.Log("State ==> Loading");
         State = LevelState.Loading;
-        GameTime = 0.0;
-        LoadLevel();
     }
 
     // Update is called once per frame
@@ -47,12 +44,11 @@ public class Level : MonoBehaviour
         switch (State)
         {
             case LevelState.Loading:
-                if (!Loading)
-                {
-                    Debug.Log("State ==> WaveCountdown");
-                    State = LevelState.WaveCountdown;
-                    CountdownStartTime = GameTime;
-                }
+                GameTime = 0.0;
+                LoadLevel();
+                Debug.Log("State ==> WaveCountdown");
+                State = LevelState.WaveCountdown;
+                CountdownStartTime = GameTime;
                 break;
 
             case LevelState.WaveCountdown:
@@ -72,24 +68,22 @@ public class Level : MonoBehaviour
     void LoadLevel()
     {
         GameTime = 0.0;
-        Loading = true;
 
-        Task t = new Task(() =>
-        {
-            LevelDesc = LevelLoader.GetTestLevel();
-            LevelLoader.LoadAndValidateLevel(LevelDesc);
-            Waves = new WaveManager(LevelDesc);
-            Turrets = new TurretManager(LevelDesc);
-            Projectiles = new ProjectileManager();
-            Loading = false;
-        });
-        t.Start();
+        LevelDesc = LevelLoader.GetTestLevel();
+        LevelLoader.LoadAndValidateLevel(LevelDesc);
+        Waves = new WaveManager(LevelDesc);
+        Turrets = new TurretManager(LevelDesc);
+        Projectiles = new ProjectileManager();
+
+        Debug.Log("Creating road objects");
+        GameObjectFactory.CreateMapObjects(LevelDesc, RoadObject, TerrainObject, TurretSpaceObject);
     }
+
 
     void TickWaveCountdown()
     {
         Debug.Assert((GameTime - CountdownStartTime) > 0);
-        TimerUIText.text = FormatTime(GameTime - CountdownStartTime);
+        TimerUIText.text = FormatTime(WAVE_COUNTDOWN_TIME - (GameTime - CountdownStartTime));
 
         if ((GameTime - CountdownStartTime) > WAVE_COUNTDOWN_TIME)
         {
@@ -99,7 +93,6 @@ public class Level : MonoBehaviour
             State = LevelState.Playing;
         }
     }
-
     void TickGameplay()
     {
         Waves.CurrentWave.Advance(GameTime);

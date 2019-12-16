@@ -80,6 +80,7 @@ public class WaveInstance
         EnemiesThatSurvived = 0;
         RoadSegments = roadSegments;
         WaveStartTime = gameTime;
+        LastSpawnTime = 0.0;
     }
 
     public void Advance(double waveTime)
@@ -108,13 +109,14 @@ public class WaveInstance
         // If not, are we due to spawn one or more enemies?
         while (SpawnedCount < Desc.Count)
         {
-            EnemyInstance lastEnemy = Enemies[Enemies.Count - 1];
-            double nextSpawnTime = lastEnemy.SpawnTime + Desc.EnemyType.SpawnRate;
+            double nextSpawnTime = LastSpawnTime + Desc.EnemyType.SpawnRate;
             if (waveTime > nextSpawnTime)
             {
                 EnemyInstance newEnemy = new EnemyInstance(Desc.EnemyType, nextSpawnTime);
                 newEnemy.UpdateMapPosition(LevelDesc);
+                LastSpawnTime = nextSpawnTime;
                 SpawnedCount++;
+                Debug.Log("     Spawned Enemy " + SpawnedCount);
             }
             else
             {
@@ -208,23 +210,14 @@ public class WaveManager
 {
     LevelDescription LevelDesc;
     public int WavesStarted;
-    private WaveInstance _currentWave;
+    public WaveInstance CurrentWave;
     public double StartTime;
     int RoadSegments;
     public bool IsComplete
     {
         get
         {
-            return ((WavesStarted == LevelDesc.Waves.Count) && _currentWave.IsCompleted);
-        }
-    }
-
-    public WaveInstance CurrentWave
-    {
-        get
-        {
-            Debug.Assert(null != CurrentWave);
-            return CurrentWave;
+            return ((WavesStarted == LevelDesc.Waves.Count) && CurrentWave.IsCompleted);
         }
     }
 
@@ -233,6 +226,7 @@ public class WaveManager
         LevelDesc = level;
         WavesStarted = 0;
         RoadSegments = level.Road.Count;
+        CurrentWave = null;
     }
 
 
@@ -240,8 +234,9 @@ public class WaveManager
     {
         Debug.Assert(WavesStarted < LevelDesc.Waves.Count);
 
-        _currentWave = new WaveInstance(LevelDesc, LevelDesc.Waves[WavesStarted], RoadSegments, gameTime);
+        CurrentWave = new WaveInstance(LevelDesc, LevelDesc.Waves[WavesStarted], RoadSegments, gameTime);
 
         WavesStarted++;
+        Debug.Log("  Wave " + WavesStarted);
     }
 }
