@@ -16,6 +16,8 @@ public class Level : MonoBehaviour
     public GameObject TurretSpaceObject;
     public GameObject BasicEnemy;
     public GameObject SwarmEnemy;
+    public GameObject BasicTurret;
+    public GameObject BasicBullet;
     public UnityEngine.UI.Text TimerUIText;
 
 
@@ -27,6 +29,7 @@ public class Level : MonoBehaviour
     public float GameTime;
     public float CountdownStartTime = 0.0F;
     public LevelState State = LevelState.None;
+    bool Loading = false;
 
     // Start is called before the first frame update
     void Start()
@@ -47,18 +50,27 @@ public class Level : MonoBehaviour
         switch (State)
         {
             case LevelState.Loading:
-                GameTime = 0.0F;
+                if (!Loading)
+                {
+                    Loading = true;
+                    GameTime = 0.0F;
 
-                GameObjectFactory.InitializeObjects(
-                    BasicEnemy,
-                    SwarmEnemy
-                    );
+                    GameObjectFactory.InitializeObjects(
+                        BasicEnemy,
+                        SwarmEnemy,
+                        BasicTurret,
+                        BasicBullet
+                        );
 
-                LoadLevel();
+                    LoadLevel();
 
-                Debug.Log("State ==> WaveCountdown");
-                State = LevelState.WaveCountdown;
-                CountdownStartTime = GameTime;
+                    Turrets.AddTurret(LevelDesc.AllowedTurrets[0], new MapPos(2, 3), Projectiles);
+
+                    Debug.Log("State ==> WaveCountdown");
+                    State = LevelState.WaveCountdown;
+                    CountdownStartTime = GameTime;
+                    Loading = false;
+                }
                 break;
 
             case LevelState.WaveCountdown:
@@ -84,7 +96,6 @@ public class Level : MonoBehaviour
         Waves = new WaveManager(LevelDesc);
         Turrets = new TurretManager(LevelDesc);
         Projectiles = new ProjectileManager();
-
         Debug.Log("Creating road objects");
         GameObjectFactory.CreateMapObjects(LevelDesc, RoadObject, TerrainObject, TurretSpaceObject);
     }

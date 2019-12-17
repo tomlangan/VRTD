@@ -200,7 +200,7 @@ public class LevelLoader
 
         wave = new EnemyWave();
         wave.EnemyType = new EnemyDescription();
-        wave.EnemyType.Name = "Swarm";
+        wave.EnemyType.Name = "SwarmEnemy";
         wave.EnemyType.MovementSpeed = 5.0F;
         wave.EnemyType.SpawnRate = 5.0F;
         wave.EnemyType.HitPoints = 1;
@@ -213,46 +213,46 @@ public class LevelLoader
         level.AllowedTurrets = new List<Turret>();
 
         Turret turret = new Turret();
-        turret.Name = "Basic";
-        turret.Asset = "None";
-        turret.FireRate = 1.0F;
+        turret.Name = "BasicTurret";
+        turret.Asset = "BasicTurret";
+        turret.FireRate = 2.0F;
         turret.Range = 5;
         Projectile projectile = new Projectile();
-        projectile.AirSpeed = 3.0F;
-        projectile.Asset = "None";
+        projectile.AirSpeed = 0.5F;
+        projectile.Asset = "BasicBullet";
         projectile.Name = "Basic Bullet";
         ProjectileEffect basicTurretDamangeEffect = new ProjectileEffect();
         basicTurretDamangeEffect.EffectType = ProjectileEffectType.Damage;
         basicTurretDamangeEffect.EffectDuration = 0.0F;
-        basicTurretDamangeEffect.EffectImpact = 1.0F;
+        basicTurretDamangeEffect.EffectImpact = 0.1F;
         projectile.Effects.Add(basicTurretDamangeEffect);
         turret.ProjectileType = projectile;
         level.AllowedTurrets.Add(turret);
 
         turret = new Turret();
-        turret.Name = "Ice";
-        turret.Asset = "None";
+        turret.Name = "IceShot";
+        turret.Asset = "IceShot";
         turret.FireRate = 5.0F;
         turret.Range = 3;
         projectile = new Projectile();
-        projectile.AirSpeed = 1.0F;
+        projectile.AirSpeed = 0.5F;
         projectile.Asset = "None";
         projectile.Name = "Ice Bullet";
         ProjectileEffect iceTurretEffect = new ProjectileEffect();
         iceTurretEffect.EffectType = ProjectileEffectType.Slow;
         iceTurretEffect.EffectDuration = 2.0F;
-        iceTurretEffect.EffectImpact = 1.0F;
+        iceTurretEffect.EffectImpact = 0.2F;
         projectile.Effects.Add(iceTurretEffect);
         turret.ProjectileType = projectile;
         level.AllowedTurrets.Add(turret);
 
         turret = new Turret();
-        turret.Name = "Ice";
-        turret.Asset = "None";
+        turret.Name = "FireShot";
+        turret.Asset = "FireShot";
         turret.FireRate = 1.0F;
         turret.Range = 6;
         projectile = new Projectile();
-        projectile.AirSpeed = 2.0F;
+        projectile.AirSpeed = 0.5F;
         projectile.Asset = "None";
         projectile.Name = "Fire Bullet";
         ProjectileEffect fireTurretEffect = new ProjectileEffect();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 
 
@@ -13,6 +14,7 @@ class TurretInstance
     public MapPos Position;
     List<MapPos> RoadSegmentsInRange;
     float LastShotTime;
+    GameObject go;
 
     public TurretInstance(Turret turretType, MapPos position, LevelDescription levelDesc, ProjectileManager projectiles)
     {
@@ -22,6 +24,8 @@ class TurretInstance
         RoadSegmentsInRange = new List<MapPos>();
         LastShotTime = 0.0F;
         CalculateRoadSegmentsInRangeByDistance(levelDesc);
+        go = GameObjectFactory.InstantiateObject(turretType.Asset);
+        GameObjectFactory.SetPos(go, Position);
     }
 
 
@@ -86,6 +90,12 @@ class TurretInstance
             timeSinceLastShot = (waveTime - LastShotTime);
         }
     }
+
+    public void Destroy()
+    {
+        GameObjectFactory.Destroy(go);
+        go = null;
+    }
 }
 
 
@@ -102,6 +112,7 @@ class TurretManager
     public void AddTurret(Turret turretType, MapPos position, ProjectileManager projectiles)
     {
         Turrets.Add(new TurretInstance(turretType, position, LevelDesc, projectiles));
+        Debug.Log("Turret added at " + position.x + "," + position.z);
     }
 
     public void Fire(float gameTime)
@@ -109,6 +120,16 @@ class TurretManager
         for (int i = 0; i < Turrets.Count; i++)
         {
             Turrets[i].CheckForEnemiesAndFire(gameTime);
+        }
+    }
+
+    public void DestroyAll()
+    {
+        for (int i = Turrets.Count; i > 0; i--)
+        {
+            TurretInstance t = Turrets[i - 1];
+            t.Destroy();
+            Turrets.Remove(t);
         }
     }
 }

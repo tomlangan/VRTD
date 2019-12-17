@@ -11,6 +11,7 @@ public class EffectInstance
     public float StartTime;
     public float LastTime;
     public bool Completed;
+    GameObject go;
 
     public EffectInstance(EnemyInstance enemy, ProjectileEffect effect, float waveStartTime)
     {
@@ -54,6 +55,16 @@ public class EffectInstance
 
         return (impactPercent * Effect.EffectImpact);
     }
+
+    public void Destroy()
+    {
+        if (null != go)
+        {
+            GameObjectFactory.Destroy(go);
+            go = null;
+        }
+    }
+
 }
 
 class ProjectileInstance
@@ -64,7 +75,7 @@ class ProjectileInstance
     public float FireTime;
     public EnemyInstance Enemy;
     public bool IsComplete;
-
+    GameObject go = null;
 
     public ProjectileInstance(Projectile projectileType, Vector3 sourcePos, EnemyInstance enemy, float waveTimeFired)
     {
@@ -74,6 +85,8 @@ class ProjectileInstance
         Position = new Vector3(sourcePos.x, sourcePos.y, sourcePos.z);
         Enemy = enemy;
         IsComplete = false;
+        go = GameObjectFactory.InstantiateObject(ProjectileType.Asset);
+        GameObjectFactory.SetPos(go, Position);
     }
 
     public void Advance(float waveTime)
@@ -96,6 +109,8 @@ class ProjectileInstance
                 EffectInstance projectileEffect = new EffectInstance(Enemy, ProjectileType.Effects[j], waveTime);
                 Enemy.ActiveEffects.Add(projectileEffect);
             }
+            Destroy();
+            return;
         }
 
         // Move the projectile towards the target -- it's always heat-seeking
@@ -110,12 +125,23 @@ class ProjectileInstance
         Position.x += xdelta;
         Position.z += zdelta;
 
+        GameObjectFactory.SetPos(go, Position);
+
         // float check that applying this again will result in reaching the enemy
 #if DEBUG
         float distanceToGo = hypotenuse - distanceMoved;
         Debug.Assert(Enemy.Position.z == (int)(Position.z + (distanceToGo * Math.Sin(angle))));
         Debug.Assert(Enemy.Position.x == (int)(Position.x + (distanceToGo * Math.Cos(angle))));
 #endif
+    }
+
+    public void Destroy()
+    {
+        if (null != go)
+        {
+            GameObjectFactory.Destroy(go);
+            go = null;
+        }
     }
 }
 
@@ -143,6 +169,16 @@ class ProjectileManager
             {
                 ProjectilesInFlight.Remove(ProjectilesInFlight[i]);
             }
+        }
+    }
+
+    public void DestroyAll()
+    {
+        for (int i = ProjectilesInFlight.Count; i > 0; i--)
+        {
+            ProjectileInstance p = ProjectilesInFlight[i - 1];
+            p.Destroy();
+            ProjectilesInFlight.Remove(p);
         }
     }
 }

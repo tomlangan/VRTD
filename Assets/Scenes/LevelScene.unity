@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -219,6 +219,10 @@ MonoBehaviour:
   BasicEnemy: {fileID: 3145202937413218105, guid: 345c94befcedd434eae2c43b95548cf8,
     type: 3}
   SwarmEnemy: {fileID: 4297125490911687240, guid: 44e51f6ab3e9bb041afd42372e43903c,
+    type: 3}
+  BasicTurret: {fileID: 6880068838699643874, guid: f92c2b657a9365642b6b7dc56be63171,
+    type: 3}
+  BasicBullet: {fileID: 2417508077430266576, guid: bf538721999cf2c46a7adacf83a2a035,
     type: 3}
   TimerUIText: {fileID: 2000138697}
   GameTime: 0

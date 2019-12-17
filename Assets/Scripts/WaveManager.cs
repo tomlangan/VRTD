@@ -47,10 +47,7 @@ public class EnemyInstance
 
         if (ReachedFinishLine)
         {
-            MapPosition.EnemiesOccupying.Remove(this);
-            GameObjectFactory.Destroy(go);
-            go = null;
-            MapPosition = null;
+            Destroy();
         }
         else
         {
@@ -100,6 +97,24 @@ public class EnemyInstance
             Position = levelDesc.Road[posIndex].Pos + movement;
 
             GameObjectFactory.SetPos(go, Position);
+        }
+    }
+
+    public void Destroy()
+    {
+        for (int i = ActiveEffects.Count; i > 0; i--)
+        {
+            EffectInstance ei = ActiveEffects[i - 1];
+            ei.Destroy();
+            ActiveEffects.Remove(ei);
+        }
+        ActiveEffects.Clear();
+        MapPosition.EnemiesOccupying.Remove(this);
+        MapPosition = null;
+        if (null != go)
+        {
+            GameObjectFactory.Destroy(go);
+            go = null;
         }
     }
 }
@@ -205,8 +220,7 @@ public class WaveInstance
             {
                 // Enemy is dead - what else do we need to do?
                 enemy.HealthRemaining = 0.0F;
-
-                enemy.ActiveEffects.Clear();
+                enemy.Destroy();
             }
             else
             {

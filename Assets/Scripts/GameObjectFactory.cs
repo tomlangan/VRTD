@@ -12,11 +12,15 @@ public class GameObjectFactory : MonoBehaviour
 
     public static void InitializeObjects(
         GameObject BasicEnemy,
-        GameObject SwarmEnemy
+        GameObject SwarmEnemy,
+        GameObject BasicTurret,
+        GameObject BasicBullet
         )
     {
         Objects.Add("BasicEnemy", BasicEnemy);
         Objects.Add("SwarmEnemy", SwarmEnemy);
+        Objects.Add("BasicTurret", BasicTurret);
+        Objects.Add("BasicBullet", BasicBullet);
     }
 
 
