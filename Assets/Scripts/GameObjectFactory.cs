@@ -9,15 +9,12 @@ public class GameObjectFactory : MonoBehaviour
     static float MidPointWidth;
     static float MidPointDepth;
 
+
     public static void InitializeObjects(
-        LevelDescription Desc,
         GameObject BasicEnemy,
         GameObject SwarmEnemy
         )
     {
-        MidPointWidth = Desc.FieldWidth / 2.0f;
-        MidPointDepth = Desc.FieldDepth / 2.0f;
-
         Objects.Add("BasicEnemy", BasicEnemy);
         Objects.Add("SwarmEnemy", SwarmEnemy);
     }
@@ -25,11 +22,14 @@ public class GameObjectFactory : MonoBehaviour
 
     public static void CreateMapObjects(LevelDescription Desc, GameObject RoadTemplate, GameObject TerrainTemplate, GameObject TurretLocationTemplate)
     {
+        MidPointWidth = Desc.FieldWidth / 2.0f;
+        MidPointDepth = Desc.FieldDepth / 2.0f;
+
         MapPos pos = new MapPos(0,0);
         for (int i = 0; i < Desc.Map.Count; i++)
         {
-            pos.x = i % Desc.FieldWidth;
-            pos.y = i / Desc.FieldWidth;
+            pos.Pos.x = i % Desc.FieldWidth;
+            pos.Pos.z = i / Desc.FieldWidth;
             GameObject template = null;
             switch (Desc.Map[i])
             {
@@ -52,7 +52,7 @@ public class GameObjectFactory : MonoBehaviour
             Debug.Assert(null != template);
 
             GameObject ro = Instantiate(template);
-            ro.transform.SetPositionAndRotation(MapPosToVec3(pos), Quaternion.identity);
+            SetPos(ro, pos);
         }
     }
 
@@ -68,14 +68,18 @@ public class GameObjectFactory : MonoBehaviour
         Destroy(go);
     }
 
-    public static void SetPosMapRelative(GameObject go, MapPos pos)
+    public static void SetPos(GameObject go, MapPos pos)
     {
-        Vector3 posAsVec3 = MapPosToVec3(pos);
-        go.transform.SetPositionAndRotation(posAsVec3, Quaternion.identity);
+        SetPos(go, pos.Pos);
+    }
+    public static void SetPos(GameObject go, Vector3 pos)
+    {
+        go.transform.SetPositionAndRotation(MapPosToVec3(pos), Quaternion.identity);
     }
 
-    static Vector3 MapPosToVec3(MapPos pos)
+
+    static Vector3 MapPosToVec3(Vector3 pos)
     {
-        return new Vector3(pos.x - MidPointWidth, 0.0f, MidPointDepth - pos.y);
+        return new Vector3(pos.x - MidPointWidth, 0.0f, MidPointDepth - pos.z);
     }
 }

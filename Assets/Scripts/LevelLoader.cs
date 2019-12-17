@@ -37,13 +37,13 @@ public class LevelLoader
                 (previousDirection != WalkDir.Right)
                 &&
                 // is the item to the left a road segment?
-                (('R' == map[(last.y * width) + (last.x - 1)])
+                (('R' == map[(last.z * width) + (last.x - 1)])
                 ||
                 // is the item to the left the exit?
-                ((exit.x == (last.x - 1)) && (exit.y == last.y))))
+                ((exit.x == (last.x - 1)) && (exit.z == last.z))))
             {
                 thisDirection = WalkDir.Left;
-                next = new MapPos(last.x - 1, last.y);
+                next = new MapPos(last.x - 1, last.z);
             }
 
             //check right if we're not at the bottom
@@ -52,45 +52,45 @@ public class LevelLoader
                 // This isn't the previous item we just saw
                 (previousDirection != WalkDir.Left)
                 &&
-                (('R' == map[(int)((last.y) * width) + (last.x + 1)])
+                (('R' == map[(int)((last.z) * width) + (last.x + 1)])
                 ||
-                ((exit.x == (last.x + 1)) && (exit.y == last.y))))
+                ((exit.x == (last.x + 1)) && (exit.z == last.z))))
             {
                 Debug.Assert(null == next);
                 thisDirection = WalkDir.Right;
-                next = new MapPos(last.x + 1, last.y);
+                next = new MapPos(last.x + 1, last.z);
             }
 
             //check down if we're not at the bottom
-            if ((last.y < (height - 1))
+            if ((last.z < (height - 1))
                 &&
                 // This isn't the previous item we just saw
                 (previousDirection != WalkDir.Up)
                 &&
-                (('R' == map[((last.y + 1) * width) + (last.x)])
+                (('R' == map[((last.z + 1) * width) + (last.x)])
                 ||
                 // is the item downwards the exit?
-                ((exit.x == (last.x)) && (exit.y == (last.y + 1)))))
+                ((exit.x == (last.x)) && (exit.z == (last.z + 1)))))
             {
                 Debug.Assert(null == next);
                 thisDirection = WalkDir.Down;
-                next = new MapPos(last.x, last.y + 1);
+                next = new MapPos(last.x, last.z + 1);
             }
 
             //check up if we're not at the bottom
-            if ((last.y > 0)
+            if ((last.z > 0)
                 &&
                 // This isn't the previous item we just saw
                 (previousDirection != WalkDir.Down)
                 &&
-                (('R' == map[((last.y - 1) * width) + (last.x)])
+                (('R' == map[((last.z - 1) * width) + (last.x)])
                 ||
                 // is the item upwards the exit?
-                ((exit.x == (last.x)) && (exit.y == (last.y - 1)))))
+                ((exit.x == (last.x)) && (exit.z == (last.z - 1)))))
             {
                 Debug.Assert(null == next);
                 thisDirection = WalkDir.Up;
-                next = new MapPos(last.x, last.y - 1);
+                next = new MapPos(last.x, last.z - 1);
             }
 
 
@@ -106,13 +106,13 @@ public class LevelLoader
             found++;
 
             // If we found the exit, break
-            if ((exit.x == last.x) && (exit.y == last.y)) { break; }
+            if ((exit.x == last.x) && (exit.z == last.z)) { break; }
         }
 
         // Something went wrong if we found this many items!
         Debug.Assert(found != max);
         // Something went wrong if we got here and never found the exit.
-        Debug.Assert(((exit.x == last.x) && (exit.y == last.y)));
+        Debug.Assert(((exit.x == last.x) && (exit.z == last.z)));
 
         return r;
     }
@@ -189,24 +189,24 @@ public class LevelLoader
         EnemyWave wave = new EnemyWave();
         wave.EnemyType = new EnemyDescription();
         wave.EnemyType.Name = "BasicEnemy";
-        wave.EnemyType.MovementSpeed = 1.0;
-        wave.EnemyType.SpawnRate = 1.0;
+        wave.EnemyType.MovementSpeed = 1.0F;
+        wave.EnemyType.SpawnRate = 1.0F;
         wave.EnemyType.HitPoints = 2;
         wave.EnemyType.Asset = "BasicEnemy";
         wave.Count = 10;
-        wave.DifficultyMultiplier = 1.0;
+        wave.DifficultyMultiplier = 1.0F;
 
         level.Waves.Add(wave);
 
         wave = new EnemyWave();
         wave.EnemyType = new EnemyDescription();
         wave.EnemyType.Name = "Swarm";
-        wave.EnemyType.MovementSpeed = 5.0;
-        wave.EnemyType.SpawnRate = 5.0;
+        wave.EnemyType.MovementSpeed = 5.0F;
+        wave.EnemyType.SpawnRate = 5.0F;
         wave.EnemyType.HitPoints = 1;
         wave.EnemyType.Asset = "SwarmEnemy";
         wave.Count = 20;
-        wave.DifficultyMultiplier = 1.0;
+        wave.DifficultyMultiplier = 1.0F;
 
         level.Waves.Add(wave);
 
@@ -215,16 +215,16 @@ public class LevelLoader
         Turret turret = new Turret();
         turret.Name = "Basic";
         turret.Asset = "None";
-        turret.FireRate = 1.0;
+        turret.FireRate = 1.0F;
         turret.Range = 5;
         Projectile projectile = new Projectile();
-        projectile.AirSpeed = 3.0;
+        projectile.AirSpeed = 3.0F;
         projectile.Asset = "None";
         projectile.Name = "Basic Bullet";
         ProjectileEffect basicTurretDamangeEffect = new ProjectileEffect();
         basicTurretDamangeEffect.EffectType = ProjectileEffectType.Damage;
-        basicTurretDamangeEffect.EffectDuration = 0.0;
-        basicTurretDamangeEffect.EffectImpact = 1.0;
+        basicTurretDamangeEffect.EffectDuration = 0.0F;
+        basicTurretDamangeEffect.EffectImpact = 1.0F;
         projectile.Effects.Add(basicTurretDamangeEffect);
         turret.ProjectileType = projectile;
         level.AllowedTurrets.Add(turret);
@@ -232,16 +232,16 @@ public class LevelLoader
         turret = new Turret();
         turret.Name = "Ice";
         turret.Asset = "None";
-        turret.FireRate = 5.0;
+        turret.FireRate = 5.0F;
         turret.Range = 3;
         projectile = new Projectile();
-        projectile.AirSpeed = 1.0;
+        projectile.AirSpeed = 1.0F;
         projectile.Asset = "None";
         projectile.Name = "Ice Bullet";
         ProjectileEffect iceTurretEffect = new ProjectileEffect();
         iceTurretEffect.EffectType = ProjectileEffectType.Slow;
-        iceTurretEffect.EffectDuration = 2.0;
-        iceTurretEffect.EffectImpact = 1.0;
+        iceTurretEffect.EffectDuration = 2.0F;
+        iceTurretEffect.EffectImpact = 1.0F;
         projectile.Effects.Add(iceTurretEffect);
         turret.ProjectileType = projectile;
         level.AllowedTurrets.Add(turret);
@@ -249,16 +249,16 @@ public class LevelLoader
         turret = new Turret();
         turret.Name = "Ice";
         turret.Asset = "None";
-        turret.FireRate = 1.0;
+        turret.FireRate = 1.0F;
         turret.Range = 6;
         projectile = new Projectile();
-        projectile.AirSpeed = 2.0;
+        projectile.AirSpeed = 2.0F;
         projectile.Asset = "None";
         projectile.Name = "Fire Bullet";
         ProjectileEffect fireTurretEffect = new ProjectileEffect();
         fireTurretEffect.EffectType = ProjectileEffectType.Damage;
-        fireTurretEffect.EffectDuration = 5.0;
-        fireTurretEffect.EffectImpact = 0.2;
+        fireTurretEffect.EffectDuration = 5.0F;
+        fireTurretEffect.EffectImpact = 0.2F;
         projectile.Effects.Add(iceTurretEffect);
         turret.ProjectileType = projectile;
         level.AllowedTurrets.Add(turret);

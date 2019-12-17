@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class EnemyInstance
+public class EnemyInstance 
 {
     public EnemyDescription Desc;
-    public double SpawnTime;
-    public double Pos;
-    public double HealthRemaining;
+    public float SpawnTime;
+    public float Progress;
+    public float HealthRemaining;
     public bool ReachedFinishLine;
-    public MapPos MapPosition = null;
+    public float LinearProgress;
+    public float SpeedWithEffectApplied;
+    public Vector3 Position;
     public List<EffectInstance> ActiveEffects;
+    MapPos MapPosition;
     GameObject go;
 
     public bool IsActive
@@ -21,19 +25,26 @@ public class EnemyInstance
         }
     }
 
-    public EnemyInstance(EnemyDescription desc, double spawnTime)
+    public EnemyInstance(EnemyDescription desc, float spawnTime)
     {
+        
+
         Desc = desc;
         SpawnTime = spawnTime;
         HealthRemaining = desc.HitPoints;
-        Pos = 0.0;
+        LinearProgress = 0.0F;
+        Position = new Vector3();
         ReachedFinishLine = false;
         ActiveEffects = new List<EffectInstance>();
-        go = GameObjectFactory.InstantiateObject(desc.Asset);
+        MapPosition = null;
+        go = GameObjectFactory.InstantiateObject(Desc.Asset);
     }
 
-    public void UpdateMapPosition(LevelDescription levelDesc)
+
+    public void UpdatePosition(LevelDescription levelDesc)
     {
+        
+
         if (ReachedFinishLine)
         {
             MapPosition.EnemiesOccupying.Remove(this);
@@ -43,7 +54,7 @@ public class EnemyInstance
         }
         else
         {
-            int posIndex = (int)Pos;
+            int posIndex = (int)LinearProgress;
             MapPos newMapPos = null;
 
             Debug.Assert(posIndex < levelDesc.Road.Count);
@@ -61,7 +72,34 @@ public class EnemyInstance
                 MapPosition = newMapPos;
             }
 
-            GameObjectFactory.SetPosMapRelative(go, MapPosition);
+            float intraMapProgress = (LinearProgress - (float)posIndex);
+            float progressFromCenter = Mathf.Abs(0.5F - intraMapProgress);
+            Vector3 direction;
+            
+            if ((intraMapProgress < 0.5F) && (posIndex > 0))
+            {
+                direction = levelDesc.Road[posIndex-1].Pos - levelDesc.Road[posIndex].Pos;
+            }
+            else if ((intraMapProgress < 0.5F) && (posIndex == 0))
+            {
+                // straight down
+                direction = new Vector3(0.0F, 0.0F, -1.0F);
+            }
+            else if ((intraMapProgress >= 0.5F) && (posIndex == (levelDesc.Road.Count - 1)))
+            {
+                // straight down
+                direction = new Vector3(0.0F, 0.0F, 1.0F);
+            }
+            else
+            {
+                direction = levelDesc.Road[posIndex + 1].Pos - levelDesc.Road[posIndex].Pos;
+            }
+
+            Vector3 movement = direction * progressFromCenter;
+            //Position = BasePosition + movement;
+            Position = levelDesc.Road[posIndex].Pos + movement;
+
+            GameObjectFactory.SetPos(go, Position);
         }
     }
 }
@@ -72,14 +110,14 @@ public class WaveInstance
     public List<EnemyInstance> Enemies;
     EnemyWave Desc;
     public int EnemiesThatSurvived;
-    double WaveStartTime;
+    float WaveStartTime;
     int SpawnedCount;
-    double LastSpawnTime;
+    float LastSpawnTime;
     int RoadSegments;
-    double speedWithEffectApplied;
+    float speedWithEffectApplied;
     public bool IsCompleted;
 
-    public WaveInstance(LevelDescription levelDesc, EnemyWave waveDescription, int roadSegments, double gameTime)
+    public WaveInstance(LevelDescription levelDesc, EnemyWave waveDescription, int roadSegments, float gameTime)
     {
         LevelDesc = levelDesc;
         Desc = waveDescription;
@@ -87,10 +125,10 @@ public class WaveInstance
         EnemiesThatSurvived = 0;
         RoadSegments = roadSegments;
         WaveStartTime = gameTime;
-        LastSpawnTime = 0.0;
+        LastSpawnTime = WaveStartTime;
     }
 
-    public void Advance(double waveTime)
+    public void Advance(float waveTime)
     {
         Debug.Assert(!IsCompleted);
 
@@ -110,17 +148,17 @@ public class WaveInstance
         }
     }
 
-    void SpawnNewEnemies(double waveTime)
+    void SpawnNewEnemies(float waveTime)
     {
         // Have we spawned all the enemies yet?
         // If not, are we due to spawn one or more enemies?
         while (SpawnedCount < Desc.Count)
         {
-            double nextSpawnTime = LastSpawnTime + Desc.EnemyType.SpawnRate;
+            float nextSpawnTime = LastSpawnTime + Desc.EnemyType.SpawnRate;
             if (waveTime > nextSpawnTime)
             {
                 EnemyInstance newEnemy = new EnemyInstance(Desc.EnemyType, nextSpawnTime);
-                newEnemy.UpdateMapPosition(LevelDesc);
+                newEnemy.UpdatePosition(LevelDesc);
                 Enemies.Add(newEnemy);
                 LastSpawnTime = nextSpawnTime;
                 SpawnedCount++;
@@ -132,7 +170,7 @@ public class WaveInstance
             }
         }
     }
-    void ApplyProjectileEffects(double waveTime)
+    void ApplyProjectileEffects(float waveTime)
     {
         for (int i = 0; i < Enemies.Count; i++)
         {
@@ -143,14 +181,14 @@ public class WaveInstance
                 continue;
             }
 
-            double damage = 0.0;
-            double slowdown = 0.0;
+            float damage = 0.0F;
+            float slowdown = 0.0F;
 
             for (int j = 0; j < enemy.ActiveEffects.Count; j++)
             {
                 EffectInstance effect = enemy.ActiveEffects[j];
 
-                double impact = effect.AdvanceAndReportImpact(waveTime);
+                float impact = effect.AdvanceAndReportImpact(waveTime);
 
                 switch (effect.Effect.EffectType)
                 {
@@ -166,7 +204,7 @@ public class WaveInstance
             if (enemy.HealthRemaining <= damage)
             {
                 // Enemy is dead - what else do we need to do?
-                enemy.HealthRemaining = 0.0;
+                enemy.HealthRemaining = 0.0F;
 
                 enemy.ActiveEffects.Clear();
             }
@@ -177,16 +215,16 @@ public class WaveInstance
 
             if (slowdown >= Desc.EnemyType.MovementSpeed)
             {
-                speedWithEffectApplied = 0.0;
+                enemy.SpeedWithEffectApplied = 0.0F;
             }
             else
             {
-                speedWithEffectApplied = Desc.EnemyType.MovementSpeed - slowdown;
+                enemy.SpeedWithEffectApplied = Desc.EnemyType.MovementSpeed - slowdown;
             }
         }
     }
 
-    bool AdvanceEnemyPositionsAndReportIfAnyActive(double waveTime)
+    bool AdvanceEnemyPositionsAndReportIfAnyActive(float waveTime)
     {
         bool isActive = false;
         for (int i = 0; i < Enemies.Count; i++)
@@ -194,19 +232,19 @@ public class WaveInstance
             EnemyInstance enemy = Enemies[i];
             if (enemy.IsActive)
             {
-                double timeSinceSpawn = waveTime - enemy.SpawnTime;
-                double newPosition = timeSinceSpawn * speedWithEffectApplied;
-                if (newPosition > (double)RoadSegments)
+                float timeSinceSpawn = waveTime - enemy.SpawnTime;
+                float newPosition = timeSinceSpawn * enemy.SpeedWithEffectApplied;
+                if (newPosition > (float)RoadSegments)
                 {
-                    enemy.Pos = (double)RoadSegments;
+                    enemy.LinearProgress = (float)RoadSegments;
                     enemy.ReachedFinishLine = true;
                     EnemiesThatSurvived++;
                 }
                 else
                 {
-                    enemy.Pos = newPosition;
+                    enemy.LinearProgress = newPosition;
                 }
-                enemy.UpdateMapPosition(LevelDesc);
+                enemy.UpdatePosition(LevelDesc);
                 isActive = true;
             }
         }
@@ -220,7 +258,7 @@ public class WaveManager
     LevelDescription LevelDesc;
     public int WavesStarted;
     public WaveInstance CurrentWave;
-    public double StartTime;
+    public float StartTime;
     int RoadSegments;
     public bool IsComplete
     {
@@ -239,7 +277,7 @@ public class WaveManager
     }
 
 
-    public void AdvanceToNextWave(double gameTime)
+    public void AdvanceToNextWave(float gameTime)
     {
         Debug.Assert(WavesStarted < LevelDesc.Waves.Count);
 

@@ -19,13 +19,13 @@ public class Level : MonoBehaviour
     public UnityEngine.UI.Text TimerUIText;
 
 
-    const double WAVE_COUNTDOWN_TIME = 5.0;
+    const float WAVE_COUNTDOWN_TIME = 5.0F;
     LevelDescription LevelDesc;
     WaveManager Waves = null;
     TurretManager Turrets = null;
     ProjectileManager Projectiles = null;
-    public double GameTime;
-    public double CountdownStartTime = 0.0;
+    public float GameTime;
+    public float CountdownStartTime = 0.0F;
     public LevelState State = LevelState.None;
 
     // Start is called before the first frame update
@@ -41,20 +41,20 @@ public class Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        double elapsed = Time.deltaTime;
+        float elapsed = Time.deltaTime;
         GameTime += elapsed;
 
         switch (State)
         {
             case LevelState.Loading:
-                GameTime = 0.0;
-                LoadLevel();
+                GameTime = 0.0F;
 
                 GameObjectFactory.InitializeObjects(
-                    LevelDesc,
                     BasicEnemy,
                     SwarmEnemy
                     );
+
+                LoadLevel();
 
                 Debug.Log("State ==> WaveCountdown");
                 State = LevelState.WaveCountdown;
@@ -77,7 +77,7 @@ public class Level : MonoBehaviour
 
     void LoadLevel()
     {
-        GameTime = 0.0;
+        GameTime = 0.0F;
 
         LevelDesc = LevelLoader.GetTestLevel();
         LevelLoader.LoadAndValidateLevel(LevelDesc);
@@ -131,7 +131,7 @@ public class Level : MonoBehaviour
         State = LevelState.StatsScreen;
     }
 
-    string FormatTime(double timeeInSec)
+    string FormatTime(float timeeInSec)
     {
         int minutes = Mathf.FloorToInt((float)timeeInSec / 60.0f);
         int seconds = Mathf.FloorToInt((float)timeeInSec - minutes * 60.0f);

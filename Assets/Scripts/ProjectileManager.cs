@@ -8,11 +8,11 @@ public class EffectInstance
 {
     public ProjectileEffect Effect;
     public EnemyInstance Enemy;
-    public double StartTime;
-    public double LastTime;
+    public float StartTime;
+    public float LastTime;
     public bool Completed;
 
-    public EffectInstance(EnemyInstance enemy, ProjectileEffect effect, double waveStartTime)
+    public EffectInstance(EnemyInstance enemy, ProjectileEffect effect, float waveStartTime)
     {
         Enemy = enemy;
         Effect = effect;
@@ -21,21 +21,21 @@ public class EffectInstance
         Completed = false;
     }
 
-    public double AdvanceAndReportImpact(double waveTime)
+    public float AdvanceAndReportImpact(float waveTime)
     {
         Debug.Assert(!Completed);
 
-        double impactPercent = 0.0;
+        float impactPercent = 0.0F;
 
         if (Effect.EffectDuration == 0.0)
         {
             // Entire impact at once
-            impactPercent = 1.0;
+            impactPercent = 1.0F;
         }
         else
         {
-            double elapsedTimeThisTick = waveTime - LastTime;
-            double totalTimeElapsed = waveTime - StartTime;
+            float elapsedTimeThisTick = waveTime - LastTime;
+            float totalTimeElapsed = waveTime - StartTime;
 
             // If we went over the total time this tick, correct for the overage
             if (totalTimeElapsed > Effect.EffectDuration)
@@ -59,32 +59,32 @@ public class EffectInstance
 class ProjectileInstance
 {
     public Projectile ProjectileType;
-    public RealPos Position;
-    public double LastUpdateTime;
-    public double FireTime;
+    public Vector3 Position;
+    public float LastUpdateTime;
+    public float FireTime;
     public EnemyInstance Enemy;
     public bool IsComplete;
 
 
-    public ProjectileInstance(Projectile projectileType, RealPos sourcePos, EnemyInstance enemy, double waveTimeFired)
+    public ProjectileInstance(Projectile projectileType, Vector3 sourcePos, EnemyInstance enemy, float waveTimeFired)
     {
         ProjectileType = projectileType;
-        LastUpdateTime = 0.0;
+        LastUpdateTime = 0.0F;
         FireTime = waveTimeFired;
-        Position = new RealPos(sourcePos);
+        Position = new Vector3(sourcePos.x, sourcePos.y, sourcePos.z);
         Enemy = enemy;
         IsComplete = false;
     }
 
-    public void Advance(double waveTime)
+    public void Advance(float waveTime)
     {
         if (!Enemy.IsActive)
         {
             IsComplete = true;
         }
 
-        double hypotenuse = Position.DistanceTo(Enemy.MapPosition);
-        double distanceMoved = (waveTime - LastUpdateTime) * ProjectileType.AirSpeed;
+        float hypotenuse = Vector3.Distance(Position,Enemy.Position);
+        float distanceMoved = (float)(waveTime - LastUpdateTime) * ProjectileType.AirSpeed;
         LastUpdateTime = waveTime;
 
         // If we hit the target, apply the effects (damage, slow, etc)
@@ -99,22 +99,22 @@ class ProjectileInstance
         }
 
         // Move the projectile towards the target -- it's always heat-seeking
-        double opposite = Enemy.MapPosition.y - Position.y;
-        double adjacent = Enemy.MapPosition.x - Position.x;
-        double angle = Math.Atan(opposite / adjacent);
+        float opposite = Enemy.Position.z - Position.z;
+        float adjacent = Enemy.Position.x - Position.x;
+        float angle = (float)Math.Atan(opposite / adjacent);
 
         // calculate distance to new position
-        double xdelta = distanceMoved * Math.Sin(angle);
-        double ydelta = distanceMoved * Math.Cos(angle);
+        float xdelta = distanceMoved * (float)Math.Sin(angle);
+        float zdelta = distanceMoved * (float)Math.Cos(angle);
 
         Position.x += xdelta;
-        Position.y += ydelta;
+        Position.z += zdelta;
 
-        // Double check that applying this again will result in reaching the enemy
+        // float check that applying this again will result in reaching the enemy
 #if DEBUG
-        double distanceToGo = hypotenuse - distanceMoved;
-        Debug.Assert(Enemy.MapPosition.y == (int)(Position.y + (distanceToGo * Math.Sin(angle))));
-        Debug.Assert(Enemy.MapPosition.x == (int)(Position.x + (distanceToGo * Math.Cos(angle))));
+        float distanceToGo = hypotenuse - distanceMoved;
+        Debug.Assert(Enemy.Position.z == (int)(Position.z + (distanceToGo * Math.Sin(angle))));
+        Debug.Assert(Enemy.Position.x == (int)(Position.x + (distanceToGo * Math.Cos(angle))));
 #endif
     }
 }
@@ -127,13 +127,13 @@ class ProjectileManager
         ProjectilesInFlight = new List<ProjectileInstance>();
     }
 
-    public void Fire(TurretInstance turret, EnemyInstance target, double fireTime)
+    public void Fire(TurretInstance turret, EnemyInstance target, float fireTime)
     {
-        ProjectileInstance projectile = new ProjectileInstance(turret.TurretType.ProjectileType, new RealPos(turret.Position.x, turret.Position.y), target, fireTime);
+        ProjectileInstance projectile = new ProjectileInstance(turret.TurretType.ProjectileType, new Vector3(turret.Position.x, 0.0F, turret.Position.z), target, fireTime);
         ProjectilesInFlight.Add(projectile);
     }
 
-    public void AdvanceAll(double waveTime)
+    public void AdvanceAll(float waveTime)
     {
         for (int i = 0; i < ProjectilesInFlight.Count; i++)
         {

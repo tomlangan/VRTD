@@ -7,9 +7,9 @@ public class EnemyDescription
 {
     public string Name { get; set; }
 
-    public double SpawnRate { get; set; }
+    public float SpawnRate { get; set; }
 
-    public double MovementSpeed { get; set; }
+    public float MovementSpeed { get; set; }
 
     public int HitPoints { get; set; }
 
@@ -22,7 +22,7 @@ public class EnemyWave
 
     public int Count { get; set; }
 
-    public double DifficultyMultiplier { get; set; }
+    public float DifficultyMultiplier { get; set; }
 
     public Time CalculatedTime { get; set; }
 }
@@ -42,9 +42,9 @@ public class ProjectileEffect
 {
     public ProjectileEffectType EffectType { get; set; }
 
-    public double EffectDuration { get; set;  }
+    public float EffectDuration { get; set;  }
 
-    public double EffectImpact { get; set; }
+    public float EffectImpact { get; set; }
 }
 
 public class Projectile
@@ -53,7 +53,7 @@ public class Projectile
 
     public string Asset { get; set; }
 
-    public double AirSpeed { get; set; }
+    public float AirSpeed { get; set; }
 
     public List<ProjectileEffect> Effects;
 
@@ -69,9 +69,9 @@ public class Turret
 
     public string Asset { get; set; }
 
-    public double FireRate { get; set; }
+    public float FireRate { get; set; }
 
-    public double Range { get; set; }
+    public float Range { get; set; }
 
     public Projectile ProjectileType { get; set; }
 }
@@ -79,73 +79,42 @@ public class Turret
 
 public class MapPos
 {
-    public int x;
-    public int y;
+    public Vector3Int Pos;
     public List<EnemyInstance> EnemiesOccupying;
 
-    public MapPos(int xpos, int ypos)
+    public int x { get { return Pos.x;  } }
+    public int z { get { return Pos.z; } }
+
+    public MapPos(int xpos, int zpos)
     {
-        x = xpos;
-        y = ypos;
+        Pos.x = xpos;
+        Pos.z = zpos;
         EnemiesOccupying = new List<EnemyInstance>();
     }
 
     public MapPos(MapPos pos)
     {
-        x = pos.x;
-        y = pos.y;
+        Pos.x = pos.Pos.x;
+        Pos.z = pos.Pos.z;
     }
 
-    public double DistanceTo(MapPos pos)
+    public float DistanceTo(MapPos pos)
     {
         // Pythagorian theorem:  a^2 + b^2 = c^2
-        double aSquared = Math.Pow(Math.Abs(x - pos.x), 2);
-        double bSquared = Math.Pow(Math.Abs(y - pos.y), 2);
-        return Math.Sqrt(aSquared + bSquared);
+        float aSquared = (float)Math.Pow(Math.Abs(Pos.x - pos.x), 2);
+        float bSquared = (float)Math.Pow(Math.Abs(Pos.z - pos.z), 2);
+        return (float)Math.Sqrt(aSquared + bSquared);
     }
 
-    public double DistanceTo(RealPos pos)
+    public float DistanceTo(Vector3 pos)
     {
         // Pythagorian theorem:  a^2 + b^2 = c^2
-        double aSquared = Math.Pow(Math.Abs(x - pos.x), 2);
-        double bSquared = Math.Pow(Math.Abs(y - pos.y), 2);
-        return Math.Sqrt(aSquared + bSquared);
+        float aSquared = (float)Math.Pow(Math.Abs(Pos.x - pos.x), 2);
+        float bSquared = (float)Math.Pow(Math.Abs(Pos.z - pos.z), 2);
+        return (float)Math.Sqrt(aSquared + bSquared);
     }
 }
 
-
-public class RealPos
-{
-    public double x;
-    public double y;
-
-    public RealPos(double xpos, double ypos)
-    {
-        x = xpos;
-        y = ypos;
-    }
-
-    public RealPos(RealPos pos)
-    {
-        x = pos.x;
-        y = pos.y;
-    }
-
-    public double DistanceTo(RealPos pos)
-    {
-        // Pythagorian theorem:  a^2 + b^2 = c^2
-        double aSquared = Math.Pow(Math.Abs(x - pos.x), 2);
-        double bSquared = Math.Pow(Math.Abs(y - pos.y), 2);
-        return Math.Sqrt(aSquared + bSquared);
-    }
-    public double DistanceTo(MapPos pos)
-    {
-        // Pythagorian theorem:  a^2 + b^2 = c^2
-        double aSquared = Math.Pow(Math.Abs(x - pos.x), 2);
-        double bSquared = Math.Pow(Math.Abs(y - pos.y), 2);
-        return Math.Sqrt(aSquared + bSquared);
-    }
-}
 
 
 public class LevelDescription
