@@ -69,6 +69,7 @@ public class EffectInstance
 
 class ProjectileInstance
 {
+    const float PROJECTILE_HEIGHT = 0.5F;
     public Projectile ProjectileType;
     public Vector3 Position;
     public float LastUpdateTime;
@@ -80,9 +81,9 @@ class ProjectileInstance
     public ProjectileInstance(Projectile projectileType, Vector3 sourcePos, EnemyInstance enemy, float waveTimeFired)
     {
         ProjectileType = projectileType;
-        LastUpdateTime = 0.0F;
+        LastUpdateTime = waveTimeFired;
         FireTime = waveTimeFired;
-        Position = new Vector3(sourcePos.x, sourcePos.y, sourcePos.z);
+        Position = new Vector3(sourcePos.x, PROJECTILE_HEIGHT, sourcePos.z);
         Enemy = enemy;
         IsComplete = false;
         go = GameObjectFactory.InstantiateObject(ProjectileType.Asset);
@@ -116,11 +117,11 @@ class ProjectileInstance
         // Move the projectile towards the target -- it's always heat-seeking
         float opposite = Enemy.Position.z - Position.z;
         float adjacent = Enemy.Position.x - Position.x;
-        float angle = (float)Math.Atan(opposite / adjacent);
+        float angle = Mathf.Atan(Mathf.Abs(opposite / adjacent));
 
         // calculate distance to new position
-        float xdelta = distanceMoved * (float)Math.Sin(angle);
-        float zdelta = distanceMoved * (float)Math.Cos(angle);
+        float xdelta = distanceMoved * Mathf.Cos(angle) * Mathf.Sign(adjacent);
+        float zdelta = distanceMoved * Mathf.Sin(angle) * Mathf.Sign(opposite);
 
         Position.x += xdelta;
         Position.z += zdelta;
@@ -130,8 +131,14 @@ class ProjectileInstance
         // float check that applying this again will result in reaching the enemy
 #if DEBUG
         float distanceToGo = hypotenuse - distanceMoved;
-        Debug.Assert(Enemy.Position.z == (int)(Position.z + (distanceToGo * Math.Sin(angle))));
-        Debug.Assert(Enemy.Position.x == (int)(Position.x + (distanceToGo * Math.Cos(angle))));
+        float xdeltaToGoActual = Enemy.Position.x - Position.x;
+        float zdeltaToGoActual = Enemy.Position.z - Position.z;
+        float xdeltaToGoCalculated = distanceToGo * Mathf.Cos(angle);
+        float zdeltaToGoCalculated = distanceToGo * Mathf.Sin(angle);
+        if (0.2F < (xdeltaToGoActual - xdeltaToGoCalculated))
+        { Debug.Break();  }
+        if (0.2F < (zdeltaToGoActual - zdeltaToGoCalculated))
+        { Debug.Break(); }
 #endif
     }
 
