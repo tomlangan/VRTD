@@ -199,9 +199,9 @@ public class WaveInstance
             float damage = 0.0F;
             float slowdown = 0.0F;
 
-            for (int j = 0; j < enemy.ActiveEffects.Count; j++)
+            for (int j = enemy.ActiveEffects.Count; j > 0; j--)
             {
-                EffectInstance effect = enemy.ActiveEffects[j];
+                EffectInstance effect = enemy.ActiveEffects[j-1];
 
                 float impact = effect.AdvanceAndReportImpact(waveTime);
 
@@ -213,6 +213,13 @@ public class WaveInstance
                     case ProjectileEffectType.Slow:
                         slowdown += impact;
                         break;
+                }
+
+                if (effect.Completed)
+                {
+                    effect.Destroy();
+                    enemy.ActiveEffects.Remove(effect);
+                    effect = null;
                 }
             }
 

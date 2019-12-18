@@ -224,7 +224,7 @@ public class LevelLoader
         ProjectileEffect basicTurretDamangeEffect = new ProjectileEffect();
         basicTurretDamangeEffect.EffectType = ProjectileEffectType.Damage;
         basicTurretDamangeEffect.EffectDuration = 0.0F;
-        basicTurretDamangeEffect.EffectImpact = 0.1F;
+        basicTurretDamangeEffect.EffectImpact = 1.0F;
         projectile.Effects.Add(basicTurretDamangeEffect);
         turret.ProjectileType = projectile;
         level.AllowedTurrets.Add(turret);
@@ -241,7 +241,7 @@ public class LevelLoader
         ProjectileEffect iceTurretEffect = new ProjectileEffect();
         iceTurretEffect.EffectType = ProjectileEffectType.Slow;
         iceTurretEffect.EffectDuration = 2.0F;
-        iceTurretEffect.EffectImpact = 0.2F;
+        iceTurretEffect.EffectImpact = 0.5F;
         projectile.Effects.Add(iceTurretEffect);
         turret.ProjectileType = projectile;
         level.AllowedTurrets.Add(turret);

@@ -96,6 +96,7 @@ class ProjectileInstance
         {
             IsComplete = true;
             Destroy();
+            return;
         }
 
         float hypotenuse = Vector3.Distance(Position,Enemy.Position);
@@ -177,13 +178,13 @@ class ProjectileManager
 
     public void AdvanceAll(float waveTime)
     {
-        for (int i = 0; i < ProjectilesInFlight.Count; i++)
+        for (int i = ProjectilesInFlight.Count; i > 0; i--)
         {
-            ProjectilesInFlight[i].Advance(waveTime);
+            ProjectilesInFlight[i-1].Advance(waveTime);
 
-            if (ProjectilesInFlight[i].IsComplete)
+            if (ProjectilesInFlight[i-1].IsComplete)
             {
-                ProjectilesInFlight.Remove(ProjectilesInFlight[i]);
+                ProjectilesInFlight.Remove(ProjectilesInFlight[i-1]);
             }
         }
     }
