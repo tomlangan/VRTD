@@ -218,7 +218,7 @@ public class LevelLoader
         turret.FireRate = 2.0F;
         turret.Range = 5;
         Projectile projectile = new Projectile();
-        projectile.AirSpeed = 1.0F;
+        projectile.AirSpeed = 2.0F;
         projectile.Asset = "BasicBullet";
         projectile.Name = "Basic Bullet";
         ProjectileEffect basicTurretDamangeEffect = new ProjectileEffect();
@@ -252,7 +252,7 @@ public class LevelLoader
         turret.FireRate = 1.0F;
         turret.Range = 6;
         projectile = new Projectile();
-        projectile.AirSpeed = 2.0F;
+        projectile.AirSpeed = 2.5F;
         projectile.Asset = "None";
         projectile.Name = "Fire Bullet";
         ProjectileEffect fireTurretEffect = new ProjectileEffect();
