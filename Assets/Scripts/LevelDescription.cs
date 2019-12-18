@@ -100,18 +100,12 @@ public class MapPos
 
     public float DistanceTo(MapPos pos)
     {
-        // Pythagorian theorem:  a^2 + b^2 = c^2
-        float aSquared = (float)Math.Pow(Math.Abs(Pos.x - pos.x), 2);
-        float bSquared = (float)Math.Pow(Math.Abs(Pos.z - pos.z), 2);
-        return (float)Math.Sqrt(aSquared + bSquared);
+        return Vector3.Distance(Pos, pos.Pos);
     }
 
     public float DistanceTo(Vector3 pos)
     {
-        // Pythagorian theorem:  a^2 + b^2 = c^2
-        float aSquared = (float)Math.Pow(Math.Abs(Pos.x - pos.x), 2);
-        float bSquared = (float)Math.Pow(Math.Abs(Pos.z - pos.z), 2);
-        return (float)Math.Sqrt(aSquared + bSquared);
+        return Vector3.Distance(Pos, pos);
     }
 }
 

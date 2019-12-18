@@ -38,7 +38,7 @@ class TurretInstance
             MapPos rp = levelDesc.Road[i];
 
             // Calculate distance to road segment
-            float distance = Position.DistanceTo(rp);
+            float distance = Vector3.Distance(Position.Pos, rp.Pos);
 
             if (distance <= TurretType.Range)
             {
@@ -69,6 +69,7 @@ class TurretInstance
             if (RoadSegmentsInRange[i].EnemiesOccupying.Count > 0)
             {
                 nearestEnemyFound = RoadSegmentsInRange[i].EnemiesOccupying[0];
+                break;
             }
         }
         return nearestEnemyFound;
