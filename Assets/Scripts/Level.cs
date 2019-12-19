@@ -18,7 +18,7 @@ public class Level : MonoBehaviour
     public GameObject SwarmEnemy;
     public GameObject BasicTurret;
     public GameObject BasicBullet;
-    public UnityEngine.UI.Text TimerUIText;
+    //public UnityEngine.UI.Text TimerUIText;
 
 
     const float WAVE_COUNTDOWN_TIME = 5.0F;
@@ -104,7 +104,7 @@ public class Level : MonoBehaviour
     void TickWaveCountdown()
     {
         Debug.Assert((GameTime - CountdownStartTime) > 0);
-        TimerUIText.text = FormatTime(WAVE_COUNTDOWN_TIME - (GameTime - CountdownStartTime));
+        //TimerUIText.text = FormatTime(WAVE_COUNTDOWN_TIME - (GameTime - CountdownStartTime));
 
         if ((GameTime - CountdownStartTime) > WAVE_COUNTDOWN_TIME)
         {
@@ -133,7 +133,7 @@ public class Level : MonoBehaviour
             State = LevelState.WaveCountdown;
             CountdownStartTime = GameTime;
         }
-        TimerUIText.text = FormatTime(GameTime - Waves.StartTime);
+        //TimerUIText.text = FormatTime(GameTime - Waves.StartTime);
     }
     
     void OnLevelComplete()
