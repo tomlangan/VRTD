@@ -21,11 +21,20 @@ public class InputHandler : MonoBehaviour
     {
         OVRInput.Update();
 
-        OVRInput.Controller controller = OVRInput.GetActiveController();
-        if (controller != OVRInput.Controller.None)
+        OVRInput.Controller activeController = OVRInput.GetActiveController();
+
+        if (activeController == OVRInput.Controller.LTouch)
         {
             Vector3 cameraPos = OVRCamera.transform.position;
-            InputDirection.origin = OVRInput.GetLocalControllerPosition(controller) + cameraPos;
+            InputDirection.origin = OVRInput.GetLocalControllerPosition(activeController) + cameraPos;
+            InputDirection.direction = OVRCamera.leftControllerAnchor.forward;
+        }
+        else if ((activeController == OVRInput.Controller.RTouch) || (activeController == OVRInput.Controller.Touch))
+        {
+            Vector3 cameraPos = OVRCamera.transform.position;
+            Vector3 ovrPos = OVRInput.GetLocalControllerPosition(activeController);
+            Vector3 anchorPos = OVRCamera.rightControllerAnchor.position;
+            InputDirection.origin = ovrPos + cameraPos;
             InputDirection.direction = OVRCamera.rightControllerAnchor.forward;
         }
         else if (null != VirtualHand)
