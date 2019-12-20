@@ -181,6 +181,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &275260300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 275260302}
+  - component: {fileID: 275260301}
+  m_Layer: 0
+  m_Name: InputPointer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &275260301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275260300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895f09b5659194699801541bce780034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1449813729}
+  InputLine: {fileID: 1280378711}
+  cursorVisual: {fileID: 0}
+  maxLength: 10
+--- !u!4 &275260302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275260300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1280378712}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &303383440
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -498,7 +546,7 @@ GameObject:
   - component: {fileID: 573466148}
   - component: {fileID: 573466149}
   m_Layer: 0
-  m_Name: HandSimulator
+  m_Name: DesktopInputHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -511,12 +559,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573466147}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Children:
+  - {fileID: 829938908}
+  m_Father: {fileID: 1449813728}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &573466149
 MonoBehaviour:
@@ -536,6 +585,12 @@ MonoBehaviour:
 --- !u!1 &829938904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4681799162909544799, guid: 96131906495ea8549a1dd3584f40d667,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986901244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &829938908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4681799162909544867, guid: 96131906495ea8549a1dd3584f40d667,
     type: 3}
   m_PrefabInstance: {fileID: 1986901244}
   m_PrefabAsset: {fileID: 0}
@@ -785,12 +840,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280378710}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 275260302}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1302164339 stripped
 Transform:
@@ -826,10 +881,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 10, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1302164339}
+  - {fileID: 573466148}
   - {fileID: 534669905}
+  - {fileID: 1302164339}
+  - {fileID: 2030420361}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1449813729
 MonoBehaviour:
@@ -845,6 +902,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OVRCamera: {fileID: 443216706}
   MainCamera: {fileID: 534669904}
+  DesktopInput: {fileID: 573466149}
+  VRInput: {fileID: 2030420360}
   Target: 0
 --- !u!1001 &1827883599
 PrefabInstance:
@@ -891,7 +950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 463470, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 463470, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -924,7 +983,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 573466148}
     m_Modifications:
     - target: {fileID: 4681799162909544799, guid: 96131906495ea8549a1dd3584f40d667,
         type: 3}
@@ -954,12 +1013,12 @@ PrefabInstance:
     - target: {fileID: 4681799162909544867, guid: 96131906495ea8549a1dd3584f40d667,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4681799162909544867, guid: 96131906495ea8549a1dd3584f40d667,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4681799162909544867, guid: 96131906495ea8549a1dd3584f40d667,
         type: 3}
@@ -969,7 +1028,7 @@ PrefabInstance:
     - target: {fileID: 4681799162909544867, guid: 96131906495ea8549a1dd3584f40d667,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4681799162909544867, guid: 96131906495ea8549a1dd3584f40d667,
         type: 3}
@@ -994,12 +1053,12 @@ PrefabInstance:
     - target: {fileID: 4681799162909544867, guid: 96131906495ea8549a1dd3584f40d667,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.05000006
       objectReference: {fileID: 0}
     - target: {fileID: 4681799162909544867, guid: 96131906495ea8549a1dd3584f40d667,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.05000006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96131906495ea8549a1dd3584f40d667, type: 3}
@@ -1014,7 +1073,7 @@ GameObject:
   - component: {fileID: 2030420361}
   - component: {fileID: 2030420360}
   m_Layer: 0
-  m_Name: InputHandler
+  m_Name: VRInputHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1032,8 +1091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62644b06868e2a04b8537380604ab133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VirtualHand: {fileID: 573466149}
-  InputLine: {fileID: 1280378711}
   OVRCamera: {fileID: 443216706}
 --- !u!4 &2030420361
 Transform:
@@ -1042,12 +1099,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030420359}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1449813728}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2137102284
 GameObject:
@@ -1076,16 +1133,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2137102284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: a28ce1d751fc1480883ec5b42b0a2585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TargetManager: {fileID: 1449813729}
+  Pointer: {fileID: 275260301}
+  joyPadClickButton: 1
+  gazeClickKey: 32
+  performSphereCastForGazepointer: 0
+  useRightStickScroll: 1
+  rightStickDeadZone: 0.15
+  useSwipeScroll: 1
+  swipeDragThreshold: 2
+  swipeDragScale: 1
+  InvertSwipeXAxis: 0
+  angleDragThreshold: 1
+  m_SpherecastRadius: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_AllowActivationOnMobileDevice: 1
 --- !u!114 &2137102286
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,7 +9,11 @@ public class PlayerTargetManager : MonoBehaviour
 
 	public OVRCameraRig OVRCamera;
 	public Camera MainCamera;
-    public HandSimulator DesktopHand;
+    public DesktopInputHandler DesktopInput;
+    public VRInputHandler VRInput;
+
+    public Ray InputDirection = new Ray();
+    
     public TargetPlatform Target = TargetPlatform.VR;
 
 	// Start is called before the first frame update
@@ -19,8 +23,8 @@ public class PlayerTargetManager : MonoBehaviour
         {
             MainCamera.enabled = true;
             MainCamera.transform.gameObject.SetActive(true);
-            DesktopHand.enabled = true;
-            DesktopHand.transform.gameObject.SetActive(true);
+            DesktopInput.enabled = true;
+            DesktopInput.transform.gameObject.SetActive(true);
             OVRCamera.enabled = false;
             OVRCamera.transform.gameObject.SetActive(false);
         }
@@ -28,8 +32,8 @@ public class PlayerTargetManager : MonoBehaviour
         {
             MainCamera.enabled = false;
             MainCamera.transform.gameObject.SetActive(false);
-            DesktopHand.enabled = false;
-            DesktopHand.transform.gameObject.SetActive(false);
+            DesktopInput.enabled = false;
+            DesktopInput.transform.gameObject.SetActive(false);
             OVRCamera.enabled = true;
             OVRCamera.transform.gameObject.SetActive(true);
         }
@@ -38,6 +42,13 @@ public class PlayerTargetManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (TargetPlatform.Desktop == Target)
+        {
+            InputDirection = DesktopInput.GetVirtualHandRay();
+        }
+        else if (TargetPlatform.VR == Target)
+        {
+            InputDirection = VRInput.InputDirection;
+        }
     }
 }

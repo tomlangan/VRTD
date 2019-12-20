@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandSimulator : MonoBehaviour
+public class DesktopInputHandler : MonoBehaviour
 {
     public GameObject VirtualHand;
     //This is the distance the clickable plane is from the camera. Set it in the Inspector before running.
