@@ -10,6 +10,9 @@ public class DesktopInputHandler : MonoBehaviour
     Plane MousePlane;
     public Vector3 VirtualHandPosition;
     public Vector3 VirtualHandDirection = new Vector3(0.0F, -0.5F, 0.5F);
+    public Vector2 RightClickMouseMovement = new Vector2();
+    private Vector2 PreviousRightClickMousePos = new Vector2();
+    private bool wasRightClickEnabled = false;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +51,23 @@ public class DesktopInputHandler : MonoBehaviour
             float zRelativePosFromCenter = zPos - 0.5F;
             // Black magic that needs to change if we ever change the camera position!
             Vector3 SelectionRayTarget = new Vector3(((40.0F - (12.0F * (1.0F-zPos))) * xRelativePosFromCenter) - 2.0F , 0.0F, (21.0F * zRelativePosFromCenter) + 2.0F);
-            VirtualHandDirection = (SelectionRayTarget - VirtualHandPosition).normalized; ;
+            VirtualHandDirection = (SelectionRayTarget - VirtualHandPosition).normalized; 
+
+            if (Input.GetMouseButton(1))
+            {
+                Vector2 currentPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                if (wasRightClickEnabled)
+                {
+                    RightClickMouseMovement = currentPos - PreviousRightClickMousePos;
+                }
+                PreviousRightClickMousePos = currentPos;
+                wasRightClickEnabled = true;
+            }
+            else
+            {
+                RightClickMouseMovement = Vector2.zero;
+                wasRightClickEnabled = false;
+            }
         }
     }
 
