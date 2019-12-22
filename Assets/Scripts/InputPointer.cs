@@ -7,17 +7,22 @@ public class InputPointer : MonoBehaviour
 	public PlayerTargetManager Player;
 	public LineRenderer InputLine;
     public GameObject cursorVisual;
-    public float maxLength = 10.0f;
-
+    public float maxLength = 100.0f;
+    public GameObject Hitting;
 
     private Vector3 _startPoint;
     private Vector3 _forward;
     private Vector3 _endPoint;
     private bool _hitTarget;
+    private bool SelectionUIActive = false;
 
     private void Start()
     {
         if (cursorVisual) cursorVisual.SetActive(false);
+    }
+
+    public void Update()
+    {
     }
 
     public void SetCursorStartDest(Vector3 start, Vector3 dest, Vector3 normal)
@@ -60,6 +65,13 @@ public class InputPointer : MonoBehaviour
     {
         InputLine.SetPosition(0, start);
         InputLine.SetPosition(1, end);
+
+        RaycastHit hit;
+        if (Physics.Raycast(start, end, out hit))
+        {
+            Hitting = hit.transform.gameObject;
+            Debug.Log("Cursor line hitting " + Hitting.name);
+        }
     }
 
     void OnDisable()

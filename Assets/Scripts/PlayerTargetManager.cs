@@ -11,10 +11,23 @@ public class PlayerTargetManager : MonoBehaviour
 	public Camera MainCamera;
     public DesktopInputHandler DesktopInput;
     public VRInputHandler VRInput;
-
     public Ray InputDirection = new Ray();
-    
     public TargetPlatform Target = TargetPlatform.VR;
+
+    public Transform CameraTransform
+    {
+        get
+        {
+            if (TargetPlatform.Desktop == Target)
+            {
+                return MainCamera.transform;
+            }
+            else 
+            {
+                return OVRCamera.transform;
+            }
+        }
+    }
 
 	// Start is called before the first frame update
 	void Start()

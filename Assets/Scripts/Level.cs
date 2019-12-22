@@ -18,6 +18,7 @@ public class Level : MonoBehaviour
     public GameObject SwarmEnemy;
     public GameObject BasicTurret;
     public GameObject BasicBullet;
+    public SelectionUICanvas SelectionUI;
     //public UnityEngine.UI.Text TimerUIText;
 
 
@@ -65,6 +66,7 @@ public class Level : MonoBehaviour
                     LoadLevel();
 
                     Turrets.AddTurret(LevelDesc.AllowedTurrets[0], new MapPos(2, 3), Projectiles);
+                    SelectionUI.EnableAndAttachToMapPos(new MapPos(2, 3));
 
                     Debug.Log("State ==> WaveCountdown");
                     State = LevelState.WaveCountdown;
@@ -133,6 +135,7 @@ public class Level : MonoBehaviour
             State = LevelState.WaveCountdown;
             CountdownStartTime = GameTime;
         }
+        
         //TimerUIText.text = FormatTime(GameTime - Waves.StartTime);
     }
     
