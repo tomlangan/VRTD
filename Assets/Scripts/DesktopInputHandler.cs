@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class DesktopInputHandler : MonoBehaviour
 {
+    public InputPointer InputDemuxer;
     public GameObject VirtualHand;
     //This is the distance the clickable plane is from the camera. Set it in the Inspector before running.
     float DistanceZ = 0.5F;
     Plane MousePlane;
     public Vector3 VirtualHandPosition;
     public Vector3 VirtualHandDirection = new Vector3(0.0F, -0.5F, 0.5F);
-    public Vector2 RightClickMouseMovement = new Vector2();
-    private Vector2 PreviousRightClickMousePos = new Vector2();
-    private bool wasRightClickEnabled = false;
+    public Vector2 MiddleClickMouseMovement = new Vector2();
+    private Vector2 PreviousMiddleClickMousePos = new Vector2();
+    private bool wasMiddleClickEnabled = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,8 @@ public class DesktopInputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Dictionary<InputState.InputIntent, bool> Buttons = new Dictionary<InputState.InputIntent, bool>();
+
         //Detect when there is a mouse click
         if (Input.mousePresent)
         {
@@ -51,23 +54,31 @@ public class DesktopInputHandler : MonoBehaviour
             float zRelativePosFromCenter = zPos - 0.5F;
             // Black magic that needs to change if we ever change the camera position!
             Vector3 SelectionRayTarget = new Vector3(((40.0F - (12.0F * (1.0F-zPos))) * xRelativePosFromCenter) - 2.0F , 0.0F, (21.0F * zRelativePosFromCenter) + 2.0F);
-            VirtualHandDirection = (SelectionRayTarget - VirtualHandPosition).normalized; 
+            VirtualHandDirection = (SelectionRayTarget - VirtualHandPosition).normalized;
 
-            if (Input.GetMouseButton(1))
+            InputDemuxer.SetCursorRay(new Ray(VirtualHandPosition, VirtualHandDirection));
+
+            Buttons[InputState.InputIntent.Selection] = Input.GetMouseButtonDown(0);
+            Buttons[InputState.InputIntent.Grab] = Input.GetMouseButtonDown(1);
+
+
+            if (Input.GetMouseButton(2))
             {
                 Vector2 currentPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-                if (wasRightClickEnabled)
+                if (wasMiddleClickEnabled)
                 {
-                    RightClickMouseMovement = currentPos - PreviousRightClickMousePos;
+                    MiddleClickMouseMovement = currentPos - PreviousMiddleClickMousePos;
                 }
-                PreviousRightClickMousePos = currentPos;
-                wasRightClickEnabled = true;
+                PreviousMiddleClickMousePos = currentPos;
+                wasMiddleClickEnabled = true;
             }
             else
             {
-                RightClickMouseMovement = Vector2.zero;
-                wasRightClickEnabled = false;
+                MiddleClickMouseMovement = Vector2.zero;
+                wasMiddleClickEnabled = false;
             }
+
+            InputDemuxer.SetButtonState(Buttons);
         }
     }
 

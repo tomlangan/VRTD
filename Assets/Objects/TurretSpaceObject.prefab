@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8639582803455048100}
   - component: {fileID: 6703935980156207388}
   - component: {fileID: 2574187156935907039}
+  - component: {fileID: 2534380668625174077}
   m_Layer: 0
   m_Name: TurretSpaceObject
   m_TagString: Untagged
@@ -91,3 +92,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!122 &2534380668625174077
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8805115824894549349}
+  m_Enabled: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294925637
+  m_Size: 0.6

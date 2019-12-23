@@ -1,23 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class InputState
+{ 
+    public enum InputIntent { Selection, Grab }
+    public static InputIntent[] Intents = { InputIntent.Selection, InputIntent.Grab };    
+
+    public Dictionary<InputIntent, bool> ButtonDown = new Dictionary<InputIntent, bool>();
+    public Dictionary<InputIntent, bool> ButtonUp = new Dictionary<InputIntent, bool>();
+    public Dictionary<InputIntent, bool> ButtonState = new Dictionary<InputIntent, bool>();
+}
 
 public class InputPointer : MonoBehaviour
 {
+
 	public PlayerTargetManager Player;
 	public LineRenderer InputLine;
     public GameObject cursorVisual;
     public float maxLength = 100.0f;
     public GameObject Hitting;
+    public InputState State;
+
 
     private Vector3 _startPoint;
     private Vector3 _forward;
     private Vector3 _endPoint;
     private bool _hitTarget;
-    private bool SelectionUIActive = false;
 
     private void Start()
     {
+        State = new InputState();
+
         if (cursorVisual) cursorVisual.SetActive(false);
     }
 
@@ -37,6 +52,30 @@ public class InputPointer : MonoBehaviour
         _startPoint = r.origin;
         _forward = r.direction;
         _hitTarget = false;
+    }
+
+    public void SetButtonState(Dictionary<InputState.InputIntent, bool> ButtonState)
+    {
+        State.ButtonDown.Clear();
+        State.ButtonUp.Clear();
+        foreach (InputState.InputIntent i in InputState.Intents)
+        {
+            bool value = false;
+            if (!ButtonState.TryGetValue(i, out value))
+            {
+                value = false;
+            }
+            bool previousState = false;
+            if ((!State.ButtonState.TryGetValue(i, out previousState) || !previousState) && value)
+            {
+                State.ButtonDown[i] = true;
+            }
+            if (previousState && !value)
+            {
+                State.ButtonUp[i] = true;
+            }
+            State.ButtonState[i] = value;
+        }
     }
 
     private void LateUpdate()
@@ -70,7 +109,6 @@ public class InputPointer : MonoBehaviour
         if (Physics.Raycast(start, end, out hit))
         {
             Hitting = hit.transform.gameObject;
-            Debug.Log("Cursor line hitting " + Hitting.name);
         }
     }
 

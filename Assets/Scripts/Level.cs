@@ -18,7 +18,10 @@ public class Level : MonoBehaviour
     public GameObject SwarmEnemy;
     public GameObject BasicTurret;
     public GameObject BasicBullet;
-    public SelectionUICanvas SelectionUI;
+    public GameObject TurretSelectUI;
+    public InputPointer Pointer;
+    public GameplayUIState GameplayUI;
+
     //public UnityEngine.UI.Text TimerUIText;
 
 
@@ -31,6 +34,7 @@ public class Level : MonoBehaviour
     public float CountdownStartTime = 0.0F;
     public LevelState State = LevelState.None;
     bool Loading = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +70,7 @@ public class Level : MonoBehaviour
                     LoadLevel();
 
                     Turrets.AddTurret(LevelDesc.AllowedTurrets[0], new MapPos(2, 3), Projectiles);
-                    SelectionUI.EnableAndAttachToMapPos(new MapPos(2, 3));
+                    
 
                     Debug.Log("State ==> WaveCountdown");
                     State = LevelState.WaveCountdown;
@@ -135,7 +139,25 @@ public class Level : MonoBehaviour
             State = LevelState.WaveCountdown;
             CountdownStartTime = GameTime;
         }
+
+        if (null != Pointer.Hitting)
+        {
+            if (Pointer.Hitting.name.StartsWith("TurretSpaceObject") ||
+                Pointer.Hitting.name.StartsWith("Road") ||
+                Pointer.Hitting.name.StartsWith("Terrain"))
+            {
+                MapPos pos = GameObjectFactory.Vec3ToMapPos(Pointer.Hitting.transform.position);
+                GameplayUI.CursorOver(pos, Pointer.Hitting);
+            }
+            Debug.Log("Cursor line hitting " + Pointer.Hitting.name);
+        }
         
+        bool value = false;
+        if (Pointer.State.ButtonDown.TryGetValue(InputState.InputIntent.Selection, out value) && value)
+        {
+            GameplayUI.TriggerSelectAction();
+        }
+
         //TimerUIText.text = FormatTime(GameTime - Waves.StartTime);
     }
     
@@ -151,4 +173,5 @@ public class Level : MonoBehaviour
         int seconds = Mathf.FloorToInt((float)timeeInSec - minutes * 60.0f);
         return string.Format("{0:0}:{1:00}", minutes, seconds);
     }
+
 }

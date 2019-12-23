@@ -29,12 +29,6 @@ public class UIPointerInputModule : PointerInputModule
 
     public InputPointer Pointer;
 
-    [Tooltip("Gamepad button to act as gaze click")]
-    public OVRInput.Button joyPadClickButton = OVRInput.Button.One;
-
-    [Tooltip("Keyboard button to act as gaze click")]
-    public KeyCode gazeClickKey = KeyCode.Space;
-
     [Header("Physics")]
     [Tooltip("Perform an sphere cast to determine correct depth for gaze pointer")]
     public bool performSphereCastForGazepointer;
@@ -46,18 +40,13 @@ public class UIPointerInputModule : PointerInputModule
     [Tooltip("Deadzone for right stick to prevent accidental scrolling")]
     public float rightStickDeadZone = 0.15f;
 
-    [Header("Touchpad Swipe Scroll")]
-    [Tooltip("Enable scrolling by swiping the GearVR touchpad")]
+    [Header("Thumbstick Swipe Scroll")]
+    [Tooltip("Enable scrolling by moving the thumbstick up and down")]
     public bool useSwipeScroll = true;
-    [Tooltip("Minimum trackpad movement in pixels to start swiping")]
-    public float swipeDragThreshold = 2;
+    [Tooltip("Minimum thumbstick movementto start swiping")]
+    public float thumbstickScrollThreshold = 2;
     [Tooltip("Distance scrolled when swipe scroll occurs")]
     public float swipeDragScale = 1f;
-    /* It's debatable which way left and right are on the Gear VR touchpad since it's facing away from you
-	 * the following bool allows this to be swapped*/
-    [Tooltip("Invert X axis on touchpad")]
-    public bool InvertSwipeXAxis = false;
-
 
     // The raycaster that gets to do pointer interaction (e.g. with a mouse), gaze interaction always works
     [NonSerialized]
@@ -670,7 +659,7 @@ public class UIPointerInputModule : PointerInputModule
         middleData.button = PointerEventData.InputButton.Middle;
 
 
-        m_MouseState.SetButtonState(PointerEventData.InputButton.Left, GetGazeButtonState(), leftData);
+        m_MouseState.SetButtonState(PointerEventData.InputButton.Left, GetInputButtonState(), leftData);
         m_MouseState.SetButtonState(PointerEventData.InputButton.Right, PointerEventData.FramePressState.NotChanged, rightData);
         m_MouseState.SetButtonState(PointerEventData.InputButton.Middle, PointerEventData.FramePressState.NotChanged, middleData);
         return m_MouseState;
@@ -853,25 +842,26 @@ public class UIPointerInputModule : PointerInputModule
     /// Get state of button corresponding to gaze pointer
     /// </summary>
     /// <returns></returns>
-    virtual protected PointerEventData.FramePressState GetGazeButtonState()
+    virtual protected PointerEventData.FramePressState GetInputButtonState()
     {
-        var pressed = Input.GetKeyDown(gazeClickKey) || OVRInput.GetDown(joyPadClickButton);
-        var released = Input.GetKeyUp(gazeClickKey) || OVRInput.GetUp(joyPadClickButton);
+        var InputState = Pointer.State;
 
-#if UNITY_ANDROID && !UNITY_EDITOR
-            // On Gear VR the mouse button events correspond to touch pad events. We only use these as gaze pointer clicks
-            // on Gear VR because on PC the mouse clicks are used for actual mouse pointer interactions.
-            pressed |= Input.GetMouseButtonDown(0);
-            released |= Input.GetMouseButtonUp(0);
-#endif
+        bool value = false;
+        var pressed = (InputState.ButtonDown.TryGetValue(InputState.InputIntent.Selection, out value) && value);
+        var released = (InputState.ButtonUp.TryGetValue(InputState.InputIntent.Selection, out value) && value);
 
-        if (pressed && released)
-            return PointerEventData.FramePressState.PressedAndReleased;
         if (pressed)
+        {
             return PointerEventData.FramePressState.Pressed;
-        if (released)
+        }
+        else if (released)
+        {
             return PointerEventData.FramePressState.Released;
-        return PointerEventData.FramePressState.NotChanged;
+        }
+        else
+        {
+            return PointerEventData.FramePressState.NotChanged;
+        }
     }
 
     /// <summary>

@@ -58,7 +58,7 @@ public class PlayerTargetManager : MonoBehaviour
         if (TargetPlatform.Desktop == Target)
         {
             InputDirection = DesktopInput.GetVirtualHandRay();
-            MainCamera.transform.Rotate(-DesktopInput.RightClickMouseMovement.y * 0.1F, DesktopInput.RightClickMouseMovement.x * 0.1F, 0.0F);
+            MainCamera.transform.Rotate(-DesktopInput.MiddleClickMouseMovement.y * 0.1F, DesktopInput.MiddleClickMouseMovement.x * 0.1F, 0.0F);
 
         }
         else if (TargetPlatform.VR == Target)

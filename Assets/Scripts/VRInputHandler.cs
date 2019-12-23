@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class VRInputHandler : MonoBehaviour
 {
+    public InputPointer InputDemuxer;
     public Ray InputDirection = new Ray();
     public OVRCameraRig OVRCamera;
     OVRInput.Controller ActiveController;
