@@ -32,6 +32,7 @@ public class OVRRaycaster : GraphicRaycaster, IPointerEnterHandler
 {
     [Tooltip("A world space pointer for this canvas")]
     public GameObject pointer;
+    public static Camera WorldCamera;
 
     public int sortOrder = 0;
 
@@ -73,9 +74,16 @@ public class OVRRaycaster : GraphicRaycaster, IPointerEnterHandler
 	{
 		if(!canvas.worldCamera)
 		{
-			Debug.Log("Canvas does not have an event camera attached. Attaching OVRCameraRig.centerEyeAnchor as default.");
-			OVRCameraRig rig = FindObjectOfType<OVRCameraRig>();
-			canvas.worldCamera = rig.centerEyeAnchor.gameObject.GetComponent<Camera>();
+            if (null != WorldCamera)
+            {
+                canvas.worldCamera = WorldCamera;
+            }
+            else
+            {
+                Debug.Log("Canvas does not have an event camera attached. Attaching OVRCameraRig.centerEyeAnchor as default.");
+                OVRCameraRig rig = FindObjectOfType<OVRCameraRig>();
+                canvas.worldCamera = rig.centerEyeAnchor.gameObject.GetComponent<Camera>();
+            }
 		}
 	}
 

@@ -7,7 +7,6 @@ public class GameplayUIState : MonoBehaviour
     public enum State { NothingSelected, TurretSpaceSelected, TurretSelected }
 
     public PlayerTargetManager TargetManager;
-    public GameObject TurretSelectUI;
 
     // Cursor State
     public GameObject CursorObject = null;
@@ -16,8 +15,14 @@ public class GameplayUIState : MonoBehaviour
     // Selection State
     public GameObject SelectedObject = null;
 
+    // Templates
+    public ListUI ListUITemplate;
+
+    // Data for UI scenes
+    public List<string> AllowedTurretNames;
 
     private State UIState = State.NothingSelected;
+    private ListUI TurretSelectUIObject = null;
 
     public void ClearAll()
     {
@@ -31,6 +36,12 @@ public class GameplayUIState : MonoBehaviour
         {
             ClearHalo(CursorObject);
             CursorObject = null;
+        }
+
+        if (null != TurretSelectUIObject)
+        {
+            GameObject.Destroy(TurretSelectUIObject);
+            TurretSelectUIObject = null;
         }
 
         UIState = State.NothingSelected;
@@ -136,7 +147,8 @@ public class GameplayUIState : MonoBehaviour
         {
             SelectedObject = go;
             UIState = State.TurretSpaceSelected;
-            ShowUIAttachedToObject(go, TurretSelectUI);
+            TurretSelectUIObject = CreateTurretSelectUI();
+            ShowUIAttachedToObject(go, TurretSelectUIObject.transform.gameObject);
         }
     }
 
@@ -145,7 +157,13 @@ public class GameplayUIState : MonoBehaviour
         // TODO tear down turret space UI
         ClearHalo(SelectedObject);
         SelectedObject = null;
-        ClearUI(TurretSelectUI);
+
+        if (null != TurretSelectUIObject)
+        {
+            ClearUI(TurretSelectUIObject.transform.gameObject);
+            GameObject.Destroy(TurretSelectUIObject.transform.gameObject);
+            TurretSelectUIObject = null;
+        }
     }
 
     public void TriggerDragStart()
@@ -187,6 +205,7 @@ public class GameplayUIState : MonoBehaviour
         Vector3 uiPos = new Vector3(anchor.transform.position.x - 1.0F, 2.0F, anchor.transform.position.z);
         Vector3 uiForward = (uiPos - TargetManager.transform.position).normalized;
 
+        
         ui.SetActive(true);
         ui.transform.position = uiPos;
         ui.transform.forward = uiForward;
@@ -195,5 +214,19 @@ public class GameplayUIState : MonoBehaviour
     private void ClearUI(GameObject ui)
     {
         ui.SetActive(false);
+    }
+
+    private ListUI CreateTurretSelectUI()
+    {
+        ListUI go = Instantiate<ListUI>(ListUITemplate);
+
+        go.Create("Build Turret", AllowedTurretNames, OnTurretUISelected);
+
+        return go;
+    }
+
+    void OnTurretUISelected(int index, string turretName)
+    {
+        Debug.Log(" TURRET SELECTED: [" + index + "] - " + turretName);
     }
 }

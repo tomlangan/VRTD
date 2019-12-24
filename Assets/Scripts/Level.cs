@@ -70,7 +70,8 @@ public class Level : MonoBehaviour
                     LoadLevel();
 
                     Turrets.AddTurret(LevelDesc.AllowedTurrets[0], new MapPos(2, 3), Projectiles);
-                    
+
+                    InitializeUISettings();
 
                     Debug.Log("State ==> WaveCountdown");
                     State = LevelState.WaveCountdown;
@@ -174,4 +175,15 @@ public class Level : MonoBehaviour
         return string.Format("{0:0}:{1:00}", minutes, seconds);
     }
 
+    private void InitializeUISettings()
+    {
+        List<string> allowedTurretNames = new List<string>();
+
+        for (int i = 0; i < LevelDesc.AllowedTurrets.Count; i++)
+        {
+            allowedTurretNames.Add(LevelDesc.AllowedTurrets[i].Name);
+        }
+
+        GameplayUI.AllowedTurretNames = allowedTurretNames;
+    }
 }
