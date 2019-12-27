@@ -18,6 +18,7 @@ TagManager:
   - VRUISlider
   - VRUIButtonIcon
   - VRUIList
+  - ListUI
   layers:
   - Default
   - TransparentFX

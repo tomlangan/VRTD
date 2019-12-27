@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayUIState : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class GameplayUIState : MonoBehaviour
         UIState = State.NothingSelected;
     }
 
-    public void CursorOver(MapPos pos, GameObject go)
+    public void CursorOver(GameObject go)
     {
         switch (UIState)
         {
@@ -126,7 +127,8 @@ public class GameplayUIState : MonoBehaviour
                 }
                 break;
             case State.TurretSpaceSelected:
-                if (null != CursorObject)
+                if ((null != CursorObject) &&
+                    (!CursorObject.name.StartsWith("ListUIContainer")))
                 {
                     // If the user is clicking the original space, no effect
                     // otherwise there's work to do
@@ -154,8 +156,6 @@ public class GameplayUIState : MonoBehaviour
 
     private void ClearCurrentSelectedObject()
     {
-        return;
-
         // TODO tear down turret space UI
         ClearHalo(SelectedObject);
         SelectedObject = null;

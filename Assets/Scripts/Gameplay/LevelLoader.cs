@@ -231,7 +231,7 @@ public class LevelLoader
 
         turret = new Turret();
         turret.Name = "Ice Shot";
-        turret.Asset = "IceShot";
+        turret.Asset = "IceTurret";
         turret.FireRate = 5.0F;
         turret.Range = 3;
         projectile = new Projectile();
@@ -248,7 +248,7 @@ public class LevelLoader
 
         turret = new Turret();
         turret.Name = "Fire Shot";
-        turret.Asset = "FireShot";
+        turret.Asset = "FireTurret";
         turret.FireRate = 1.0F;
         turret.Range = 6;
         projectile = new Projectile();

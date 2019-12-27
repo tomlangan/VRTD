@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -271,7 +271,15 @@ MonoBehaviour:
     type: 3}
   BasicTurret: {fileID: 6880068838699643874, guid: f92c2b657a9365642b6b7dc56be63171,
     type: 3}
+  FireTurret: {fileID: 6880068838699643874, guid: 4666aa07171de483790e4416c7aa6e1f,
+    type: 3}
+  IceTurret: {fileID: 6880068838699643874, guid: 00a5158b9625349c9b4fec4dab6be43c,
+    type: 3}
   BasicBullet: {fileID: 2417508077430266576, guid: bf538721999cf2c46a7adacf83a2a035,
+    type: 3}
+  FireBullet: {fileID: 2417508077430266576, guid: 7e6a528e7b2dd4cd0863daa4640869f5,
+    type: 3}
+  IceBullet: {fileID: 2417508077430266576, guid: 0589cb27089ce4cd98d885c2570c30b8,
     type: 3}
   TurretSelectUI: {fileID: 0}
   Pointer: {fileID: 275260301}
@@ -486,7 +494,6 @@ MonoBehaviour:
   SelectedObject: {fileID: 0}
   ListUITemplate: {fileID: 4667065774110376593, guid: 0773e9c3ba96a5740a1636a4a4d9a584,
     type: 3}
-  AllowedTurretNames: []
 --- !u!4 &548235968
 Transform:
   m_ObjectHideFlags: 0

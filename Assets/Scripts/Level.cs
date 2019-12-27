@@ -17,7 +17,11 @@ public class Level : MonoBehaviour
     public GameObject BasicEnemy;
     public GameObject SwarmEnemy;
     public GameObject BasicTurret;
+    public GameObject FireTurret;
+    public GameObject IceTurret;
     public GameObject BasicBullet;
+    public GameObject FireBullet;
+    public GameObject IceBullet;
     public GameObject TurretSelectUI;
     public InputPointer Pointer;
     public GameplayUIState GameplayUI;
@@ -64,7 +68,11 @@ public class Level : MonoBehaviour
                         BasicEnemy,
                         SwarmEnemy,
                         BasicTurret,
-                        BasicBullet
+                        FireTurret,
+                        IceTurret,
+                        BasicBullet,
+                        FireBullet,
+                        IceBullet
                         );
 
                     LoadLevel();
@@ -142,14 +150,7 @@ public class Level : MonoBehaviour
 
         if (null != Pointer.Hitting)
         {
-            if (Pointer.Hitting.name.StartsWith("TurretSpaceObject") ||
-                Pointer.Hitting.name.StartsWith("Road") ||
-                Pointer.Hitting.name.StartsWith("Terrain"))
-            {
-                MapPos pos = GameObjectFactory.Vec3ToMapPos(Pointer.Hitting.transform.position);
-                GameplayUI.CursorOver(pos, Pointer.Hitting);
-            }
-            Debug.Log("Cursor line hitting " + Pointer.Hitting.name);
+            GameplayUI.CursorOver(Pointer.Hitting);
         }
         
         bool value = false;

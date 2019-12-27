@@ -14,13 +14,21 @@ public class GameObjectFactory : MonoBehaviour
         GameObject BasicEnemy,
         GameObject SwarmEnemy,
         GameObject BasicTurret,
-        GameObject BasicBullet
+        GameObject FireTurret,
+        GameObject IceTurret,
+        GameObject BasicBullet,
+        GameObject FireBullet,
+        GameObject IceBullet
         )
     {
         Objects.Add("BasicEnemy", BasicEnemy);
         Objects.Add("SwarmEnemy", SwarmEnemy);
         Objects.Add("BasicTurret", BasicTurret);
+        Objects.Add("FireTurret", FireTurret);
+        Objects.Add("IceTurret", IceTurret);
         Objects.Add("BasicBullet", BasicBullet);
+        Objects.Add("FireBullet", FireBullet);
+        Objects.Add("IceBullet", IceBullet);
     }
 
 
