@@ -89,6 +89,6 @@ public class GameObjectFactory : MonoBehaviour
 
     public static MapPos Vec3ToMapPos(Vector3 vec)
     {
-        return new MapPos((int)(vec.x + MidPointWidth), (int)(MidPointDepth + vec.z));
+        return new MapPos((int)(vec.x + MidPointWidth), (int)(MidPointDepth + -vec.z));
     }
 }

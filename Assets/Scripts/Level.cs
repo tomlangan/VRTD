@@ -69,7 +69,6 @@ public class Level : MonoBehaviour
 
                     LoadLevel();
 
-                    Turrets.AddTurret(LevelDesc.AllowedTurrets[0], new MapPos(2, 3), Projectiles);
 
                     InitializeUISettings();
 
@@ -177,13 +176,25 @@ public class Level : MonoBehaviour
 
     private void InitializeUISettings()
     {
-        List<string> allowedTurretNames = new List<string>();
+        ListUIParams TurretParams = new ListUIParams();
+        TurretParams.Title = "Select Turret";
+        
 
         for (int i = 0; i < LevelDesc.AllowedTurrets.Count; i++)
         {
-            allowedTurretNames.Add(LevelDesc.AllowedTurrets[i].Name);
+            TurretParams.Options.Add(LevelDesc.AllowedTurrets[i].Name);
         }
 
-        GameplayUI.AllowedTurretNames = allowedTurretNames;
+        TurretParams.Callback = OnTurretSelected;
+
+        GameplayUI.TurretSelectUIParams = TurretParams;
+    }
+
+    private bool OnTurretSelected(int index, string turretName)
+    {
+        MapPos position = GameObjectFactory.Vec3ToMapPos(GameplayUI.SelectedObject.transform.position);
+        Turrets.AddTurret(LevelDesc.AllowedTurrets[index], position, Projectiles);
+
+        return false; 
     }
 }

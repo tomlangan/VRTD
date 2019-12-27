@@ -213,7 +213,7 @@ public class LevelLoader
         level.AllowedTurrets = new List<Turret>();
 
         Turret turret = new Turret();
-        turret.Name = "BasicTurret";
+        turret.Name = "Basic Turret";
         turret.Asset = "BasicTurret";
         turret.FireRate = 2.0F;
         turret.Range = 5;
@@ -230,7 +230,7 @@ public class LevelLoader
         level.AllowedTurrets.Add(turret);
 
         turret = new Turret();
-        turret.Name = "IceShot";
+        turret.Name = "Ice Shot";
         turret.Asset = "IceShot";
         turret.FireRate = 5.0F;
         turret.Range = 3;
@@ -247,7 +247,7 @@ public class LevelLoader
         level.AllowedTurrets.Add(turret);
 
         turret = new Turret();
-        turret.Name = "FireShot";
+        turret.Name = "Fire Shot";
         turret.Asset = "FireShot";
         turret.FireRate = 1.0F;
         turret.Range = 6;

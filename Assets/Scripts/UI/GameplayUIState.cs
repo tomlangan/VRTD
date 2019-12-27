@@ -19,7 +19,7 @@ public class GameplayUIState : MonoBehaviour
     public ListUI ListUITemplate;
 
     // Data for UI scenes
-    public List<string> AllowedTurretNames;
+    public ListUIParams TurretSelectUIParams;
 
     private State UIState = State.NothingSelected;
     private ListUI TurretSelectUIObject = null;
@@ -223,13 +223,8 @@ public class GameplayUIState : MonoBehaviour
     {
         ListUI go = Instantiate<ListUI>(ListUITemplate);
 
-        go.Create("Build Turret", AllowedTurretNames, OnTurretUISelected);
+        go.Create(TurretSelectUIParams);
 
         return go;
-    }
-
-    void OnTurretUISelected(int index, string turretName)
-    {
-        Debug.Log(" TURRET SELECTED: [" + index + "] - " + turretName);
     }
 }
