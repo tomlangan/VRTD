@@ -11,6 +11,7 @@ public class PlayerTargetManager : MonoBehaviour
 	public Camera MainCamera;
     public DesktopInputHandler DesktopInput;
     public VRInputHandler VRInput;
+    public OvrAvatar LocalAvatar;
     public Ray InputDirection = new Ray();
     public TargetPlatform Target = TargetPlatform.VR;
 
@@ -40,6 +41,8 @@ public class PlayerTargetManager : MonoBehaviour
             DesktopInput.transform.gameObject.SetActive(true);
             VRInput.transform.gameObject.SetActive(false);
             VRInput.enabled = false;
+            LocalAvatar.transform.gameObject.SetActive(false);
+            LocalAvatar.enabled = false;
             OVRCamera.enabled = false;
             OVRCamera.transform.gameObject.SetActive(false);
             OVRRaycaster.WorldCamera = MainCamera;
@@ -51,9 +54,11 @@ public class PlayerTargetManager : MonoBehaviour
             DesktopInput.enabled = false;
             DesktopInput.transform.gameObject.SetActive(false);
             OVRCamera.enabled = true;
+            OVRCamera.transform.gameObject.SetActive(true);
+            LocalAvatar.transform.gameObject.SetActive(true);
+            LocalAvatar.enabled = true;
             VRInput.transform.gameObject.SetActive(true);
             VRInput.enabled = true;
-            OVRCamera.transform.gameObject.SetActive(true);
             OVRRaycaster.WorldCamera = OVRCamera.centerEyeAnchor.gameObject.GetComponent<Camera>();
         }
     }
