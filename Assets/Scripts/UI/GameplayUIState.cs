@@ -21,9 +21,10 @@ public class GameplayUIState : MonoBehaviour
 
     // Data for UI scenes
     public ListUIParams TurretSelectUIParams;
+    public ListUIParams TurretOptionUIParams;
 
     private State UIState = State.NothingSelected;
-    private ListUI TurretSelectUIObject = null;
+    private ListUI TurretUIObject = null;
 
     public void ClearAll()
     {
@@ -39,10 +40,10 @@ public class GameplayUIState : MonoBehaviour
             CursorObject = null;
         }
 
-        if (null != TurretSelectUIObject)
+        if (null != TurretUIObject)
         {
-            GameObject.Destroy(TurretSelectUIObject);
-            TurretSelectUIObject = null;
+            GameObject.Destroy(TurretUIObject);
+            TurretUIObject = null;
         }
 
         UIState = State.NothingSelected;
@@ -50,6 +51,7 @@ public class GameplayUIState : MonoBehaviour
 
     public void CursorOver(GameObject go)
     {
+
         switch (UIState)
         {
             case State.NothingSelected:
@@ -122,11 +124,25 @@ public class GameplayUIState : MonoBehaviour
         {
             case State.NothingSelected:
                 if (null != CursorObject)
-                {
+                { 
                     AttemptSelectObjectFromClearState(CursorObject);
                 }
                 break;
             case State.TurretSpaceSelected:
+                if ((null != CursorObject) &&
+                    (!CursorObject.name.StartsWith("ListUIContainer")))
+                {
+                    // If the user is clicking the original space, no effect
+                    // otherwise there's work to do
+                    if (CursorObject != SelectedObject)
+                    {
+                        ClearCurrentSelectedObject();
+                    }
+
+                    AttemptSelectObjectFromClearState(CursorObject);
+                }
+                break;
+            case State.TurretSelected:
                 if ((null != CursorObject) &&
                     (!CursorObject.name.StartsWith("ListUIContainer")))
                 {
@@ -149,8 +165,15 @@ public class GameplayUIState : MonoBehaviour
         {
             SelectedObject = go;
             UIState = State.TurretSpaceSelected;
-            TurretSelectUIObject = CreateTurretSelectUI();
-            ShowUIAttachedToObject(go, TurretSelectUIObject.transform.gameObject);
+            TurretUIObject = CreateTurretSelectUI();
+            ShowUIAttachedToObject(go, TurretUIObject.transform.gameObject);
+        }
+        else if (go.name.EndsWith("Turret(Clone)"))
+        {
+            SelectedObject = go;
+            UIState = State.TurretSelected;
+            TurretUIObject = CreateTurretOptionUI();
+            ShowUIAttachedToObject(go, TurretUIObject.transform.gameObject);
         }
     }
 
@@ -160,11 +183,11 @@ public class GameplayUIState : MonoBehaviour
         ClearHalo(SelectedObject);
         SelectedObject = null;
 
-        if (null != TurretSelectUIObject)
+        if (null != TurretUIObject)
         {
-            ClearUI(TurretSelectUIObject.transform.gameObject);
-            GameObject.Destroy(TurretSelectUIObject.transform.gameObject);
-            TurretSelectUIObject = null;
+            ClearUI(TurretUIObject.transform.gameObject);
+            GameObject.Destroy(TurretUIObject.transform.gameObject);
+            TurretUIObject = null;
         }
     }
 
@@ -224,6 +247,15 @@ public class GameplayUIState : MonoBehaviour
         ListUI go = Instantiate<ListUI>(ListUITemplate);
 
         go.Create(TurretSelectUIParams);
+
+        return go;
+    }
+
+    private ListUI CreateTurretOptionUI()
+    {
+        ListUI go = Instantiate<ListUI>(ListUITemplate);
+
+        go.Create(TurretOptionUIParams);
 
         return go;
     }

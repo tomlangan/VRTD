@@ -7,14 +7,14 @@ using UnityEngine;
 
 
 
-class TurretInstance
+class TurretInstance 
 {
     ProjectileManager Projectiles;
     public Turret TurretType;
     public MapPos Position;
     List<MapPos> RoadSegmentsInRange;
     float LastShotTime;
-    GameObject go;
+    public GameObject go;
 
     public TurretInstance(Turret turretType, MapPos position, LevelDescription levelDesc, ProjectileManager projectiles)
     {
@@ -122,6 +122,21 @@ class TurretManager
         {
             Turrets[i].CheckForEnemiesAndFire(gameTime);
         }
+    }
+
+    public TurretInstance GetTurretAtPosition(MapPos pos)
+    {
+        TurretInstance found = null;
+        for (int j = 0; j < Turrets.Count; j++)
+        {
+            if ((Turrets[j].Position.x == pos.x) &&
+                (Turrets[j].Position.z == pos.z))
+            {
+                found = Turrets[j];
+                break;
+            }
+        }
+        return found;
     }
 
     public void DestroyAll()

@@ -150,13 +150,24 @@ public class Level : MonoBehaviour
 
         if (null != Pointer.Hitting)
         {
-            GameplayUI.CursorOver(Pointer.Hitting);
+            GameObject go = Pointer.Hitting;
+            if (go.name.StartsWith("TurretSpace"))
+            {
+                TurretInstance turret = Turrets.GetTurretAtPosition(GameObjectFactory.Vec3ToMapPos(go.transform.position));
+
+                if (null != turret)
+                {
+                    go = turret.go;
+                }
+            }
+
+            GameplayUI.CursorOver(go);
         }
         
         bool value = false;
         if (Pointer.State.ButtonDown.TryGetValue(InputState.InputIntent.Selection, out value) && value)
         {
-            GameplayUI.TriggerSelectAction();
+                GameplayUI.TriggerSelectAction();
         }
 
         //TimerUIText.text = FormatTime(GameTime - Waves.StartTime);
@@ -177,18 +188,28 @@ public class Level : MonoBehaviour
 
     private void InitializeUISettings()
     {
-        ListUIParams TurretParams = new ListUIParams();
-        TurretParams.Title = "Select Turret";
+        ListUIParams TurretSelectParams = new ListUIParams();
+        TurretSelectParams.Title = "Select Turret";
         
 
         for (int i = 0; i < LevelDesc.AllowedTurrets.Count; i++)
         {
-            TurretParams.Options.Add(LevelDesc.AllowedTurrets[i].Name);
+            TurretSelectParams.Options.Add(LevelDesc.AllowedTurrets[i].Name);
         }
 
-        TurretParams.Callback = OnTurretSelected;
+        TurretSelectParams.Callback = OnTurretSelected;
 
-        GameplayUI.TurretSelectUIParams = TurretParams;
+        GameplayUI.TurretSelectUIParams = TurretSelectParams;
+
+        ListUIParams TurretOptionsParams = new ListUIParams();
+        TurretOptionsParams.Title = "Turret Options";
+
+        TurretOptionsParams.Options.Add("Upgrade");
+        TurretOptionsParams.Options.Add("Sell");
+
+        TurretOptionsParams.Callback = OnTurretOptionSelect;
+
+        GameplayUI.TurretOptionUIParams = TurretOptionsParams;
     }
 
     private bool OnTurretSelected(int index, string turretName)
@@ -196,6 +217,13 @@ public class Level : MonoBehaviour
         MapPos position = GameObjectFactory.Vec3ToMapPos(GameplayUI.SelectedObject.transform.position);
         Turrets.AddTurret(LevelDesc.AllowedTurrets[index], position, Projectiles);
 
-        return false; 
+        return false;
+    }
+
+    private bool OnTurretOptionSelect(int index, string option)
+    {
+        Debug.Log("Turret option selected: " + option);
+
+        return false;
     }
 }

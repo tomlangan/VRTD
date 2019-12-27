@@ -112,6 +112,7 @@ public class InputPointer : MonoBehaviour
         }
     }
 
+
     void OnDisable()
     {
         if (cursorVisual) cursorVisual.SetActive(false);
