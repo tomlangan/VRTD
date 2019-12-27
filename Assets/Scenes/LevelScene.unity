@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   MainCamera: {fileID: 534669904}
   DesktopInput: {fileID: 573466149}
   VRInput: {fileID: 2030420360}
-  Target: 1
+  Target: 0
 --- !u!1001 &1827883599
 PrefabInstance:
   m_ObjectHideFlags: 0
