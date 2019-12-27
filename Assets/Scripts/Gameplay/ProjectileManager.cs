@@ -28,7 +28,7 @@ public class EffectInstance
 
         float impactPercent = 0.0F;
 
-        if (Effect.EffectDuration == 0.0)
+        if (Effect.EffectDuration == 0.0F)
         {
             // Entire impact at once
             impactPercent = 1.0F;

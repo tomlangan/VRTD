@@ -6,12 +6,12 @@ using System;
 public class EnemyInstance 
 {
     public EnemyDescription Desc;
-    public float SpawnTime;
+    public float LastMoveTime;
     public float Progress;
     public float HealthRemaining;
     public bool ReachedFinishLine;
     public float LinearProgress;
-    public float SpeedWithEffectApplied;
+    public float SpeedSlowdown;
     public Vector3 Position;
     public List<EffectInstance> ActiveEffects;
     MapPos MapPosition;
@@ -30,7 +30,7 @@ public class EnemyInstance
         
 
         Desc = desc;
-        SpawnTime = spawnTime;
+        LastMoveTime = spawnTime;
         HealthRemaining = desc.HitPoints;
         LinearProgress = 0.0F;
         Position = new Vector3();
@@ -129,7 +129,6 @@ public class WaveInstance
     int SpawnedCount;
     float LastSpawnTime;
     int RoadSegments;
-    float speedWithEffectApplied;
     public bool IsCompleted;
 
     public WaveInstance(LevelDescription levelDesc, EnemyWave waveDescription, int roadSegments, float gameTime)
@@ -234,14 +233,7 @@ public class WaveInstance
                 enemy.HealthRemaining -= damage;
             }
 
-            if (slowdown >= Desc.EnemyType.MovementSpeed)
-            {
-                enemy.SpeedWithEffectApplied = 0.0F;
-            }
-            else
-            {
-                enemy.SpeedWithEffectApplied = Desc.EnemyType.MovementSpeed - slowdown;
-            }
+            enemy.SpeedSlowdown = slowdown;
         }
     }
 
@@ -253,8 +245,17 @@ public class WaveInstance
             EnemyInstance enemy = Enemies[i];
             if (enemy.IsActive)
             {
-                float timeSinceSpawn = waveTime - enemy.SpawnTime;
-                float newPosition = timeSinceSpawn * enemy.SpeedWithEffectApplied;
+                float timeSinceLastTick = waveTime - enemy.LastMoveTime;
+                float progressSinceLastTick = timeSinceLastTick * enemy.Desc.MovementSpeed;
+                if (enemy.SpeedSlowdown > progressSinceLastTick)
+                {
+                    progressSinceLastTick = 0.0F;
+                }
+                else
+                {
+                    progressSinceLastTick -= enemy.SpeedSlowdown;
+                }
+                float newPosition = enemy.LinearProgress + progressSinceLastTick;
                 if (newPosition > (float)RoadSegments)
                 {
                     enemy.LinearProgress = (float)RoadSegments;
@@ -266,6 +267,7 @@ public class WaveInstance
                     enemy.LinearProgress = newPosition;
                 }
                 enemy.UpdatePosition(LevelDesc);
+                enemy.LastMoveTime = waveTime;
                 isActive = true;
             }
         }
