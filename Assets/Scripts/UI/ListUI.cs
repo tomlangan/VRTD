@@ -12,6 +12,7 @@ public class ListUI : MonoBehaviour
     public GameObject ListItemTemplate;
     public delegate void OnListItemClicked(int index, string itemString);
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,14 +42,19 @@ public class ListUI : MonoBehaviour
             listGroup = child.gameObject;
         }
 
+        List<string> ListOptions = new List<string>(Items);
+
         for (int i = 0; i < Items.Count; i++)
         {
             GameObject listItem = Instantiate(ListItemTemplate);
             Text listText = listItem.GetComponentInChildren<Text>();
             listText.text = Items[i];
+
             Button listButton = listItem.GetComponent<Button>();
+            string optionSelectedString = Items[i];
+
             listButton.onClick.AddListener(() => { 
-                callback(i, Items[i]); 
+                callback(i, optionSelectedString); 
             });
 
             listItem.transform.parent = listGroup.transform;

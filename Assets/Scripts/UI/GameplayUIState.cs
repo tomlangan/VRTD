@@ -154,6 +154,8 @@ public class GameplayUIState : MonoBehaviour
 
     private void ClearCurrentSelectedObject()
     {
+        return;
+
         // TODO tear down turret space UI
         ClearHalo(SelectedObject);
         SelectedObject = null;
