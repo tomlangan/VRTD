@@ -34,9 +34,56 @@ public class VRInputHandler : MonoBehaviour
     {
         OVRInput.Update();
 
+        //
+        // Update dominant hand
+        //
+
+        bool leftPressed = OVRInput.Get(OVRInput.Button.Any, OVRInput.Controller.LTouch);
+        bool rightPressed = OVRInput.Get(OVRInput.Button.Any, OVRInput.Controller.RTouch);
+
+        if (leftPressed && !rightPressed)
+        {
+            SetActiveHand(OVRInput.Controller.LTouch);
+        }
+        else if (!leftPressed && rightPressed)
+        {
+            SetActiveHand(OVRInput.Controller.RTouch);
+        }
+
+        //
+        // Update buttons pressed
+        //
+
+        Dictionary<InputState.InputIntent, bool> Buttons = new Dictionary<InputState.InputIntent, bool>();
+
+
+        if (ActiveController == OVRInput.Controller.LTouch)
+        {
+            Buttons[InputState.InputIntent.Selection] = OVRInput.Get(OVRInput.Button.One, ActiveController) || OVRInput.Get(OVRInput.RawButton.LIndexTrigger, ActiveController);
+            Buttons[InputState.InputIntent.Grab] = OVRInput.Get(OVRInput.RawButton.LHandTrigger, ActiveController);
+        }
+        else
+        {
+            Buttons[InputState.InputIntent.Selection] = OVRInput.Get(OVRInput.Button.One, ActiveController) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger, ActiveController);
+            Buttons[InputState.InputIntent.Grab] = OVRInput.Get(OVRInput.RawButton.RHandTrigger, ActiveController);
+        }
+
+        InputDemuxer.SetButtonState(Buttons);
+
+        //
+        // Update input direction
+        //
+
         Vector3 cameraPos = OVRCamera.transform.position;
         InputDirection.origin = OVRInput.GetLocalControllerPosition(ActiveController) + cameraPos;
-        InputDirection.direction = OVRCamera.leftControllerAnchor.forward;
+        if (ActiveController == OVRInput.Controller.RTouch)
+        {
+            InputDirection.direction = OVRCamera.rightControllerAnchor.forward;
+        }
+        else
+        {
+            InputDirection.direction = OVRCamera.leftControllerAnchor.forward;
+        }
     }
 
     private void FixedUpdate()

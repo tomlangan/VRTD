@@ -202,7 +202,8 @@ public class GameplayUIState : MonoBehaviour
 
     private void ShowUIAttachedToObject(GameObject anchor, GameObject ui)
     {
-        Vector3 uiPos = new Vector3(anchor.transform.position.x - 1.0F, 2.0F, anchor.transform.position.z);
+        float xPos = ((anchor.transform.position.x > 0) ? (anchor.transform.position.x + 5.0F) : (anchor.transform.position.x - 5.0F));
+        Vector3 uiPos = new Vector3(xPos, 3.0F, anchor.transform.position.z);
         Vector3 uiForward = (uiPos - TargetManager.transform.position).normalized;
 
         

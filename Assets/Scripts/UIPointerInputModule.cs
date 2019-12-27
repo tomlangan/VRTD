@@ -247,7 +247,7 @@ public class UIPointerInputModule : PointerInputModule
     }
 
     private Vector2 GetRawMoveVector()
-    {
+    { 
         Vector2 move = Vector2.zero;
         move.x = Input.GetAxisRaw(m_HorizontalAxis);
         move.y = Input.GetAxisRaw(m_VerticalAxis);
