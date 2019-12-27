@@ -739,12 +739,6 @@ public class UIPointerInputModule : PointerInputModule
         }
         else
         {
-#if UNITY_ANDROID && !UNITY_EDITOR  // On android allow swiping to start drag
-                if (useSwipeScroll && ((Vector3)pointerEvent.GetSwipeStart() - Input.mousePosition).magnitude > swipeDragThreshold)
-                {
-                    return true;
-                }
-#endif
             // When it's not a screen space pointer we have to look at the angle it moved rather than the pixels distance
             // For gaze based pointing screen-space distance moved will always be near 0
             Vector3 cameraPos = pointerEvent.pressEventCamera.transform.position;
@@ -775,18 +769,7 @@ public class UIPointerInputModule : PointerInputModule
 
     protected Vector2 SwipeAdjustedPosition(Vector2 originalPosition, PointerEventData pointerEvent)
     {
-#if UNITY_ANDROID && !UNITY_EDITOR
-            // On android we use the touchpad position (accessed through Input.mousePosition) to modify
-            // the effective cursor position for events related to dragging. This allows the user to
-            // use the touchpad to drag draggable UI elements
-            if (useSwipeScroll)
-            {
-                Vector2 delta =  (Vector2)Input.mousePosition - pointerEvent.GetSwipeStart();
-                if (InvertSwipeXAxis)
-                    delta.x *= -1;
-                return originalPosition + delta * swipeDragScale;
-            }
-#endif
+
         // If not Gear VR or swipe scroll isn't enabled just return original position
         return originalPosition;
 
