@@ -38,6 +38,8 @@ public class PlayerTargetManager : MonoBehaviour
             MainCamera.transform.gameObject.SetActive(true);
             DesktopInput.enabled = true;
             DesktopInput.transform.gameObject.SetActive(true);
+            VRInput.transform.gameObject.SetActive(false);
+            VRInput.enabled = false;
             OVRCamera.enabled = false;
             OVRCamera.transform.gameObject.SetActive(false);
             OVRRaycaster.WorldCamera = MainCamera;
@@ -49,6 +51,8 @@ public class PlayerTargetManager : MonoBehaviour
             DesktopInput.enabled = false;
             DesktopInput.transform.gameObject.SetActive(false);
             OVRCamera.enabled = true;
+            VRInput.transform.gameObject.SetActive(true);
+            VRInput.enabled = true;
             OVRCamera.transform.gameObject.SetActive(true);
             OVRRaycaster.WorldCamera = OVRCamera.centerEyeAnchor.gameObject.GetComponent<Camera>();
         }
