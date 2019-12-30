@@ -1,6 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+#if LEVEL_EDITOR
+using System.Numerics;
+
+public class Debug
+{
+    public static void Assert(bool b) { }
+    public static void Log(string s) { }
+}
+
+
+public class GameObject { }
+
+public class GameObjectFactory
+{
+    public static GameObject InstantiateObject(string asset) { return new GameObject(); }
+    public static void SetPos(GameObject go, MapPos Position) { }
+    public static void SetPos(GameObject go, Vector3 Position) { }
+    public static void Destroy(GameObject go) { }
+}
+#else
 using UnityEngine;
+#endif
 
 public class LevelLoader
 {

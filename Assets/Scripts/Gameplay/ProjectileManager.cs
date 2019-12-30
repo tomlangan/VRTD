@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System;
+#if LEVEL_EDITOR != true
+using UnityEngine;
+#else
+using System.Numerics;
+#endif
 
 
 public class EffectInstance
@@ -83,7 +87,11 @@ class ProjectileInstance
         ProjectileType = projectileType;
         LastUpdateTime = waveTimeFired;
         FireTime = waveTimeFired;
+#if LEVEL_EDITOR
+        Position = new Vector3(sourcePos.X, PROJECTILE_HEIGHT, sourcePos.X);
+#else
         Position = new Vector3(sourcePos.x, PROJECTILE_HEIGHT, sourcePos.z);
+#endif
         Enemy = enemy;
         IsComplete = false;
         go = GameObjectFactory.InstantiateObject(ProjectileType.Asset);

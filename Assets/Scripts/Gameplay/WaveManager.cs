@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System;
+#if LEVEL_EDITOR
+using System.Numerics;
+#else
+using UnityEngine;
+#endif
 
 public class EnemyInstance 
 {
@@ -70,7 +74,11 @@ public class EnemyInstance
             }
 
             float intraMapProgress = (LinearProgress - (float)posIndex);
+#if LEVEL_EDITOR
+            float progressFromCenter = Math.Abs(0.5F - intraMapProgress);
+#else
             float progressFromCenter = Mathf.Abs(0.5F - intraMapProgress);
+#endif
             Vector3 direction;
             
             if ((intraMapProgress < 0.5F) && (posIndex > 0))

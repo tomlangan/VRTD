@@ -1,8 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System;
+#if LEVEL_EDITOR
+using System.Numerics;
 
+public class Vector3Int
+{
+    public int x;
+    public int y;
+    public int z;
+
+    public Vector3Int(int xset, int yset, int zset) { x = xset; y = yset; z = zset; }
+}
+#else
+using UnityEngine;
+#endif
+
+[Serializable]
 public class EnemyDescription
 {
     public string Name { get; set; }
@@ -16,6 +30,7 @@ public class EnemyDescription
     public string Asset { get; set; }
 }
 
+[Serializable]
 public class EnemyWave
 {
     public EnemyDescription EnemyType { get; set; }
@@ -24,20 +39,22 @@ public class EnemyWave
 
     public float DifficultyMultiplier { get; set; }
 
-    public Time CalculatedTime { get; set; }
 }
 
-    //
-    // R = Road
-    // T = Turret location
-    // E = Entry
-    // X = Exit
-    // D = Decoration
-    //
+//
+// R = Road
+// T = Turret location
+// E = Entry
+// X = Exit
+// D = Decoration
+//
+[Serializable]
 public enum MapElement { R = 0, T = 1, S = 2, X = 3, D = 4 };
 
+[Serializable]
 public enum ProjectileEffectType {  Damage, Slow }
 
+[Serializable]
 public class ProjectileEffect
 {
     public ProjectileEffectType EffectType { get; set; }
@@ -47,6 +64,7 @@ public class ProjectileEffect
     public float EffectImpact { get; set; }
 }
 
+[Serializable]
 public class Projectile
 { 
     public string Name { get; set; }
@@ -63,6 +81,7 @@ public class Projectile
     }
 }
 
+[Serializable]
 public class Turret
 {
     public string Name { get; set; }
@@ -77,27 +96,34 @@ public class Turret
 }
 
 
+[Serializable]
 public class MapPos
 {
-    public Vector3Int Pos;
-    public List<EnemyInstance> EnemiesOccupying;
 
-    public int x { get { return Pos.x;  } }
-    public int z { get { return Pos.z; } }
+    public int x { get; set; }
+    public int z { get; set; }
+
+    public Vector3 Pos
+    {
+        get { return new Vector3(x, 0, z);  }
+    }
+
+    public List<EnemyInstance> EnemiesOccupying;
 
     public MapPos(int xpos, int zpos)
     {
-        Pos.x = xpos;
-        Pos.z = zpos;
+        x = xpos;
+        z = zpos;
         EnemiesOccupying = new List<EnemyInstance>();
     }
 
     public MapPos(MapPos pos)
     {
-        Pos.x = pos.Pos.x;
-        Pos.z = pos.Pos.z;
+        x = pos.x;
+        z = pos.z;
     }
 
+#if LEVEL_EDITOR != true
     public float DistanceTo(MapPos pos)
     {
         return Vector3.Distance(Pos, pos.Pos);
@@ -107,10 +133,11 @@ public class MapPos
     {
         return Vector3.Distance(Pos, pos);
     }
+#endif
 }
 
 
-
+[Serializable]
 public class LevelDescription
 {
     public string Name { get; set; }

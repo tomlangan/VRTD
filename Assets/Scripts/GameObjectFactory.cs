@@ -40,8 +40,8 @@ public class GameObjectFactory : MonoBehaviour
         MapPos pos = new MapPos(0,0);
         for (int i = 0; i < Desc.Map.Count; i++)
         {
-            pos.Pos.x = i % Desc.FieldWidth;
-            pos.Pos.z = i / Desc.FieldWidth;
+            pos.x = i % Desc.FieldWidth;
+            pos.z = i / Desc.FieldWidth;
             GameObject template = null;
             switch (Desc.Map[i])
             {
