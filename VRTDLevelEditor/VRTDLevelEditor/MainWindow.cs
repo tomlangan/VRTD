@@ -1,30 +1,70 @@
 ﻿using System;
 using Gtk;
-using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using VRTD.Gameplay;
 
-namespace VRTDLevelEditor
+
+namespace VRTD.LevelEditor
 {
+    public class LevelDescView : Container
+    {
+        public LevelDescription LevelDesc { get; set; }
+        Label NameLabel;
+
+        public LevelDescView()
+        {
+            Table table = new Table(24, 4, true);
+
+            Add(table);
+
+            NameLabel = new Label();
+            table.Attach(NameLabel, 0, 4, 0, 1);
+            NameLabel.Show();
+
+        }
+           
+        public void Refresh(LevelDescription desc)
+        {
+            NameLabel.Text = desc.Name;
+
+            LevelDesc = desc;
+        }
+    }
+
     public partial class MainWindow : Window
     {
+        TreeView tree;
+        Table table;
+        LevelDescription LevelDesc;
+        LevelDescView LevelView;
+
         public MainWindow() :
                 base(WindowType.Toplevel)
         {
             Resize(800, 600);
+            SetPosition(WindowPosition.Center);
 
+            AddWidgetsAndShow();
+
+            PopulateLevelTree();
+
+            LoadLevel("0-0");
+        }
+
+        private void AddWidgetsAndShow()
+        {
             /* Set a handler for delete_event that immediately
              * exits GTK. */
             DeleteEvent += delete_event;
 
 
-            /* Create a 2x2 table */
-            Table table = new Table(25, 5, true);
+            table = new Table(25, 5, true);
 
             /* Put the table in the main window */
             Add(table);
 
             /* Create first button */
-            TreeView tree = new TreeView();
-
+            tree = new TreeView();
 
             table.Attach(tree, 0, 1, 0, 24);
 
@@ -59,28 +99,43 @@ namespace VRTDLevelEditor
             Button addLevelButton = new Button("+");
 
             addLevelButton.Clicked += AddLevelButton_Clicked;
-
             table.Attach(addLevelButton, 0, 1, 24, 25);
-
             addLevelButton.Show();
 
+            LevelView = new LevelDescView();
+            table.Attach(LevelView, 1, 5, 0, 24);
+            LevelView.Show();
 
             table.Show();
             ShowAll();
         }
 
+        private void PopulateLevelTree()
+        {
+        }
+
         private void AddLevelButton_Clicked(object sender, EventArgs e)
         {
-            AddLevelWindow dialog = new AddLevelWindow();
+            AddLevelWindow dialog = new AddLevelWindow(this);
             dialog.Show();
         }
 
         private void ExportButton_Clicked(object sender, EventArgs e)
         {
-            LevelDescription ld = LevelLoader.GetTestLevel();
-
+            WriteCurrentLevel();
         }
 
+        private void LoadLevel(string levelName)
+        {
+            LevelDesc = LevelLoader.GetTestLevel();
+            LevelView.Refresh(LevelDesc);
+        }
+
+        private void WriteCurrentLevel()
+        {
+            string levelAsJSon = JsonConvert.SerializeObject(LevelDesc);
+            //StreamWriter writer = new StreamWriter();
+        }
 
         static void delete_event(object obj, DeleteEventArgs args)
         {

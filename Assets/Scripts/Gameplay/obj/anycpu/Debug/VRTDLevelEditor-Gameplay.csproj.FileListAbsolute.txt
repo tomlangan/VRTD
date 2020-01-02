@@ -1,5 +1,0 @@
-/Users/tomlangan/TD/Assets/Scripts/Gameplay/obj/anycpu/Debug/VRTDLevelEditor-Gameplay.csprojAssemblyReference.cache
-/Users/tomlangan/TD/Assets/Scripts/Gameplay/bin/Debug/VRTDLevelEditor.dll
-/Users/tomlangan/TD/Assets/Scripts/Gameplay/bin/Debug/VRTDLevelEditor.pdb
-/Users/tomlangan/TD/Assets/Scripts/Gameplay/obj/anycpu/Debug/VRTDLevelEditor.dll
-/Users/tomlangan/TD/Assets/Scripts/Gameplay/obj/anycpu/Debug/VRTDLevelEditor.pdb

@@ -15,19 +15,4 @@
       <placeholder />
     </child>
   </widget>
-  <widget class="Gtk.Window" id="MainWindow" design-size="476 419">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">MainWindow</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <signal name="DeleteEvent" handler="OnDeleteEvent" />
-    <child>
-      <widget class="Gtk.Fixed" id="fixed1">
-        <property name="MemberName" />
-        <property name="HasWindow">False</property>
-        <child>
-          <placeholder />
-        </child>
-      </widget>
-    </child>
-  </widget>
 </stetic-interface>

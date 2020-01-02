@@ -2,15 +2,16 @@
 using Gtk;
 using System.Runtime.Serialization;
 
-namespace VRTDLevelEditor
+namespace VRTD.LevelEditor
 {
     public class AddLevelWindow : Window
     {
-        public AddLevelWindow() :
+        public AddLevelWindow(Window parent) :
                 base(WindowType.Popup)
         {
-
+            Parent = parent;
             Resize(200, 50);
+            SetPosition(WindowPosition.CenterOnParent);
 
             /* Set a handler for delete_event that immediately
              * exits GTK. */

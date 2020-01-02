@@ -1,7 +1,7 @@
 ﻿using System;
 using Gtk;
 
-namespace VRTDLevelEditor
+namespace VRTD.LevelEditor
 {
     class MainClass
     {
