@@ -13,14 +13,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2019-12-29T23:07:52.375-05:00
-  initializedAtString: 2019-12-29T23:07:52.357-05:00
-  localBranches:
-  - name: master
-    tracking: origin/master
-  remoteBranches:
-  - name: origin/master
-    tracking: '[None]'
+  lastUpdatedAtString: 2020-01-02T15:15:40.508-05:00
+  initializedAtString: 2020-01-02T15:15:40.459-05:00
+  localBranches: []
+  remoteBranches: []
   remotes:
   - name: origin
     url: https://github.com/tomlangan/VRTD
@@ -30,27 +26,15 @@ MonoBehaviour:
     function: 0
     token: 
   localConfigBranches:
-    keys:
-    - master
-    values:
-    - name: master
-      remote:
-        name: origin
-        url: https://github.com/tomlangan/VRTD
-      trackingBranch: master
+    keys: []
+    values: []
   remoteConfigBranches:
     keys:
     - origin
     subKeys:
-    - Values:
-      - master
+    - Values: []
     subKeyValues:
-    - Values:
-      - name: master
-        remote:
-          name: origin
-          url: https://github.com/tomlangan/VRTD
-        trackingBranch: 
+    - Values: []
   configRemotes:
     keys:
     - origin
