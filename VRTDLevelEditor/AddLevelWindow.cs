@@ -4,14 +4,26 @@ using System.Runtime.Serialization;
 
 namespace VRTD.LevelEditor
 {
+    public class AddLevelEventArgs
+    {
+        public string Name;
+    }
+
     public class AddLevelWindow : Window
     {
+        public delegate void AddLevelEventFunc(AddLevelEventArgs a);
+        public event AddLevelEventFunc Finished;
+
+        Entry NameInput;
+
         public AddLevelWindow(Window parent) :
-                base(WindowType.Popup)
+                base(WindowType.Toplevel)
         {
             Parent = parent;
-            Resize(200, 50);
-            SetPosition(WindowPosition.CenterOnParent);
+            Modal = true;
+            
+            SetDefaultSize(200, 50);
+            SetPosition(WindowPosition.Center);
 
             /* Set a handler for delete_event that immediately
              * exits GTK. */
@@ -19,40 +31,70 @@ namespace VRTD.LevelEditor
 
 
             /* Create a 2x2 table */
-            Table table = new Table(3, 3, true);
+            HBox layout = new HBox(false, 30);
 
             /* Put the table in the main window */
-            Add(table);
+            Add(layout);
 
+            Label NameLabel = new Label("Level Name");
+            layout.Add(NameLabel);
+            NameLabel.Show();
 
+         
+            NameInput = new Entry();
+            NameInput.WidthRequest = 200;
+            layout.Add(NameInput);
+            NameInput.Show();
+
+            Button cancelButton = new Button("Cancel");
+            cancelButton.Clicked += CancelButton_Clicked;
+            cancelButton.WidthRequest = 50;
+            layout.Add(cancelButton);
+            cancelButton.Show();
 
             Button doneButton = new Button("Done");
-
             doneButton.Clicked += DoneButton_Clicked;
-
-            table.Attach(doneButton, 2, 3, 2, 3);
-
+            doneButton.WidthRequest = 50;
+            layout.Add(doneButton);
             doneButton.Show();
 
-            table.Show();
+            layout.Show();
             ShowAll();
+        }
+
+        private void CancelButton_Clicked(object sender, EventArgs e)
+        {
+            this.Destroy();
         }
 
         private void DoneButton_Clicked(object sender, EventArgs e)
         {
+            if (NameInput.Text.Length == 0)
+            {
+                MessageDialog md = new MessageDialog(this,
+                DialogFlags.Modal, MessageType.Error,
+                ButtonsType.Ok, "Zero length name");
+                md.Run();
+                md.Destroy();
+                return;
+            }
 
+            if (null != Finished)
+            {
+                AddLevelEventArgs a = new AddLevelEventArgs();
+                a.Name = NameInput.Text;
+                Finished(a);
+            }
+
+            this.Destroy();
+            return;
         }
 
 
         /* another event */
         static void delete_event(object obj, DeleteEventArgs args)
         {
-            ((AddLevelWindow)obj).Hide();
-        }
-
-        static void exit_event(object obj, EventArgs args)
-        {
-            Application.Quit();
+            ((AddLevelWindow)obj).Destroy();
         }
 
     }

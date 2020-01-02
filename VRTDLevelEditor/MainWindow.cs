@@ -1,8 +1,7 @@
 ﻿using System;
 using Gtk;
-using Newtonsoft.Json;
 using VRTD.Gameplay;
-
+using System.Collections.Generic;
 
 namespace VRTD.LevelEditor
 {
@@ -39,18 +38,27 @@ namespace VRTD.LevelEditor
         Table table;
         LevelDescription LevelDesc;
         LevelDescView LevelView;
+        ListStore LevelListStore;
 
         public MainWindow() :
                 base(WindowType.Toplevel)
         {
-            Resize(800, 600);
+            SetDefaultSize(800, 600);
             SetPosition(WindowPosition.Center);
 
             AddWidgetsAndShow();
 
-            PopulateLevelTree();
+            if (!LevelManager.Initialize(this))
+            {
+                MessageDialog md = new MessageDialog(this,
+                DialogFlags.Modal, MessageType.Error,
+                ButtonsType.Ok, "Couldn't find levels folder - exiting");
+                md.Run();
+                md.Destroy();
+                Application.Quit();
+            }
 
-            LoadLevel("0-0");
+            PopulateLevelTree();
         }
 
         private void AddWidgetsAndShow()
@@ -70,6 +78,17 @@ namespace VRTD.LevelEditor
 
             table.Attach(tree, 0, 1, 0, 24);
 
+            // Create a column for the artist name
+            TreeViewColumn levelColumn = new TreeViewColumn();
+            levelColumn.Title = "Levels";
+            CellRendererText levelCellRenderer = new CellRendererText();
+            levelColumn.PackStart(levelCellRenderer, true);
+            levelColumn.AddAttribute(levelCellRenderer, "text", 0);
+            tree.AppendColumn(levelColumn);
+            LevelListStore = new ListStore(typeof(string));
+            tree.Model = LevelListStore;
+            tree.Selection.Mode = SelectionMode.Single;
+            tree.Selection.Changed += LevelTreeSelection_Changed;
             tree.Show();
 
 
@@ -112,31 +131,53 @@ namespace VRTD.LevelEditor
             ShowAll();
         }
 
+        private void LevelTreeSelection_Changed(object sender, EventArgs e)
+        {
+            TreeIter selected;
+            if (tree.Selection.GetSelected(out selected))
+            {
+                string levelSelected = (string)LevelListStore.GetValue(selected, 0);
+
+                LoadLevel(levelSelected);
+            }
+        }
+
         private void PopulateLevelTree()
         {
+            List<string> levels = LevelManager.GetList();
+
+            LevelListStore.Clear();
+
+            for (int i = 0; i < levels.Count; i++)
+            {
+                LevelListStore.AppendValues(levels[i]);
+            }
         }
 
         private void AddLevelButton_Clicked(object sender, EventArgs e)
         {
-            AddLevelWindow dialog = new AddLevelWindow(this);
-            dialog.Show();
+            AddLevelWindow AddLevel = new AddLevelWindow(this);
+            AddLevel.Finished += AddLevel_Finished;
+            AddLevel.Show();
+        }
+
+        private void AddLevel_Finished(AddLevelEventArgs a)
+        {
+            LevelDescription template = LevelLoader.GetTestLevel();
+            template.Name = a.Name;
+            LevelManager.WriteLevel(a.Name, template);
+            LevelListStore.AppendValues(a.Name);
         }
 
         private void ExportButton_Clicked(object sender, EventArgs e)
         {
-            WriteCurrentLevel();
+            
         }
 
         private void LoadLevel(string levelName)
         {
             LevelDesc = LevelLoader.GetTestLevel();
             LevelView.Refresh(LevelDesc);
-        }
-
-        private void WriteCurrentLevel()
-        {
-            string levelAsJSon = JsonConvert.SerializeObject(LevelDesc);
-            //StreamWriter writer = new StreamWriter();
         }
 
         static void delete_event(object obj, DeleteEventArgs args)
