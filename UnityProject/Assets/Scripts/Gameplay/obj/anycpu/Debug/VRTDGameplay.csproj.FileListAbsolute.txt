@@ -1,5 +1,0 @@
-/Users/tomlangan/TD/VRTDLevelEditor/bin/Debug/VRTDGameplay.dll
-/Users/tomlangan/TD/VRTDLevelEditor/bin/Debug/VRTDGameplay.pdb
-/Users/tomlangan/TD/UnityProject/Assets/Scripts/Gameplay/obj/anycpu/Debug/VRTDGameplay.csprojAssemblyReference.cache
-/Users/tomlangan/TD/UnityProject/Assets/Scripts/Gameplay/obj/anycpu/Debug/VRTDGameplay.dll
-/Users/tomlangan/TD/UnityProject/Assets/Scripts/Gameplay/obj/anycpu/Debug/VRTDGameplay.pdb

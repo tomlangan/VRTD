@@ -6,13 +6,15 @@ using VRTD.Gameplay;
 
 namespace VRTD.LevelEditor
 {
-    public class LevelDescView : Container
+    public class LevelDescView : Layout
     {
         public LevelDescription LevelDesc { get; set; }
         Label NameLabel;
 
-        public LevelDescView()
+        public LevelDescView() : base(null, null)
         {
+            
+
             Table table = new Table(24, 4, true);
 
             Add(table);
