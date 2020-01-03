@@ -9,17 +9,17 @@ namespace VRTD.LevelEditor
     {
         TreeView tree;
         LevelDescription LevelDesc;
-        LevelEditLayout LevelView;
-        ListStore LevelListStore;
+        Widget EditorWidget = null;
+        ListStore ListModel;
         HBox TopLevelHBox;
+        public enum EditorMode { Level, Turret, Enemy, Projectile }
+        EditorMode CurrentMode;
 
         public MainWindow() :
                 base(WindowType.Toplevel)
         {
             SetDefaultSize(800, 600);
             SetPosition(WindowPosition.Center);
-
-            AddWidgetsAndShow();
 
             if (!LevelManager.Initialize(this))
             {
@@ -31,14 +31,21 @@ namespace VRTD.LevelEditor
                 Application.Quit();
             }
 
-            PopulateLevelTree();
+            AddWidgetsAndShow(EditorMode.Level);
         }
 
-        private void AddWidgetsAndShow()
+        private void AddWidgetsAndShow(EditorMode editorMode)
         {
             /* Set a handler for delete_event that immediately
              * exits GTK. */
             DeleteEvent += delete_event;
+
+            if (null != TopLevelHBox)
+            {
+                TopLevelHBox.HideAll();
+                TopLevelHBox.Destroy();
+                TopLevelHBox = null;
+            }
 
             TopLevelHBox = new HBox(false, 0);
             Add(TopLevelHBox);
@@ -53,27 +60,48 @@ namespace VRTD.LevelEditor
             vbox.SetSizeRequest(100, -1);
             vbox.Show();
 
+            Button addLevelButton = new Button("+");
+
+            addLevelButton.Clicked += AddLevelButton_Clicked;
+            vbox.PackStart(addLevelButton, false, false, 5);
+            addLevelButton.Show();
+
             tree = new TreeView();
             vbox.PackStart(tree, true, true, 0);
 
             // Create a column for the artist name
             TreeViewColumn levelColumn = new TreeViewColumn();
-            levelColumn.Title = "Levels";
             CellRendererText levelCellRenderer = new CellRendererText();
             levelColumn.PackStart(levelCellRenderer, true);
             levelColumn.AddAttribute(levelCellRenderer, "text", 0);
             tree.AppendColumn(levelColumn);
-            LevelListStore = new ListStore(typeof(string));
-            tree.Model = LevelListStore;
+            ListModel = new ListStore(typeof(string));
+            tree.Model = ListModel;
             tree.Selection.Mode = SelectionMode.Single;
             tree.Selection.Changed += LevelTreeSelection_Changed;
+
+            switch (editorMode)
+            {
+                case EditorMode.Level:
+                    levelColumn.Title = "Levels";
+                    PopulateTreeWithLevels();
+                    break;
+                case EditorMode.Turret:
+                    levelColumn.Title = "Turrets";
+                    PopulateTreeWithTurrets();
+                    break;
+                case EditorMode.Enemy:
+                    levelColumn.Title = "Enemies";
+                    PopulateTreeWithEnemies();
+                    break;
+                case EditorMode.Projectile:
+                    levelColumn.Title = "Projectiles";
+                    PopulateTreeWithProjectilees();
+                    break;
+            }
+
             tree.Show();
 
-            Button addLevelButton = new Button("+");
-
-            addLevelButton.Clicked += AddLevelButton_Clicked;
-            vbox.PackEnd(addLevelButton, false, false, 5);
-            addLevelButton.Show();
 
             //
             // Righthand column
@@ -83,26 +111,60 @@ namespace VRTD.LevelEditor
             TopLevelHBox.PackStart(vbox, true, true, 5);
             vbox.Show();
 
+            HBox modeHbox = new HBox(true, 0);
+            vbox.PackStart(modeHbox, false, true, 0);
+            modeHbox.Show();
 
-            LevelView = new LevelEditLayout();
-            vbox.PackStart(LevelView, true, true, 5);
+            Button modeButton = new Button("Level");
+            modeButton.Show();
+            modeButton.Clicked += level_clicked_event;
+            modeHbox.PackStart(modeButton, false, false, 5);
 
-            LevelView.TreeRefreshNeeded += LevelView_TreeRefreshNeeded;
-            LevelView.Show();
+            modeButton = new Button("Turret");
+            modeButton.Show();
+            modeButton.Clicked += turret_clicked_event;
+            modeHbox.PackStart(modeButton, false, false, 5);
+
+            modeButton = new Button("Enemy");
+            modeButton.Show();
+            modeButton.Clicked += enemy_clicked_event;
+            modeHbox.PackStart(modeButton, false, false, 5);
+
+            modeButton = new Button("Projectile");
+            modeButton.Show();
+            modeButton.Clicked += projectile_clicked_event;
+            modeHbox.PackStart(modeButton, false, false, 5);
+
+            EditorWidget = null;
+
+            switch (editorMode)
+            {
+                case EditorMode.Level:
+                    EditorWidget = new LevelEditLayout();
+                    ((LevelEditLayout)EditorWidget).TreeRefreshNeeded += LevelView_TreeRefreshNeeded;
+                    break;
+                case EditorMode.Turret:
+                    EditorWidget = new LevelEditLayout();
+                    break;
+                case EditorMode.Enemy:
+                    EditorWidget = new LevelEditLayout();
+                    break;
+                case EditorMode.Projectile:
+                    EditorWidget = new LevelEditLayout();
+                    break;
+            }
+
+            vbox.PackStart(EditorWidget, true, true, 5);
+            EditorWidget.Show();
 
 
-            Button quitbutton = new Button("Quit");
-            quitbutton.Show();
-            quitbutton.Clicked += exit_event;
-
-            vbox.PackStart(quitbutton, false, false, 5);
-
+            CurrentMode = editorMode;
             ShowAll();
         }
 
         private void LevelView_TreeRefreshNeeded()
         {
-            PopulateLevelTree();
+            PopulateTreeWithLevels();
         }
 
         private void LevelTreeSelection_Changed(object sender, EventArgs e)
@@ -110,21 +172,66 @@ namespace VRTD.LevelEditor
             TreeIter selected;
             if (tree.Selection.GetSelected(out selected))
             {
-                string levelSelected = (string)LevelListStore.GetValue(selected, 0);
+                string levelSelected = (string)ListModel.GetValue(selected, 0);
 
                 LoadLevel(levelSelected);
             }
         }
 
-        private void PopulateLevelTree()
+        private void PopulateTreeWithLevels()
         {
-            List<string> levels = LevelManager.GetList();
+            List<string> levels = LevelManager.GetLevelList();
 
-            LevelListStore.Clear();
+            ListModel.Clear();
 
             for (int i = 0; i < levels.Count; i++)
             {
-                LevelListStore.AppendValues(levels[i]);
+                ListModel.AppendValues(levels[i]);
+            }
+        }
+
+        private void PopulateTreeWithTurrets()
+        {
+            List<Turret> items = LevelManager.GetTurrets();
+
+            ListModel.Clear();
+
+            if (null != items)
+            {
+                for (int i = 0; i < items.Count; i++)
+                {
+                    ListModel.AppendValues(items[i].Name);
+                }
+            }
+        }
+
+        private void PopulateTreeWithEnemies()
+        {
+            List<EnemyDescription> items = LevelManager.GetEnemies();
+
+            ListModel.Clear();
+
+            if (null != items)
+            {
+                for (int i = 0; i < items.Count; i++)
+                {
+                    ListModel.AppendValues(items[i].Name);
+                }
+            }
+        }
+
+        private void PopulateTreeWithProjectilees()
+        {
+            List<Projectile> items = LevelManager.GetProjectiles();
+
+            ListModel.Clear();
+
+            if (null != items)
+            {
+                for (int i = 0; i < items.Count; i++)
+                {
+                    ListModel.AppendValues(items[i].Name);
+                }
             }
         }
 
@@ -140,14 +247,14 @@ namespace VRTD.LevelEditor
             LevelDescription template = LevelLoader.GetTestLevel();
             template.Name = a.Name;
             LevelManager.WriteLevel(a.Name, template);
-            LevelListStore.AppendValues(a.Name);
+            ListModel.AppendValues(a.Name);
         }
 
 
         private void LoadLevel(string levelName)
         {
             LevelDesc = LevelManager.ReadLevel(levelName);
-            LevelView.SetLevel(LevelDesc);
+            ((LevelEditLayout)EditorWidget).SetLevel(LevelDesc);
         }
 
         static void delete_event(object obj, DeleteEventArgs args)
@@ -155,10 +262,24 @@ namespace VRTD.LevelEditor
             Application.Quit();
         }
 
-        static void exit_event(object obj, EventArgs args)
+        void level_clicked_event(object obj, EventArgs args)
         {
-            Application.Quit();
+            AddWidgetsAndShow(EditorMode.Level);
         }
 
+        void turret_clicked_event(object obj, EventArgs args)
+        {
+            AddWidgetsAndShow(EditorMode.Turret);
+        }
+
+        void enemy_clicked_event(object obj, EventArgs args)
+        {
+            AddWidgetsAndShow(EditorMode.Enemy);
+        }
+
+        void projectile_clicked_event(object obj, EventArgs args)
+        {
+            AddWidgetsAndShow(EditorMode.Projectile);
+        }
     }
 }

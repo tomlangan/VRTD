@@ -39,7 +39,7 @@ namespace VRTD.LevelEditor
             return (true == FolderPath.EndsWith("Levels"));
         }
 
-        public static List<string> GetList()
+        public static List<string> GetLevelList()
         {
             List<string> levelList = new List<string>();
 
@@ -91,6 +91,11 @@ namespace VRTD.LevelEditor
             return FolderPath + Path.DirectorySeparatorChar + level + ".lvl";
         }
 
+        static string DictionaryToPath(string dictionary)
+        {
+            return FolderPath + Path.DirectorySeparatorChar + dictionary + ".dic";
+        }
+
         static string AttemptToFindLevelDirectory()
         {
             string directory = Directory.GetCurrentDirectory();
@@ -118,6 +123,86 @@ namespace VRTD.LevelEditor
             }
 
             return directory;
+        }
+
+        public static List<Turret> GetTurrets()
+        {
+            List<Turret> turrets = new List<Turret>();
+
+            FileStream fs = File.Open(DictionaryToPath("turrets"), FileMode.OpenOrCreate);
+            StreamReader sr = new StreamReader(fs);
+            string jsonBlob = sr.ReadToEnd();
+            turrets = JsonConvert.DeserializeObject<List<Turret>>(jsonBlob);
+            sr.Close();
+            fs.Close();
+            fs.Dispose();
+
+            return turrets;
+        }
+
+        public static void WriteTurrets(List<Turret> turrets)
+        {
+            string levelAsJSon = JsonConvert.SerializeObject(turrets);
+            FileStream fs = File.Open(DictionaryToPath("turrets"), FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Write(levelAsJSon);
+            sw.Close();
+            fs.Close();
+            fs.Dispose();
+        }
+
+
+        public static List<EnemyDescription> GetEnemies()
+        {
+            List<EnemyDescription> enemies = new List<EnemyDescription>();
+
+            FileStream fs = File.Open(DictionaryToPath("enemies"), FileMode.OpenOrCreate);
+            StreamReader sr = new StreamReader(fs);
+            string jsonBlob = sr.ReadToEnd();
+            enemies = JsonConvert.DeserializeObject<List<EnemyDescription>>(jsonBlob);
+            sr.Close();
+            fs.Close();
+            fs.Dispose();
+
+            return enemies;
+        }
+
+        public static void WriteEnemies(List<EnemyDescription> enemies)
+        {
+            string levelAsJSon = JsonConvert.SerializeObject(enemies);
+            FileStream fs = File.Open(DictionaryToPath("enemies"), FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Write(levelAsJSon);
+            sw.Close();
+            fs.Close();
+            fs.Dispose();
+        }
+
+
+        public static List<Projectile> GetProjectiles()
+        {
+            List<Projectile> projectiles = new List<Projectile>();
+
+            FileStream fs = File.Open(DictionaryToPath("projectiles"), FileMode.OpenOrCreate);
+            StreamReader sr = new StreamReader(fs);
+            string jsonBlob = sr.ReadToEnd();
+            projectiles = JsonConvert.DeserializeObject<List<Projectile>>(jsonBlob);
+            sr.Close();
+            fs.Close();
+            fs.Dispose();
+
+            return projectiles;
+        }
+
+        public static void WriteProjectiles(List<Projectile> projectiles)
+        {
+            string levelAsJSon = JsonConvert.SerializeObject(projectiles);
+            FileStream fs = File.Open(DictionaryToPath("projectiles"), FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Write(levelAsJSon);
+            sw.Close();
+            fs.Close();
+            fs.Dispose();
         }
     }
 }
