@@ -72,12 +72,12 @@ namespace VRTD.LevelEditor
             HBox box = new HBox(false, 20);
 
             Label label = new Label(fieldName);
-            box.Add(label);
+            box.PackStart(label, false, false, 0);
             label.Show();
 
             Entry entry = new Entry();
             entry.WidthRequest = 200;
-            box.Add(entry);
+            box.PackStart(entry, false, false, 0);
             entry.Text = value;
             if (deferred)
             {
@@ -99,13 +99,13 @@ namespace VRTD.LevelEditor
             HBox box = new HBox(false, 20);
 
             Label label = new Label(fieldName);
-            box.Add(label);
+            box.PackStart(label, false, false, 0);
             label.Show();
 
             ComboBox dropdown = new ComboBox(values);
             dropdown.WidthRequest = 200;
             dropdown.Active = initialValueIndex;
-            box.Add(dropdown);
+            box.PackStart(dropdown, false, false, 0);
             if (deferred)
             {
                 DeferredEventHelper h = new DeferredEventHelper(callback, DeferredEvents);

@@ -37,25 +37,26 @@ namespace VRTD.LevelEditor
                 
             Layout = new VBox(false, 20);
             Put(Layout, 0, 0);
-            Layout.Show();
+
 
             HBox field = GtkHelpers.TextEntryField("Level Name", desc.Name, Name_Changed, true);
-            Layout.Add(field);
+            Layout.PackStart(field, false, false, 0);
             field.Show();
 
             field = GtkHelpers.ComboBox("Width", LayoutOptions, (desc.FieldWidth/5 - 1), Width_Changed, true);
-            Layout.Add(field);
+            Layout.PackStart(field, false, false, 0);
             field.Show();
 
             field = GtkHelpers.ComboBox("Depth", LayoutOptions, (desc.FieldDepth / 5 - 1), Depth_Changed, true);
-            Layout.Add(field);
+            Layout.PackStart(field, false, false, 0);
             field.Show();
 
             Table map = GetFieldTable(desc);
-            Layout.Add(map);
+            Layout.PackStart(map, true, false, 0);
             map.Show();
 
 
+            Layout.Show();
             ShowAll();
             LevelDesc = desc;
         }
