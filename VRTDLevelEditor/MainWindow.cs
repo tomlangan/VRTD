@@ -254,6 +254,28 @@ namespace VRTD.LevelEditor
         private void LoadLevel(string levelName)
         {
             LevelDesc = LevelManager.ReadLevel(levelName);
+
+            /*
+             *
+             * Use this code to prepopulate Enemies/Turrets/Projectiles
+             * 
+            
+            LevelManager.WriteTurrets(LevelDesc.AllowedTurrets);
+
+            List<EnemyDescription> enemies = new List<EnemyDescription>();
+            enemies.Add(LevelDesc.Waves[0].EnemyType);
+            enemies.Add(LevelDesc.Waves[1].EnemyType);
+            LevelManager.WriteEnemies(enemies);
+
+            List<Projectile> projectiles = new List<Projectile>();
+            projectiles.Add(LevelDesc.AllowedTurrets[0].ProjectileType);
+            projectiles.Add(LevelDesc.AllowedTurrets[1].ProjectileType);
+            projectiles.Add(LevelDesc.AllowedTurrets[2].ProjectileType);
+            LevelManager.WriteProjectiles(projectiles);
+
+            Application.Quit();
+            */
+
             ((LevelEditLayout)EditorWidget).SetLevel(LevelDesc);
         }
 

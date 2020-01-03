@@ -1,0 +1,1 @@
+[{"Name":"BasicEnemy","SpawnRate":1.0,"MovementSpeed":1.0,"HitPoints":2,"Asset":"BasicEnemy"},{"Name":"SwarmEnemy","SpawnRate":5.0,"MovementSpeed":5.0,"HitPoints":1,"Asset":"SwarmEnemy"}]
