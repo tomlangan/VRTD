@@ -205,6 +205,17 @@ namespace VRTD.Gameplay
                 return true;
             });
 
+            if (null == level.Entry)
+            {
+                throw new LevelLoadException("Entry not found!");
+            }
+
+
+            if (null == level.Exit)
+            {
+                throw new LevelLoadException("Exit not found!");
+            }
+
             level.Road = WalkAndValidateRoad(level.Map, level.FieldWidth, level.FieldDepth, level.Entry, level.Exit);
 
         }

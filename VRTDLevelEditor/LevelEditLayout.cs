@@ -150,11 +150,15 @@ namespace VRTD.LevelEditor
                 }
             }
 
+            // Update location on map
             MapTable.Remove(b);
             b = new Button();
             LevelDesc.Map[index] = newchar;
             SetFieldButtonType(b, newchar);
             SetButtonOnTable(b, LevelDesc, index);
+
+            // Validate changes, write new map
+            ValidateDescriptionAndReportIssues();
             WriteChanges();
         }
 
@@ -282,7 +286,8 @@ namespace VRTD.LevelEditor
             try
             {
                 LevelLoader.LoadAndValidateLevel(LevelDesc);
-            } catch (LevelLoadException e)
+            }
+            catch (LevelLoadException e)
             {
                 issuesFound = true;
                 issueText = e.Message;

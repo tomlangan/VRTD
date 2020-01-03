@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -111,10 +111,10 @@ MonoBehaviour:
     y: 30
     width: 1440
     height: 739
-  m_MinSize: {x: 679, y: 498}
+  m_MinSize: {x: 681, y: 498}
   m_MaxSize: {x: 14002, y: 14048}
   vertical: 0
-  controlID: 12
+  controlID: 85
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 0
     width: 1163
     height: 739
-  m_MinSize: {x: 404, y: 498}
+  m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 13
+  controlID: 86
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -161,10 +161,10 @@ MonoBehaviour:
     y: 0
     width: 1163
     height: 459
-  m_MinSize: {x: 404, y: 224}
-  m_MaxSize: {x: 8004, y: 4024}
+  m_MinSize: {x: 406, y: 224}
+  m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 14
+  controlID: 62
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -509,7 +509,7 @@ MonoBehaviour:
     gitStatusEntries: []
     changedFilesText: No changed files
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 2020-01-02T14:11:57.337-05:00
+      updatedTimeString: 2020-01-02T15:10:41.677-05:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
       updatedTimeString: 0001-01-01T00:00:00.000+00:00
@@ -1029,9 +1029,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3e390000
-      m_LastClickedID: 14654
-      m_ExpandedIDs: c0fbffff383900008a3900009a390000
+      m_SelectedIDs: 26270000
+      m_LastClickedID: 0
+      m_ExpandedIDs: a4fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1199,20 +1199,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Objects
+    - Assets/Oculus/VR/Scripts
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets/Objects
+  - Assets/Oculus/VR/Scripts
   m_LastFoldersGridSize: 53
-  m_LastProjectPath: /Users/tomlangan/TD
+  m_LastProjectPath: /Users/tomlangan/TD/UnityProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 65}
-    m_SelectedIDs: 46330000
-    m_LastClickedID: 13126
-    m_ExpandedIDs: 00000000082b00003a2c0000ac2c0000522d0000ca2d0000d02d0000602e00007a2f0000ec3200005c350000b238000000ca9a3b
+    scrollPos: {x: 0, y: 589}
+    m_SelectedIDs: f0380000
+    m_LastClickedID: 14576
+    m_ExpandedIDs: 00000000482b0000782c0000ea2c00008e2d0000042e0000062e00000c2e00009c2e0000ba2f00002a33000098350000f038000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1240,7 +1240,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000082b00003a2c0000ac2c0000522d0000ca2d0000602e00005c3500002c36000036380000b2380000
+    m_ExpandedIDs: 00000000482b0000782c0000ea2c00008e2d0000062e00000c2e00009c2e0000ba2f00002a33000098350000f0380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
