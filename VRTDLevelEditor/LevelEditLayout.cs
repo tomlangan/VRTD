@@ -16,6 +16,7 @@ namespace VRTD.LevelEditor
         public event TreeRefreshNeededFunc TreeRefreshNeeded;
         Table MapTable;
         Dictionary<Button, int> MapMappings;
+        Entry ErrorEntry;
 
         public LevelEditLayout() : base(null, null)
         {
@@ -51,6 +52,15 @@ namespace VRTD.LevelEditor
             Table map = GetFieldTable(desc);
             Layout.PackStart(map, false, true, 0);
             map.Show();
+
+            ErrorEntry = new Entry(500);
+            ErrorEntry.Editable = false;
+            ErrorEntry.Text = "No issues";
+            ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("green"));
+            Layout.PackStart(ErrorEntry, false, false, 10);
+            ErrorEntry.Show();
+
+            ValidateDescriptionAndReportIssues();
 
             Show();
             ShowAll();
@@ -149,28 +159,28 @@ namespace VRTD.LevelEditor
 
         private void SetFieldButtonType(Button b, char c)
         { 
-            Gdk.Color col = new Gdk.Color();
             string s = "";
+            Gdk.Color col = new Gdk.Color();
             switch (c)
             {
                 case 'D':
-                    Gdk.Color.Parse("green", ref col);
+                    col = GtkHelpers.Color("green");
                     s = "D";
                     break;
                 case 'R':
-                    Gdk.Color.Parse("black", ref col);
+                    col = GtkHelpers.Color("black");
                     s = "R";
                     break;
                 case 'T':
-                    Gdk.Color.Parse("grey", ref col);
+                    col = GtkHelpers.Color("grey");
                     s = "T";
                     break;
                 case 'E':
-                    Gdk.Color.Parse("red", ref col);
+                    col = GtkHelpers.Color("red");
                     s = "E";
                     break;
                 case 'X':
-                    Gdk.Color.Parse("blue", ref col);
+                    col = GtkHelpers.Color("blue");
                     s = "X";
                     break;
             }
@@ -259,6 +269,34 @@ namespace VRTD.LevelEditor
         void WriteChanges()
         {
             LevelManager.WriteLevel(LevelDesc.Name, LevelDesc);
+        }
+
+        bool ValidateDescriptionAndReportIssues()
+        {
+            bool issuesFound = false;
+            bool warningsFound = false;
+            string issueText = "No issues";
+            string warningText = "";
+
+
+
+            if (issuesFound)
+            {
+                ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("red"));
+                ErrorEntry.Text = "Issues: " + Environment.NewLine + issueText;
+            }
+            else if (warningsFound)
+            {
+                ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("orange"));
+                ErrorEntry.Text = "Warnings: " + Environment.NewLine + warningText;
+            }
+            else
+            {
+                ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("green"));
+                ErrorEntry.Text = "No issues";
+            }
+
+            return true;
         }
     }
 }

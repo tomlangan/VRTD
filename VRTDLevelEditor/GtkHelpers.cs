@@ -120,5 +120,12 @@ namespace VRTD.LevelEditor
             return box;
         }
 
+        public static Gdk.Color Color(string name)
+        {
+            Gdk.Color col = new Gdk.Color();
+            Gdk.Color.Parse(name, ref col);
+            return col;
+        }
+
     }
 }
