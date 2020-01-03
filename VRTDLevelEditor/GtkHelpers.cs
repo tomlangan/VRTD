@@ -27,7 +27,10 @@ namespace VRTD.LevelEditor
             t.Close();
             if (null != Callback)
             {
-                Callback(o, a);
+                Gtk.Application.Invoke(delegate
+                {
+                    Callback(o, a);
+                });
             }
             DeferredEventsList.Remove(this);
         }

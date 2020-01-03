@@ -1,6 +1,8 @@
 ﻿using System;
 using VRTD.Gameplay;
+using System.Timers;
 using Gtk;
+using System.Collections.Generic;
 
 namespace VRTD.LevelEditor
 {
@@ -12,12 +14,13 @@ namespace VRTD.LevelEditor
         VBox Layout = null;
         public delegate void TreeRefreshNeededFunc();
         public event TreeRefreshNeededFunc TreeRefreshNeeded;
+        Table MapTable;
+        Dictionary<Button, int> MapMappings;
 
         public LevelEditLayout() : base(null, null)
         {
-
-
         }
+
 
         public void SetLevel(LevelDescription desc)
         {
@@ -26,12 +29,18 @@ namespace VRTD.LevelEditor
             if (null != Layout)
             {
                 Layout.HideAll();
-                Layout.Destroy();
+                Layout.Dispose();
                 Layout = null;
             }
 
+
+            Layout scroller = new Layout(null, null);
+            scroller.SetSizeRequest(500, 500);
+            Add(scroller);
+            scroller.Show();
+
             Layout = new VBox(false, 20);
-            Add(Layout);
+            scroller.Add(Layout);
 
             HBox field = GtkHelpers.TextEntryField("Level Name", desc.Name, Name_Changed, true);
             Layout.Add(field);
@@ -49,25 +58,51 @@ namespace VRTD.LevelEditor
             Layout.Add(map);
             map.Show();
 
-            Layout.ShowAll();
+
+            ShowAll();
             LevelDesc = desc;
         }
 
         private Table GetFieldTable(LevelDescription desc)
         {
-            Table t = new Table((uint)desc.FieldDepth, (uint)desc.FieldWidth, true);
+            MapTable = new Table((uint)desc.FieldDepth, (uint)desc.FieldWidth, true);
+            MapMappings = new Dictionary<Button, int>();
 
             for (uint i = 0; i < desc.Map.Count; i++)
             {
                 Button b = new Button();
                 SetFieldButtonType(b, desc.Map[(int)i]);
-                uint xpos = i % (uint)desc.FieldWidth;
-                uint ypos = i / (uint)desc.FieldWidth;
-                t.Attach(b, xpos, xpos + 1, ypos, ypos + 1);
-                b.Show();
+                SetButtonOnTable(b, desc, (int)i);
             }
 
-            return t;
+            return MapTable;
+        }
+
+        private void Map_Clicked(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            int index = MapMappings[b];
+
+            char newchar = 'D';
+            switch (LevelDesc.Map[index])
+            {
+                case 'D':
+                    newchar = 'R';
+                    break;
+                case 'R':
+                    newchar = 'T';
+                    break;
+                case 'T':
+                    newchar = 'D';
+                    break;
+            }
+
+            MapTable.Remove(b);
+            b = new Button();
+            LevelDesc.Map[index] = newchar;
+            SetFieldButtonType(b, newchar);
+            SetButtonOnTable(b, LevelDesc, index);
+            WriteChanges();
         }
 
         private void SetFieldButtonType(Button b, char c)
@@ -91,6 +126,17 @@ namespace VRTD.LevelEditor
             }
             b.ModifyBg(StateType.Normal, col);
             b.Label = s;
+        }
+
+        private void SetButtonOnTable(Button b, LevelDescription desc, int index)
+        {
+            uint xpos = (uint)(index % desc.FieldWidth);
+            uint ypos = (uint)(index / desc.FieldWidth);
+            MapMappings.Add(b, index);
+            MapTable.Attach(b, xpos, xpos + 1, ypos, ypos + 1);
+            b.Clicked += Map_Clicked;
+            b.Show();
+
         }
 
         private void Name_Changed(object sender, EventArgs e)
@@ -156,6 +202,7 @@ namespace VRTD.LevelEditor
                     LevelDesc.Map.Add('D');
                 }
             }
+
             SetLevel(LevelDesc);
         }
 
