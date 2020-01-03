@@ -64,6 +64,12 @@ namespace VRTD.LevelEditor
             sw.Write(levelAsJSon);
             sw.Close();
             fs.Close();
+            fs.Dispose();
+        }
+
+        public static void RenameLevel(string oldName, string newName)
+        {
+            File.Move(LevelToPath(oldName), LevelToPath(newName));
         }
 
         public static LevelDescription ReadLevel(string level)
@@ -72,6 +78,9 @@ namespace VRTD.LevelEditor
             StreamReader sr = new StreamReader(fs);
             string jsonBlob = sr.ReadToEnd();
             LevelDescription desc = JsonConvert.DeserializeObject<LevelDescription>(jsonBlob);
+            sr.Close();
+            fs.Close();
+            fs.Dispose();
             return desc;
         }
 

@@ -5,39 +5,12 @@ using System.Collections.Generic;
 
 namespace VRTD.LevelEditor
 {
-    public class LevelDescView : Layout
-    {
-        public LevelDescription LevelDesc { get; set; }
-        Label NameLabel;
-
-        public LevelDescView() : base(null, null)
-        {
-            
-
-            Table table = new Table(24, 4, true);
-
-            Add(table);
-
-            NameLabel = new Label();
-            table.Attach(NameLabel, 0, 4, 0, 1);
-            NameLabel.Show();
-
-        }
-           
-        public void Refresh(LevelDescription desc)
-        {
-            NameLabel.Text = desc.Name;
-
-            LevelDesc = desc;
-        }
-    }
-
     public partial class MainWindow : Window
     {
         TreeView tree;
         Table table;
         LevelDescription LevelDesc;
-        LevelDescView LevelView;
+        LevelEditLayout LevelView;
         ListStore LevelListStore;
 
         public MainWindow() :
@@ -123,12 +96,18 @@ namespace VRTD.LevelEditor
             table.Attach(addLevelButton, 0, 1, 24, 25);
             addLevelButton.Show();
 
-            LevelView = new LevelDescView();
+            LevelView = new LevelEditLayout();
             table.Attach(LevelView, 1, 5, 0, 24);
             LevelView.Show();
+            LevelView.TreeRefreshNeeded += LevelView_TreeRefreshNeeded;
 
             table.Show();
             ShowAll();
+        }
+
+        private void LevelView_TreeRefreshNeeded()
+        {
+            PopulateLevelTree();
         }
 
         private void LevelTreeSelection_Changed(object sender, EventArgs e)
@@ -176,8 +155,8 @@ namespace VRTD.LevelEditor
 
         private void LoadLevel(string levelName)
         {
-            LevelDesc = LevelLoader.GetTestLevel();
-            LevelView.Refresh(LevelDesc);
+            LevelDesc = LevelManager.ReadLevel(levelName);
+            LevelView.SetLevel(LevelDesc);
         }
 
         static void delete_event(object obj, DeleteEventArgs args)
