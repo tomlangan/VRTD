@@ -28,19 +28,16 @@ namespace VRTD.LevelEditor
 
             if (null != Layout)
             {
+                Remove(Layout);
                 Layout.HideAll();
                 Layout.Dispose();
                 Layout = null;
             }
 
-
-            Layout scroller = new Layout(null, null);
-            scroller.SetSizeRequest(500, 500);
-            Add(scroller);
-            scroller.Show();
-
+                
             Layout = new VBox(false, 20);
-            scroller.Add(Layout);
+            Put(Layout, 0, 0);
+            Layout.Show();
 
             HBox field = GtkHelpers.TextEntryField("Level Name", desc.Name, Name_Changed, true);
             Layout.Add(field);
@@ -84,17 +81,65 @@ namespace VRTD.LevelEditor
             int index = MapMappings[b];
 
             char newchar = 'D';
-            switch (LevelDesc.Map[index])
+            if (index < LevelDesc.FieldWidth)
             {
-                case 'D':
-                    newchar = 'R';
-                    break;
-                case 'R':
-                    newchar = 'T';
-                    break;
-                case 'T':
-                    newchar = 'D';
-                    break;
+                //
+                // First row --> allow Entry
+                // 
+                switch (LevelDesc.Map[index])
+                {
+                    case 'D':
+                        newchar = 'R';
+                        break;
+                    case 'R':
+                        newchar = 'T';
+                        break;
+                    case 'T':
+                        newchar = 'E';
+                        break;
+                    case 'E':
+                        newchar = 'D';
+                        break;
+                }
+            }
+            else if ((index / LevelDesc.FieldWidth) == LevelDesc.FieldDepth)
+            {
+                //
+                // Last row --> allow Exit
+                // 
+                switch (LevelDesc.Map[index])
+                {
+                    case 'D':
+                        newchar = 'R';
+                        break;
+                    case 'R':
+                        newchar = 'T';
+                        break;
+                    case 'T':
+                        newchar = 'X';
+                        break;
+                    case 'X':
+                        newchar = 'D';
+                        break;
+                }
+            }
+            else
+            {
+                //
+                // Only the 3 main states
+                // 
+                switch (LevelDesc.Map[index])
+                {
+                    case 'D':
+                        newchar = 'R';
+                        break;
+                    case 'R':
+                        newchar = 'T';
+                        break;
+                    case 'T':
+                        newchar = 'D';
+                        break;
+                }
             }
 
             MapTable.Remove(b);
@@ -122,6 +167,14 @@ namespace VRTD.LevelEditor
                 case 'T':
                     Gdk.Color.Parse("grey", ref col);
                     s = "T";
+                    break;
+                case 'E':
+                    Gdk.Color.Parse("red", ref col);
+                    s = "E";
+                    break;
+                case 'X':
+                    Gdk.Color.Parse("green", ref col);
+                    s = "X";
                     break;
             }
             b.ModifyBg(StateType.Normal, col);

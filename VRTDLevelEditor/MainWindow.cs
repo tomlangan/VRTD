@@ -64,18 +64,7 @@ namespace VRTD.LevelEditor
             tree.Selection.Changed += LevelTreeSelection_Changed;
             tree.Show();
 
-
-            Button exportButton = new Button("Export");
-
-            /* When the button is clicked, we call the "callback" function
-             * with a pointer to "button 2" as its argument */
-
-            exportButton.Clicked += ExportButton_Clicked;
-
-            /* Insert button 2 into the upper right quadrant of the table */
-            table.Attach(exportButton, 1, 2, 24, 25);
-
-            exportButton.Show();
+            
 
             /* Create "Quit" button */
             Button quitbutton = new Button("Quit");
@@ -96,9 +85,14 @@ namespace VRTD.LevelEditor
             table.Attach(addLevelButton, 0, 1, 24, 25);
             addLevelButton.Show();
 
+            ScrolledWindow scroller = new ScrolledWindow();
             LevelView = new LevelEditLayout();
-            table.Attach(LevelView, 1, 5, 0, 24);
+            scroller.Add(LevelView);
+            scroller.SetPolicy(PolicyType.Always, PolicyType.Always);
+
+            table.Attach(scroller, 1, 5, 0, 24);
             LevelView.Show();
+            scroller.Show();
             LevelView.TreeRefreshNeeded += LevelView_TreeRefreshNeeded;
 
             table.Show();
@@ -148,10 +142,6 @@ namespace VRTD.LevelEditor
             LevelListStore.AppendValues(a.Name);
         }
 
-        private void ExportButton_Clicked(object sender, EventArgs e)
-        {
-            
-        }
 
         private void LoadLevel(string levelName)
         {
