@@ -116,6 +116,12 @@ namespace VRTD.Gameplay
 
         public List<EnemyInstance> EnemiesOccupying;
 
+        public MapPos()
+        {
+            x = 0;
+            z = 0;
+        }
+
         public MapPos(int xpos, int zpos)
         {
             x = xpos;

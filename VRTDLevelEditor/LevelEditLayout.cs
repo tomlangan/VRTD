@@ -60,11 +60,12 @@ namespace VRTD.LevelEditor
             Layout.PackStart(ErrorEntry, false, false, 10);
             ErrorEntry.Show();
 
+            LevelDesc = desc;
+
             ValidateDescriptionAndReportIssues();
 
             Show();
             ShowAll();
-            LevelDesc = desc;
         }
 
         private Table GetFieldTable(LevelDescription desc)
@@ -278,6 +279,14 @@ namespace VRTD.LevelEditor
             string issueText = "No issues";
             string warningText = "";
 
+            try
+            {
+                LevelLoader.LoadAndValidateLevel(LevelDesc);
+            } catch (LevelLoadException e)
+            {
+                issuesFound = true;
+                issueText = e.Message;
+            }
 
 
             if (issuesFound)

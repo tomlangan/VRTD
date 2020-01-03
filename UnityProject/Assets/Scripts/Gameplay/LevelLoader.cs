@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 #if LEVEL_EDITOR
 using System.Numerics;
 
@@ -25,6 +26,14 @@ using UnityEngine;
 
 namespace VRTD.Gameplay
 {
+    public class LevelLoadException : Exception
+    {
+        public LevelLoadException(string message) : base(message)
+        {
+
+        }
+    }
+
     public class LevelLoader
     {
 
@@ -69,7 +78,7 @@ namespace VRTD.Gameplay
                     next = new MapPos(last.x - 1, last.z);
                 }
 
-                //check right if we're not at the bottom
+                //check right if we're not at the far right
                 if ((last.x < (width - 1))
                     &&
                     // This isn't the previous item we just saw
@@ -79,7 +88,10 @@ namespace VRTD.Gameplay
                     ||
                     ((exit.x == (last.x + 1)) && (exit.z == last.z))))
                 {
-                    Debug.Assert(null == next);
+                    if(null != next)
+                    {
+                        throw new LevelLoadException("Found multiple paths while walking the road - is there a fork?");
+                    }
                     thisDirection = WalkDir.Right;
                     next = new MapPos(last.x + 1, last.z);
                 }
@@ -95,12 +107,15 @@ namespace VRTD.Gameplay
                     // is the item downwards the exit?
                     ((exit.x == (last.x)) && (exit.z == (last.z + 1)))))
                 {
-                    Debug.Assert(null == next);
+                    if (null != next)
+                    {
+                        throw new LevelLoadException("Found multiple paths while walking the road - is there a fork?");
+                    }
                     thisDirection = WalkDir.Down;
                     next = new MapPos(last.x, last.z + 1);
                 }
 
-                //check up if we're not at the bottom
+                //check up if we're not at the top
                 if ((last.z > 0)
                     &&
                     // This isn't the previous item we just saw
@@ -111,14 +126,20 @@ namespace VRTD.Gameplay
                     // is the item upwards the exit?
                     ((exit.x == (last.x)) && (exit.z == (last.z - 1)))))
                 {
-                    Debug.Assert(null == next);
+                    if (null != next)
+                    {
+                        throw new LevelLoadException("Found multiple paths while walking the road - is there a fork?");
+                    }
                     thisDirection = WalkDir.Up;
                     next = new MapPos(last.x, last.z - 1);
                 }
 
 
                 // We didn't find a next road segment!
-                Debug.Assert(null != next);
+                if (null == next)
+                {
+                    throw new LevelLoadException("Didn't find a road segment while walking it - is there a dead end or gap?");
+                }
 
                 r.Add(next);
                 last = next;
@@ -133,9 +154,15 @@ namespace VRTD.Gameplay
             }
 
             // Something went wrong if we found this many items!
-            Debug.Assert(found != max);
+            if(found == max)
+            {
+                throw new LevelLoadException("Found more road than there are tiles - possible cycle in the road");
+            }
             // Something went wrong if we got here and never found the exit.
-            Debug.Assert(((exit.x == last.x) && (exit.z == last.z)));
+            if (((exit.x != last.x) || (exit.z != last.z)))
+            {
+                throw new LevelLoadException("The last road segment was not the exit - is the exit connected to the road?");
+            }
 
             return r;
         }
@@ -151,7 +178,10 @@ namespace VRTD.Gameplay
             // Find the entry, ensure there are no dupes
             FindMapLocations(level.Map, level.FieldWidth, level.FieldDepth, 'E', (x, y) =>
                 {
-                    Debug.Assert(null == level.Entry);
+                    if (null != level.Entry)
+                    {
+                        throw new LevelLoadException("Duplicate Entries found in the map");
+                    }
                     level.Entry = new MapPos(x, y);
                     return true;
                 });
@@ -160,7 +190,10 @@ namespace VRTD.Gameplay
             // Find the exit, ensure there are no dupes
             FindMapLocations(level.Map, level.FieldWidth, level.FieldDepth, 'X', (x, y) =>
             {
-                Debug.Assert(null == level.Exit);
+                if (null != level.Exit)
+                {
+                    throw new LevelLoadException("Duplicate Exits found in the map");
+                }
                 level.Exit = new MapPos(x, y);
                 return true;
             });
