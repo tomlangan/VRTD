@@ -103,7 +103,7 @@ namespace VRTD.LevelEditor
                         break;
                 }
             }
-            else if ((index / LevelDesc.FieldWidth) == LevelDesc.FieldDepth)
+            else if ((index / LevelDesc.FieldWidth) == (LevelDesc.FieldDepth - 1))
             {
                 //
                 // Last row --> allow Exit
@@ -174,7 +174,7 @@ namespace VRTD.LevelEditor
                     s = "E";
                     break;
                 case 'X':
-                    Gdk.Color.Parse("green", ref col);
+                    Gdk.Color.Parse("blue", ref col);
                     s = "X";
                     break;
             }

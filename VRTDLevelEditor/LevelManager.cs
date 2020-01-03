@@ -53,6 +53,8 @@ namespace VRTD.LevelEditor
                 }
             }
 
+            levelList.Sort();
+
             return levelList;
         }
 
