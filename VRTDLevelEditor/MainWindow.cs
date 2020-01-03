@@ -8,10 +8,10 @@ namespace VRTD.LevelEditor
     public partial class MainWindow : Window
     {
         TreeView tree;
-        Table table;
         LevelDescription LevelDesc;
         LevelEditLayout LevelView;
         ListStore LevelListStore;
+        HBox TopLevelHBox;
 
         public MainWindow() :
                 base(WindowType.Toplevel)
@@ -40,16 +40,18 @@ namespace VRTD.LevelEditor
              * exits GTK. */
             DeleteEvent += delete_event;
 
+            TopLevelHBox = new HBox(false, 0);
+            Add(TopLevelHBox);
+            TopLevelHBox.Show();
 
-            table = new Table(25, 5, true);
 
-            /* Put the table in the main window */
-            Add(table);
+            VBox vbox = new VBox(false, 0);
+            TopLevelHBox.PackStart(vbox, false, true, 5);
+            vbox.SetSizeRequest(100, -1);
+            vbox.Show();
 
-            /* Create first button */
             tree = new TreeView();
-
-            table.Attach(tree, 0, 1, 0, 24);
+            vbox.PackStart(tree, true, true, 0);
 
             // Create a column for the artist name
             TreeViewColumn levelColumn = new TreeViewColumn();
@@ -64,38 +66,38 @@ namespace VRTD.LevelEditor
             tree.Selection.Changed += LevelTreeSelection_Changed;
             tree.Show();
 
-            
-
-            /* Create "Quit" button */
-            Button quitbutton = new Button("Quit");
-
-            /* When the button is clicked, we call the "delete_event" function
-             * and the program exits */
-            quitbutton.Clicked += exit_event;
-
-            /* Insert the quit button into the both
-             * lower quadrants of the table */
-            table.Attach(quitbutton, 4, 5, 24, 25);
-
-            quitbutton.Show();
-
             Button addLevelButton = new Button("+");
 
             addLevelButton.Clicked += AddLevelButton_Clicked;
-            table.Attach(addLevelButton, 0, 1, 24, 25);
+            vbox.PackEnd(addLevelButton, false, false, 5);
             addLevelButton.Show();
+
+            vbox = new VBox(false, 0);
+            TopLevelHBox.PackStart(vbox, true, true, 5);
+            vbox.Show();
+
 
             ScrolledWindow scroller = new ScrolledWindow();
             LevelView = new LevelEditLayout();
             scroller.Add(LevelView);
             scroller.SetPolicy(PolicyType.Always, PolicyType.Always);
-
-            table.Attach(scroller, 1, 5, 0, 24);
             LevelView.Show();
             scroller.Show();
             LevelView.TreeRefreshNeeded += LevelView_TreeRefreshNeeded;
 
-            table.Show();
+            vbox.PackStart(scroller, true, true, 5);
+
+            /* Create "Quit" button */
+            Button quitbutton = new Button("Quit");
+            quitbutton.Show();
+
+            /* When the button is clicked, we call the "delete_event" function
+             * and the program exits */
+            quitbutton.Clicked += exit_event;
+
+
+            vbox.PackStart(quitbutton, false, false, 5);
+
             ShowAll();
         }
 
