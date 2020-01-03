@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace VRTD.LevelEditor
 {
-    public class LevelEditLayout : Layout
+    public class LevelEditLayout : ScrolledWindow
     {
         static string[] LayoutOptions = { "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "100" };
 
@@ -28,16 +28,13 @@ namespace VRTD.LevelEditor
 
             if (null != Layout)
             {
-                Remove(Layout);
-                Layout.HideAll();
-                Layout.Dispose();
+                Layout.Hide();
+                Layout.Destroy();
                 Layout = null;
             }
 
-                
-            Layout = new VBox(false, 20);
-            Put(Layout, 0, 0);
-
+            Layout = new VBox(false, 0);
+            AddWithViewport(Layout);
 
             HBox field = GtkHelpers.TextEntryField("Level Name", desc.Name, Name_Changed, true);
             Layout.PackStart(field, false, false, 0);
@@ -52,11 +49,10 @@ namespace VRTD.LevelEditor
             field.Show();
 
             Table map = GetFieldTable(desc);
-            Layout.PackStart(map, true, false, 0);
+            Layout.PackStart(map, false, true, 0);
             map.Show();
 
-
-            Layout.Show();
+            Show();
             ShowAll();
             LevelDesc = desc;
         }

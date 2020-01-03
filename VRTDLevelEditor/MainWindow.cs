@@ -44,6 +44,9 @@ namespace VRTD.LevelEditor
             Add(TopLevelHBox);
             TopLevelHBox.Show();
 
+            //
+            // Lefthand column
+            //
 
             VBox vbox = new VBox(false, 0);
             TopLevelHBox.PackStart(vbox, false, true, 5);
@@ -72,29 +75,25 @@ namespace VRTD.LevelEditor
             vbox.PackEnd(addLevelButton, false, false, 5);
             addLevelButton.Show();
 
+            //
+            // Righthand column
+            //
+
             vbox = new VBox(false, 0);
             TopLevelHBox.PackStart(vbox, true, true, 5);
             vbox.Show();
 
 
-            ScrolledWindow scroller = new ScrolledWindow();
             LevelView = new LevelEditLayout();
-            scroller.Add(LevelView);
-            scroller.SetPolicy(PolicyType.Always, PolicyType.Always);
-            LevelView.Show();
-            scroller.Show();
+            vbox.PackStart(LevelView, true, true, 5);
+
             LevelView.TreeRefreshNeeded += LevelView_TreeRefreshNeeded;
+            LevelView.Show();
 
-            vbox.PackStart(scroller, true, true, 5);
 
-            /* Create "Quit" button */
             Button quitbutton = new Button("Quit");
             quitbutton.Show();
-
-            /* When the button is clicked, we call the "delete_event" function
-             * and the program exits */
             quitbutton.Clicked += exit_event;
-
 
             vbox.PackStart(quitbutton, false, false, 5);
 
