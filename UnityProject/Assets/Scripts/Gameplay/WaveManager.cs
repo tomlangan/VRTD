@@ -133,6 +133,7 @@ namespace VRTD.Gameplay
     public class WaveInstance
     {
         LevelDescription LevelDesc;
+        EnemyDescription EnemyType;
         public List<EnemyInstance> Enemies;
         EnemyWave Desc;
         public int EnemiesThatSurvived;
@@ -144,6 +145,7 @@ namespace VRTD.Gameplay
 
         public WaveInstance(LevelDescription levelDesc, EnemyWave waveDescription, int roadSegments, float gameTime)
         {
+            EnemyType = LevelLoader.LookupEnemy(Desc.Enemy);
             LevelDesc = levelDesc;
             Desc = waveDescription;
             Enemies = new List<EnemyInstance>();
@@ -179,10 +181,10 @@ namespace VRTD.Gameplay
             // If not, are we due to spawn one or more enemies?
             while (SpawnedCount < Desc.Count)
             {
-                float nextSpawnTime = LastSpawnTime + Desc.EnemyType.SpawnRate;
+                float nextSpawnTime = LastSpawnTime + EnemyType.SpawnRate;
                 if (waveTime > nextSpawnTime)
                 {
-                    EnemyInstance newEnemy = new EnemyInstance(Desc.EnemyType, nextSpawnTime);
+                    EnemyInstance newEnemy = new EnemyInstance(EnemyType, nextSpawnTime);
                     newEnemy.UpdatePosition(LevelDesc);
                     Enemies.Add(newEnemy);
                     LastSpawnTime = nextSpawnTime;

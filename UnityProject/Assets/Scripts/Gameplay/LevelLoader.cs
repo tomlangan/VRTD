@@ -36,6 +36,9 @@ namespace VRTD.Gameplay
 
     public class LevelLoader
     {
+        private static List<Turret> Turrets = null;
+        private static List<EnemyDescription> Enemies = null;
+        private static List<Projectile> Projectiles = null;
 
         enum WalkDir { Up, Down, Left, Right, None };
 
@@ -219,7 +222,7 @@ namespace VRTD.Gameplay
 
             if (0 == level.Turrets.Count)
             {
-                throw new LevelLoadException("No turrets found!");
+                throw new LevelLoadException("No found!");
             }
 
             level.Road = WalkAndValidateRoad(level.Map, level.FieldWidth, level.FieldDepth, level.Entry, level.Exit);
@@ -246,9 +249,217 @@ namespace VRTD.Gameplay
             }
         }
 
-        public static void ReadFromFile(string levelFile)
+        public static List<Turret> GetTurrets()
         {
+            if (null == Turrets)
+            {
 
+                /*
+                FileStream fs = File.Open(DictionaryToPath("turrets"), FileMode.OpenOrCreate);
+                StreamReader sr = new StreamReader(fs);
+                string jsonBlob = sr.ReadToEnd();
+                turrets = JsonConvert.DeserializeObject<List<Turret>>(jsonBlob);
+                sr.Close();
+                fs.Close();
+                fs.Dispose();
+                */
+            }
+
+            return Turrets;
+        }
+
+        public static Turret LookupTurret(string name)
+        {
+            Turret found = null;
+            if (null != Turrets)
+            {
+                for (int i = 0; i < Turrets.Count; i++)
+                {
+                    if (Turrets[i].Name == name)
+                    {
+                        found = Turrets[i];
+                        break;
+                    }
+                }
+            }
+
+            return found;
+        }
+
+        public static List<EnemyDescription> GetEnemies()
+        {
+            if (null == Enemies)
+            {
+
+                /*
+                FileStream fs = File.Open(DictionaryToPath("enemies"), FileMode.OpenOrCreate);
+                StreamReader sr = new StreamReader(fs);
+                string jsonBlob = sr.ReadToEnd();
+                enemies = JsonConvert.DeserializeObject<List<EnemyDescription>>(jsonBlob);
+                sr.Close();
+                fs.Close();
+                fs.Dispose();
+                */
+            }
+            
+            return Enemies;
+        }
+
+
+        public static EnemyDescription LookupEnemy(string name)
+        {
+            EnemyDescription found = null;
+            if (null != Turrets)
+            {
+                for (int i = 0; i < Enemies.Count; i++)
+                {
+                    if (Enemies[i].Name == name)
+                    {
+                        found = Enemies[i];
+                        break;
+                    }
+                }
+            }
+
+            return found;
+        }
+
+        public static List<Projectile> GetProjectiles()
+        {
+            if (null == Projectiles)
+            {
+                /*
+                FileStream fs = File.Open(DictionaryToPath("projectiles"), FileMode.OpenOrCreate);
+                StreamReader sr = new StreamReader(fs);
+                string jsonBlob = sr.ReadToEnd();
+                projectiles = JsonConvert.DeserializeObject<List<Projectile>>(jsonBlob);
+                sr.Close();
+                fs.Close();
+                fs.Dispose();
+                */
+            }
+
+            return Projectiles;
+        }
+
+
+        public static Projectile LookupProjectile(string name)
+        {
+            Projectile found = null;
+            if (null != Projectiles)
+            {
+                for (int i = 0; i < Projectiles.Count; i++)
+                {
+                    if (Projectiles[i].Name == name)
+                    {
+                        found = Projectiles[i];
+                        break;
+                    }
+                }
+            }
+
+            return found;
+        }
+
+        public static List<Projectile> GetTestProjectiles()
+        {
+            List<Projectile> list = new List<Projectile>();
+            Projectile projectile = new Projectile();
+            projectile.AirSpeed = 4.0F;
+            projectile.Asset = "BasicBullet";
+            projectile.Name = "Basic Bullet";
+            ProjectileEffect basicTurretDamangeEffect = new ProjectileEffect();
+            basicTurretDamangeEffect.EffectType = ProjectileEffectType.Damage;
+            basicTurretDamangeEffect.EffectDuration = 0.0F;
+            basicTurretDamangeEffect.EffectImpact = 1.0F;
+            projectile.Effects.Add(basicTurretDamangeEffect);
+            list.Add(projectile);
+
+
+            projectile = new Projectile();
+            projectile.AirSpeed = 4.0F;
+            projectile.Asset = "IceBullet";
+            projectile.Name = "Ice Bullet";
+            ProjectileEffect iceTurretEffect = new ProjectileEffect();
+            iceTurretEffect.EffectType = ProjectileEffectType.Slow;
+            iceTurretEffect.EffectDuration = 4.0F;
+            iceTurretEffect.EffectImpact = 3.0F;
+            projectile.Effects.Add(iceTurretEffect);
+            list.Add(projectile);
+
+
+            projectile = new Projectile();
+            projectile.AirSpeed = 3.0F;
+            projectile.Asset = "FireBullet";
+            projectile.Name = "Fire Bullet";
+            ProjectileEffect fireTurretEffect = new ProjectileEffect();
+            fireTurretEffect.EffectType = ProjectileEffectType.Damage;
+            fireTurretEffect.EffectDuration = 3.0F;
+            fireTurretEffect.EffectImpact = 1.0F;
+            projectile.Effects.Add(iceTurretEffect);
+            list.Add(projectile);
+
+            return list;
+        }
+
+        public static List<EnemyDescription> GetTestEnemies()
+        {
+            List<EnemyDescription> list = new List<EnemyDescription>();
+
+
+            EnemyDescription EnemyType = new EnemyDescription();
+            EnemyType.Name = "Basic Enemy";
+            EnemyType.MovementSpeed = 1.0F;
+            EnemyType.SpawnRate = 1.0F;
+            EnemyType.HitPoints = 2;
+            EnemyType.Asset = "BasicEnemy";
+            list.Add(EnemyType);
+
+
+            EnemyType = new EnemyDescription();
+            EnemyType.Name = "Swarm Enemy";
+            EnemyType.MovementSpeed = 5.0F;
+            EnemyType.SpawnRate = 5.0F;
+            EnemyType.HitPoints = 1;
+            EnemyType.Asset = "SwarmEnemy";
+            list.Add(EnemyType);
+
+            return list;
+        }
+
+
+        public static List<Turret> GetTestTurrets()
+        {
+            List<Turret> list = new List<Turret>();
+
+
+            Turret turret = new Turret();
+            turret.Name = "Basic Turret";
+            turret.Asset = "BasicTurret";
+            turret.FireRate = 2.0F;
+            turret.Range = 5;
+            turret.Projectile = "Basic Bullet";
+            list.Add(turret);
+
+
+            turret = new Turret();
+            turret.Name = "Ice Shot";
+            turret.Asset = "IceTurret";
+            turret.FireRate = 5.0F;
+            turret.Range = 3;
+            turret.Projectile = "Ice Bullet";
+            list.Add(turret);
+
+
+            turret = new Turret();
+            turret.Name = "Fire Shot";
+            turret.Asset = "FireTurret";
+            turret.FireRate = 2.0F;
+            turret.Range = 6;
+            turret.Projectile = "Fire Bullet";
+            list.Add(turret);
+
+            return list;
         }
 
         public static LevelDescription GetTestLevel()
@@ -260,81 +471,27 @@ namespace VRTD.Gameplay
             level.Waves = new List<EnemyWave>();
 
             EnemyWave wave = new EnemyWave();
-            wave.EnemyType = new EnemyDescription();
-            wave.EnemyType.Name = "BasicEnemy";
-            wave.EnemyType.MovementSpeed = 1.0F;
-            wave.EnemyType.SpawnRate = 1.0F;
-            wave.EnemyType.HitPoints = 2;
-            wave.EnemyType.Asset = "BasicEnemy";
+            wave.Enemy = "Basic Enemy";
             wave.Count = 10;
             wave.DifficultyMultiplier = 1.0F;
 
             level.Waves.Add(wave);
 
             wave = new EnemyWave();
-            wave.EnemyType = new EnemyDescription();
-            wave.EnemyType.Name = "SwarmEnemy";
-            wave.EnemyType.MovementSpeed = 5.0F;
-            wave.EnemyType.SpawnRate = 5.0F;
-            wave.EnemyType.HitPoints = 1;
-            wave.EnemyType.Asset = "SwarmEnemy";
+            wave.Enemy = "Swarm Enemy";
             wave.Count = 20;
             wave.DifficultyMultiplier = 1.0F;
 
             level.Waves.Add(wave);
 
-            level.AllowedTurrets = new List<Turret>();
+            level.AllowedTurrets = new List<string>();
 
-            Turret turret = new Turret();
-            turret.Name = "Basic Turret";
-            turret.Asset = "BasicTurret";
-            turret.FireRate = 2.0F;
-            turret.Range = 5;
-            Projectile projectile = new Projectile();
-            projectile.AirSpeed = 4.0F;
-            projectile.Asset = "BasicBullet";
-            projectile.Name = "Basic Bullet";
-            ProjectileEffect basicTurretDamangeEffect = new ProjectileEffect();
-            basicTurretDamangeEffect.EffectType = ProjectileEffectType.Damage;
-            basicTurretDamangeEffect.EffectDuration = 0.0F;
-            basicTurretDamangeEffect.EffectImpact = 1.0F;
-            projectile.Effects.Add(basicTurretDamangeEffect);
-            turret.ProjectileType = projectile;
-            level.AllowedTurrets.Add(turret);
+            level.AllowedTurrets.Add("Basic Turret");
 
-            turret = new Turret();
-            turret.Name = "Ice Shot";
-            turret.Asset = "IceTurret";
-            turret.FireRate = 5.0F;
-            turret.Range = 3;
-            projectile = new Projectile();
-            projectile.AirSpeed = 4.0F;
-            projectile.Asset = "IceBullet";
-            projectile.Name = "Ice Bullet";
-            ProjectileEffect iceTurretEffect = new ProjectileEffect();
-            iceTurretEffect.EffectType = ProjectileEffectType.Slow;
-            iceTurretEffect.EffectDuration = 4.0F;
-            iceTurretEffect.EffectImpact = 3.0F;
-            projectile.Effects.Add(iceTurretEffect);
-            turret.ProjectileType = projectile;
-            level.AllowedTurrets.Add(turret);
+            level.AllowedTurrets.Add("Ice Bullet");
 
-            turret = new Turret();
-            turret.Name = "Fire Shot";
-            turret.Asset = "FireTurret";
-            turret.FireRate = 2.0F;
-            turret.Range = 6;
-            projectile = new Projectile();
-            projectile.AirSpeed = 3.0F;
-            projectile.Asset = "FireBullet";
-            projectile.Name = "Fire Bullet";
-            ProjectileEffect fireTurretEffect = new ProjectileEffect();
-            fireTurretEffect.EffectType = ProjectileEffectType.Damage;
-            fireTurretEffect.EffectDuration = 3.0F;
-            fireTurretEffect.EffectImpact = 1.0F;
-            projectile.Effects.Add(iceTurretEffect);
-            turret.ProjectileType = projectile;
-            level.AllowedTurrets.Add(turret);
+            level.AllowedTurrets.Add("Fire Bullet");
+
 
 
             level.FieldWidth = 10;

@@ -39,7 +39,7 @@ namespace VRTD.Gameplay
     [Serializable]
     public class EnemyWave
     {
-        public EnemyDescription EnemyType { get; set; }
+        public string Enemy { get; set; }
 
         public int Count { get; set; }
 
@@ -98,7 +98,7 @@ namespace VRTD.Gameplay
 
         public float Range { get; set; }
 
-        public Projectile ProjectileType { get; set; }
+        public string Projectile { get; set; }
     }
 
 
@@ -156,7 +156,7 @@ namespace VRTD.Gameplay
 
         public List<EnemyWave> Waves;
 
-        public List<Turret> AllowedTurrets;
+        public List<string> AllowedTurrets;
 
         public int FieldWidth { get; set; }
         public int FieldDepth { get; set; }

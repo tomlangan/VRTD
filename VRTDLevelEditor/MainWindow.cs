@@ -47,6 +47,8 @@ namespace VRTD.LevelEditor
                 TopLevelHBox = null;
             }
 
+            CurrentMode = editorMode;
+
             TopLevelHBox = new HBox(false, 0);
             Add(TopLevelHBox);
             TopLevelHBox.Show();
@@ -78,7 +80,7 @@ namespace VRTD.LevelEditor
             ListModel = new ListStore(typeof(string));
             tree.Model = ListModel;
             tree.Selection.Mode = SelectionMode.Single;
-            tree.Selection.Changed += LevelTreeSelection_Changed;
+            tree.Selection.Changed += TreeSelection_Changed;
 
             switch (editorMode)
             {
@@ -141,13 +143,15 @@ namespace VRTD.LevelEditor
             {
                 case EditorMode.Level:
                     EditorWidget = new LevelEditLayout();
-                    ((LevelEditLayout)EditorWidget).TreeRefreshNeeded += LevelView_TreeRefreshNeeded;
+                    ((LevelEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
                     break;
                 case EditorMode.Turret:
-                    EditorWidget = new LevelEditLayout();
+                    EditorWidget = new TurretEditLayout();
+                    ((TurretEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
                     break;
                 case EditorMode.Enemy:
-                    EditorWidget = new LevelEditLayout();
+                    EditorWidget = new EnemyEditLayout();
+                    ((EnemyEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
                     break;
                 case EditorMode.Projectile:
                     EditorWidget = new LevelEditLayout();
@@ -158,23 +162,47 @@ namespace VRTD.LevelEditor
             EditorWidget.Show();
 
 
-            CurrentMode = editorMode;
             ShowAll();
         }
 
-        private void LevelView_TreeRefreshNeeded()
+        private void TreeRefreshNeeded_Event()
         {
-            PopulateTreeWithLevels();
+            switch (CurrentMode)
+            {
+                case EditorMode.Level:
+                    PopulateTreeWithLevels();
+                    break;
+                case EditorMode.Turret:
+                    PopulateTreeWithTurrets();
+                    break;
+                case EditorMode.Enemy:
+                    PopulateTreeWithEnemies();
+                    break;
+                case EditorMode.Projectile:
+                    PopulateTreeWithProjectilees();
+                    break;
+            }
         }
 
-        private void LevelTreeSelection_Changed(object sender, EventArgs e)
+        private void TreeSelection_Changed(object sender, EventArgs e)
         {
             TreeIter selected;
             if (tree.Selection.GetSelected(out selected))
             {
-                string levelSelected = (string)ListModel.GetValue(selected, 0);
+                string selectedStr = (string)ListModel.GetValue(selected, 0);
 
-                LoadLevel(levelSelected);
+                switch (CurrentMode)
+                {
+                    case EditorMode.Level:
+                        LoadLevel(selectedStr);
+                        break;
+                    case EditorMode.Turret:
+                        ((TurretEditLayout)EditorWidget).SetTurret(selectedStr);
+                        break;
+                    case EditorMode.Enemy:
+                        ((EnemyEditLayout)EditorWidget).SetEnemy(selectedStr);
+                        break;
+                }
             }
         }
 
@@ -253,13 +281,19 @@ namespace VRTD.LevelEditor
 
         private void LoadLevel(string levelName)
         {
+
             LevelDesc = LevelManager.ReadLevel(levelName);
 
             /*
              *
              * Use this code to prepopulate Enemies/Turrets/Projectiles
              * 
+
             
+            LevelDesc = LevelLoader.GetTestLevel();
+
+            LevelManager.WriteLevel("1-1", LevelDesc);
+
             LevelManager.WriteTurrets(LevelDesc.AllowedTurrets);
 
             List<EnemyDescription> enemies = new List<EnemyDescription>();

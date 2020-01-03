@@ -84,9 +84,9 @@ namespace VRTD.Gameplay
         public bool IsComplete;
         GameObject go = null;
 
-        public ProjectileInstance(Projectile projectileType, Vector3 sourcePos, EnemyInstance enemy, float waveTimeFired)
+        public ProjectileInstance(string projectileName, Vector3 sourcePos, EnemyInstance enemy, float waveTimeFired)
         {
-            ProjectileType = projectileType;
+            ProjectileType = LevelLoader.LookupProjectile(projectileName);
             LastUpdateTime = waveTimeFired;
             FireTime = waveTimeFired;
 #if LEVEL_EDITOR
@@ -182,7 +182,7 @@ namespace VRTD.Gameplay
 
         public void Fire(TurretInstance turret, EnemyInstance target, float fireTime)
         {
-            ProjectileInstance projectile = new ProjectileInstance(turret.TurretType.ProjectileType, new Vector3(turret.Position.x, 0.0F, turret.Position.z), target, fireTime);
+            ProjectileInstance projectile = new ProjectileInstance(turret.TurretType.Projectile, new Vector3(turret.Position.x, 0.0F, turret.Position.z), target, fireTime);
             ProjectilesInFlight.Add(projectile);
         }
 

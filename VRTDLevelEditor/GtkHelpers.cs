@@ -12,51 +12,104 @@ namespace VRTD.LevelEditor
         object o;
         EventArgs a;
         List<DeferredEventHelper> DeferredEventsList;
+        GtkHelpers.ValueType ValueTypeToValidate = GtkHelpers.ValueType.Str;
 
 
-        public DeferredEventHelper(EventHandler callback, List<DeferredEventHelper> list)
+        public DeferredEventHelper(EventHandler callback, List<DeferredEventHelper> list, GtkHelpers.ValueType valueType)
         {
             Callback = callback;
             t = new Timer(500);
             t.Elapsed += T_Elapsed;
             DeferredEventsList = list;
+            ValueTypeToValidate = valueType;
+        }
+
+        private void ValidateAndSetTextColor()
+        {
+            if (ValueTypeToValidate == GtkHelpers.ValueType.None ||
+                ValueTypeToValidate == GtkHelpers.ValueType.None)
+            {
+                return;
+            }
+
+            Entry entry = (Entry)o;
+            string val = entry.Text;
+
+            Gdk.Color col = GtkHelpers.Color("black");
+            entry.TooltipText = "";
+
+            try
+            {
+                switch (ValueTypeToValidate)
+                {
+                    case GtkHelpers.ValueType.Int:
+                        int.Parse(val);
+                        break;
+                    case GtkHelpers.ValueType.Float:
+                        float.Parse(val);
+                        break;
+                }
+            }
+            catch(Exception ex)
+            {
+                entry.TooltipText = ex.Message;
+                col = GtkHelpers.Color("red");
+            }
+
+            entry.ModifyText(StateType.Normal, col);
         }
 
         private void T_Elapsed(object sender, ElapsedEventArgs e)
         {
-            t.Close();
+            DeferredEventsList.Remove(this);
+            if (null != t)
+            {
+                t.Stop();
+                t.Close();
+                t = null;
+            }
             if (null != Callback)
             {
                 Gtk.Application.Invoke(delegate
                 {
                     Callback(o, a);
+                    Callback = null;
                 });
             }
-            DeferredEventsList.Remove(this);
         }
 
         public void Fired(object sender, EventArgs args)
         {
-            o = sender;
-            a = args;
-            t.Stop();
-            t.Start();
+            if (null != t && null != Callback)
+            {
+                o = sender;
+                a = args;
+                t.Stop();
+                t.Start();
+                ValidateAndSetTextColor();
+                DeferredEventsList.Add(this);
+            }
         }
 
         public void Flush()
         {
-            t.Stop();
-            t.Close();
+            DeferredEventsList.Remove(this);
+            if (null != t)
+            {
+                t.Close();
+                t = null;
+            }
             if (null != Callback)
             {
                 Callback(o, a);
+                Callback = null;
             }
-            DeferredEventsList.Remove(this);
         }
     }
 
     public class GtkHelpers
     {
+        public enum ValueType { Str, Int, Float, None }
         public static List<DeferredEventHelper> DeferredEvents = new List<DeferredEventHelper>();
 
         public static void FlushAllDeferredEvents()
@@ -67,7 +120,7 @@ namespace VRTD.LevelEditor
             }
         }
 
-        public static HBox TextEntryField(string fieldName, string value, EventHandler callback, bool deferred = false)
+        public static HBox TextEntryField(string fieldName, string value, EventHandler callback, bool deferred = false, ValueType valType = ValueType.Str)
         {
             HBox box = new HBox(false, 20);
 
@@ -79,9 +132,15 @@ namespace VRTD.LevelEditor
             entry.WidthRequest = 200;
             box.PackStart(entry, false, false, 0);
             entry.Text = value;
+
+            if (valType != ValueType.Str)
+            {
+                deferred = true;
+            }
+
             if (deferred)
             {
-                DeferredEventHelper h = new DeferredEventHelper(callback, DeferredEvents);
+                DeferredEventHelper h = new DeferredEventHelper(callback, DeferredEvents, valType);
                 entry.Changed += h.Fired;
             }
             else
@@ -108,8 +167,9 @@ namespace VRTD.LevelEditor
             box.PackStart(dropdown, false, false, 0);
             if (deferred)
             {
-                DeferredEventHelper h = new DeferredEventHelper(callback, DeferredEvents);
+                DeferredEventHelper h = new DeferredEventHelper(callback, DeferredEvents, ValueType.None);
                 dropdown.Changed += h.Fired;
+                DeferredEvents.Add(h);
             }
             else
             {

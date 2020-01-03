@@ -41,7 +41,7 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
-            field = GtkHelpers.ComboBox("Width", LayoutOptions, (desc.FieldWidth/5 - 1), Width_Changed, true);
+            field = GtkHelpers.ComboBox("Width", LayoutOptions, (desc.FieldWidth / 5 - 1), Width_Changed, true);
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
@@ -163,7 +163,7 @@ namespace VRTD.LevelEditor
         }
 
         private void SetFieldButtonType(Button b, char c)
-        { 
+        {
             string s = "";
             Gdk.Color col = new Gdk.Color();
             switch (c)
@@ -205,7 +205,7 @@ namespace VRTD.LevelEditor
         }
 
         private void Name_Changed(object sender, EventArgs e)
-        { 
+        {
             string newName = ((Entry)sender).Text;
             if ((newName != LevelDesc.Name) && (newName.Length > 0))
             {
