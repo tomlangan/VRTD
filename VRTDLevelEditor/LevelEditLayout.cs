@@ -59,6 +59,9 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
+            field = GtkHelpers.TextEntryField("Starting Coins", desc.StartingCoins.ToString(), StartingCoins_Changed, true, GtkHelpers.ValueType.Int);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
 
             WavesTree = new TreeView();
             Layout.PackStart(WavesTree, false, false, 0);
@@ -568,6 +571,22 @@ namespace VRTD.LevelEditor
             }
         }
 
+        private void StartingCoins_Changed(object sender, EventArgs e)
+        {
+            string newName = ((Entry)sender).Text;
+            if (newName.Length > 0)
+            {
+                try
+                {
+                    int newVal = int.Parse(newName);
+                    LevelDesc.StartingCoins = newVal;
+                    WriteChanges();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
 
         private void Width_Changed(object sender, EventArgs e)
         {

@@ -74,6 +74,9 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
+            field = GtkHelpers.TextEntryField("Coins", Enemy.Coins.ToString(), Coins_Changed, true, GtkHelpers.ValueType.Float);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
 
             Show();
             ShowAll();
@@ -161,6 +164,23 @@ namespace VRTD.LevelEditor
         }
 
 
+        private void Coins_Changed(object sender, EventArgs e)
+        {
+            string newName = ((Entry)sender).Text;
+            if (newName.Length > 0)
+            {
+                try
+                {
+                    int newVal = int.Parse(newName);
+                    Enemy.Coins = newVal;
+                    WriteChanges();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
         public void AddEnemy()
         {
 
@@ -175,6 +195,20 @@ namespace VRTD.LevelEditor
             WriteChanges();
 
             TreeRefreshNeeded?.Invoke();
+        }
+
+        public void RemoveEnemy(string name)
+        {
+            for (int i = 0; i < Enemies.Count; i++)
+            {
+                if (Enemies[i].Name == name)
+                {
+                    Enemies.Remove(Enemies[i]);
+                    WriteChanges();
+                    TreeRefreshNeeded?.Invoke();
+                    break;
+                }
+            }
         }
 
         void WriteChanges()

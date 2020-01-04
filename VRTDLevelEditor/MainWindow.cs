@@ -86,10 +86,14 @@ namespace VRTD.LevelEditor
             vbox.Show();
 
             Button addLevelButton = new Button("+");
-
             addLevelButton.Clicked += AddButton_Clicked;
             vbox.PackStart(addLevelButton, false, false, 5);
             addLevelButton.Show();
+
+            Button removeLevelButton = new Button("-");
+            removeLevelButton.Clicked += RemoveButton_Clicked;
+            vbox.PackStart(removeLevelButton, false, false, 5);
+            removeLevelButton.Show();
 
             tree = new TreeView();
             vbox.PackStart(tree, true, true, 0);
@@ -378,6 +382,51 @@ namespace VRTD.LevelEditor
                     break;
                 case EditorMode.Projectile:
                     ((ProjectileEditLayout)EditorWidget).AddProjectile();
+                    break;
+            };
+        }
+
+        private void RemoveButton_Clicked(object sender, EventArgs e)
+        {
+            TreePath[] treePath = tree.Selection.GetSelectedRows();
+            string itemName = "";
+            TreeIter iter;
+
+            if (treePath.Length == 0)
+            {
+                return;
+            }
+
+            ListModel.GetIter(out iter, treePath[0]);
+
+            itemName = (string)ListModel.GetValue(iter, 0);
+
+            MessageDialog md = new MessageDialog(null,
+            DialogFlags.Modal, MessageType.Warning,
+            ButtonsType.OkCancel, "You will perminantly delete \"" + itemName  + "\". Continue?");
+            int result = md.Run();
+            md.Destroy();
+
+            if (result != -5)
+            {
+                return;
+            }
+
+
+            switch (CurrentMode)
+            {
+                case EditorMode.Level:
+                    LevelManager.DeleteLevel(itemName);
+                    ListModel.Remove(ref iter);
+                    break;
+                case EditorMode.Turret:
+                    ((TurretEditLayout)EditorWidget).RemoveTurret(itemName);
+                    break;
+                case EditorMode.Enemy:
+                    ((EnemyEditLayout)EditorWidget).RemoveEnemy(itemName);
+                    break;
+                case EditorMode.Projectile:
+                    ((ProjectileEditLayout)EditorWidget).RemoveProjectile(itemName);
                     break;
             };
         }

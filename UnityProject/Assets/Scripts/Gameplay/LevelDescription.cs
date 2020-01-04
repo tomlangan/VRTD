@@ -34,6 +34,8 @@ namespace VRTD.Gameplay
         public int HitPoints { get; set; }
 
         public string Asset { get; set; }
+
+        public int Coins { get; set; }
     }
 
     [Serializable]
@@ -44,7 +46,6 @@ namespace VRTD.Gameplay
         public int Count { get; set; }
 
         public float DifficultyMultiplier { get; set; }
-
     }
 
     //
@@ -99,6 +100,8 @@ namespace VRTD.Gameplay
         public float Range { get; set; }
 
         public string Projectile { get; set; }
+
+        public int Cost { get; set; }
     }
 
 
@@ -160,6 +163,7 @@ namespace VRTD.Gameplay
 
         public int FieldWidth { get; set; }
         public int FieldDepth { get; set; }
+        public int StartingCoins { get; set; }
 
         public List<char> Map;
 

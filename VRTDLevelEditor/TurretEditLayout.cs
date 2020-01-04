@@ -69,6 +69,11 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
+
+            field = GtkHelpers.TextEntryField("Cost", Turret.Cost.ToString(), Cost_Changed, true, GtkHelpers.ValueType.Float);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
+
             List<Projectile> projectiles = LevelManager.GetProjectiles();
             ProjectileNames = new List<string>();
             int currIndex = 0;
@@ -157,6 +162,23 @@ namespace VRTD.LevelEditor
         }
 
 
+        private void Cost_Changed(object sender, EventArgs e)
+        {
+            string newName = ((Entry)sender).Text;
+            if (newName.Length > 0)
+            {
+                try
+                {
+                    int newVal = int.Parse(newName);
+                    Turret.Cost = newVal;
+                    WriteChanges();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
         private void Projectile_Changed(object sender, EventArgs e)
         {
             if (null == sender)
@@ -185,6 +207,21 @@ namespace VRTD.LevelEditor
             WriteChanges();
 
             TreeRefreshNeeded?.Invoke();
+        }
+
+        public void RemoveTurret(string name)
+        {
+            for (int i = 0; i < Turrets.Count; i++)
+            {
+                if (Turrets[i].Name == name)
+                {
+                    Turrets.Remove(Turrets[i]);
+                    WriteChanges();
+                    TreeRefreshNeeded?.Invoke();
+                    break;
+                }
+            }
+
         }
 
         void WriteChanges()

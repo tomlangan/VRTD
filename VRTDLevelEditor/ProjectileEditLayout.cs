@@ -337,6 +337,22 @@ namespace VRTD.LevelEditor
             TreeRefreshNeeded?.Invoke();
         }
 
+
+        public void RemoveProjectile(string name)
+        {
+            for (int i = 0; i < Projectiles.Count; i++)
+            {
+                if (Projectiles[i].Name == name)
+                {
+                    Projectiles.Remove(Projectiles[i]);
+                    WriteChanges();
+                    TreeRefreshNeeded?.Invoke();
+                    break;
+                }
+            }
+        }
+
+
         void WriteChanges()
         {
             LevelManager.WriteProjectiles(Projectiles);

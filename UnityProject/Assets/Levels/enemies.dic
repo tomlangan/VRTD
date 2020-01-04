@@ -1,1 +1,1 @@
-[{"Name":"Basic Enemy","SpawnRate":1.0,"MovementSpeed":1.0,"HitPoints":2,"Asset":"BasicEnemy"},{"Name":"Swarm Enemy","SpawnRate":5.0,"MovementSpeed":5.0,"HitPoints":1,"Asset":"SwarmEnemy"}]
+[{"Name":"Basic Enemy","SpawnRate":1.0,"MovementSpeed":1.0,"HitPoints":2,"Asset":"BasicEnemy","Coins":1},{"Name":"Swarm Enemy","SpawnRate":1.0,"MovementSpeed":3.0,"HitPoints":1,"Asset":"SwarmEnemy","Coins":0}]

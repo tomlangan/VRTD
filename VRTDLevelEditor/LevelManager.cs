@@ -86,6 +86,15 @@ namespace VRTD.LevelEditor
             return desc;
         }
 
+        public static void DeleteLevel(string level)
+        {
+            string path = LevelToPath(level);
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+        }
+
         static string LevelToPath(string level)
         {
             return FolderPath + Path.DirectorySeparatorChar + level + ".lvl";
