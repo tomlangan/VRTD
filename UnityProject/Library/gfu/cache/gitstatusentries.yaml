@@ -13,66 +13,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-01-03T23:52:56.354-08:00
-  initializedAtString: 2020-01-03T23:50:03.217-08:00
+  lastUpdatedAtString: 2020-01-04T12:29:18.948-08:00
+  initializedAtString: 2020-01-04T12:19:59.496-08:00
   entries:
-  - path: Assembly-CSharp.csproj
-    fullPath: F:\git\VRTD\Assembly-CSharp.csproj
-    projectPath: ..\Assembly-CSharp.csproj
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Assembly-CSharp-Editor.csproj
-    fullPath: F:\git\VRTD\Assembly-CSharp-Editor.csproj
-    projectPath: ..\Assembly-CSharp-Editor.csproj
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Assembly-CSharp-Editor-firstpass.csproj
-    fullPath: F:\git\VRTD\Assembly-CSharp-Editor-firstpass.csproj
-    projectPath: ..\Assembly-CSharp-Editor-firstpass.csproj
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Oculus.VR.csproj
-    fullPath: F:\git\VRTD\Oculus.VR.csproj
-    projectPath: ..\Oculus.VR.csproj
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Oculus.VR.Editor.csproj
-    fullPath: F:\git\VRTD\Oculus.VR.Editor.csproj
-    projectPath: ..\Oculus.VR.Editor.csproj
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: Oculus.VR.Scripts.Editor.csproj
-    fullPath: F:\git\VRTD\Oculus.VR.Scripts.Editor.csproj
-    projectPath: ..\Oculus.VR.Scripts.Editor.csproj
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assembly-CSharp.csproj
-    fullPath: F:\git\VRTD\UnityProject\Assembly-CSharp.csproj
-    projectPath: Assembly-CSharp.csproj
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assembly-CSharp-Editor.csproj
-    fullPath: F:\git\VRTD\UnityProject\Assembly-CSharp-Editor.csproj
-    projectPath: Assembly-CSharp-Editor.csproj
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assembly-CSharp-Editor-firstpass.csproj
-    fullPath: F:\git\VRTD\UnityProject\Assembly-CSharp-Editor-firstpass.csproj
-    projectPath: Assembly-CSharp-Editor-firstpass.csproj
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: UnityProject\Assets\Objects\VirtualHand.prefab
     fullPath: F:\git\VRTD\UnityProject\Assets\Objects\VirtualHand.prefab
     projectPath: Assets\Objects\VirtualHand.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scenes\LevelScene.unity
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scenes\LevelScene.unity
+    projectPath: Assets\Scenes\LevelScene.unity
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scripts\Gameplay\LevelLoader.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\LevelLoader.cs
+    projectPath: Assets\Scripts\Gameplay\LevelLoader.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scripts\Gameplay\obj.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\obj.meta
+    projectPath: Assets\Scripts\Gameplay\obj.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\obj\anycpu.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\obj\anycpu.meta
+    projectPath: Assets\Scripts\Gameplay\obj\anycpu.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\obj\anycpu\Debug.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\obj\anycpu\Debug.meta
+    projectPath: Assets\Scripts\Gameplay\obj\anycpu\Debug.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\obj\anycpu\Debug\TempPE.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\obj\anycpu\Debug\TempPE.meta
+    projectPath: Assets\Scripts\Gameplay\obj\anycpu\Debug\TempPE.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Level.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Level.cs
+    projectPath: Assets\Scripts\Level.cs
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -82,15 +70,27 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\CrashedAssetImports.txt
+    fullPath: F:\git\VRTD\UnityProject\Library\CrashedAssetImports.txt
+    projectPath: Library\CrashedAssetImports.txt
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Library\CurrentLayout.dwlt
+    fullPath: F:\git\VRTD\UnityProject\Library\CurrentLayout.dwlt
+    projectPath: Library\CurrentLayout.dwlt
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: UnityProject\Library\EditorInstance.json
     fullPath: F:\git\VRTD\UnityProject\Library\EditorInstance.json
     projectPath: Library\EditorInstance.json
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Library\gfu\cache\branches.yaml
-    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\branches.yaml
-    projectPath: Library\gfu\cache\branches.yaml
+  - path: UnityProject\Library\expandedItems
+    fullPath: F:\git\VRTD\UnityProject\Library\expandedItems
+    projectPath: Library\expandedItems
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -118,9 +118,165 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\metadata\02\02a6fd4e1ed5edf4aabdde2a192f98c6
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\02\02a6fd4e1ed5edf4aabdde2a192f98c6
+    projectPath: Library\metadata\02\02a6fd4e1ed5edf4aabdde2a192f98c6
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\02\02a6fd4e1ed5edf4aabdde2a192f98c6.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\02\02a6fd4e1ed5edf4aabdde2a192f98c6.info
+    projectPath: Library\metadata\02\02a6fd4e1ed5edf4aabdde2a192f98c6.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\03\0337c41e1baae49d1837b77d48a501f9.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\03\0337c41e1baae49d1837b77d48a501f9.info
+    projectPath: Library\metadata\03\0337c41e1baae49d1837b77d48a501f9.info
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\14\14d88a39d2bd7e84aae476037bea66c7
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\14\14d88a39d2bd7e84aae476037bea66c7
+    projectPath: Library\metadata\14\14d88a39d2bd7e84aae476037bea66c7
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50
+    projectPath: Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\84\84cfc5606dabffb409ebf04822f7c89a
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\84\84cfc5606dabffb409ebf04822f7c89a
+    projectPath: Library\metadata\84\84cfc5606dabffb409ebf04822f7c89a
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\84\84cfc5606dabffb409ebf04822f7c89a.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\84\84cfc5606dabffb409ebf04822f7c89a.info
+    projectPath: Library\metadata\84\84cfc5606dabffb409ebf04822f7c89a.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: UnityProject\Library\metadata\96\96131906495ea8549a1dd3584f40d667
     fullPath: F:\git\VRTD\UnityProject\Library\metadata\96\96131906495ea8549a1dd3584f40d667
     projectPath: Library\metadata\96\96131906495ea8549a1dd3584f40d667
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\b2\b244753f39f5d46a28070864c83e710a.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\b2\b244753f39f5d46a28070864c83e710a.info
+    projectPath: Library\metadata\b2\b244753f39f5d46a28070864c83e710a.info
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\d3\d388b5cdd6544499b937aee7fbc4b289.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\d3\d388b5cdd6544499b937aee7fbc4b289.info
+    projectPath: Library\metadata\d3\d388b5cdd6544499b937aee7fbc4b289.info
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\da\da014f7bcf815d042b8331961d9172ab
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\da\da014f7bcf815d042b8331961d9172ab
+    projectPath: Library\metadata\da\da014f7bcf815d042b8331961d9172ab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\da\da014f7bcf815d042b8331961d9172ab.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\da\da014f7bcf815d042b8331961d9172ab.info
+    projectPath: Library\metadata\da\da014f7bcf815d042b8331961d9172ab.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\fa\fa1af85973bb8f64386e299e2a65af24
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\fa\fa1af85973bb8f64386e299e2a65af24
+    projectPath: Library\metadata\fa\fa1af85973bb8f64386e299e2a65af24
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\fa\fa1af85973bb8f64386e299e2a65af24.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\fa\fa1af85973bb8f64386e299e2a65af24.info
+    projectPath: Library\metadata\fa\fa1af85973bb8f64386e299e2a65af24.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\BuiltinAssemblies.stamp
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\BuiltinAssemblies.stamp
+    projectPath: Library\ScriptAssemblies\BuiltinAssemblies.stamp
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\ScriptAssemblies\Oculus.VR.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Oculus.VR.dll
+    projectPath: Library\ScriptAssemblies\Oculus.VR.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Oculus.VR.Editor.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Oculus.VR.Editor.dll
+    projectPath: Library\ScriptAssemblies\Oculus.VR.Editor.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Oculus.VR.Scripts.Editor.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Oculus.VR.Scripts.Editor.dll
+    projectPath: Library\ScriptAssemblies\Oculus.VR.Scripts.Editor.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
+    projectPath: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+    projectPath: Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
+    projectPath: Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+    projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+    projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll
+    projectPath: Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -136,24 +292,24 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Oculus.VR.csproj
-    fullPath: F:\git\VRTD\UnityProject\Oculus.VR.csproj
-    projectPath: Oculus.VR.csproj
+  - path: UnityProject\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+    fullPath: F:\git\VRTD\UnityProject\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+    projectPath: obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Oculus.VR.Editor.csproj
-    fullPath: F:\git\VRTD\UnityProject\Oculus.VR.Editor.csproj
-    projectPath: Oculus.VR.Editor.csproj
+  - path: UnityProject\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+    fullPath: F:\git\VRTD\UnityProject\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+    projectPath: obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Oculus.VR.Scripts.Editor.csproj
-    fullPath: F:\git\VRTD\UnityProject\Oculus.VR.Scripts.Editor.csproj
-    projectPath: Oculus.VR.Scripts.Editor.csproj
+  - path: UnityProject\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
+    fullPath: F:\git\VRTD\UnityProject\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
+    projectPath: obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    indexStatus: 1
+    workTreeStatus: 1
   - path: UnityProject\Temp\__Backupscenes\0.backup
     fullPath: F:\git\VRTD\UnityProject\Temp\__Backupscenes\0.backup
     projectPath: Temp\__Backupscenes\0.backup
@@ -170,35 +326,137 @@ MonoBehaviour:
     fullPath: F:\git\VRTD\UnityProject\Temp\UnityLockfile
     projectPath: Temp\UnityLockfile
     originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Temp\UnityTempFile-0eb37c1e3aed31549ba2c056555f28c9
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-0eb37c1e3aed31549ba2c056555f28c9
+    projectPath: Temp\UnityTempFile-0eb37c1e3aed31549ba2c056555f28c9
+    originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: VRTD.sln
-    fullPath: F:\git\VRTD\VRTD.sln
-    projectPath: ..\VRTD.sln
+  - path: UnityProject\Temp\UnityTempFile-1c89e3b1f20b2d44fa661c3924203f8d
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-1c89e3b1f20b2d44fa661c3924203f8d
+    projectPath: Temp\UnityTempFile-1c89e3b1f20b2d44fa661c3924203f8d
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: VRTDLevelEditor\bin\Debug\VRTDGameplay.dll
-    fullPath: F:\git\VRTD\VRTDLevelEditor\bin\Debug\VRTDGameplay.dll
-    projectPath: ..\VRTDLevelEditor\bin\Debug\VRTDGameplay.dll
+  - path: UnityProject\Temp\UnityTempFile-1cca61d01bed57f41b9765ed08ccc58b
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-1cca61d01bed57f41b9765ed08ccc58b
+    projectPath: Temp\UnityTempFile-1cca61d01bed57f41b9765ed08ccc58b
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-28cb942a2a803a44887f3f6c8a0efb14
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-28cb942a2a803a44887f3f6c8a0efb14
+    projectPath: Temp\UnityTempFile-28cb942a2a803a44887f3f6c8a0efb14
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-2d4d3c1f2dd24274680cfe7dc3a5f3d7
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-2d4d3c1f2dd24274680cfe7dc3a5f3d7
+    projectPath: Temp\UnityTempFile-2d4d3c1f2dd24274680cfe7dc3a5f3d7
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-41b78534f8a59cb4fafd89ceb3192267
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-41b78534f8a59cb4fafd89ceb3192267
+    projectPath: Temp\UnityTempFile-41b78534f8a59cb4fafd89ceb3192267
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-57d31f00f51338b428ea0e176e7f324d
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-57d31f00f51338b428ea0e176e7f324d
+    projectPath: Temp\UnityTempFile-57d31f00f51338b428ea0e176e7f324d
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-638d80f3eb46ea4468d5ce7a5de9c8b9
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-638d80f3eb46ea4468d5ce7a5de9c8b9
+    projectPath: Temp\UnityTempFile-638d80f3eb46ea4468d5ce7a5de9c8b9
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
-  - path: VRTDLevelEditor\bin\Debug\VRTDLevelEditor.exe
-    fullPath: F:\git\VRTD\VRTDLevelEditor\bin\Debug\VRTDLevelEditor.exe
-    projectPath: ..\VRTDLevelEditor\bin\Debug\VRTDLevelEditor.exe
+    workTreeStatus: 5
+  - path: UnityProject\Temp\UnityTempFile-649b36d8c56abf94c8c510828894678d
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-649b36d8c56abf94c8c510828894678d
+    projectPath: Temp\UnityTempFile-649b36d8c56abf94c8c510828894678d
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.csprojAssemblyReference.cache
-    fullPath: F:\git\VRTD\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.csprojAssemblyReference.cache
-    projectPath: ..\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.csprojAssemblyReference.cache
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-65aabdea6f41bb14f827b81f1fbd5221
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-65aabdea6f41bb14f827b81f1fbd5221
+    projectPath: Temp\UnityTempFile-65aabdea6f41bb14f827b81f1fbd5221
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.exe
-    fullPath: F:\git\VRTD\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.exe
-    projectPath: ..\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.exe
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-67f1af4fee7d92f49a4c9654f9d6a7b7
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-67f1af4fee7d92f49a4c9654f9d6a7b7
+    projectPath: Temp\UnityTempFile-67f1af4fee7d92f49a4c9654f9d6a7b7
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-6fddf04b2897c7d4fa47428f28268801
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-6fddf04b2897c7d4fa47428f28268801
+    projectPath: Temp\UnityTempFile-6fddf04b2897c7d4fa47428f28268801
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-801f6902b0114b341811659fc6308fa1
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-801f6902b0114b341811659fc6308fa1
+    projectPath: Temp\UnityTempFile-801f6902b0114b341811659fc6308fa1
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-873c7c9a4f40f3744860a4ca29fa1f4a
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-873c7c9a4f40f3744860a4ca29fa1f4a
+    projectPath: Temp\UnityTempFile-873c7c9a4f40f3744860a4ca29fa1f4a
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-9c01682fdd6d0cb4c8eef9343960b247
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-9c01682fdd6d0cb4c8eef9343960b247
+    projectPath: Temp\UnityTempFile-9c01682fdd6d0cb4c8eef9343960b247
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-a15ceb6546013a544b55dbdc803bb8f4
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-a15ceb6546013a544b55dbdc803bb8f4
+    projectPath: Temp\UnityTempFile-a15ceb6546013a544b55dbdc803bb8f4
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-a95df245a7bb13e4eaee2332ee82dd72
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-a95df245a7bb13e4eaee2332ee82dd72
+    projectPath: Temp\UnityTempFile-a95df245a7bb13e4eaee2332ee82dd72
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-ce8cc32497330b34f86d26fb0fc9339e
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-ce8cc32497330b34f86d26fb0fc9339e
+    projectPath: Temp\UnityTempFile-ce8cc32497330b34f86d26fb0fc9339e
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-f1d1b8fa5195ed1429b7e88dd3fbf5ca
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-f1d1b8fa5195ed1429b7e88dd3fbf5ca
+    projectPath: Temp\UnityTempFile-f1d1b8fa5195ed1429b7e88dd3fbf5ca
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-f7bda1c78bfd08247a21fdd033aaa908
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-f7bda1c78bfd08247a21fdd033aaa908
+    projectPath: Temp\UnityTempFile-f7bda1c78bfd08247a21fdd033aaa908
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-f7d3481dceab5184d973778eef32502d
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-f7d3481dceab5184d973778eef32502d
+    projectPath: Temp\UnityTempFile-f7d3481dceab5184d973778eef32502d
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-f89f42ba263c23d4d87d06f92793c9ec
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-f89f42ba263c23d4d87d06f92793c9ec
+    projectPath: Temp\UnityTempFile-f89f42ba263c23d4d87d06f92793c9ec
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1

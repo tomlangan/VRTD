@@ -287,6 +287,47 @@ namespace VRTD.Gameplay
             }
         }
 
+
+        static string LevelToPath(string level)
+        {
+            return RootLevelPath + Path.DirectorySeparatorChar + level + ".lvl";
+        }
+
+        public static List<string> GetAllLevels()
+        {
+            List<string> levelList = new List<string>();
+
+            string[] files = Directory.GetFiles(RootLevelPath);
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                if (files[i].EndsWith(".lvl"))
+                {
+                    levelList.Add(Path.GetFileNameWithoutExtension(files[i]));
+                }
+            }
+
+            levelList.Sort();
+
+            return levelList;
+        }
+
+        public static LevelDescription GetLevel(string name)
+        {
+            LevelDescription fromJson = null;
+            string path = LevelToPath(name);
+
+            if (File.Exists(path))
+            {
+                StreamReader reader = new StreamReader(path);
+                string json = reader.ReadToEnd();
+                fromJson = JsonConvert.DeserializeObject<LevelDescription>(json);
+                reader.Close();
+                reader.Dispose();
+            }
+
+            return fromJson;
+        }
         public static List<Turret> GetTurrets()
         {
             List<Turret> fromJson = null;

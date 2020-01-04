@@ -8,7 +8,7 @@ using VRTD.Gameplay;
 
 
 
-public enum LevelState { None, Loading, WaveCountdown, Playing, StatsScreen }
+public enum LevelState { None, Loading, LevelSelect, WaveCountdown, Playing, StatsScreen }
 
 public class Level : MonoBehaviour
 {
@@ -23,6 +23,8 @@ public class Level : MonoBehaviour
     public GameObject BasicBullet;
     public GameObject FireBullet;
     public GameObject IceBullet;
+    public ListUI ListUITemplate;
+    public PlayerTargetManager TargetManager;
     public GameObject TurretSelectUI;
     public InputPointer Pointer;
     public GameplayUIState GameplayUI;
@@ -77,16 +79,15 @@ public class Level : MonoBehaviour
                         IceBullet
                         );
 
-                    LoadLevel();
 
-
-                    InitializeUISettings();
-
-                    Debug.Log("State ==> WaveCountdown");
-                    State = LevelState.WaveCountdown;
-                    CountdownStartTime = GameTime;
+                    Debug.Log("State ==> LevelSelect");
+                    State = LevelState.LevelSelect;
+                    ShowLevelSelectUI();
                     Loading = false;
                 }
+                break;
+
+            case LevelState.LevelSelect:
                 break;
 
             case LevelState.WaveCountdown:
@@ -98,22 +99,27 @@ public class Level : MonoBehaviour
                 break;
 
             case LevelState.StatsScreen:
-
+                // For now, select level again
+                Debug.Log("State ==> LevelSelect");
+                State = LevelState.LevelSelect;
+                ShowLevelSelectUI();
                 break;
         }
     }
 
-    void LoadLevel()
+    void LoadLevel(string levelName)
     {
         GameTime = 0.0F;
 
-        LevelDesc = LevelLoader.GetTestLevel();
+        LevelDesc = LevelLoader.GetLevel(levelName);
         LevelLoader.LoadAndValidateLevel(LevelDesc);
         Waves = new WaveManager(LevelDesc);
         Turrets = new TurretManager(LevelDesc);
         Projectiles = new ProjectileManager();
         Debug.Log("Creating road objects");
         GameObjectFactory.CreateMapObjects(LevelDesc, RoadObject, TerrainObject, TurretSpaceObject);
+
+        InitializeGameplayUISettings();
     }
 
 
@@ -188,7 +194,43 @@ public class Level : MonoBehaviour
         return string.Format("{0:0}:{1:00}", minutes, seconds);
     }
 
-    private void InitializeUISettings()
+
+    private void ShowLevelSelectUI()
+    {
+        ListUIParams uiparams = new ListUIParams();
+        uiparams.Title = "Select a Level";
+
+        List<string> levels = LevelLoader.GetAllLevels();
+
+        for (int i = 0; i < levels.Count; i++)
+        {
+            uiparams.Options.Add(levels[i]);
+        }
+
+        uiparams.Callback = OnLevelSelected;
+
+        ListUI ui = Instantiate<ListUI>(ListUITemplate);
+
+        ui.Create(uiparams);
+
+        Vector3 uiPos = new Vector3(0.0F, 5.0F, -8.0F);
+        Vector3 uiForward = (uiPos - TargetManager.transform.position).normalized;
+
+        ui.transform.gameObject.SetActive(true);
+        ui.transform.gameObject.transform.position = uiPos;
+        ui.transform.gameObject.transform.forward = uiForward;
+    }
+
+    private bool OnLevelSelected(int index, string levelName)
+    {
+        LoadLevel(levelName);
+        CountdownStartTime = GameTime;
+        State = LevelState.WaveCountdown;
+
+        return false;
+    }
+
+    private void InitializeGameplayUISettings()
     {
         ListUIParams TurretSelectParams = new ListUIParams();
         TurretSelectParams.Title = "Select Turret";
@@ -213,6 +255,7 @@ public class Level : MonoBehaviour
 
         GameplayUI.TurretOptionUIParams = TurretOptionsParams;
     }
+
 
     private bool OnTurretSelected(int index, string turretName)
     {
