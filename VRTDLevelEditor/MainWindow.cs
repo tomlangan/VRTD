@@ -154,7 +154,8 @@ namespace VRTD.LevelEditor
                     ((EnemyEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
                     break;
                 case EditorMode.Projectile:
-                    EditorWidget = new LevelEditLayout();
+                    EditorWidget = new ProjectileEditLayout();
+                    ((ProjectileEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
                     break;
             }
 
@@ -201,6 +202,9 @@ namespace VRTD.LevelEditor
                         break;
                     case EditorMode.Enemy:
                         ((EnemyEditLayout)EditorWidget).SetEnemy(selectedStr);
+                        break;
+                    case EditorMode.Projectile:
+                        ((ProjectileEditLayout)EditorWidget).SetProjectile(selectedStr);
                         break;
                 }
             }
