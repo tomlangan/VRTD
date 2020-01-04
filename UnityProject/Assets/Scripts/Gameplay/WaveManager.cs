@@ -145,7 +145,7 @@ namespace VRTD.Gameplay
 
         public WaveInstance(LevelDescription levelDesc, EnemyWave waveDescription, int roadSegments, float gameTime)
         {
-            EnemyType = LevelLoader.LookupEnemy(Desc.Enemy);
+            EnemyType = LevelLoader.LookupEnemy(waveDescription.Enemy);
             LevelDesc = levelDesc;
             Desc = waveDescription;
             Enemies = new List<EnemyInstance>();

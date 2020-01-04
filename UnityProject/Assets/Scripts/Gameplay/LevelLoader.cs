@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.IO;
+using Newtonsoft.Json;
 #if LEVEL_EDITOR
 using System.Numerics;
 
@@ -36,9 +38,45 @@ namespace VRTD.Gameplay
 
     public class LevelLoader
     {
-        private static List<Turret> Turrets = null;
-        private static List<EnemyDescription> Enemies = null;
-        private static List<Projectile> Projectiles = null;
+        static string RootLevelPath = "Assets" + Path.DirectorySeparatorChar + "Levels";
+        private static List<Turret> turrets = null;
+        private static List<EnemyDescription> enemies = null;
+        private static List<Projectile> projectiles = null;
+
+        public static List<Turret> Turrets
+        {
+            get
+            {
+                if (null == turrets)
+                {
+                    turrets = GetTurrets();
+                }
+                return turrets;
+            }
+        }
+        public static List<EnemyDescription> Enemies
+        {
+            get
+            {
+                if (null == enemies)
+                {
+                    enemies = GetEnemies();
+                }
+                return enemies;
+            }
+        }
+        public static List<Projectile> Projectiles
+        {
+            get
+            {
+                if (null == projectiles)
+                {
+                    projectiles = GetProjectiles();
+                }
+                return projectiles;
+            }
+        }
+
 
         enum WalkDir { Up, Down, Left, Right, None };
 
@@ -251,21 +289,19 @@ namespace VRTD.Gameplay
 
         public static List<Turret> GetTurrets()
         {
-            if (null == Turrets)
-            {
+            List<Turret> fromJson = null;
+            string path = RootLevelPath + Path.DirectorySeparatorChar + "turrets.dic";
 
-                /*
-                FileStream fs = File.Open(DictionaryToPath("turrets"), FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(fs);
-                string jsonBlob = sr.ReadToEnd();
-                turrets = JsonConvert.DeserializeObject<List<Turret>>(jsonBlob);
-                sr.Close();
-                fs.Close();
-                fs.Dispose();
-                */
+            if (File.Exists(path))
+            {
+                StreamReader reader = new StreamReader(path);
+                string json = reader.ReadToEnd();
+                fromJson = JsonConvert.DeserializeObject<List<Turret>>(json);
+                reader.Close();
+                reader.Dispose();
             }
 
-            return Turrets;
+            return fromJson;
         }
 
         public static Turret LookupTurret(string name)
@@ -288,28 +324,26 @@ namespace VRTD.Gameplay
 
         public static List<EnemyDescription> GetEnemies()
         {
-            if (null == Enemies)
-            {
+            List<EnemyDescription> fromJson = null;
+            string path = RootLevelPath + Path.DirectorySeparatorChar + "enemies.dic";
 
-                /*
-                FileStream fs = File.Open(DictionaryToPath("enemies"), FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(fs);
-                string jsonBlob = sr.ReadToEnd();
-                enemies = JsonConvert.DeserializeObject<List<EnemyDescription>>(jsonBlob);
-                sr.Close();
-                fs.Close();
-                fs.Dispose();
-                */
+            if (File.Exists(path))
+            {
+                StreamReader reader = new StreamReader(path);
+                string json = reader.ReadToEnd();
+                fromJson = JsonConvert.DeserializeObject<List<EnemyDescription>>(json);
+                reader.Close();
+                reader.Dispose();
             }
-            
-            return Enemies;
+
+            return fromJson;
         }
 
 
         public static EnemyDescription LookupEnemy(string name)
         {
             EnemyDescription found = null;
-            if (null != Turrets)
+            if (null != Enemies)
             {
                 for (int i = 0; i < Enemies.Count; i++)
                 {
@@ -326,20 +360,20 @@ namespace VRTD.Gameplay
 
         public static List<Projectile> GetProjectiles()
         {
-            if (null == Projectiles)
+            List<Projectile> fromJson = null;
+
+            string path = RootLevelPath + Path.DirectorySeparatorChar + "projectiles.dic";
+
+            if (File.Exists(path))
             {
-                /*
-                FileStream fs = File.Open(DictionaryToPath("projectiles"), FileMode.OpenOrCreate);
-                StreamReader sr = new StreamReader(fs);
-                string jsonBlob = sr.ReadToEnd();
-                projectiles = JsonConvert.DeserializeObject<List<Projectile>>(jsonBlob);
-                sr.Close();
-                fs.Close();
-                fs.Dispose();
-                */
+                StreamReader reader = new StreamReader(path);
+                string json = reader.ReadToEnd();
+                fromJson = JsonConvert.DeserializeObject<List<Projectile>>(json);
+                reader.Close();
+                reader.Dispose();
             }
 
-            return Projectiles;
+            return fromJson;
         }
 
 
@@ -488,9 +522,9 @@ namespace VRTD.Gameplay
 
             level.AllowedTurrets.Add("Basic Turret");
 
-            level.AllowedTurrets.Add("Ice Bullet");
+            level.AllowedTurrets.Add("Ice Shot");
 
-            level.AllowedTurrets.Add("Fire Bullet");
+            level.AllowedTurrets.Add("Fire Shot");
 
 
 

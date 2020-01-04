@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRTDLevelEditor", "VRTDLevelEditor.csproj", "{7D102803-C7FB-4F02-82D4-EF79C1284FB9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRTDGameplay", "..\UnityProject\Assets\Scripts\Gameplay\VRTDGameplay.csproj", "{9CAA4218-77F2-4DEA-B68E-9A371446A218}"
@@ -11,14 +12,20 @@ Global
 		Release|anycpu = Release|anycpu
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D102803-C7FB-4F02-82D4-EF79C1284FB9}.Debug|anycpu.ActiveCfg = Debug|anycpu
-		{7D102803-C7FB-4F02-82D4-EF79C1284FB9}.Debug|anycpu.Build.0 = Debug|anycpu
-		{7D102803-C7FB-4F02-82D4-EF79C1284FB9}.Release|anycpu.ActiveCfg = Release|anycpu
-		{7D102803-C7FB-4F02-82D4-EF79C1284FB9}.Release|anycpu.Build.0 = Release|anycpu
-		{9CAA4218-77F2-4DEA-B68E-9A371446A218}.Debug|anycpu.ActiveCfg = Debug|anycpu
-		{9CAA4218-77F2-4DEA-B68E-9A371446A218}.Debug|anycpu.Build.0 = Debug|anycpu
-		{9CAA4218-77F2-4DEA-B68E-9A371446A218}.Release|anycpu.ActiveCfg = Release|anycpu
-		{9CAA4218-77F2-4DEA-B68E-9A371446A218}.Release|anycpu.Build.0 = Release|anycpu
+		{7D102803-C7FB-4F02-82D4-EF79C1284FB9}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{7D102803-C7FB-4F02-82D4-EF79C1284FB9}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{7D102803-C7FB-4F02-82D4-EF79C1284FB9}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{7D102803-C7FB-4F02-82D4-EF79C1284FB9}.Release|anycpu.Build.0 = Release|Any CPU
+		{9CAA4218-77F2-4DEA-B68E-9A371446A218}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{9CAA4218-77F2-4DEA-B68E-9A371446A218}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{9CAA4218-77F2-4DEA-B68E-9A371446A218}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{9CAA4218-77F2-4DEA-B68E-9A371446A218}.Release|anycpu.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B74EE8E5-2308-4A09-8DD5-2EE506959788}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

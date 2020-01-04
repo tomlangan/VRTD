@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,6 +35,9 @@
     <IntermediateOutputPath>obj\anycpu\Release</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\VRTDLevelEditor\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors" />
@@ -46,6 +49,9 @@
     <Compile Include="TurretManager.cs" />
     <Compile Include="ProjectileManager.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>
@@ -56,7 +62,8 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-<Target Name="AfterBuild">
+  <Target Name="AfterBuild">
     <!-- Remove obj folder -->
-    <RemoveDir Directories="$(BaseIntermediateOutputPath)" /></Target>
+    <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+  </Target>
 </Project>
