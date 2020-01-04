@@ -19,6 +19,10 @@ namespace VRTD.LevelEditor
         Entry ErrorEntry;
         TreeView WavesTree;
         ListStore WavesModel;
+        TreeView AvailTurretTree;
+        ListStore AvailTurretModel;
+        TreeView AllowedTurretTree;
+        ListStore AllowedTurretModel;
 
         public LevelEditLayout() : base(null, null)
         {
@@ -138,11 +142,164 @@ namespace VRTD.LevelEditor
             Layout.PackStart(ErrorEntry, false, false, 10);
             ErrorEntry.Show();
 
-
             ValidateDescriptionAndReportIssues();
+
+            //
+            // Allowed turrets
+            //
+
+            field = new HBox(true, 10);
+            Layout.PackStart(field, true, false, 0);
+            field.Show();
+
+            AvailTurretTree = new TreeView();
+            AllowedTurretTree = new TreeView();
+
+            TreeViewColumn availCol = new TreeViewColumn();
+            TreeViewColumn allowedCol = new TreeViewColumn();
+
+            CellRendererText availCellrenderer = new CellRendererText();
+            availCellrenderer.Editable = false;
+
+            CellRendererText allowedCellRenderer = new CellRendererText();
+            allowedCellRenderer.Editable = false;
+
+            availCol.PackStart(availCellrenderer, true);
+            availCol.Title = "Not allowed turrets";
+            availCol.AddAttribute(availCellrenderer, "text", 1);
+            AvailTurretTree.AppendColumn(availCol);
+
+
+            allowedCol.PackStart(allowedCellRenderer, true);
+            allowedCol.Title = "Allowed Turrets";
+            allowedCol.AddAttribute(allowedCellRenderer, "text", 1);
+            AllowedTurretTree.AppendColumn(allowedCol);
+
+            AvailTurretModel = new ListStore(typeof(int), typeof(string));
+            AvailTurretTree.Model = AvailTurretModel;
+            AvailTurretTree.Selection.Mode = SelectionMode.Multiple;
+
+            AllowedTurretModel = new ListStore(typeof(int), typeof(string));
+            AllowedTurretTree.Model = AllowedTurretModel;
+            AllowedTurretTree.Selection.Mode = SelectionMode.Multiple;
+
+            field.PackStart(AvailTurretTree, true, true, 0);
+            AvailTurretTree.Show();
+
+            VBox turretButtons = new VBox(true, 0);
+            field.PackStart(turretButtons, true, true, 0);
+            turretButtons.Show();
+
+            b = new Button(">>");
+            turretButtons.PackStart(b, false, false, 0);
+            b.Clicked += AddAllTurrets_Clicked;
+            b.Show();
+
+            b = new Button(">");
+            turretButtons.PackStart(b, false, false, 0);
+            b.Clicked += AddSelectedTurrets_Clicked;
+            b.Show();
+
+            b = new Button("<");
+            turretButtons.PackStart(b, false, false, 0);
+            b.Clicked += RemoveSelectedTurrets_Clicked;
+            b.Show();
+
+            b = new Button("<<");
+            turretButtons.PackStart(b, false, false, 0);
+            b.Clicked += RemoveAllTurrets_Clicked;
+            b.Show();
+
+            field.PackEnd(AllowedTurretTree, true, true, 0);
+            AllowedTurretTree.Show();
+
+            PopulateTurretTrees(desc);
+
 
             Show();
             ShowAll();
+        }
+
+        private void RemoveAllTurrets_Clicked(object sender, EventArgs e)
+        {
+            LevelDesc.AllowedTurrets.RemoveRange(0, LevelDesc.AllowedTurrets.Count);
+            PopulateTurretTrees(LevelDesc);
+            WriteChanges();
+        }
+
+        private void RemoveSelectedTurrets_Clicked(object sender, EventArgs e)
+        {
+            TreePath[] treePath = AllowedTurretTree.Selection.GetSelectedRows();
+
+            for (int i = treePath.Length; i > 0; i--)
+            {
+                TreeIter iter;
+                AllowedTurretModel.GetIter(out iter, treePath[(i - 1)]);
+
+                string turretName = (string)AllowedTurretModel.GetValue(iter, 1);
+                LevelDesc.AllowedTurrets.Remove(turretName);
+            }
+
+            PopulateTurretTrees(LevelDesc);
+            WriteChanges();
+        }
+
+        private void AddSelectedTurrets_Clicked(object sender, EventArgs e)
+        {
+            TreePath[] treePath = AvailTurretTree.Selection.GetSelectedRows();
+
+            for (int i = treePath.Length; i > 0; i--)
+            {
+                TreeIter iter;
+                AvailTurretModel.GetIter(out iter, treePath[(i - 1)]);
+
+                string turretName = (string)AvailTurretModel.GetValue(iter, 1);
+                LevelDesc.AllowedTurrets.Add(turretName);
+            }
+
+            PopulateTurretTrees(LevelDesc);
+            WriteChanges();
+        }
+
+        private void AddAllTurrets_Clicked(object sender, EventArgs e)
+        {
+            LevelDesc.AllowedTurrets.RemoveRange(0, LevelDesc.AllowedTurrets.Count);
+            List<Turret> AvailTurrets = LevelManager.GetTurrets();
+            for (int i = 0; i < AvailTurrets.Count; i++)
+            {
+                LevelDesc.AllowedTurrets.Add(AvailTurrets[i].Name);
+            }
+            PopulateTurretTrees(LevelDesc);
+            WriteChanges();
+        }
+
+        private void PopulateTurretTrees(LevelDescription desc)
+        {
+            AvailTurretModel.Clear();
+            AllowedTurretModel.Clear();
+
+            List<Turret> AvailTurrets = LevelManager.GetTurrets();
+
+            for (int i = 0; i < desc.AllowedTurrets.Count; i++)
+            {
+                for (int j = 0; j < AvailTurrets.Count; j++)
+                {
+                    if (AvailTurrets[j].Name == desc.AllowedTurrets[i])
+                    {
+                        AvailTurrets.Remove(AvailTurrets[j]);
+                    }
+                }
+
+                object[] values = { i, desc.AllowedTurrets[i] };
+                AllowedTurretModel.AppendValues(values);
+            }
+            
+
+            for (int j = 0; j < AvailTurrets.Count; j++)
+            {
+                object[] values = { j, AvailTurrets[j].Name };
+                AvailTurretModel.AppendValues(values);
+            }
         }
 
         private void RemoveWave_Clicked(object sender, EventArgs e)
