@@ -361,6 +361,7 @@
     <Compile Include="Assets\Scripts\TargetManager\VRInputHandler.cs" />
     <Compile Include="Assets\Scripts\UI\GameplayUIState.cs" />
     <Compile Include="Assets\Scripts\UI\ListUI.cs" />
+    <Compile Include="Assets\Scripts\UI\MessageUI.cs" />
     <Compile Include="Assets\Scripts\UI\UIPointerInputModule.cs" />
     <Compile Include="Assets\VRUI - Material Design\Demo\SampleSceneManager.cs" />
     <Compile Include="Assets\VRUI - Material Design\Scripts\VRUIButtonIconToggle.cs" />

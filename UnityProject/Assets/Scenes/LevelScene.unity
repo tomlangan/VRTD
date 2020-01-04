@@ -288,6 +288,8 @@ MonoBehaviour:
   TurretSelectUI: {fileID: 0}
   Pointer: {fileID: 275260301}
   GameplayUI: {fileID: 548235967}
+  MessageUITemplate: {fileID: 2012146860889770614, guid: 580ec98a153531f4d8d5b365db79a8f2,
+    type: 3}
   GameTime: 0
   CountdownStartTime: 0
   State: 0
@@ -1262,7 +1264,7 @@ MonoBehaviour:
   DesktopInput: {fileID: 573466149}
   VRInput: {fileID: 2030420360}
   LocalAvatar: {fileID: 2064171106}
-  Target: 0
+  Target: 1
 --- !u!1001 &1827883599
 PrefabInstance:
   m_ObjectHideFlags: 0

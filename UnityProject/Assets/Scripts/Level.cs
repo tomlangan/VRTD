@@ -28,6 +28,7 @@ public class Level : MonoBehaviour
     public GameObject TurretSelectUI;
     public InputPointer Pointer;
     public GameplayUIState GameplayUI;
+    public MessageUI MessageUITemplate;
 
     //public UnityEngine.UI.Text TimerUIText;
 
@@ -42,6 +43,7 @@ public class Level : MonoBehaviour
     public LevelState State = LevelState.None;
     bool Loading = false;
 
+    private MessageUI CountdownUI;
 
     // Start is called before the first frame update
     void Start()
@@ -128,14 +130,24 @@ public class Level : MonoBehaviour
         Debug.Assert((GameTime - CountdownStartTime) > 0);
         //TimerUIText.text = FormatTime(WAVE_COUNTDOWN_TIME - (GameTime - CountdownStartTime));
 
-        if ((GameTime - CountdownStartTime) > WAVE_COUNTDOWN_TIME)
-        {
-            Waves.AdvanceToNextWave(GameTime);
+        float elapsed = GameTime - CountdownStartTime;
 
+        if (elapsed < WAVE_COUNTDOWN_TIME)
+        {
+            int secsRemaining = (int)(WAVE_COUNTDOWN_TIME - elapsed + 0.5F);
+            CountdownUI.Message = secsRemaining.ToString();
+        }
+        else
+        {
+            CountdownUI.transform.gameObject.SetActive(false);
+            CountdownUI.enabled = false;
+
+            Waves.AdvanceToNextWave(GameTime);
             Debug.Log("State ==> Playing");
             State = LevelState.Playing;
         }
     }
+
     void TickGameplay()
     {
         Waves.CurrentWave.Advance(GameTime);
@@ -152,6 +164,7 @@ public class Level : MonoBehaviour
         {
 
             Debug.Log("State ==> WaveCountdown");
+            ShowCountdownUI();
             State = LevelState.WaveCountdown;
             CountdownStartTime = GameTime;
         }
@@ -226,9 +239,27 @@ public class Level : MonoBehaviour
         LoadLevel(levelName);
         CountdownStartTime = GameTime;
         State = LevelState.WaveCountdown;
+        ShowCountdownUI();
 
         return false;
     }
+
+
+    private void ShowCountdownUI()
+    {
+        CountdownUI = Instantiate<MessageUI>(MessageUITemplate);
+
+        CountdownUI.Title = "Get ready!";
+        CountdownUI.Message = "5";
+
+        Vector3 uiPos = new Vector3(0.0F, 5.0F, -8.0F);
+        Vector3 uiForward = (uiPos - TargetManager.transform.position).normalized;
+
+        CountdownUI.transform.gameObject.SetActive(true);
+        CountdownUI.transform.gameObject.transform.position = uiPos;
+        CountdownUI.transform.gameObject.transform.forward = uiForward;
+    }
+
 
     private void InitializeGameplayUISettings()
     {
