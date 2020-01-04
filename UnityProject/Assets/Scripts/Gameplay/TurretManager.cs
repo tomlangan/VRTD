@@ -115,9 +115,11 @@ namespace VRTD.Gameplay
             LevelDesc = levelDesc;
         }
 
-        public void AddTurret(Turret turretType, MapPos position, ProjectileManager projectiles)
+        public void AddTurret(string turretType, MapPos position, ProjectileManager projectiles)
         {
-            Turrets.Add(new TurretInstance(turretType, position, LevelDesc, projectiles));
+            Turret turret = LevelLoader.LookupTurret(turretType);
+
+            Turrets.Add(new TurretInstance(turret, position, LevelDesc, projectiles));
             Debug.Log("Turret added at " + position.x + "," + position.z);
         }
 

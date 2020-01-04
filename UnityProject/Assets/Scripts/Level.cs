@@ -195,7 +195,7 @@ public class Level : MonoBehaviour
 
         for (int i = 0; i < LevelDesc.AllowedTurrets.Count; i++)
         {
-            TurretSelectParams.Options.Add(LevelDesc.AllowedTurrets[i].Name);
+            TurretSelectParams.Options.Add(LevelDesc.AllowedTurrets[i]);
         }
 
         TurretSelectParams.Callback = OnTurretSelected;
