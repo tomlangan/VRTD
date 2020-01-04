@@ -17,6 +17,8 @@ namespace VRTD.LevelEditor
         Table MapTable;
         Dictionary<Button, int> MapMappings;
         Entry ErrorEntry;
+        TreeView WavesTree;
+        ListStore WavesModel;
 
         public LevelEditLayout() : base(null, null)
         {
@@ -27,12 +29,16 @@ namespace VRTD.LevelEditor
         {
             GtkHelpers.FlushAllDeferredEvents();
 
+            Destroyed += LevelEditLayout_Destroyed;
+
             if (null != Layout)
             {
                 Layout.Hide();
                 Layout.Destroy();
                 Layout = null;
             }
+
+            LevelDesc = desc;
 
             Layout = new VBox(false, 0);
             AddWithViewport(Layout);
@@ -49,6 +55,78 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
+
+            WavesTree = new TreeView();
+            Layout.PackStart(WavesTree, false, false, 0);
+            WavesTree.Show();
+
+            List<EnemyDescription> enemies = LevelManager.GetEnemies();
+            ListStore comboModel = new ListStore(typeof(string));
+            ComboBox comboBox = new ComboBox(comboModel);
+            foreach (EnemyDescription enemy in enemies)
+            {
+                comboBox.AppendText(enemy.Name);
+            }
+            comboBox.Active = 0;
+
+
+            TreeViewColumn enemyCoumn = new TreeViewColumn();
+            TreeViewColumn countColumn = new TreeViewColumn();
+            TreeViewColumn difficultyColumn = new TreeViewColumn();
+
+            CellRendererCombo comboCellRenderer = new CellRendererCombo();
+            comboCellRenderer.Editable = true;
+            comboCellRenderer.Edited += ComboCellRenderer_Edited;
+            comboCellRenderer.Model = comboModel;
+            comboCellRenderer.TextColumn = 0;
+            comboCellRenderer.HasEntry = false;
+
+            CellRendererText countCellRenderer = new CellRendererText();
+            countCellRenderer.Editable = true;
+            countCellRenderer.Edited += CountCell_Edited;
+
+
+            CellRendererText difficultyCellRenderer = new CellRendererText();
+            difficultyCellRenderer.Editable = true;
+            difficultyCellRenderer.Edited += DifficultyCell_Edited;
+
+
+            enemyCoumn.PackStart(comboCellRenderer, true);
+            enemyCoumn.Title = "Enemy";
+            enemyCoumn.AddAttribute(comboCellRenderer, "text", 1);
+            WavesTree.AppendColumn(enemyCoumn);
+
+            countColumn.PackStart(countCellRenderer, true);
+            countColumn.Title = "Count";
+            countColumn.AddAttribute(countCellRenderer, "text", 2);
+            WavesTree.AppendColumn(countColumn);
+
+            difficultyColumn.PackStart(difficultyCellRenderer, true);
+            difficultyColumn.Title = "Difficulty Multiplier";
+            difficultyColumn.AddAttribute(difficultyCellRenderer, "text", 3);
+            WavesTree.AppendColumn(difficultyColumn);
+
+            WavesModel = new ListStore(typeof(int), typeof(string), typeof(int), typeof(float));
+            WavesTree.Model = WavesModel;
+            WavesTree.Selection.Mode = SelectionMode.Single;
+
+            PopulateTreeWithWaves(desc);
+
+            field = new HBox(true, 5);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
+
+            Button b = new Button("+");
+            b.Clicked += NewWave_Clicked;
+            b.Show();
+            field.PackStart(b, false, false, 0);
+
+            b = new Button("-");
+            b.Clicked += RemoveWave_Clicked;
+            b.Show();
+            field.PackStart(b, false, false, 0);
+
+
             Table map = GetFieldTable(desc);
             Layout.PackStart(map, false, true, 0);
             map.Show();
@@ -60,12 +138,122 @@ namespace VRTD.LevelEditor
             Layout.PackStart(ErrorEntry, false, false, 10);
             ErrorEntry.Show();
 
-            LevelDesc = desc;
 
             ValidateDescriptionAndReportIssues();
 
             Show();
             ShowAll();
+        }
+
+        private void RemoveWave_Clicked(object sender, EventArgs e)
+        {
+            TreeIter selected;
+            if (WavesTree.Selection.GetSelected(out selected))
+            {
+                int row = (int)WavesModel.GetValue(selected, 0);
+
+
+                MessageDialog md = new MessageDialog(null,
+                DialogFlags.Modal, MessageType.Warning,
+                ButtonsType.OkCancel, "Are you sure you want to delete wave #" + (row + 1) + "?");
+                int result = md.Run();
+                md.Destroy();
+
+                if (result == -5)
+                {
+                    LevelDesc.Waves.RemoveAt(row);
+                    WavesModel.Remove(ref selected);
+
+                    WriteChanges();
+                }
+            }
+        }
+
+        private void NewWave_Clicked(object sender, EventArgs e)
+        {
+            EnemyWave wave = new EnemyWave();
+            wave.Enemy = LevelManager.GetEnemies()[0].Name;
+            wave.Count = 10;
+            wave.DifficultyMultiplier = 1.0F;
+            LevelDesc.Waves.Add(wave);
+
+            WriteChanges();
+
+            PopulateTreeWithWaves(LevelDesc);
+        }
+
+        private void ComboCellRenderer_Edited(object o, EditedArgs args)
+        {
+            TreeIter iter;
+            if (WavesModel.GetIterFromString(out iter, args.Path))
+            {
+                int row = (int)WavesModel.GetValue(iter, 0);
+                if (args.NewText != LevelDesc.Waves[row].Enemy)
+                {
+                    WavesModel.SetValue(iter, 1, args.NewText);
+                    LevelDesc.Waves[row].Enemy = args.NewText;
+                    WriteChanges();
+                }
+            }
+        }
+
+        private void CountCell_Edited(object o, EditedArgs args)
+        {
+            TreeIter iter;
+            if (WavesModel.GetIterFromString(out iter, args.Path))
+            {
+                try
+                {
+                    int newValue = int.Parse(args.NewText);
+                    int row = (int)WavesModel.GetValue(iter, 0);
+                    int currentValue = LevelDesc.Waves[row].Count;
+                    if (newValue != currentValue)
+                    {
+                        WavesModel.SetValue(iter, 2, newValue);
+                        LevelDesc.Waves[row].Count = newValue;
+                        WriteChanges();
+                    }
+                }
+                catch (Exception ex) { }
+            }
+        }
+
+
+        private void DifficultyCell_Edited(object o, EditedArgs args)
+        {
+            TreeIter iter;
+            if (WavesModel.GetIterFromString(out iter, args.Path))
+            {
+                try
+                {
+                    float newValue = float.Parse(args.NewText);
+                    int row = (int)WavesModel.GetValue(iter, 0);
+                    float currentValue = LevelDesc.Waves[row].DifficultyMultiplier;
+                    if (newValue != currentValue)
+                    {
+                        WavesModel.SetValue(iter, 3, newValue);
+                        LevelDesc.Waves[row].DifficultyMultiplier = newValue;
+                        WriteChanges();
+                    }
+                }
+                catch (Exception ex) { }
+            }
+        }
+
+        private void PopulateTreeWithWaves(LevelDescription desc)
+        {
+            WavesModel.Clear();
+
+            for (int i = 0; i < desc.Waves.Count; i++)
+            {
+                object[] values = { i, desc.Waves[i].Enemy, desc.Waves[i].Count, desc.Waves[i].DifficultyMultiplier };
+                WavesModel.AppendValues(values);
+            }
+        }
+
+        private void LevelEditLayout_Destroyed(object sender, EventArgs e)
+        {
+            GtkHelpers.FlushAllDeferredEvents();
         }
 
         private Table GetFieldTable(LevelDescription desc)
@@ -206,6 +394,10 @@ namespace VRTD.LevelEditor
 
         private void Name_Changed(object sender, EventArgs e)
         {
+            if (null == sender)
+            {
+                return;
+            }
             string newName = ((Entry)sender).Text;
             if ((newName != LevelDesc.Name) && (newName.Length > 0))
             {
@@ -222,6 +414,10 @@ namespace VRTD.LevelEditor
 
         private void Width_Changed(object sender, EventArgs e)
         {
+            if (null == sender)
+            {
+                return;
+            }
             int newIndex = ((ComboBox)sender).Active;
             int newValue = int.Parse(LayoutOptions[newIndex]);
             if (LevelDesc.FieldWidth != newValue)
@@ -238,6 +434,10 @@ namespace VRTD.LevelEditor
 
         private void Depth_Changed(object sender, EventArgs e)
         {
+            if (null == sender)
+            {
+                return;
+            }
             int newIndex = ((ComboBox)sender).Active;
             int newValue = int.Parse(LayoutOptions[newIndex]);
             if (LevelDesc.FieldDepth != newValue)

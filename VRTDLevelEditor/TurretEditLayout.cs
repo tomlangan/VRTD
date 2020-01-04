@@ -24,6 +24,8 @@ namespace VRTD.LevelEditor
         {
             GtkHelpers.FlushAllDeferredEvents();
 
+            Destroyed += TurretEditLayout_Destroyed;
+
             if (null != Layout)
             {
                 Layout.Hide();
@@ -88,6 +90,10 @@ namespace VRTD.LevelEditor
             ShowAll();
         }
 
+        private void TurretEditLayout_Destroyed(object sender, EventArgs e)
+        {
+            GtkHelpers.FlushAllDeferredEvents();
+        }
 
         private void Name_Changed(object sender, EventArgs e)
         {
@@ -153,6 +159,10 @@ namespace VRTD.LevelEditor
 
         private void Projectile_Changed(object sender, EventArgs e)
         {
+            if (null == sender)
+            {
+                return;
+            }
             int newIndex = ((ComboBox)sender).Active;
             string newValue = ProjectileNames[newIndex];
             if (Turret.Projectile != newValue)

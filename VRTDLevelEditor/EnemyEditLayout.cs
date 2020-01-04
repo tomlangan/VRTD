@@ -24,6 +24,8 @@ namespace VRTD.LevelEditor
         {
             GtkHelpers.FlushAllDeferredEvents();
 
+            Destroyed += EnemyEditLayout_Destroyed;
+
             if (null != Layout)
             {
                 Layout.Hide();
@@ -77,6 +79,10 @@ namespace VRTD.LevelEditor
             ShowAll();
         }
 
+        private void EnemyEditLayout_Destroyed(object sender, EventArgs e)
+        {
+            GtkHelpers.FlushAllDeferredEvents();
+        }
 
         private void Name_Changed(object sender, EventArgs e)
         {

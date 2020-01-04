@@ -11,7 +11,6 @@ namespace VRTD.LevelEditor
         public event TreeRefreshNeededFunc TreeRefreshNeeded;
         public Projectile Projectile { get; set; }
         public List<Projectile> Projectiles;
-        List<string> ProjectileNames;
         TreeView EffectsTree;
         ListStore EffectsModel;
         VBox Layout = null;
@@ -24,6 +23,8 @@ namespace VRTD.LevelEditor
         public void SetProjectile(string selectedStr)
         {
             GtkHelpers.FlushAllDeferredEvents();
+
+            Destroyed += ProjectileEditLayout_Destroyed;
 
             if (null != Layout)
             {
@@ -63,6 +64,8 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
+
+
             EffectsTree = new TreeView();
             Layout.PackStart(EffectsTree, false, false, 0);
             EffectsTree.Show();
@@ -75,7 +78,7 @@ namespace VRTD.LevelEditor
             }
             comboBox.Active = 0;
 
-            // Create a column for the artist name
+
             TreeViewColumn typeCoumn = new TreeViewColumn();
             TreeViewColumn impactColumn = new TreeViewColumn();
             TreeViewColumn durationColumn = new TreeViewColumn();
@@ -119,6 +122,11 @@ namespace VRTD.LevelEditor
 
             Show();
             ShowAll();
+        }
+
+        private void ProjectileEditLayout_Destroyed(object sender, EventArgs e)
+        {
+            GtkHelpers.FlushAllDeferredEvents();
         }
 
         private void ComboCellRenderer_Edited(object o, EditedArgs args)
@@ -197,7 +205,8 @@ namespace VRTD.LevelEditor
 
             for (int i = 0; i < Projectile.Effects.Count; i++)
             {
-                string effect = (Projectile.Effects[i].EffectType == ProjectileEffectType.Damage ? "Damage" : "Slow");
+                string effect = Enum.GetName(typeof(ProjectileEffectType), Projectile.Effects[i].EffectType);
+                //string effect = (Projectile.Effects[i].EffectType == ProjectileEffectType.Damage ? "Damage" : "Slow");
                 object[] values = { i, effect, Projectile.Effects[i].EffectDuration, Projectile.Effects[i].EffectImpact };
                 EffectsModel.AppendValues(values);
             }
