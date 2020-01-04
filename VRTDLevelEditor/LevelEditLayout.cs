@@ -112,7 +112,7 @@ namespace VRTD.LevelEditor
 
             PopulateTreeWithWaves(desc);
 
-            field = new HBox(true, 5);
+            field = new HBox(false, 5);
             Layout.PackStart(field, false, false, 0);
             field.Show();
 

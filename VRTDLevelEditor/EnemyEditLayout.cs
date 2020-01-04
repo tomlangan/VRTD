@@ -161,6 +161,22 @@ namespace VRTD.LevelEditor
         }
 
 
+        public void AddEnemy()
+        {
+
+            EnemyDescription enemy = new EnemyDescription();
+            enemy.Name = "New Enemy";
+            enemy.Asset = "";
+            enemy.HitPoints = 1;
+            enemy.MovementSpeed = 1.0F;
+            enemy.SpawnRate = 1.0F;
+            Enemies.Add(enemy);
+
+            WriteChanges();
+
+            TreeRefreshNeeded?.Invoke();
+        }
+
         void WriteChanges()
         {
             LevelManager.WriteEnemies(Enemies);

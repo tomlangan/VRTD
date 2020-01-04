@@ -172,6 +172,21 @@ namespace VRTD.LevelEditor
             }
         }
 
+        public void AddTurret()
+        {
+            Turret t = new Turret();
+            t.Name = "New Turret";
+            t.Asset = "";
+            t.Projectile = LevelManager.GetProjectiles()[0].Name;
+            t.Range = 1.0F;
+            t.FireRate = 1.0F;
+            Turrets.Add(t);
+
+            WriteChanges();
+
+            TreeRefreshNeeded?.Invoke();
+        }
+
         void WriteChanges()
         {
             LevelManager.WriteTurrets(Turrets);

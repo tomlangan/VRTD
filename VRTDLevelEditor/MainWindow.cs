@@ -49,6 +49,29 @@ namespace VRTD.LevelEditor
 
             CurrentMode = editorMode;
 
+
+            EditorWidget = null;
+
+            switch (editorMode)
+            {
+                case EditorMode.Level:
+                    EditorWidget = new LevelEditLayout();
+                    ((LevelEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
+                    break;
+                case EditorMode.Turret:
+                    EditorWidget = new TurretEditLayout();
+                    ((TurretEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
+                    break;
+                case EditorMode.Enemy:
+                    EditorWidget = new EnemyEditLayout();
+                    ((EnemyEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
+                    break;
+                case EditorMode.Projectile:
+                    EditorWidget = new ProjectileEditLayout();
+                    ((ProjectileEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
+                    break;
+            }
+
             TopLevelHBox = new HBox(false, 0);
             Add(TopLevelHBox);
             TopLevelHBox.Show();
@@ -64,7 +87,7 @@ namespace VRTD.LevelEditor
 
             Button addLevelButton = new Button("+");
 
-            addLevelButton.Clicked += AddLevelButton_Clicked;
+            addLevelButton.Clicked += AddButton_Clicked;
             vbox.PackStart(addLevelButton, false, false, 5);
             addLevelButton.Show();
 
@@ -137,27 +160,6 @@ namespace VRTD.LevelEditor
             modeButton.Clicked += projectile_clicked_event;
             modeHbox.PackStart(modeButton, false, false, 5);
 
-            EditorWidget = null;
-
-            switch (editorMode)
-            {
-                case EditorMode.Level:
-                    EditorWidget = new LevelEditLayout();
-                    ((LevelEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
-                    break;
-                case EditorMode.Turret:
-                    EditorWidget = new TurretEditLayout();
-                    ((TurretEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
-                    break;
-                case EditorMode.Enemy:
-                    EditorWidget = new EnemyEditLayout();
-                    ((EnemyEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
-                    break;
-                case EditorMode.Projectile:
-                    EditorWidget = new ProjectileEditLayout();
-                    ((ProjectileEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
-                    break;
-            }
 
             vbox.PackStart(EditorWidget, true, true, 5);
             EditorWidget.Show();
@@ -212,18 +214,50 @@ namespace VRTD.LevelEditor
 
         private void PopulateTreeWithLevels()
         {
+
+            string previousValue = "";
+            bool foundPrevious = false;
+            TreeIter selected;
+            if (tree.Selection.GetSelected(out selected))
+            {
+                previousValue = (string)ListModel.GetValue(selected, 0);
+            }
+            
+
             List<string> levels = LevelManager.GetLevelList();
 
             ListModel.Clear();
 
             for (int i = 0; i < levels.Count; i++)
             {
-                ListModel.AppendValues(levels[i]);
+                TreeIter itr = ListModel.AppendValues(levels[i]);
+                if (previousValue == levels[i])
+                {
+                    foundPrevious = true;
+                    selected = itr;
+                }
             }
+
+
+            if (!foundPrevious)
+            {
+                // If not, here's the default
+                ListModel.GetIterFirst(out selected);
+            }
+
+            tree.Selection.SelectIter(selected);
         }
 
         private void PopulateTreeWithTurrets()
         {
+            string previousValue = "";
+            bool foundPrevious = false;
+            TreeIter selected;
+            if (tree.Selection.GetSelected(out selected))
+            {
+                previousValue = (string)ListModel.GetValue(selected, 0);
+            }
+
             List<Turret> items = LevelManager.GetTurrets();
 
             ListModel.Clear();
@@ -232,13 +266,34 @@ namespace VRTD.LevelEditor
             {
                 for (int i = 0; i < items.Count; i++)
                 {
-                    ListModel.AppendValues(items[i].Name);
+                    TreeIter itr = ListModel.AppendValues(items[i].Name);
+                    if (previousValue == items[i].Name)
+                    {
+                        foundPrevious = true;
+                        selected = itr;
+                    }
                 }
             }
+
+            if (!foundPrevious)
+            {
+                // If not, here's the default
+                ListModel.GetIterFirst(out selected);
+            }
+
+            tree.Selection.SelectIter(selected);
         }
 
         private void PopulateTreeWithEnemies()
         {
+            string previousValue = "";
+            bool foundPrevious = false;
+            TreeIter selected;
+            if (tree.Selection.GetSelected(out selected))
+            {
+                previousValue = (string)ListModel.GetValue(selected, 0);
+            }
+
             List<EnemyDescription> items = LevelManager.GetEnemies();
 
             ListModel.Clear();
@@ -248,12 +303,36 @@ namespace VRTD.LevelEditor
                 for (int i = 0; i < items.Count; i++)
                 {
                     ListModel.AppendValues(items[i].Name);
+
+                    TreeIter itr = ListModel.AppendValues(items[i].Name);
+                    if (previousValue == items[i].Name)
+                    {
+                        foundPrevious = true;
+                        selected = itr;
+                    }
                 }
             }
+
+
+            if (!foundPrevious)
+            {
+                // If not, here's the default
+                ListModel.GetIterFirst(out selected);
+            }
+
+            tree.Selection.SelectIter(selected);
         }
 
         private void PopulateTreeWithProjectilees()
         {
+            string previousValue = "";
+            bool foundPrevious = false;
+            TreeIter selected;
+            if (tree.Selection.GetSelected(out selected))
+            {
+                previousValue = (string)ListModel.GetValue(selected, 0);
+            }
+
             List<Projectile> items = LevelManager.GetProjectiles();
 
             ListModel.Clear();
@@ -263,15 +342,44 @@ namespace VRTD.LevelEditor
                 for (int i = 0; i < items.Count; i++)
                 {
                     ListModel.AppendValues(items[i].Name);
+                    TreeIter itr = ListModel.AppendValues(items[i].Name);
+                    if (previousValue == items[i].Name)
+                    {
+                        foundPrevious = true;
+                        selected = itr;
+                    }
                 }
             }
+
+            if (!foundPrevious)
+            {
+                // If not, here's the default
+                ListModel.GetIterFirst(out selected);
+            }
+
+            tree.Selection.SelectIter(selected);
         }
 
-        private void AddLevelButton_Clicked(object sender, EventArgs e)
+        private void AddButton_Clicked(object sender, EventArgs e)
         {
-            AddLevelWindow AddLevel = new AddLevelWindow(this);
-            AddLevel.Finished += AddLevel_Finished;
-            AddLevel.Show();
+
+            switch(CurrentMode)
+            {
+                case EditorMode.Level:
+                    AddLevelWindow AddLevel = new AddLevelWindow(this);
+                    AddLevel.Finished += AddLevel_Finished;
+                    AddLevel.Show();
+                    break;
+                case EditorMode.Turret:
+                    ((TurretEditLayout)EditorWidget).AddTurret();
+                    break;
+                case EditorMode.Enemy:
+                    ((EnemyEditLayout)EditorWidget).AddEnemy();
+                    break;
+                case EditorMode.Projectile:
+                    ((ProjectileEditLayout)EditorWidget).AddProjectile();
+                    break;
+            };
         }
 
         private void AddLevel_Finished(AddLevelEventArgs a)

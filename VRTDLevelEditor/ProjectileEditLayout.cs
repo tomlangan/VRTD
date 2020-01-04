@@ -120,8 +120,71 @@ namespace VRTD.LevelEditor
 
             PopulateTreeWithEffects();
 
+
+            field = new HBox(false, 5);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
+
+            Button b = new Button("+");
+            b.Clicked += NewEffect_Clicked;
+            b.Show();
+            field.PackStart(b, false, false, 0);
+
+            b = new Button("-");
+            b.Clicked += RemoveEffect_Clicked;
+            b.Show();
+            field.PackStart(b, false, false, 0);
+
             Show();
             ShowAll();
+        }
+
+
+        private void RemoveEffect_Clicked(object sender, EventArgs e)
+        {
+            TreeIter selected;
+            if (EffectsTree.Selection.GetSelected(out selected))
+            {
+                int row = (int)EffectsModel.GetValue(selected, 0);
+
+                if (Projectile.Effects.Count == 1)
+                {
+                    MessageDialog md = new MessageDialog(null,
+                    DialogFlags.Modal, MessageType.Info,
+                    ButtonsType.Ok, "Can't delete - you need at least one effect");
+                    int result = md.Run();
+                    md.Destroy();
+                }
+                else
+                {
+                    MessageDialog md = new MessageDialog(null,
+                    DialogFlags.Modal, MessageType.Warning,
+                    ButtonsType.OkCancel, "Are you sure you want to delete effect #" + (row + 1) + "?");
+                    int result = md.Run();
+                    md.Destroy();
+
+                    if (result == -5)
+                    {
+                        Projectile.Effects.RemoveAt(row);
+                        EffectsModel.Remove(ref selected);
+
+                        WriteChanges();
+                    }
+                }
+            }
+        }
+
+        private void NewEffect_Clicked(object sender, EventArgs e)
+        {
+            ProjectileEffect effect = new ProjectileEffect();
+            effect.EffectType = ProjectileEffectType.Damage;
+            effect.EffectDuration = 0.0F;
+            effect.EffectImpact = 1.0F;
+            Projectile.Effects.Add(effect);
+
+            WriteChanges();
+
+            PopulateTreeWithEffects();
         }
 
         private void ProjectileEditLayout_Destroyed(object sender, EventArgs e)
@@ -252,6 +315,27 @@ namespace VRTD.LevelEditor
             }
         }
 
+
+        public void AddProjectile()
+        {
+
+            Projectile p = new Projectile();
+            p.Name = "New Projectile";
+            p.Asset = "";
+            p.AirSpeed = 1.0F;
+
+            ProjectileEffect pe = new ProjectileEffect();
+            pe.EffectType = ProjectileEffectType.Damage;
+            pe.EffectDuration = 0.0F;
+            pe.EffectImpact = 1.0F;
+            p.Effects.Add(pe);
+
+            Projectiles.Add(p);
+
+            WriteChanges();
+
+            TreeRefreshNeeded?.Invoke();
+        }
 
         void WriteChanges()
         {
