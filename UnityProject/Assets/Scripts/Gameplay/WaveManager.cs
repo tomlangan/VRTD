@@ -133,8 +133,9 @@ namespace VRTD.Gameplay
     public class WaveInstance
     {
         LevelDescription LevelDesc;
-        EnemyDescription EnemyType;
+        public EnemyDescription EnemyType;
         public List<EnemyInstance> Enemies;
+        private int CoinEarnedToReport;
         EnemyWave Desc;
         public int EnemiesThatSurvived;
         float WaveStartTime;
@@ -153,6 +154,7 @@ namespace VRTD.Gameplay
             RoadSegments = roadSegments;
             WaveStartTime = gameTime;
             LastSpawnTime = WaveStartTime;
+            CoinEarnedToReport = 0;
         }
 
         public void Advance(float waveTime)
@@ -237,9 +239,10 @@ namespace VRTD.Gameplay
 
                 if (enemy.HealthRemaining <= damage)
                 {
-                    // Enemy is dead - what else do we need to do?
+                    // Enemy is dead 
                     enemy.HealthRemaining = 0.0F;
                     enemy.Destroy();
+                    CoinEarnedToReport += enemy.Desc.Coins;
                 }
                 else
                 {
@@ -286,6 +289,13 @@ namespace VRTD.Gameplay
             }
 
             return isActive;
+        }
+
+        public int ReportCoinEarned()
+        {
+            int ret = CoinEarnedToReport;
+            CoinEarnedToReport = 0;
+            return ret;
         }
     }
 

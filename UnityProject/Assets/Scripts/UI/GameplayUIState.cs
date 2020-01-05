@@ -24,6 +24,10 @@ public class GameplayUIState : MonoBehaviour
     public ListUIParams TurretSelectUIParams;
     public ListUIParams TurretOptionUIParams;
 
+
+    public GameObject ListTemplateTextOnly;
+    public GameObject ListTemplateWithCoin;
+
     private State UIState = State.NothingSelected;
     private ListUI TurretUIObject = null;
 
@@ -247,7 +251,7 @@ public class GameplayUIState : MonoBehaviour
     {
         ListUI go = Instantiate<ListUI>(ListUITemplate);
 
-        go.Create(TurretSelectUIParams);
+        go.Create(ListTemplateWithCoin, TurretSelectUIParams);
 
         return go;
     }
@@ -256,7 +260,7 @@ public class GameplayUIState : MonoBehaviour
     {
         ListUI go = Instantiate<ListUI>(ListUITemplate);
 
-        go.Create(TurretOptionUIParams);
+        go.Create(ListTemplateTextOnly, TurretOptionUIParams);
 
         return go;
     }

@@ -285,10 +285,17 @@ MonoBehaviour:
   ListUITemplate: {fileID: 4667065774110376593, guid: 0773e9c3ba96a5740a1636a4a4d9a584,
     type: 3}
   TargetManager: {fileID: 1449813729}
-  TurretSelectUI: {fileID: 0}
+  TurretSelectUI: {fileID: 6964530250367304343, guid: 43c810420b10e744fbba2d51f3c32577,
+    type: 3}
   Pointer: {fileID: 275260301}
   GameplayUI: {fileID: 548235967}
   MessageUITemplate: {fileID: 2012146860889770614, guid: 580ec98a153531f4d8d5b365db79a8f2,
+    type: 3}
+  HUDUITemplate: {fileID: 6064219031614040515, guid: 8cba7438bfe5f924399fe0f2fbf01d06,
+    type: 3}
+  ListTemplateTextOnly: {fileID: 741519873059810867, guid: b9acd689c81c2e24aad46a65b58a582d,
+    type: 3}
+  ListTemplateWithCoin: {fileID: 6964530250367304343, guid: 43c810420b10e744fbba2d51f3c32577,
     type: 3}
   GameTime: 0
   CountdownStartTime: 0
@@ -499,6 +506,10 @@ MonoBehaviour:
   CursorObject: {fileID: 0}
   SelectedObject: {fileID: 0}
   ListUITemplate: {fileID: 4667065774110376593, guid: 0773e9c3ba96a5740a1636a4a4d9a584,
+    type: 3}
+  ListTemplateTextOnly: {fileID: 741519873059810867, guid: b9acd689c81c2e24aad46a65b58a582d,
+    type: 3}
+  ListTemplateWithCoin: {fileID: 6964530250367304343, guid: 43c810420b10e744fbba2d51f3c32577,
     type: 3}
 --- !u!4 &548235968
 Transform:
@@ -944,7 +955,6 @@ GameObject:
   - component: {fileID: 1280378712}
   - component: {fileID: 1280378711}
   - component: {fileID: 1280378713}
-  - component: {fileID: 1280378714}
   m_Layer: 0
   m_Name: InputLine
   m_TagString: Untagged
@@ -1075,18 +1085,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0.5}
---- !u!114 &1280378714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280378710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cca14a990a1a464489c3b62e0339afb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1302164339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a,
@@ -1264,7 +1262,7 @@ MonoBehaviour:
   DesktopInput: {fileID: 573466149}
   VRInput: {fileID: 2030420360}
   LocalAvatar: {fileID: 2064171106}
-  Target: 1
+  Target: 0
 --- !u!1001 &1827883599
 PrefabInstance:
   m_ObjectHideFlags: 0

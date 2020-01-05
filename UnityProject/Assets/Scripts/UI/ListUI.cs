@@ -12,13 +12,13 @@ public class ListUIParams
 
     public string Title;
     public List<string> Options = new List<string>();
+    public List<string> Prices = new List<string>();
     public OnListItemClicked Callback;
 }
 
 
 public class ListUI : MonoBehaviour
 {
-    public GameObject ListItemTemplate;
 
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class ListUI : MonoBehaviour
         
     }
 
-    public void Create(ListUIParams Params)
+    public void Create(GameObject listTemplate, ListUIParams Params)
     {
         Text title = gameObject.GetComponentInChildren<Text>();
         title.text = Params.Title;
@@ -51,9 +51,18 @@ public class ListUI : MonoBehaviour
 
         for (int i = 0; i < Params.Options.Count; i++)
         {
-            GameObject listItem = Instantiate(ListItemTemplate);
-            Text listText = listItem.GetComponentInChildren<Text>();
+            GameObject listItem = Instantiate(listTemplate);
+            Text[] textFields = listItem.GetComponentsInChildren<Text>();
+
+            Text listText = textFields[0];
             listText.text = Params.Options[i];
+            
+            Text priceText = null;
+            if (textFields.Length > 1)
+            {
+                priceText = textFields[1];
+                priceText.text = Params.Prices[i];
+            }
 
             Button listButton = listItem.GetComponent<Button>();
             string optionSelectedString = Params.Options[i];

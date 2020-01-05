@@ -360,6 +360,7 @@
     <Compile Include="Assets\Scripts\TargetManager\PlayerTargetManager.cs" />
     <Compile Include="Assets\Scripts\TargetManager\VRInputHandler.cs" />
     <Compile Include="Assets\Scripts\UI\GameplayUIState.cs" />
+    <Compile Include="Assets\Scripts\UI\HUDUI.cs" />
     <Compile Include="Assets\Scripts\UI\ListUI.cs" />
     <Compile Include="Assets\Scripts\UI\MessageUI.cs" />
     <Compile Include="Assets\Scripts\UI\UIPointerInputModule.cs" />

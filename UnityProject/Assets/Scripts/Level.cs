@@ -29,6 +29,9 @@ public class Level : MonoBehaviour
     public InputPointer Pointer;
     public GameplayUIState GameplayUI;
     public MessageUI MessageUITemplate;
+    public HUDUI HUDUITemplate;
+    public GameObject ListTemplateTextOnly;
+    public GameObject ListTemplateWithCoin;
 
     //public UnityEngine.UI.Text TimerUIText;
 
@@ -42,8 +45,10 @@ public class Level : MonoBehaviour
     public float CountdownStartTime = 0.0F;
     public LevelState State = LevelState.None;
     bool Loading = false;
+    int Coin = 0;
 
     private MessageUI CountdownUI;
+    private HUDUI HUD;
 
     // Start is called before the first frame update
     void Start()
@@ -111,8 +116,6 @@ public class Level : MonoBehaviour
 
     void LoadLevel(string levelName)
     {
-        GameTime = 0.0F;
-
         LevelDesc = LevelLoader.GetLevel(levelName);
         LevelLoader.LoadAndValidateLevel(LevelDesc);
         Waves = new WaveManager(LevelDesc);
@@ -120,8 +123,11 @@ public class Level : MonoBehaviour
         Projectiles = new ProjectileManager();
         Debug.Log("Creating road objects");
         GameObjectFactory.CreateMapObjects(LevelDesc, RoadObject, TerrainObject, TurretSpaceObject);
-
         InitializeGameplayUISettings();
+
+        Coin = LevelDesc.StartingCoins;
+        GameTime = 0.0F;
+
     }
 
 
@@ -143,6 +149,7 @@ public class Level : MonoBehaviour
             CountdownUI.enabled = false;
 
             Waves.AdvanceToNextWave(GameTime);
+            ShowHUDUI();
             Debug.Log("State ==> Playing");
             State = LevelState.Playing;
         }
@@ -151,10 +158,13 @@ public class Level : MonoBehaviour
     void TickGameplay()
     {
         Waves.CurrentWave.Advance(GameTime);
+        Coin += Waves.CurrentWave.ReportCoinEarned();
 
         Turrets.Fire(GameTime);
 
         Projectiles.AdvanceAll(GameTime);
+
+        UpdateHUD();
 
         if (Waves.IsComplete)
         {
@@ -164,6 +174,7 @@ public class Level : MonoBehaviour
         {
 
             Debug.Log("State ==> WaveCountdown");
+            HideHUDUI();
             ShowCountdownUI();
             State = LevelState.WaveCountdown;
             CountdownStartTime = GameTime;
@@ -224,7 +235,7 @@ public class Level : MonoBehaviour
 
         ListUI ui = Instantiate<ListUI>(ListUITemplate);
 
-        ui.Create(uiparams);
+        ui.Create(ListTemplateTextOnly, uiparams);
 
         Vector3 uiPos = new Vector3(0.0F, 5.0F, -8.0F);
         Vector3 uiForward = (uiPos - TargetManager.transform.position).normalized;
@@ -260,6 +271,34 @@ public class Level : MonoBehaviour
         CountdownUI.transform.gameObject.transform.forward = uiForward;
     }
 
+    private void ShowHUDUI()
+    {
+        HUD = Instantiate<HUDUI>(HUDUITemplate);
+
+        Vector3 uiPos = new Vector3(0.0F, 5.0F, 15.0F);
+        Vector3 uiForward = (uiPos - TargetManager.transform.position).normalized;
+
+        HUD.transform.gameObject.SetActive(true);
+        HUD.transform.gameObject.transform.position = uiPos;
+        HUD.transform.gameObject.transform.forward = uiForward;
+    }
+
+    private void UpdateHUD()
+    {
+        HUD.CurrentWave = Waves.CurrentWave.EnemyType.Name;
+        HUD.WavePosition = "Wave " + Waves.WavesStarted + " of " + LevelDesc.Waves.Count;
+        HUD.Coin = Coin.ToString("#,##0");
+        if (Waves.WavesStarted < LevelDesc.Waves.Count)
+        {
+            HUD.NextEnemy = LevelDesc.Waves[Waves.WavesStarted].Enemy;
+        }
+    }
+
+    private void HideHUDUI()
+    {
+        HUD.enabled = false;
+        HUD.transform.gameObject.SetActive(false);
+    }
 
     private void InitializeGameplayUISettings()
     {
@@ -270,6 +309,8 @@ public class Level : MonoBehaviour
         for (int i = 0; i < LevelDesc.AllowedTurrets.Count; i++)
         {
             TurretSelectParams.Options.Add(LevelDesc.AllowedTurrets[i]);
+            Turret t = LevelLoader.LookupTurret(LevelDesc.AllowedTurrets[i]);
+            TurretSelectParams.Prices.Add(t.Cost.ToString()); 
         }
 
         TurretSelectParams.Callback = OnTurretSelected;
@@ -291,7 +332,13 @@ public class Level : MonoBehaviour
     private bool OnTurretSelected(int index, string turretName)
     {
         MapPos position = GameObjectFactory.Vec3ToMapPos(GameplayUI.SelectedObject.transform.position);
-        Turrets.AddTurret(LevelDesc.AllowedTurrets[index], position, Projectiles);
+        Turret turretSelected = LevelLoader.LookupTurret(LevelDesc.AllowedTurrets[index]);
+
+        if (Coin >= turretSelected.Cost)
+        {
+            Turrets.AddTurret(LevelDesc.AllowedTurrets[index], position, Projectiles);
+            Coin -= turretSelected.Cost;
+        }
 
         return false;
     }

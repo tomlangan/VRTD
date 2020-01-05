@@ -13,42 +13,120 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-01-04T14:14:23.971-08:00
-  initializedAtString: 2020-01-04T14:11:33.783-08:00
+  lastUpdatedAtString: 2020-01-04T22:57:48.933-08:00
+  initializedAtString: 2020-01-04T21:25:59.488-08:00
   entries:
+  - path: Images\coin.pdn
+    fullPath: F:\git\VRTD\Images\coin.pdn
+    projectPath: ..\Images\coin.pdn
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: UnityProject\Assembly-CSharp.csproj
     fullPath: F:\git\VRTD\UnityProject\Assembly-CSharp.csproj
     projectPath: Assembly-CSharp.csproj
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Assets\Levels\1-1.lvl
+    fullPath: F:\git\VRTD\UnityProject\Assets\Levels\1-1.lvl
+    projectPath: Assets\Levels\1-1.lvl
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Levels\1-2.lvl
+    fullPath: F:\git\VRTD\UnityProject\Assets\Levels\1-2.lvl
+    projectPath: Assets\Levels\1-2.lvl
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Levels\1-3.lvl
+    fullPath: F:\git\VRTD\UnityProject\Assets\Levels\1-3.lvl
+    projectPath: Assets\Levels\1-3.lvl
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Levels\2-0.lvl
+    fullPath: F:\git\VRTD\UnityProject\Assets\Levels\2-0.lvl
+    projectPath: Assets\Levels\2-0.lvl
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Objects\Button_List-Coin.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\Button_List-Coin.prefab
+    projectPath: Assets\Objects\Button_List-Coin.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Objects\Button_List-Coin.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\Button_List-Coin.prefab.meta
+    projectPath: Assets\Objects\Button_List-Coin.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Objects\Button_List-Text.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\Button_List-Text.prefab
+    projectPath: Assets\Objects\Button_List-Text.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Objects\Button_List-Text.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\Button_List-Text.prefab.meta
+    projectPath: Assets\Objects\Button_List-Text.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Objects\HUDUI.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\HUDUI.prefab
+    projectPath: Assets\Objects\HUDUI.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Objects\HUDUI.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\HUDUI.prefab.meta
+    projectPath: Assets\Objects\HUDUI.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: UnityProject\Assets\Objects\ListUI.prefab
     fullPath: F:\git\VRTD\UnityProject\Assets\Objects\ListUI.prefab
     projectPath: Assets\Objects\ListUI.prefab
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Objects\MessageUI.prefab
-    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\MessageUI.prefab
-    projectPath: Assets\Objects\MessageUI.prefab
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Objects\MessageUI.prefab.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\MessageUI.prefab.meta
-    projectPath: Assets\Objects\MessageUI.prefab.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
   - path: UnityProject\Assets\Objects\VirtualHand.prefab
     fullPath: F:\git\VRTD\UnityProject\Assets\Objects\VirtualHand.prefab
     projectPath: Assets\Objects\VirtualHand.prefab
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Assets\Objects\VRUI-Button_List.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\VRUI-Button_List.prefab
+    projectPath: Assets\Objects\VRUI-Button_List.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\Objects\VRUI-Button_List.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Objects\VRUI-Button_List.prefab.meta
+    projectPath: Assets\Objects\VRUI-Button_List.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
   - path: UnityProject\Assets\Scenes\LevelScene.unity
     fullPath: F:\git\VRTD\UnityProject\Assets\Scenes\LevelScene.unity
     projectPath: Assets\Scenes\LevelScene.unity
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scripts\Gameplay\ProjectileManager.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\ProjectileManager.cs
+    projectPath: Assets\Scripts\Gameplay\ProjectileManager.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scripts\Gameplay\WaveManager.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\WaveManager.cs
+    projectPath: Assets\Scripts\Gameplay\WaveManager.cs
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -58,24 +136,60 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\UI\MessageUI.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\UI\MessageUI.cs
-    projectPath: Assets\Scripts\UI\MessageUI.cs
+  - path: UnityProject\Assets\Scripts\UI\GameplayUIState.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\UI\GameplayUIState.cs
+    projectPath: Assets\Scripts\UI\GameplayUIState.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scripts\UI\HUDUI.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\UI\HUDUI.cs
+    projectPath: Assets\Scripts\UI\HUDUI.cs
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Assets\Scripts\UI\MessageUI.cs.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\UI\MessageUI.cs.meta
-    projectPath: Assets\Scripts\UI\MessageUI.cs.meta
+  - path: UnityProject\Assets\Scripts\UI\HUDUI.cs.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\UI\HUDUI.cs.meta
+    projectPath: Assets\Scripts\UI\HUDUI.cs.meta
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\UI\ListUI.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\UI\ListUI.cs
+    projectPath: Assets\Scripts\UI\ListUI.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Textures\coin.png
+    fullPath: F:\git\VRTD\UnityProject\Assets\Textures\coin.png
+    projectPath: Assets\Textures\coin.png
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Textures\coin.png.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Textures\coin.png.meta
+    projectPath: Assets\Textures\coin.png.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\VRUI - Material Design\Prefabs\VRUI-ListPanel.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\VRUI - Material Design\Prefabs\VRUI-ListPanel.prefab
+    projectPath: Assets\VRUI - Material Design\Prefabs\VRUI-ListPanel.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: UnityProject\Library\assetDatabase3
     fullPath: F:\git\VRTD\UnityProject\Library\assetDatabase3
     projectPath: Library\assetDatabase3
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\CrashedAssetImports.txt
+    fullPath: F:\git\VRTD\UnityProject\Library\CrashedAssetImports.txt
+    projectPath: Library\CrashedAssetImports.txt
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: UnityProject\Library\CurrentLayout.dwlt
     fullPath: F:\git\VRTD\UnityProject\Library\CurrentLayout.dwlt
     projectPath: Library\CurrentLayout.dwlt
@@ -88,12 +202,6 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Library\expandedItems
-    fullPath: F:\git\VRTD\UnityProject\Library\expandedItems
-    projectPath: Library\expandedItems
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: UnityProject\Library\gfu\cache\gitlocks.yaml
     fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gitlocks.yaml
     projectPath: Library\gfu\cache\gitlocks.yaml
@@ -118,6 +226,30 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\InspectorExpandedItems.asset
+    fullPath: F:\git\VRTD\UnityProject\Library\InspectorExpandedItems.asset
+    projectPath: Library\InspectorExpandedItems.asset
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\02\02aa5eeae212f584492b22201a4be85a
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\02\02aa5eeae212f584492b22201a4be85a
+    projectPath: Library\metadata\02\02aa5eeae212f584492b22201a4be85a
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\02\02aa5eeae212f584492b22201a4be85a.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\02\02aa5eeae212f584492b22201a4be85a.info
+    projectPath: Library\metadata\02\02aa5eeae212f584492b22201a4be85a.info
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\05\0530283c08716574e81d814babc65ef6
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\05\0530283c08716574e81d814babc65ef6
+    projectPath: Library\metadata\05\0530283c08716574e81d814babc65ef6
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: UnityProject\Library\metadata\07\0773e9c3ba96a5740a1636a4a4d9a584
     fullPath: F:\git\VRTD\UnityProject\Library\metadata\07\0773e9c3ba96a5740a1636a4a4d9a584
     projectPath: Library\metadata\07\0773e9c3ba96a5740a1636a4a4d9a584
@@ -130,27 +262,27 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\metadata\4d\4d945e31e9423e9439034e8407081d73
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\4d\4d945e31e9423e9439034e8407081d73
-    projectPath: Library\metadata\4d\4d945e31e9423e9439034e8407081d73
+  - path: UnityProject\Library\metadata\3a\3a90c2b28c20bba4a889e95cca4e5911
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\3a\3a90c2b28c20bba4a889e95cca4e5911
+    projectPath: Library\metadata\3a\3a90c2b28c20bba4a889e95cca4e5911
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Library\metadata\4d\4d945e31e9423e9439034e8407081d73.info
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\4d\4d945e31e9423e9439034e8407081d73.info
-    projectPath: Library\metadata\4d\4d945e31e9423e9439034e8407081d73.info
+  - path: UnityProject\Library\metadata\3a\3a90c2b28c20bba4a889e95cca4e5911.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\3a\3a90c2b28c20bba4a889e95cca4e5911.info
+    projectPath: Library\metadata\3a\3a90c2b28c20bba4a889e95cca4e5911.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Library\metadata\58\580ec98a153531f4d8d5b365db79a8f2
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\58\580ec98a153531f4d8d5b365db79a8f2
-    projectPath: Library\metadata\58\580ec98a153531f4d8d5b365db79a8f2
+  - path: UnityProject\Library\metadata\43\43c810420b10e744fbba2d51f3c32577
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\43\43c810420b10e744fbba2d51f3c32577
+    projectPath: Library\metadata\43\43c810420b10e744fbba2d51f3c32577
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Library\metadata\58\580ec98a153531f4d8d5b365db79a8f2.info
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\58\580ec98a153531f4d8d5b365db79a8f2.info
-    projectPath: Library\metadata\58\580ec98a153531f4d8d5b365db79a8f2.info
+  - path: UnityProject\Library\metadata\43\43c810420b10e744fbba2d51f3c32577.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\43\43c810420b10e744fbba2d51f3c32577.info
+    projectPath: Library\metadata\43\43c810420b10e744fbba2d51f3c32577.info
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -160,9 +292,81 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
+    projectPath: Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\8c\8cba7438bfe5f924399fe0f2fbf01d06
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\8c\8cba7438bfe5f924399fe0f2fbf01d06
+    projectPath: Library\metadata\8c\8cba7438bfe5f924399fe0f2fbf01d06
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\8c\8cba7438bfe5f924399fe0f2fbf01d06.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\8c\8cba7438bfe5f924399fe0f2fbf01d06.info
+    projectPath: Library\metadata\8c\8cba7438bfe5f924399fe0f2fbf01d06.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\8c\8ce5840568abd43b09f5332a7583c1c3.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\8c\8ce5840568abd43b09f5332a7583c1c3.info
+    projectPath: Library\metadata\8c\8ce5840568abd43b09f5332a7583c1c3.info
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\8c\8cf6c2d01a6c24f88923c7ba974e717d.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\8c\8cf6c2d01a6c24f88923c7ba974e717d.info
+    projectPath: Library\metadata\8c\8cf6c2d01a6c24f88923c7ba974e717d.info
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: UnityProject\Library\metadata\96\96131906495ea8549a1dd3584f40d667
     fullPath: F:\git\VRTD\UnityProject\Library\metadata\96\96131906495ea8549a1dd3584f40d667
     projectPath: Library\metadata\96\96131906495ea8549a1dd3584f40d667
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\ad\adcc7afe481a2014aba5648fcd7d4423
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\ad\adcc7afe481a2014aba5648fcd7d4423
+    projectPath: Library\metadata\ad\adcc7afe481a2014aba5648fcd7d4423
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\b9\b9acd689c81c2e24aad46a65b58a582d
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\b9\b9acd689c81c2e24aad46a65b58a582d
+    projectPath: Library\metadata\b9\b9acd689c81c2e24aad46a65b58a582d
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\b9\b9acd689c81c2e24aad46a65b58a582d.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\b9\b9acd689c81c2e24aad46a65b58a582d.info
+    projectPath: Library\metadata\b9\b9acd689c81c2e24aad46a65b58a582d.info
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\bd\bdb74d38a6ac5ef49aed99383be7a000
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\bd\bdb74d38a6ac5ef49aed99383be7a000
+    projectPath: Library\metadata\bd\bdb74d38a6ac5ef49aed99383be7a000
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\bd\bdb74d38a6ac5ef49aed99383be7a000.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\bd\bdb74d38a6ac5ef49aed99383be7a000.info
+    projectPath: Library\metadata\bd\bdb74d38a6ac5ef49aed99383be7a000.info
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\metadata\cb\cb6d935937a68c94f94a22d20898d695
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\cb\cb6d935937a68c94f94a22d20898d695
+    projectPath: Library\metadata\cb\cb6d935937a68c94f94a22d20898d695
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\ef\ef68518433a4a4d5eb551fa031c6da92.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\ef\ef68518433a4a4d5eb551fa031c6da92.info
+    projectPath: Library\metadata\ef\ef68518433a4a4d5eb551fa031c6da92.info
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -238,87 +442,27 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\ShaderCache\0\0706ac997795c8ddcb69da9bc6fa994d.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\0\0706ac997795c8ddcb69da9bc6fa994d.bin
-    projectPath: Library\ShaderCache\0\0706ac997795c8ddcb69da9bc6fa994d.bin
+  - path: UnityProject\Library\ShaderCache\0\0c30b172efa8261dafbfc7e119e4a610.bin
+    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\0\0c30b172efa8261dafbfc7e119e4a610.bin
+    projectPath: Library\ShaderCache\0\0c30b172efa8261dafbfc7e119e4a610.bin
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\1\1ee8cd1a5a2bdaf3432ce92003b42983.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\1\1ee8cd1a5a2bdaf3432ce92003b42983.bin
-    projectPath: Library\ShaderCache\1\1ee8cd1a5a2bdaf3432ce92003b42983.bin
+  - path: UnityProject\Library\ShaderCache\2\2be7bb49fe6b1f914fde1352b069deb8.bin
+    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\2\2be7bb49fe6b1f914fde1352b069deb8.bin
+    projectPath: Library\ShaderCache\2\2be7bb49fe6b1f914fde1352b069deb8.bin
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\2\2035f015f80d1310aa99c1e41a083e1d.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\2\2035f015f80d1310aa99c1e41a083e1d.bin
-    projectPath: Library\ShaderCache\2\2035f015f80d1310aa99c1e41a083e1d.bin
+  - path: UnityProject\Library\ShaderCache\9\9cf45382d5d326d4b828437d177f8eae.bin
+    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\9\9cf45382d5d326d4b828437d177f8eae.bin
+    projectPath: Library\ShaderCache\9\9cf45382d5d326d4b828437d177f8eae.bin
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\2\20d55ae6ac3bc63825e173c2979bfe8f.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\2\20d55ae6ac3bc63825e173c2979bfe8f.bin
-    projectPath: Library\ShaderCache\2\20d55ae6ac3bc63825e173c2979bfe8f.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
-    projectPath: Library\ShaderCache\2\2342a991db8d7299ab6f2879d7e6ff92.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\3\30395c4b14959a1f54cc793460b5cb01.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\3\30395c4b14959a1f54cc793460b5cb01.bin
-    projectPath: Library\ShaderCache\3\30395c4b14959a1f54cc793460b5cb01.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\3\37e8e46fcf2049e74ef82b8244354308.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\3\37e8e46fcf2049e74ef82b8244354308.bin
-    projectPath: Library\ShaderCache\3\37e8e46fcf2049e74ef82b8244354308.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\4\44c7463fc218ab7916e2fb13aa36a6be.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\4\44c7463fc218ab7916e2fb13aa36a6be.bin
-    projectPath: Library\ShaderCache\4\44c7463fc218ab7916e2fb13aa36a6be.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\6\6d71b25632375742c99ce8bad82d6902.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\6\6d71b25632375742c99ce8bad82d6902.bin
-    projectPath: Library\ShaderCache\6\6d71b25632375742c99ce8bad82d6902.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\7\772561b4aa4ae7a8c76843d9c7cd0c34.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\7\772561b4aa4ae7a8c76843d9c7cd0c34.bin
-    projectPath: Library\ShaderCache\7\772561b4aa4ae7a8c76843d9c7cd0c34.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\7\776af12281668a6579f0f74212820875.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\7\776af12281668a6579f0f74212820875.bin
-    projectPath: Library\ShaderCache\7\776af12281668a6579f0f74212820875.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\a\a561f1dcb594b449bbc51e840a401c0a.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\a\a561f1dcb594b449bbc51e840a401c0a.bin
-    projectPath: Library\ShaderCache\a\a561f1dcb594b449bbc51e840a401c0a.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\b\bba4f41072b905080c7503c69cc67439.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\b\bba4f41072b905080c7503c69cc67439.bin
-    projectPath: Library\ShaderCache\b\bba4f41072b905080c7503c69cc67439.bin
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\ShaderCache\f\fb69f24b0d575b42d72106b3cf88d36b.bin
-    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\f\fb69f24b0d575b42d72106b3cf88d36b.bin
-    projectPath: Library\ShaderCache\f\fb69f24b0d575b42d72106b3cf88d36b.bin
+  - path: UnityProject\Library\ShaderCache\b\ba2de8eecda2b786c2890c2b7e348f33.bin
+    fullPath: F:\git\VRTD\UnityProject\Library\ShaderCache\b\ba2de8eecda2b786c2890c2b7e348f33.bin
+    projectPath: Library\ShaderCache\b\ba2de8eecda2b786c2890c2b7e348f33.bin
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -328,15 +472,45 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-02aa5eeae212f58449.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-02aa5eeae212f58449.json
+    projectPath: Library\StateCache\Hierarchy\c4cdc8-02aa5eeae212f58449.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-0773e9c3ba96a5740a.json
     fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-0773e9c3ba96a5740a.json
     projectPath: Library\StateCache\Hierarchy\c4cdc8-0773e9c3ba96a5740a.json
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-43c810420b10e744fb.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-43c810420b10e744fb.json
+    projectPath: Library\StateCache\Hierarchy\c4cdc8-43c810420b10e744fb.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-4aad4e89f9324ab4d8.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-4aad4e89f9324ab4d8.json
+    projectPath: Library\StateCache\Hierarchy\c4cdc8-4aad4e89f9324ab4d8.json
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-580ec98a153531f4d8.json
     fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-580ec98a153531f4d8.json
     projectPath: Library\StateCache\Hierarchy\c4cdc8-580ec98a153531f4d8.json
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-8cba7438bfe5f92439.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-8cba7438bfe5f92439.json
+    projectPath: Library\StateCache\Hierarchy\c4cdc8-8cba7438bfe5f92439.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-b9acd689c81c2e24aa.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-b9acd689c81c2e24aa.json
+    projectPath: Library\StateCache\Hierarchy\c4cdc8-b9acd689c81c2e24aa.json
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -346,9 +520,27 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\StateCache\SceneView\b8f745-580ec98a153531f4d8.json
-    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-580ec98a153531f4d8.json
-    projectPath: Library\StateCache\SceneView\b8f745-580ec98a153531f4d8.json
+  - path: UnityProject\Library\StateCache\SceneView\b8f745-02aa5eeae212f58449.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-02aa5eeae212f58449.json
+    projectPath: Library\StateCache\SceneView\b8f745-02aa5eeae212f58449.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\StateCache\SceneView\b8f745-43c810420b10e744fb.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-43c810420b10e744fb.json
+    projectPath: Library\StateCache\SceneView\b8f745-43c810420b10e744fb.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\StateCache\SceneView\b8f745-8cba7438bfe5f92439.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-8cba7438bfe5f92439.json
+    projectPath: Library\StateCache\SceneView\b8f745-8cba7438bfe5f92439.json
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Library\StateCache\SceneView\b8f745-b9acd689c81c2e24aa.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-b9acd689c81c2e24aa.json
+    projectPath: Library\StateCache\SceneView\b8f745-b9acd689c81c2e24aa.json
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
@@ -376,99 +568,375 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
+  - path: UnityProject\Temp\ProcessJobs\cfd04cdef8eeb155d90b7236fbf44eae.bakert
+    fullPath: F:\git\VRTD\UnityProject\Temp\ProcessJobs\cfd04cdef8eeb155d90b7236fbf44eae.bakert
+    projectPath: Temp\ProcessJobs\cfd04cdef8eeb155d90b7236fbf44eae.bakert
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: UnityProject\Temp\UnityLockfile
     fullPath: F:\git\VRTD\UnityProject\Temp\UnityLockfile
     projectPath: Temp\UnityLockfile
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-00a24e1c9cb73164b9539f82e40d5d85
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-00a24e1c9cb73164b9539f82e40d5d85
-    projectPath: Temp\UnityTempFile-00a24e1c9cb73164b9539f82e40d5d85
+  - path: UnityProject\Temp\UnityTempFile-0db36fa32b3c2fe48b0570258d19dff0
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-0db36fa32b3c2fe48b0570258d19dff0
+    projectPath: Temp\UnityTempFile-0db36fa32b3c2fe48b0570258d19dff0
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-0863d519cfc00d849bc552e0a0f9607c
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-0863d519cfc00d849bc552e0a0f9607c
-    projectPath: Temp\UnityTempFile-0863d519cfc00d849bc552e0a0f9607c
+  - path: UnityProject\Temp\UnityTempFile-12649cb920868b44396c6dd3380dc03f
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-12649cb920868b44396c6dd3380dc03f
+    projectPath: Temp\UnityTempFile-12649cb920868b44396c6dd3380dc03f
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-1470fd4fe06d56c4db972bbc3076b389
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-1470fd4fe06d56c4db972bbc3076b389
-    projectPath: Temp\UnityTempFile-1470fd4fe06d56c4db972bbc3076b389
+  - path: UnityProject\Temp\UnityTempFile-1e0391675489bf74083a152552c48a71
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-1e0391675489bf74083a152552c48a71
+    projectPath: Temp\UnityTempFile-1e0391675489bf74083a152552c48a71
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-27635d136397b774999fd06ff9c39549
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-27635d136397b774999fd06ff9c39549
-    projectPath: Temp\UnityTempFile-27635d136397b774999fd06ff9c39549
+  - path: UnityProject\Temp\UnityTempFile-203732f8f611f8b418206281ef8568df
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-203732f8f611f8b418206281ef8568df
+    projectPath: Temp\UnityTempFile-203732f8f611f8b418206281ef8568df
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-47b8ddf4c8f91ad48a8ba4148ddc2844
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-47b8ddf4c8f91ad48a8ba4148ddc2844
-    projectPath: Temp\UnityTempFile-47b8ddf4c8f91ad48a8ba4148ddc2844
+  - path: UnityProject\Temp\UnityTempFile-22066eb6d5cf51440979eaae0ba737fe
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-22066eb6d5cf51440979eaae0ba737fe
+    projectPath: Temp\UnityTempFile-22066eb6d5cf51440979eaae0ba737fe
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-4f63de58fb672814f8f266e38687f13a
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-4f63de58fb672814f8f266e38687f13a
-    projectPath: Temp\UnityTempFile-4f63de58fb672814f8f266e38687f13a
+  - path: UnityProject\Temp\UnityTempFile-2354a808835e45640bb356620b1f7ab5
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-2354a808835e45640bb356620b1f7ab5
+    projectPath: Temp\UnityTempFile-2354a808835e45640bb356620b1f7ab5
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-8d3723d8bc00e114999b0bfc08f3e9fc
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-8d3723d8bc00e114999b0bfc08f3e9fc
-    projectPath: Temp\UnityTempFile-8d3723d8bc00e114999b0bfc08f3e9fc
+  - path: UnityProject\Temp\UnityTempFile-243b77562ffd2b44f885f2187332a247
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-243b77562ffd2b44f885f2187332a247
+    projectPath: Temp\UnityTempFile-243b77562ffd2b44f885f2187332a247
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-9a28ffac88d1fd544a279829db9a93df
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-9a28ffac88d1fd544a279829db9a93df
-    projectPath: Temp\UnityTempFile-9a28ffac88d1fd544a279829db9a93df
+  - path: UnityProject\Temp\UnityTempFile-25c63ee6c276f294fbbdc76d1ef08f21
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-25c63ee6c276f294fbbdc76d1ef08f21
+    projectPath: Temp\UnityTempFile-25c63ee6c276f294fbbdc76d1ef08f21
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-a27d1ea49b33ece429e26cdf616fc007
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-a27d1ea49b33ece429e26cdf616fc007
-    projectPath: Temp\UnityTempFile-a27d1ea49b33ece429e26cdf616fc007
+  - path: UnityProject\Temp\UnityTempFile-276dae3bd94d95a49a3a7caf6ddd29d3
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-276dae3bd94d95a49a3a7caf6ddd29d3
+    projectPath: Temp\UnityTempFile-276dae3bd94d95a49a3a7caf6ddd29d3
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-c07dbdd543d47c54496bfe4044bc7429
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-c07dbdd543d47c54496bfe4044bc7429
-    projectPath: Temp\UnityTempFile-c07dbdd543d47c54496bfe4044bc7429
+  - path: UnityProject\Temp\UnityTempFile-2bc6dc2d95551d548b8496972268f673
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-2bc6dc2d95551d548b8496972268f673
+    projectPath: Temp\UnityTempFile-2bc6dc2d95551d548b8496972268f673
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-dc261bf5d2e412c4f908cb79f4c8a94b
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-dc261bf5d2e412c4f908cb79f4c8a94b
-    projectPath: Temp\UnityTempFile-dc261bf5d2e412c4f908cb79f4c8a94b
+  - path: UnityProject\Temp\UnityTempFile-37a3341733606f24b9f8231ee6a87959
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-37a3341733606f24b9f8231ee6a87959
+    projectPath: Temp\UnityTempFile-37a3341733606f24b9f8231ee6a87959
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-ddcaf7a12a6229d46a6048defd5e6e1f
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-ddcaf7a12a6229d46a6048defd5e6e1f
-    projectPath: Temp\UnityTempFile-ddcaf7a12a6229d46a6048defd5e6e1f
+  - path: UnityProject\Temp\UnityTempFile-37d08690bd2bd01459f2b954e91083cb
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-37d08690bd2bd01459f2b954e91083cb
+    projectPath: Temp\UnityTempFile-37d08690bd2bd01459f2b954e91083cb
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-eacecf69cdff7f74ea72459c976403c8
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-eacecf69cdff7f74ea72459c976403c8
-    projectPath: Temp\UnityTempFile-eacecf69cdff7f74ea72459c976403c8
+  - path: UnityProject\Temp\UnityTempFile-3aff4c2e93f030d43a3a1826bb7b2fc1
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-3aff4c2e93f030d43a3a1826bb7b2fc1
+    projectPath: Temp\UnityTempFile-3aff4c2e93f030d43a3a1826bb7b2fc1
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-ec32f77d98e4fcd4fb074240e19d2b9d
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-ec32f77d98e4fcd4fb074240e19d2b9d
-    projectPath: Temp\UnityTempFile-ec32f77d98e4fcd4fb074240e19d2b9d
+  - path: UnityProject\Temp\UnityTempFile-4189bc54eaa3caf4dabd8edbb54d2e90
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-4189bc54eaa3caf4dabd8edbb54d2e90
+    projectPath: Temp\UnityTempFile-4189bc54eaa3caf4dabd8edbb54d2e90
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Temp\UnityTempFile-f85ebd15895512849a7377a5c0aa46be
-    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-f85ebd15895512849a7377a5c0aa46be
-    projectPath: Temp\UnityTempFile-f85ebd15895512849a7377a5c0aa46be
+  - path: UnityProject\Temp\UnityTempFile-479a7abb1f1d65c4e815c74ac2e58f25
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-479a7abb1f1d65c4e815c74ac2e58f25
+    projectPath: Temp\UnityTempFile-479a7abb1f1d65c4e815c74ac2e58f25
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-47f52e707e840b84689c51257b7492ed
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-47f52e707e840b84689c51257b7492ed
+    projectPath: Temp\UnityTempFile-47f52e707e840b84689c51257b7492ed
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-4d80e907b03a9e447a64dba24fb2788a
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-4d80e907b03a9e447a64dba24fb2788a
+    projectPath: Temp\UnityTempFile-4d80e907b03a9e447a64dba24fb2788a
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-4dbaffebf5accdd49a7702e1f90bbf67
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-4dbaffebf5accdd49a7702e1f90bbf67
+    projectPath: Temp\UnityTempFile-4dbaffebf5accdd49a7702e1f90bbf67
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-4eee45860a895c044942d4aa2eeaf7f0
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-4eee45860a895c044942d4aa2eeaf7f0
+    projectPath: Temp\UnityTempFile-4eee45860a895c044942d4aa2eeaf7f0
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-54f8e4a441a601b4f83487a61d72c48b
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-54f8e4a441a601b4f83487a61d72c48b
+    projectPath: Temp\UnityTempFile-54f8e4a441a601b4f83487a61d72c48b
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-5e05f5150c702474aa9499bdf2fc3b24
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-5e05f5150c702474aa9499bdf2fc3b24
+    projectPath: Temp\UnityTempFile-5e05f5150c702474aa9499bdf2fc3b24
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-65c3959a97c4c9d4e98b83004a6d01e2
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-65c3959a97c4c9d4e98b83004a6d01e2
+    projectPath: Temp\UnityTempFile-65c3959a97c4c9d4e98b83004a6d01e2
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-66c22085cf4b7a242b5fa1506734eb49
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-66c22085cf4b7a242b5fa1506734eb49
+    projectPath: Temp\UnityTempFile-66c22085cf4b7a242b5fa1506734eb49
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-701bef6f3007fd14895c67f3efb0d66b
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-701bef6f3007fd14895c67f3efb0d66b
+    projectPath: Temp\UnityTempFile-701bef6f3007fd14895c67f3efb0d66b
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-7091226bc1d7a5d4ab7d6de427e7e6b9
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-7091226bc1d7a5d4ab7d6de427e7e6b9
+    projectPath: Temp\UnityTempFile-7091226bc1d7a5d4ab7d6de427e7e6b9
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-7298887edbb0fb84a8513295c6b0bcaa
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-7298887edbb0fb84a8513295c6b0bcaa
+    projectPath: Temp\UnityTempFile-7298887edbb0fb84a8513295c6b0bcaa
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-81494ab7afc741e4f8447cefeeb3fd04
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-81494ab7afc741e4f8447cefeeb3fd04
+    projectPath: Temp\UnityTempFile-81494ab7afc741e4f8447cefeeb3fd04
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-8196225eca696034abd6d6251f4fea7a
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-8196225eca696034abd6d6251f4fea7a
+    projectPath: Temp\UnityTempFile-8196225eca696034abd6d6251f4fea7a
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-8749c4d473006a94d8261b4260cc072a
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-8749c4d473006a94d8261b4260cc072a
+    projectPath: Temp\UnityTempFile-8749c4d473006a94d8261b4260cc072a
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-8b88a9e9b2093b142836c545e73f1c2a
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-8b88a9e9b2093b142836c545e73f1c2a
+    projectPath: Temp\UnityTempFile-8b88a9e9b2093b142836c545e73f1c2a
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-8b9f78303bca32f4d821eef31c53384c
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-8b9f78303bca32f4d821eef31c53384c
+    projectPath: Temp\UnityTempFile-8b9f78303bca32f4d821eef31c53384c
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-8d52525093dda974fa882e5b6def5957
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-8d52525093dda974fa882e5b6def5957
+    projectPath: Temp\UnityTempFile-8d52525093dda974fa882e5b6def5957
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-8fcff1925e73349488384c5c43857102
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-8fcff1925e73349488384c5c43857102
+    projectPath: Temp\UnityTempFile-8fcff1925e73349488384c5c43857102
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-90b194b668fdbf14db0dcc9e15220e45
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-90b194b668fdbf14db0dcc9e15220e45
+    projectPath: Temp\UnityTempFile-90b194b668fdbf14db0dcc9e15220e45
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-9317611ccff81bc449af76c430b309ce
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-9317611ccff81bc449af76c430b309ce
+    projectPath: Temp\UnityTempFile-9317611ccff81bc449af76c430b309ce
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-962f8ef8559161f46b81e105610e43aa
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-962f8ef8559161f46b81e105610e43aa
+    projectPath: Temp\UnityTempFile-962f8ef8559161f46b81e105610e43aa
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-98ecbaaacc3ba4b4f8359d998f8c1f59
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-98ecbaaacc3ba4b4f8359d998f8c1f59
+    projectPath: Temp\UnityTempFile-98ecbaaacc3ba4b4f8359d998f8c1f59
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-98fdc7871ac7dcf428f50b4ffe028ed8
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-98fdc7871ac7dcf428f50b4ffe028ed8
+    projectPath: Temp\UnityTempFile-98fdc7871ac7dcf428f50b4ffe028ed8
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-9e05685f32df39b489f29273c2841187
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-9e05685f32df39b489f29273c2841187
+    projectPath: Temp\UnityTempFile-9e05685f32df39b489f29273c2841187
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-9ed8efbd71bfdbe4e9f594749afb700b
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-9ed8efbd71bfdbe4e9f594749afb700b
+    projectPath: Temp\UnityTempFile-9ed8efbd71bfdbe4e9f594749afb700b
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-a09a75e129e114740b98efa27303c5b8
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-a09a75e129e114740b98efa27303c5b8
+    projectPath: Temp\UnityTempFile-a09a75e129e114740b98efa27303c5b8
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-addc852af74a0974083d2dabd748d0b1
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-addc852af74a0974083d2dabd748d0b1
+    projectPath: Temp\UnityTempFile-addc852af74a0974083d2dabd748d0b1
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-b51960e8685062349967f683b0a1d378
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-b51960e8685062349967f683b0a1d378
+    projectPath: Temp\UnityTempFile-b51960e8685062349967f683b0a1d378
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-b715ab53fdca3b143b39107ff57ddde6
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-b715ab53fdca3b143b39107ff57ddde6
+    projectPath: Temp\UnityTempFile-b715ab53fdca3b143b39107ff57ddde6
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-b9114e2148414fb49b5c3c547318a018
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-b9114e2148414fb49b5c3c547318a018
+    projectPath: Temp\UnityTempFile-b9114e2148414fb49b5c3c547318a018
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-b9f62bf14483e1142b16cbd9a5a9cf29
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-b9f62bf14483e1142b16cbd9a5a9cf29
+    projectPath: Temp\UnityTempFile-b9f62bf14483e1142b16cbd9a5a9cf29
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-c52e539b306701946afe7d60e8650341
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-c52e539b306701946afe7d60e8650341
+    projectPath: Temp\UnityTempFile-c52e539b306701946afe7d60e8650341
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-c8a3ec46a20e13c4d9e1599fda3b8793
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-c8a3ec46a20e13c4d9e1599fda3b8793
+    projectPath: Temp\UnityTempFile-c8a3ec46a20e13c4d9e1599fda3b8793
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-cca3c4cb899b04b4c8814bd49d790704
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-cca3c4cb899b04b4c8814bd49d790704
+    projectPath: Temp\UnityTempFile-cca3c4cb899b04b4c8814bd49d790704
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-d08b6c31cfc9b7a4db42144e82b11df0
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-d08b6c31cfc9b7a4db42144e82b11df0
+    projectPath: Temp\UnityTempFile-d08b6c31cfc9b7a4db42144e82b11df0
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-dabed598b1ef7544a9ef3b26a3321d43
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-dabed598b1ef7544a9ef3b26a3321d43
+    projectPath: Temp\UnityTempFile-dabed598b1ef7544a9ef3b26a3321d43
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-db2eaaaced901504c96d11d0a813b451
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-db2eaaaced901504c96d11d0a813b451
+    projectPath: Temp\UnityTempFile-db2eaaaced901504c96d11d0a813b451
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-dca8ee042cabca24bb5ff9a039834cb8
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-dca8ee042cabca24bb5ff9a039834cb8
+    projectPath: Temp\UnityTempFile-dca8ee042cabca24bb5ff9a039834cb8
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-e0b618b7bb673da4585c2dc5a867033b
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-e0b618b7bb673da4585c2dc5a867033b
+    projectPath: Temp\UnityTempFile-e0b618b7bb673da4585c2dc5a867033b
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-e36cfc769b90744469373fe12956422f
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-e36cfc769b90744469373fe12956422f
+    projectPath: Temp\UnityTempFile-e36cfc769b90744469373fe12956422f
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-e376c1260d5720a40810bc53ad2c32db
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-e376c1260d5720a40810bc53ad2c32db
+    projectPath: Temp\UnityTempFile-e376c1260d5720a40810bc53ad2c32db
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-e93d074b0588a0c48ae4c5e861cc8c99
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-e93d074b0588a0c48ae4c5e861cc8c99
+    projectPath: Temp\UnityTempFile-e93d074b0588a0c48ae4c5e861cc8c99
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-ec896f4df03fd2646bc3b9ec8020cde3
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-ec896f4df03fd2646bc3b9ec8020cde3
+    projectPath: Temp\UnityTempFile-ec896f4df03fd2646bc3b9ec8020cde3
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-f00501d9e97aa0846a6d50a25730bc02
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-f00501d9e97aa0846a6d50a25730bc02
+    projectPath: Temp\UnityTempFile-f00501d9e97aa0846a6d50a25730bc02
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Temp\UnityTempFile-f54a5ac473db7fc4aa084b50d174bb7d
+    fullPath: F:\git\VRTD\UnityProject\Temp\UnityTempFile-f54a5ac473db7fc4aa084b50d174bb7d
+    projectPath: Temp\UnityTempFile-f54a5ac473db7fc4aa084b50d174bb7d
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1

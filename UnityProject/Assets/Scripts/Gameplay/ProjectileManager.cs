@@ -131,35 +131,6 @@ namespace VRTD.Gameplay
             Position += progress;
             GameObjectFactory.SetPos(go, Position);
 
-            /*
-
-            // Move the projectile towards the target -- it's always heat-seeking
-            float opposite = Enemy.Position.z - Position.z;
-            float adjacent = Enemy.Position.x - Position.x;
-            float angle = Mathf.Atan(Mathf.Abs(opposite / adjacent));
-
-            // calculate distance to new position
-            float xdelta = distanceMovedThisFrame * Mathf.Cos(angle) * Mathf.Sign(adjacent);
-            float zdelta = distanceMovedThisFrame * Mathf.Sin(angle) * Mathf.Sign(opposite);
-
-            Position.x += xdelta;
-            Position.z += zdelta;
-
-            GameObjectFactory.SetPos(go, Position);
-
-            // float check that applying this again will result in reaching the enemy
-    #if DEBUG
-            float distanceToGo = hypotenuse - distanceMovedThisFrame;
-            float xdeltaToGoActual = Enemy.Position.x - Position.x;
-            float zdeltaToGoActual = Enemy.Position.z - Position.z;
-            float xdeltaToGoCalculated = distanceToGo * Mathf.Cos(angle);
-            float zdeltaToGoCalculated = distanceToGo * Mathf.Sin(angle);
-            if (0.2F < (xdeltaToGoActual - xdeltaToGoCalculated))
-            { Debug.Break();  }
-            if (0.2F < (zdeltaToGoActual - zdeltaToGoCalculated))
-            { Debug.Break(); }
-    #endif
-        */
         }
 
         public void Destroy()
