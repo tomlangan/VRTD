@@ -92,12 +92,12 @@ namespace VRTD.Gameplay
 #if LEVEL_EDITOR
             Position = new Vector3(sourcePos.X, PROJECTILE_HEIGHT, sourcePos.X);
 #else
-        Position = new Vector3(sourcePos.x, PROJECTILE_HEIGHT, sourcePos.z);
+            Position = new Vector3(sourcePos.x, PROJECTILE_HEIGHT, sourcePos.z);
 #endif
             Enemy = enemy;
             IsComplete = false;
             go = GameObjectFactory.InstantiateObject(ProjectileType.Asset);
-            GameObjectFactory.SetPos(go, Position);
+            GameObjectFactory.SetMapPos(go, Position);
         }
 
         public void Advance(float waveTime)
@@ -126,10 +126,10 @@ namespace VRTD.Gameplay
                 return;
             }
 
-            Vector3 direction = Enemy.Position - Position;
-            Vector3 progress = direction * (distanceMovedThisFrame / hypotenuse);
+            Vector3 direction = (Enemy.Position - Position).normalized;
+            Vector3 progress = direction * distanceMovedThisFrame;
             Position += progress;
-            GameObjectFactory.SetPos(go, Position);
+            GameObjectFactory.SetMapPos(go, Position);
 
         }
 

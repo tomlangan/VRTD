@@ -86,7 +86,7 @@ namespace VRTD.Gameplay
 
                 if ((intraMapProgress < 0.5F) && (posIndex > 0))
                 {
-                    direction = levelDesc.Road[posIndex - 1].Pos - levelDesc.Road[posIndex].Pos;
+                    direction = (levelDesc.Road[posIndex - 1].Pos - levelDesc.Road[posIndex].Pos).normalized;
                 }
                 else if ((intraMapProgress < 0.5F) && (posIndex == 0))
                 {
@@ -100,14 +100,14 @@ namespace VRTD.Gameplay
                 }
                 else
                 {
-                    direction = levelDesc.Road[posIndex + 1].Pos - levelDesc.Road[posIndex].Pos;
+                    direction = (levelDesc.Road[posIndex + 1].Pos - levelDesc.Road[posIndex].Pos).normalized;
                 }
 
                 Vector3 movement = direction * progressFromCenter;
                 //Position = BasePosition + movement;
                 Position = levelDesc.Road[posIndex].Pos + movement;
 
-                GameObjectFactory.SetPos(go, Position);
+                GameObjectFactory.SetMapPos(go, Position);
             }
         }
 

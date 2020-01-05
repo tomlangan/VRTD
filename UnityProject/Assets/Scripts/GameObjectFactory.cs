@@ -47,7 +47,7 @@ public class GameObjectFactory : MonoBehaviour
                 throw new Exception("Couldn't find asset");
             }
 
-            SetPos(go, pos);
+            SetMapPos(go, pos);
         }
     }
 
@@ -63,13 +63,19 @@ public class GameObjectFactory : MonoBehaviour
         Destroy(go);
     }
 
-    public static void SetPos(GameObject go, MapPos pos)
+    public static void SetMapPos(GameObject go, MapPos pos)
     {
-        SetPos(go, pos.Pos);
+        SetWorldPos(go, MapPosToVec3(pos.Pos));
     }
-    public static void SetPos(GameObject go, Vector3 pos)
+
+    public static void SetMapPos(GameObject go, Vector3 pos)
     {
-        go.transform.SetPositionAndRotation(MapPosToVec3(pos), Quaternion.identity);
+        SetWorldPos(go, MapPosToVec3(pos));
+    }
+
+    public static void SetWorldPos(GameObject go, Vector3 pos)
+    {
+        go.transform.SetPositionAndRotation(pos, Quaternion.identity);
     }
 
 

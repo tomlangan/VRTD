@@ -120,6 +120,7 @@ public class Level : MonoBehaviour
         //TimerUIText.text = FormatTime(WAVE_COUNTDOWN_TIME - (GameTime - CountdownStartTime));
 
         float elapsed = GameTime - CountdownStartTime;
+        UpdateHUD();
 
         if (elapsed < WAVE_COUNTDOWN_TIME)
         {
@@ -131,8 +132,6 @@ public class Level : MonoBehaviour
             CountdownUI.transform.gameObject.SetActive(false);
             CountdownUI.enabled = false;
 
-            Waves.AdvanceToNextWave(GameTime);
-            ShowHUDUI();
             Debug.Log("State ==> Playing");
             State = LevelState.Playing;
         }
@@ -144,11 +143,9 @@ public class Level : MonoBehaviour
         Coin += Waves.CurrentWave.ReportCoinEarned();
         LivesRemaining -= Waves.CurrentWave.ReportLivesLost();
 
-        Turrets.Fire(GameTime);
-
         Projectiles.AdvanceAll(GameTime);
 
-        UpdateHUD();
+        Turrets.Fire(GameTime);
 
         if (Waves.IsComplete)
         {
@@ -158,8 +155,8 @@ public class Level : MonoBehaviour
         {
 
             Debug.Log("State ==> WaveCountdown");
-            HideHUDUI();
             ShowCountdownUI();
+            Waves.AdvanceToNextWave(GameTime);
             State = LevelState.WaveCountdown;
             CountdownStartTime = GameTime;
         }
@@ -193,6 +190,7 @@ public class Level : MonoBehaviour
     {
         Debug.Log("State ==> StatsScreen");
         State = LevelState.StatsScreen;
+        HideHUDUI();
     }
 
     string FormatTime(float timeeInSec)
@@ -234,6 +232,8 @@ public class Level : MonoBehaviour
         LoadLevel(levelName);
         CountdownStartTime = GameTime;
         State = LevelState.WaveCountdown;
+        Waves.AdvanceToNextWave(GameTime);
+        ShowHUDUI();
         ShowCountdownUI();
 
         return false;
