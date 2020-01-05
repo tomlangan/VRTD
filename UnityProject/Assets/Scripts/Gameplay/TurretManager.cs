@@ -124,6 +124,7 @@ namespace VRTD.Gameplay
 
         public void RemoveTurret(TurretInstance turret)
         {
+            turret.Destroy();
             Turrets.Remove(turret);
         }
 
