@@ -11,67 +11,49 @@ public class GameObjectFactory : MonoBehaviour
     static float MidPointDepth;
 
 
-    public static void InitializeObjects(
-        GameObject BasicEnemy,
-        GameObject SwarmEnemy,
-        GameObject BasicTurret,
-        GameObject FireTurret,
-        GameObject IceTurret,
-        GameObject BasicBullet,
-        GameObject FireBullet,
-        GameObject IceBullet
-        )
-    {
-        Objects.Add("BasicEnemy", BasicEnemy);
-        Objects.Add("SwarmEnemy", SwarmEnemy);
-        Objects.Add("BasicTurret", BasicTurret);
-        Objects.Add("FireTurret", FireTurret);
-        Objects.Add("IceTurret", IceTurret);
-        Objects.Add("BasicBullet", BasicBullet);
-        Objects.Add("FireBullet", FireBullet);
-        Objects.Add("IceBullet", IceBullet);
-    }
 
-
-    public static void CreateMapObjects(LevelDescription Desc, GameObject RoadTemplate, GameObject TerrainTemplate, GameObject TurretLocationTemplate)
+    public static void CreateMapObjects(LevelDescription Desc)
     {
         MidPointWidth = Desc.FieldWidth / 2.0f;
         MidPointDepth = Desc.FieldDepth / 2.0f;
 
         MapPos pos = new MapPos(0,0);
+        GameObject go = null;
         for (int i = 0; i < Desc.Map.Count; i++)
         {
             pos.x = i % Desc.FieldWidth;
             pos.z = i / Desc.FieldWidth;
-            GameObject template = null;
+
             switch (Desc.Map[i])
             {
                 case 'E':
-                    template = RoadTemplate;
+                    go = InstantiateObject("RoadTile");
                     break;
                 case 'X':
-                    template = RoadTemplate;
+                    go = InstantiateObject("RoadTile");
                     break;
                 case 'R':
-                    template = RoadTemplate;
+                    go = InstantiateObject("RoadTile");
                     break;
                 case 'T':
-                    template = TurretLocationTemplate;
+                    go = InstantiateObject("TurretSpaceTile");
                     break;
                 case 'D':
-                    template = TerrainTemplate;
+                    go = InstantiateObject("TerrainTile");
                     break;
             }
-            Debug.Assert(null != template);
+            if (null == go)
+            {
+                throw new Exception("Couldn't find asset");
+            }
 
-            GameObject ro = Instantiate(template);
-            SetPos(ro, pos);
+            SetPos(go, pos);
         }
     }
 
     public static GameObject InstantiateObject(string AssetName)
     {
-        GameObject template = Objects[AssetName];
+        GameObject template = Resources.Load(AssetName) as GameObject;
 
         return Instantiate(template);
     }

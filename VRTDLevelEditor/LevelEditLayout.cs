@@ -51,6 +51,10 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
+            field = GtkHelpers.TextEntryField("Lives", desc.Lives.ToString(), Lives_Changed, true, GtkHelpers.ValueType.Int);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
+
             field = GtkHelpers.ComboBox("Width", LayoutOptions, (desc.FieldWidth / 5 - 1), Width_Changed, true);
             Layout.PackStart(field, false, false, 0);
             field.Show();
@@ -567,6 +571,24 @@ namespace VRTD.LevelEditor
                 if (null != TreeRefreshNeeded)
                 {
                     TreeRefreshNeeded();
+                }
+            }
+        }
+
+
+        private void Lives_Changed(object sender, EventArgs e)
+        {
+            string newName = ((Entry)sender).Text;
+            if (newName.Length > 0)
+            {
+                try
+                {
+                    int newVal = int.Parse(newName);
+                    LevelDesc.Lives = newVal;
+                    WriteChanges();
+                }
+                catch (Exception ex)
+                {
                 }
             }
         }

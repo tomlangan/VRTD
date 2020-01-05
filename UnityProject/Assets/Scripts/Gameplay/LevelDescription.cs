@@ -161,6 +161,8 @@ namespace VRTD.Gameplay
 
         public List<string> AllowedTurrets;
 
+        public int Lives { get; set; }
+
         public int FieldWidth { get; set; }
         public int FieldDepth { get; set; }
         public int StartingCoins { get; set; }

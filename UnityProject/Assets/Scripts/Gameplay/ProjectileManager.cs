@@ -137,7 +137,13 @@ namespace VRTD.Gameplay
         {
             if (null != go)
             {
-                GameObjectFactory.Destroy(go);
+                try
+                {
+                    GameObjectFactory.Destroy(go);
+                }catch (Exception e)
+                {
+                    Debug.Log(e.Message);
+                }
                 go = null;
             }
         }

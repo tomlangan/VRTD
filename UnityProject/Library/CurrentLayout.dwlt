@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -111,10 +111,10 @@ MonoBehaviour:
     y: 30
     width: 2137
     height: 1069
-  m_MinSize: {x: 679, y: 498}
-  m_MaxSize: {x: 14002, y: 14048}
+  m_MinSize: {x: 683, y: 498}
+  m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 122
+  controlID: 121
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 0
     width: 1726
     height: 1069
-  m_MinSize: {x: 404, y: 498}
+  m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 75
+  controlID: 55
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -161,10 +161,10 @@ MonoBehaviour:
     y: 0
     width: 1726
     height: 720
-  m_MinSize: {x: 404, y: 224}
-  m_MaxSize: {x: 8004, y: 4024}
+  m_MinSize: {x: 406, y: 224}
+  m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 31
+  controlID: 56
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -184,8 +184,8 @@ MonoBehaviour:
     y: 0
     width: 259
     height: 720
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 224}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -265,8 +265,8 @@ MonoBehaviour:
     y: 0
     width: 411
     height: 1069
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 74}
+  m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -509,10 +509,10 @@ MonoBehaviour:
     gitStatusEntries: []
     changedFilesText: No changed files
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 2020-01-04T21:27:11.020-08:00
+      updatedTimeString: 2020-01-05T00:18:40.162-08:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 2020-01-04T22:57:48.933-08:00
+      updatedTimeString: 2020-01-05T00:27:08.915-08:00
       cacheType: 6
     lastLocksChangedEvent:
       updatedTimeString: 0001-01-01T00:00:00.000+00:00
@@ -1029,9 +1029,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7c790000
-      m_LastClickedID: 31100
-      m_ExpandedIDs: 06e6fcff44ebfcff4aebfcff7cebfcff84ebfcff86ebfcff30eefcff9c11fdff2212fdff3c12fdff4412fdffbe21fdff8226fdffba26fdffc226fdffc426fdff6e29fdfffca1ffff04a2ffff72acffffacb1ffffb4b1ffffbcb1ffff10b2ffffdefbffffbe3b0000ce3b00001679000066790000
+      m_SelectedIDs: 1c290000
+      m_LastClickedID: 0
+      m_ExpandedIDs: bafbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1114,18 +1114,18 @@ MonoBehaviour:
       y: 17
       width: 1463
       height: 683
-    m_Scale: {x: 3, y: 3}
-    m_Translation: {x: 630.2139, y: 239.23236}
+    m_Scale: {x: 2.9999993, y: 3.0000005}
+    m_Translation: {x: 630.214, y: 239.23239}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -210.0713
+      x: -210.07138
       y: -79.74412
-      width: 487.66666
-      height: 227.66667
+      width: 487.66678
+      height: 227.66663
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
@@ -1209,10 +1209,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 94}
-    m_SelectedIDs: f6360000
-    m_LastClickedID: 14070
-    m_ExpandedIDs: 00000000dc2b0000422c0000922c0000102d0000822d0000242e00009a2e0000a02e0000d02f00004c300000b8330000f63600008439000000ca9a3b
+    scrollPos: {x: 0, y: 34}
+    m_SelectedIDs: 24370000
+    m_LastClickedID: 14116
+    m_ExpandedIDs: 000000000a2c00006e2c0000be2c00003c2d0000ae2d0000522e0000ca2e0000d02e0000003000007c300000e833000024370000b239000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1240,7 +1240,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000dc2b0000422c0000922c0000102d0000822d0000242e00009a2e0000a02e0000d02f00004c300000b8330000f636000084390000
+    m_ExpandedIDs: 000000000a2c00006e2c0000be2c00003c2d0000ae2d0000522e0000ca2e0000d02e0000003000007c300000e833000024370000b2390000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1317,9 +1317,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 874.85223
+    y: 792.20874
     width: 1724
-    height: 247
+    height: 329
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &20
 MonoBehaviour:

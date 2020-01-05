@@ -13,11 +13,13 @@ public class HUDUI : MonoBehaviour
     public string CurrentWave = "";
     public string NextEnemy = "";
     public string Coin = "";
+    public string Lives = "";
 
     private Text WavePositionText;
     private Text CurrentWaveText;
     private Text NextEnemyText;
     private Text CoinText;
+    private Text LivesText;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,8 @@ public class HUDUI : MonoBehaviour
         WavePositionText = textFields[0];
         CurrentWaveText = textFields[2];
         NextEnemyText = textFields[4];
-        CoinText = textFields[5];
+        LivesText = textFields[6];
+        CoinText = textFields[7];
     }
 
     // Update is called once per frame
@@ -36,5 +39,6 @@ public class HUDUI : MonoBehaviour
         CurrentWaveText.text = CurrentWave;
         NextEnemyText.text = NextEnemy;
         CoinText.text = Coin;
+        LivesText.text = Lives;
     }
 }

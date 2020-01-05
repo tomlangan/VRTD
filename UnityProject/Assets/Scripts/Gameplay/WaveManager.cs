@@ -136,8 +136,8 @@ namespace VRTD.Gameplay
         public EnemyDescription EnemyType;
         public List<EnemyInstance> Enemies;
         private int CoinEarnedToReport;
+        private int LivesLostToReport;
         EnemyWave Desc;
-        public int EnemiesThatSurvived;
         float WaveStartTime;
         int SpawnedCount;
         float LastSpawnTime;
@@ -150,11 +150,11 @@ namespace VRTD.Gameplay
             LevelDesc = levelDesc;
             Desc = waveDescription;
             Enemies = new List<EnemyInstance>();
-            EnemiesThatSurvived = 0;
             RoadSegments = roadSegments;
             WaveStartTime = gameTime;
             LastSpawnTime = WaveStartTime;
             CoinEarnedToReport = 0;
+            LivesLostToReport = 0;
         }
 
         public void Advance(float waveTime)
@@ -276,7 +276,7 @@ namespace VRTD.Gameplay
                     {
                         enemy.LinearProgress = (float)RoadSegments;
                         enemy.ReachedFinishLine = true;
-                        EnemiesThatSurvived++;
+                        LivesLostToReport++;
                     }
                     else
                     {
@@ -295,6 +295,13 @@ namespace VRTD.Gameplay
         {
             int ret = CoinEarnedToReport;
             CoinEarnedToReport = 0;
+            return ret;
+        }
+
+        public int ReportLivesLost()
+        {
+            int ret = LivesLostToReport;
+            LivesLostToReport = 0;
             return ret;
         }
     }

@@ -60,7 +60,7 @@ namespace VRTD.LevelEditor
             field.Show();
 
 
-            field = GtkHelpers.TextEntryField("Hit Points", Projectile.AirSpeed.ToString(), AirSpeed_Changed, true, GtkHelpers.ValueType.Float);
+            field = GtkHelpers.TextEntryField("AirSpeed", Projectile.AirSpeed.ToString(), AirSpeed_Changed, true, GtkHelpers.ValueType.Float);
             Layout.PackStart(field, false, false, 0);
             field.Show();
 

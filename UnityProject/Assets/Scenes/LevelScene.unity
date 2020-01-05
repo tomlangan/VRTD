@@ -266,22 +266,6 @@ MonoBehaviour:
     type: 3}
   TurretSpaceObject: {fileID: 8805115824894549349, guid: 1006c1afbeec48c4eb9d62ac6278dc66,
     type: 3}
-  BasicEnemy: {fileID: 3145202937413218105, guid: 345c94befcedd434eae2c43b95548cf8,
-    type: 3}
-  SwarmEnemy: {fileID: 4297125490911687240, guid: 44e51f6ab3e9bb041afd42372e43903c,
-    type: 3}
-  BasicTurret: {fileID: 6880068838699643874, guid: f92c2b657a9365642b6b7dc56be63171,
-    type: 3}
-  FireTurret: {fileID: 6880068838699643874, guid: 4666aa07171de483790e4416c7aa6e1f,
-    type: 3}
-  IceTurret: {fileID: 6880068838699643874, guid: 00a5158b9625349c9b4fec4dab6be43c,
-    type: 3}
-  BasicBullet: {fileID: 2417508077430266576, guid: bf538721999cf2c46a7adacf83a2a035,
-    type: 3}
-  FireBullet: {fileID: 2417508077430266576, guid: 7e6a528e7b2dd4cd0863daa4640869f5,
-    type: 3}
-  IceBullet: {fileID: 2417508077430266576, guid: 0589cb27089ce4cd98d885c2570c30b8,
-    type: 3}
   ListUITemplate: {fileID: 4667065774110376593, guid: 0773e9c3ba96a5740a1636a4a4d9a584,
     type: 3}
   TargetManager: {fileID: 1449813729}

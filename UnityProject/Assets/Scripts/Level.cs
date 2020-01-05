@@ -15,14 +15,6 @@ public class Level : MonoBehaviour
     public GameObject RoadObject;
     public GameObject TerrainObject;
     public GameObject TurretSpaceObject;
-    public GameObject BasicEnemy;
-    public GameObject SwarmEnemy;
-    public GameObject BasicTurret;
-    public GameObject FireTurret;
-    public GameObject IceTurret;
-    public GameObject BasicBullet;
-    public GameObject FireBullet;
-    public GameObject IceBullet;
     public ListUI ListUITemplate;
     public PlayerTargetManager TargetManager;
     public GameObject TurretSelectUI;
@@ -46,6 +38,7 @@ public class Level : MonoBehaviour
     public LevelState State = LevelState.None;
     bool Loading = false;
     int Coin = 0;
+    int LivesRemaining = 0;
 
     private MessageUI CountdownUI;
     private HUDUI HUD;
@@ -74,17 +67,6 @@ public class Level : MonoBehaviour
                 {
                     Loading = true;
                     GameTime = 0.0F;
-
-                    GameObjectFactory.InitializeObjects(
-                        BasicEnemy,
-                        SwarmEnemy,
-                        BasicTurret,
-                        FireTurret,
-                        IceTurret,
-                        BasicBullet,
-                        FireBullet,
-                        IceBullet
-                        );
 
 
                     Debug.Log("State ==> LevelSelect");
@@ -122,10 +104,11 @@ public class Level : MonoBehaviour
         Turrets = new TurretManager(LevelDesc);
         Projectiles = new ProjectileManager();
         Debug.Log("Creating road objects");
-        GameObjectFactory.CreateMapObjects(LevelDesc, RoadObject, TerrainObject, TurretSpaceObject);
+        GameObjectFactory.CreateMapObjects(LevelDesc);
         InitializeGameplayUISettings();
 
         Coin = LevelDesc.StartingCoins;
+        LivesRemaining = LevelDesc.Lives;
         GameTime = 0.0F;
 
     }
@@ -159,6 +142,7 @@ public class Level : MonoBehaviour
     {
         Waves.CurrentWave.Advance(GameTime);
         Coin += Waves.CurrentWave.ReportCoinEarned();
+        LivesRemaining -= Waves.CurrentWave.ReportLivesLost();
 
         Turrets.Fire(GameTime);
 
@@ -288,6 +272,7 @@ public class Level : MonoBehaviour
         HUD.CurrentWave = Waves.CurrentWave.EnemyType.Name;
         HUD.WavePosition = "Wave " + Waves.WavesStarted + " of " + LevelDesc.Waves.Count;
         HUD.Coin = Coin.ToString("#,##0");
+        HUD.Lives = LivesRemaining.ToString();
         if (Waves.WavesStarted < LevelDesc.Waves.Count)
         {
             HUD.NextEnemy = LevelDesc.Waves[Waves.WavesStarted].Enemy;
