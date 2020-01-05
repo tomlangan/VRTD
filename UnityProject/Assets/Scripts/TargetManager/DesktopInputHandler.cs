@@ -53,7 +53,7 @@ public class DesktopInputHandler : MonoBehaviour
             float zPos = Input.mousePosition.y / Screen.height;
             float zRelativePosFromCenter = zPos - 0.5F;
             // Black magic that needs to change if we ever change the camera position!
-            Vector3 SelectionRayTarget = new Vector3(((40.0F - (12.0F * (1.0F-zPos))) * xRelativePosFromCenter) - 2.0F , 0.0F, (21.0F * zRelativePosFromCenter) + 2.0F);
+            Vector3 SelectionRayTarget = new Vector3((70.0F * xRelativePosFromCenter) - 2.0F , 0.0F, (100.0F * zRelativePosFromCenter) + 15.0F);
             VirtualHandDirection = (SelectionRayTarget - VirtualHandPosition).normalized;
 
             InputDemuxer.SetCursorRay(new Ray(VirtualHandPosition, VirtualHandDirection));

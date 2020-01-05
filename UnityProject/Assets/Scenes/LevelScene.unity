@@ -645,8 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputDemuxer: {fileID: 275260301}
-  VirtualHand: {fileID: 4681799162909544799, guid: 96131906495ea8549a1dd3584f40d667,
-    type: 3}
+  VirtualHand: {fileID: 2009353944}
   VirtualHandPosition: {x: 0, y: 0, z: 0}
   VirtualHandDirection: {x: 0, y: -0.5, z: 0.5}
   MiddleClickMouseMovement: {x: 0, y: 0}
@@ -1218,7 +1217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449813727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: -13}
+  m_LocalPosition: {x: 0, y: 15, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 573466148}
@@ -1513,6 +1512,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96131906495ea8549a1dd3584f40d667, type: 3}
+--- !u!1 &2009353944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4681799162909544799, guid: 96131906495ea8549a1dd3584f40d667,
+    type: 3}
+  m_PrefabInstance: {fileID: 1986901244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2030420359
 GameObject:
   m_ObjectHideFlags: 0

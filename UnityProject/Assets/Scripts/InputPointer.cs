@@ -85,7 +85,7 @@ public class InputPointer : MonoBehaviour
         if (_hitTarget)
         {
             InputLine.SetPosition(1, _endPoint);
-            UpdateLine(_startPoint, _endPoint);
+            UpdateLine(_startPoint, (_endPoint - _startPoint).normalized);
             if (cursorVisual)
             {
                 cursorVisual.transform.position = _endPoint;
@@ -94,20 +94,17 @@ public class InputPointer : MonoBehaviour
         }
         else
         {
-            UpdateLine(_startPoint, _startPoint + maxLength * _forward);
+            UpdateLine(_startPoint, _forward);
             InputLine.SetPosition(1, _startPoint + maxLength * _forward);
             if (cursorVisual) cursorVisual.SetActive(false);
         }
     }
 
     // make laser beam a behavior with a prop that enables or disables
-    private void UpdateLine(Vector3 start, Vector3 end)
+    private void UpdateLine(Vector3 start, Vector3 direction)
     {
-        InputLine.SetPosition(0, start);
-        InputLine.SetPosition(1, end);
-
         RaycastHit hit;
-        if (Physics.Raycast(start, end, out hit))
+        if (Physics.Raycast(start, direction, out hit))
         {
             Hitting = hit.transform.gameObject;
         }
