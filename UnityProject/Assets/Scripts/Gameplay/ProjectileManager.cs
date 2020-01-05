@@ -73,7 +73,7 @@ namespace VRTD.Gameplay
 
     }
 
-    class ProjectileInstance
+    public class ProjectileInstance
     {
         const float PROJECTILE_HEIGHT = 0.5F;
         public Projectile ProjectileType;
@@ -149,7 +149,7 @@ namespace VRTD.Gameplay
         }
     }
 
-    class ProjectileManager
+    public class ProjectileManager
     {
         public List<ProjectileInstance> ProjectilesInFlight = null;
         public ProjectileManager()

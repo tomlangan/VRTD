@@ -28,6 +28,8 @@ public class GameplayUIState : MonoBehaviour
     public GameObject ListTemplateTextOnly;
     public GameObject ListTemplateWithCoin;
 
+    public TurretManager TurretManagerInstance;
+
     private State UIState = State.NothingSelected;
     private ListUI TurretUIObject = null;
 
@@ -177,8 +179,22 @@ public class GameplayUIState : MonoBehaviour
         {
             SelectedObject = go;
             UIState = State.TurretSelected;
-            TurretUIObject = CreateTurretOptionUI();
-            ShowUIAttachedToObject(go, TurretUIObject.transform.gameObject);
+            // Need to get the turret instance
+            MapPos pos = GameObjectFactory.Vec3ToMapPos(SelectedObject.transform.position);
+            TurretInstance turretInstance = null;
+            foreach (TurretInstance t in TurretManagerInstance.Turrets)
+            {
+                if (t.Position.x == pos.x && t.Position.z == pos.z)
+                {
+                    turretInstance = t;
+                    break;
+                }
+            }
+            if (null != turretInstance)
+            {
+                TurretUIObject = CreateTurretOptionUI(turretInstance);
+                ShowUIAttachedToObject(go, TurretUIObject.transform.gameObject);
+            }
         }
     }
 
@@ -256,11 +272,17 @@ public class GameplayUIState : MonoBehaviour
         return go;
     }
 
-    private ListUI CreateTurretOptionUI()
+    private ListUI CreateTurretOptionUI(TurretInstance selectedTurret)
     {
         ListUI go = Instantiate<ListUI>(ListUITemplate);
 
-        go.Create(ListTemplateTextOnly, TurretOptionUIParams);
+        TurretOptionUIParams.Options.Clear();
+
+        TurretOptionUIParams.Options.Add("Sell");
+        TurretOptionUIParams.Prices.Add((selectedTurret.TurretType.Cost / 2).ToString());
+        TurretOptionUIParams.Context = selectedTurret;
+
+        go.Create(ListTemplateWithCoin, TurretOptionUIParams);
 
         return go;
     }

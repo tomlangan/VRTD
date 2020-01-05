@@ -8,12 +8,13 @@ using VRTD.Gameplay;
 
 public class ListUIParams
 {
-    public delegate bool OnListItemClicked(int index, string itemString);
+    public delegate bool OnListItemClicked(int index, string itemString, object context);
 
     public string Title;
     public List<string> Options = new List<string>();
     public List<string> Prices = new List<string>();
     public OnListItemClicked Callback;
+    public object Context;
 }
 
 
@@ -70,7 +71,7 @@ public class ListUI : MonoBehaviour
             int index = i;
             listButton.onClick.AddListener(() => { 
 
-                bool leaveActive = Params.Callback(index, optionSelectedString);
+                bool leaveActive = Params.Callback(index, optionSelectedString, Params.Context);
 
                 if (!leaveActive)
                 {

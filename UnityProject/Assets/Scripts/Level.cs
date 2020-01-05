@@ -227,7 +227,7 @@ public class Level : MonoBehaviour
         ui.transform.gameObject.transform.forward = uiForward;
     }
 
-    private bool OnLevelSelected(int index, string levelName)
+    private bool OnLevelSelected(int index, string levelName, object context)
     {
         LoadLevel(levelName);
         CountdownStartTime = GameTime;
@@ -305,16 +305,15 @@ public class Level : MonoBehaviour
         ListUIParams TurretOptionsParams = new ListUIParams();
         TurretOptionsParams.Title = "Turret Options";
 
-        TurretOptionsParams.Options.Add("Upgrade");
-        TurretOptionsParams.Options.Add("Sell");
-
         TurretOptionsParams.Callback = OnTurretOptionSelect;
 
         GameplayUI.TurretOptionUIParams = TurretOptionsParams;
+
+        GameplayUI.TurretManagerInstance = Turrets;
     }
 
 
-    private bool OnTurretSelected(int index, string turretName)
+    private bool OnTurretSelected(int index, string turretName, object context)
     {
         MapPos position = GameObjectFactory.Vec3ToMapPos(GameplayUI.SelectedObject.transform.position);
         Turret turretSelected = LevelLoader.LookupTurret(LevelDesc.AllowedTurrets[index]);
@@ -328,9 +327,14 @@ public class Level : MonoBehaviour
         return false;
     }
 
-    private bool OnTurretOptionSelect(int index, string option)
+    private bool OnTurretOptionSelect(int index, string option, object context)
     {
-        Debug.Log("Turret option selected: " + option);
+        if ("Sell" == option)
+        {
+            TurretInstance t = (TurretInstance)context;
+            Turrets.RemoveTurret(t);
+            Coin += (t.TurretType.Cost / 2);
+        }
 
         return false;
     }

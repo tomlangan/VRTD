@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace VRTD.Gameplay
 {
-    class TurretInstance
+    public class TurretInstance
     {
         ProjectileManager Projectiles;
         public Turret TurretType;
@@ -105,7 +105,7 @@ namespace VRTD.Gameplay
     }
 
 
-    class TurretManager
+    public class TurretManager
     {
         LevelDescription LevelDesc;
         public List<TurretInstance> Turrets = new List<TurretInstance>();
@@ -120,7 +120,11 @@ namespace VRTD.Gameplay
             Turret turret = LevelLoader.LookupTurret(turretType);
 
             Turrets.Add(new TurretInstance(turret, position, LevelDesc, projectiles));
-            Debug.Log("Turret added at " + position.x + "," + position.z);
+        }
+
+        public void RemoveTurret(TurretInstance turret)
+        {
+            Turrets.Remove(turret);
         }
 
         public void Fire(float gameTime)
