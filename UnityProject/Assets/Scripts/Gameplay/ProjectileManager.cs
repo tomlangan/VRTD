@@ -126,10 +126,12 @@ namespace VRTD.Gameplay
                 return;
             }
 
+#if LEVEL_EDITOR == false
             Vector3 direction = (Enemy.Position - Position).normalized;
             Vector3 progress = direction * distanceMovedThisFrame;
             Position += progress;
             GameObjectFactory.SetMapPos(go, Position);
+#endif
 
         }
 

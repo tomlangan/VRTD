@@ -4,30 +4,53 @@ using System.IO;
 using Newtonsoft.Json;
 #if LEVEL_EDITOR
 using System.Numerics;
-
-public class Debug
-{
-    public static void Assert(bool b) { }
-    public static void Log(string s) { }
-}
-
-
-public class GameObject { }
-
-public class GameObjectFactory
-{
-    public static GameObject InstantiateObject(string asset) { return new GameObject(); }
-    public static void SetPos(GameObject go, VRTD.Gameplay.MapPos Position) { }
-    public static void SetPos(GameObject go, Vector3 Position) { }
-    public static void Destroy(GameObject go) { }
-}
 #else
 using UnityEngine;
 #endif
 
-
 namespace VRTD.Gameplay
 {
+
+#if LEVEL_EDITOR
+    public class Application
+    {
+        public static string streamingAssetsPath = "Assets";
+    }
+
+    public class Debug
+    {
+        public static void Assert(bool b) { }
+        public static void Log(string s) { }
+    }
+
+
+public class GameObject { }
+
+    public class GameObjectFactory
+    {
+        public static GameObject InstantiateObject(string asset) { return new GameObject(); }
+        public static void SetMapPos(GameObject go, VRTD.Gameplay.MapPos Position) { }
+        public static void SetMapPos(GameObject go, Vector3 Position) { }
+        public static void Destroy(GameObject go) { }
+    }
+#endif
+
+
+
+    [Serializable]
+    public class AssetDirectory
+    {
+        public string ThisFile = "assetdirectory.idx";
+
+        public List<string> LevelFiles;
+
+        public string TurretFile = "turrets.dic";
+
+        public string EnemyFile = "enemies.dic";
+
+        public string ProjectileFile = "projectiles.dic";
+    }
+
     public class LevelLoadException : Exception
     {
         public LevelLoadException(string message) : base(message)
@@ -38,10 +61,11 @@ namespace VRTD.Gameplay
 
     public class LevelLoader
     {
-        static string RootLevelPath = "Assets" + Path.DirectorySeparatorChar + "Levels";
+        static string RootLevelPath = Application.streamingAssetsPath + Path.DirectorySeparatorChar + "Levels";
         private static List<Turret> turrets = null;
         private static List<EnemyDescription> enemies = null;
         private static List<Projectile> projectiles = null;
+        private static AssetDirectory AssetLocations = new AssetDirectory();
 
         public static List<Turret> Turrets
         {
@@ -317,14 +341,8 @@ namespace VRTD.Gameplay
             LevelDescription fromJson = null;
             string path = LevelToPath(name);
 
-            if (File.Exists(path))
-            {
-                StreamReader reader = new StreamReader(path);
-                string json = reader.ReadToEnd();
-                fromJson = JsonConvert.DeserializeObject<LevelDescription>(json);
-                reader.Close();
-                reader.Dispose();
-            }
+            string json = ReadAllBytesFromTextAsset(path);
+            fromJson = JsonConvert.DeserializeObject<LevelDescription>(json);
 
             return fromJson;
         }
@@ -333,14 +351,8 @@ namespace VRTD.Gameplay
             List<Turret> fromJson = null;
             string path = RootLevelPath + Path.DirectorySeparatorChar + "turrets.dic";
 
-            if (File.Exists(path))
-            {
-                StreamReader reader = new StreamReader(path);
-                string json = reader.ReadToEnd();
-                fromJson = JsonConvert.DeserializeObject<List<Turret>>(json);
-                reader.Close();
-                reader.Dispose();
-            }
+            string json = ReadAllBytesFromTextAsset(path);
+            fromJson = JsonConvert.DeserializeObject<List<Turret>>(json);
 
             return fromJson;
         }
@@ -368,14 +380,9 @@ namespace VRTD.Gameplay
             List<EnemyDescription> fromJson = null;
             string path = RootLevelPath + Path.DirectorySeparatorChar + "enemies.dic";
 
-            if (File.Exists(path))
-            {
-                StreamReader reader = new StreamReader(path);
-                string json = reader.ReadToEnd();
-                fromJson = JsonConvert.DeserializeObject<List<EnemyDescription>>(json);
-                reader.Close();
-                reader.Dispose();
-            }
+
+            string json = ReadAllBytesFromTextAsset(path);
+            fromJson = JsonConvert.DeserializeObject<List<EnemyDescription>>(json);
 
             return fromJson;
         }
@@ -402,17 +409,10 @@ namespace VRTD.Gameplay
         public static List<Projectile> GetProjectiles()
         {
             List<Projectile> fromJson = null;
-
             string path = RootLevelPath + Path.DirectorySeparatorChar + "projectiles.dic";
 
-            if (File.Exists(path))
-            {
-                StreamReader reader = new StreamReader(path);
-                string json = reader.ReadToEnd();
-                fromJson = JsonConvert.DeserializeObject<List<Projectile>>(json);
-                reader.Close();
-                reader.Dispose();
-            }
+            string json = ReadAllBytesFromTextAsset(path);
+            fromJson = JsonConvert.DeserializeObject<List<Projectile>>(json);
 
             return fromJson;
         }
@@ -537,7 +537,24 @@ namespace VRTD.Gameplay
             return list;
         }
 
-        public static LevelDescription GetTestLevel()
+        public static string ReadAllBytesFromTextAsset(string filePath)
+        {
+            string result = "";
+#if LEVEL_EDITOR != true
+            TextAsset fileAsset = Resources.Load<TextAsset>(filePath);
+            if (null != fileAsset)
+            {
+                using (StreamReader sr = new StreamReader(new MemoryStream(fileAsset.bytes)))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            
+#endif
+            return result;
+        }
+
+            public static LevelDescription GetTestLevel()
         {
             LevelDescription level = new LevelDescription();
 

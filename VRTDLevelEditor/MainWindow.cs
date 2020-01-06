@@ -28,7 +28,7 @@ namespace VRTD.LevelEditor
                 ButtonsType.Ok, "Couldn't find levels folder - exiting");
                 md.Run();
                 md.Destroy();
-                Application.Quit();
+                Gtk.Application.Quit();
             }
 
             AddWidgetsAndShow(EditorMode.Level);
@@ -170,6 +170,8 @@ namespace VRTD.LevelEditor
 
 
             ShowAll();
+
+            LevelManager.WriteAssetDirectory();
         }
 
         private void TreeRefreshNeeded_Event()
@@ -476,7 +478,7 @@ namespace VRTD.LevelEditor
 
         static void delete_event(object obj, DeleteEventArgs args)
         {
-            Application.Quit();
+            Gtk.Application.Quit();
         }
 
         void level_clicked_event(object obj, EventArgs args)

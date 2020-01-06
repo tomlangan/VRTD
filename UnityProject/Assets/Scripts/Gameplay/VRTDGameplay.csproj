@@ -45,9 +45,9 @@
   <ItemGroup>
     <Compile Include="LevelLoader.cs" />
     <Compile Include="LevelDescription.cs" />
-    <Compile Include="WaveManager.cs" />
-    <Compile Include="TurretManager.cs" />
     <Compile Include="ProjectileManager.cs" />
+    <Compile Include="TurretManager.cs" />
+    <Compile Include="WaveManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

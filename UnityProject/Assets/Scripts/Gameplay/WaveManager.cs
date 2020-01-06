@@ -81,7 +81,6 @@ namespace VRTD.Gameplay
                 float progressFromCenter = Math.Abs(0.5F - intraMapProgress);
 #else
             float progressFromCenter = Mathf.Abs(0.5F - intraMapProgress);
-#endif
                 Vector3 direction;
 
                 if ((intraMapProgress < 0.5F) && (posIndex > 0))
@@ -108,6 +107,8 @@ namespace VRTD.Gameplay
                 Position = levelDesc.Road[posIndex].Pos + movement;
 
                 GameObjectFactory.SetMapPos(go, Position);
+                
+#endif
             }
         }
 

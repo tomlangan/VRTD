@@ -1,5 +1,7 @@
 ﻿using System;
 using Gtk;
+using System.Reflection;
+using System.IO;
 
 namespace VRTD.LevelEditor
 {
@@ -14,3 +16,4 @@ namespace VRTD.LevelEditor
         }
     }
 }
+

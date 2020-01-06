@@ -5,14 +5,18 @@ using System;
 using System.Numerics;
 
 
-    public class Vector3Int
-    {
-        public int x;
-        public int y;
-        public int z;
+public class Vector3Int
+{
+    public int x;
+    public int y;
+    public int z;
 
-        public Vector3Int(int xset, int yset, int zset) { x = xset; y = yset; z = zset; }
+    public Vector3Int(int xset, int yset, int zset) { x = xset; y = yset; z = zset; }
+    public Vector3Int normalized
+    {
+        get { return this; }
     }
+}
 #else
 using UnityEngine;
 #endif

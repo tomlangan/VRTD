@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace VRTD.LevelEditor
 {
+
     public class LevelManager
     {
         public static string FolderPath;
@@ -67,11 +68,14 @@ namespace VRTD.LevelEditor
             sw.Close();
             fs.Close();
             fs.Dispose();
+
+            WriteAssetDirectory();
         }
 
         public static void RenameLevel(string oldName, string newName)
         {
             File.Move(LevelToPath(oldName), LevelToPath(newName));
+            WriteAssetDirectory();
         }
 
         public static LevelDescription ReadLevel(string level)
@@ -114,7 +118,8 @@ namespace VRTD.LevelEditor
                 try
                 {
                     directory = Directory.GetParent(directory).ToString();
-                } catch
+                }
+                catch
                 {
                     break;
                 }
@@ -212,6 +217,20 @@ namespace VRTD.LevelEditor
             sw.Close();
             fs.Close();
             fs.Dispose();
+        }
+
+
+        public static void WriteAssetDirectory()
+        {
+            AssetDirectory directory = new AssetDirectory();
+            directory.LevelFiles = GetLevelList();
+            string json = JsonConvert.SerializeObject(directory);
+            using (FileStream fs = File.Open(DictionaryToPath(directory.ThisFile), FileMode.Create))
+            {
+                StreamWriter sw = new StreamWriter(fs);
+                sw.Write(json);
+                sw.Close();
+            }
         }
     }
 }
