@@ -10,7 +10,46 @@ namespace VRTD.LevelEditor
 
     public class LevelManager
     {
-        public static string FolderPath;
+        public static string FolderPath = "";
+        private static AssetDirectory AssetLocations = null;
+
+
+        static string FilenameToPath(string filename)
+        {
+            return FolderPath + Path.DirectorySeparatorChar + filename;
+        }
+
+
+        static string LevelToPath(string level)
+        {
+            return FilenameToPath(level + ".lvl");
+        }
+
+        static T ReadObjectFromFile<T>(string filename)
+        {
+            T fromjson;
+            using (FileStream fs = File.Open(filename, FileMode.OpenOrCreate))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    string jsonBlob = sr.ReadToEnd();
+                    fromjson = JsonConvert.DeserializeObject<T>(jsonBlob);
+                }
+            }
+            return fromjson;
+        }
+
+        static void WriteObjectToile<T>(T objectToWrite, string fileName)
+        {
+            string json = JsonConvert.SerializeObject(objectToWrite);
+            using (FileStream fs = File.Open(FilenameToPath(fileName), FileMode.Create))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.Write(json);
+                }
+            }
+        }
 
         public static bool Initialize(Window parent)
         {
@@ -37,7 +76,21 @@ namespace VRTD.LevelEditor
                 fcd.Destroy();
             }
 
-            return (true == FolderPath.EndsWith("Levels"));
+            if (FolderPath.EndsWith("Levels"))
+            {
+                AssetLocations = ReadObjectFromFile<AssetDirectory>(FilenameToPath(AssetDirectory.ThisFile));
+                if (null == AssetLocations)
+                {
+                    AssetLocations = new AssetDirectory();
+                    AssetLocations.LevelFiles = GetLevelList();
+                    WriteAssetDirectory();
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public static List<string> GetLevelList()
@@ -80,14 +133,7 @@ namespace VRTD.LevelEditor
 
         public static LevelDescription ReadLevel(string level)
         {
-            FileStream fs = File.Open(LevelToPath(level), FileMode.Open);
-            StreamReader sr = new StreamReader(fs);
-            string jsonBlob = sr.ReadToEnd();
-            LevelDescription desc = JsonConvert.DeserializeObject<LevelDescription>(jsonBlob);
-            sr.Close();
-            fs.Close();
-            fs.Dispose();
-            return desc;
+            return ReadObjectFromFile<LevelDescription>(LevelToPath(level));
         }
 
         public static void DeleteLevel(string level)
@@ -99,15 +145,6 @@ namespace VRTD.LevelEditor
             }
         }
 
-        static string LevelToPath(string level)
-        {
-            return FolderPath + Path.DirectorySeparatorChar + level + ".lvl";
-        }
-
-        static string DictionaryToPath(string dictionary)
-        {
-            return FolderPath + Path.DirectorySeparatorChar + dictionary + ".dic";
-        }
 
         static string AttemptToFindLevelDirectory()
         {
@@ -141,82 +178,55 @@ namespace VRTD.LevelEditor
 
         public static List<Turret> GetTurrets()
         {
-            List<Turret> turrets = new List<Turret>();
-
-            FileStream fs = File.Open(DictionaryToPath("turrets"), FileMode.OpenOrCreate);
-            StreamReader sr = new StreamReader(fs);
-            string jsonBlob = sr.ReadToEnd();
-            turrets = JsonConvert.DeserializeObject<List<Turret>>(jsonBlob);
-            sr.Close();
-            fs.Close();
-            fs.Dispose();
-
-            return turrets;
+            return ReadObjectFromFile<List<Turret>>(FilenameToPath(AssetLocations.TurretFile));
         }
 
         public static void WriteTurrets(List<Turret> turrets)
         {
             string levelAsJSon = JsonConvert.SerializeObject(turrets);
-            FileStream fs = File.Open(DictionaryToPath("turrets"), FileMode.Create);
-            StreamWriter sw = new StreamWriter(fs);
-            sw.Write(levelAsJSon);
-            sw.Close();
-            fs.Close();
-            fs.Dispose();
+            using (FileStream fs = File.Open(FilenameToPath(AssetLocations.TurretFile), FileMode.Create))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.Write(levelAsJSon);
+                }
+            }
         }
 
 
         public static List<EnemyDescription> GetEnemies()
         {
-            List<EnemyDescription> enemies = new List<EnemyDescription>();
-
-            FileStream fs = File.Open(DictionaryToPath("enemies"), FileMode.OpenOrCreate);
-            StreamReader sr = new StreamReader(fs);
-            string jsonBlob = sr.ReadToEnd();
-            enemies = JsonConvert.DeserializeObject<List<EnemyDescription>>(jsonBlob);
-            sr.Close();
-            fs.Close();
-            fs.Dispose();
-
-            return enemies;
+            return ReadObjectFromFile<List<EnemyDescription>>(FilenameToPath(AssetLocations.EnemyFile));
         }
 
         public static void WriteEnemies(List<EnemyDescription> enemies)
         {
             string levelAsJSon = JsonConvert.SerializeObject(enemies);
-            FileStream fs = File.Open(DictionaryToPath("enemies"), FileMode.Create);
-            StreamWriter sw = new StreamWriter(fs);
-            sw.Write(levelAsJSon);
-            sw.Close();
-            fs.Close();
-            fs.Dispose();
+            using (FileStream fs = File.Open(FilenameToPath(AssetLocations.EnemyFile), FileMode.Create))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.Write(levelAsJSon);
+                }
+            }
         }
 
 
         public static List<Projectile> GetProjectiles()
         {
-            List<Projectile> projectiles = new List<Projectile>();
-
-            FileStream fs = File.Open(DictionaryToPath("projectiles"), FileMode.OpenOrCreate);
-            StreamReader sr = new StreamReader(fs);
-            string jsonBlob = sr.ReadToEnd();
-            projectiles = JsonConvert.DeserializeObject<List<Projectile>>(jsonBlob);
-            sr.Close();
-            fs.Close();
-            fs.Dispose();
-
-            return projectiles;
+            return ReadObjectFromFile<List<Projectile>>(FilenameToPath(AssetLocations.ProjectileFile));
         }
 
         public static void WriteProjectiles(List<Projectile> projectiles)
         {
             string levelAsJSon = JsonConvert.SerializeObject(projectiles);
-            FileStream fs = File.Open(DictionaryToPath("projectiles"), FileMode.Create);
-            StreamWriter sw = new StreamWriter(fs);
-            sw.Write(levelAsJSon);
-            sw.Close();
-            fs.Close();
-            fs.Dispose();
+            using (FileStream fs = File.Open(FilenameToPath(AssetLocations.ProjectileFile), FileMode.Create))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.Write(levelAsJSon);
+                }
+            }
         }
 
 
@@ -225,7 +235,7 @@ namespace VRTD.LevelEditor
             AssetDirectory directory = new AssetDirectory();
             directory.LevelFiles = GetLevelList();
             string json = JsonConvert.SerializeObject(directory);
-            using (FileStream fs = File.Open(DictionaryToPath(directory.ThisFile), FileMode.Create))
+            using (FileStream fs = File.Open(FilenameToPath(AssetDirectory.ThisFile), FileMode.Create))
             {
                 StreamWriter sw = new StreamWriter(fs);
                 sw.Write(json);

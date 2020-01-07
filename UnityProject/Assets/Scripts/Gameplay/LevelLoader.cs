@@ -40,7 +40,7 @@ public class GameObject { }
     [Serializable]
     public class AssetDirectory
     {
-        public string ThisFile = "assetdirectory.idx";
+        public static string ThisFile = "assetdirectory.idx";
 
         public List<string> LevelFiles;
 
@@ -65,7 +65,7 @@ public class GameObject { }
         private static List<Turret> turrets = null;
         private static List<EnemyDescription> enemies = null;
         private static List<Projectile> projectiles = null;
-        private static AssetDirectory AssetLocations = new AssetDirectory();
+        private static AssetDirectory AssetLocations = ReadObjectFromFile<AssetDirectory>(AssetDirectory.ThisFile);
 
         public static List<Turret> Turrets
         {
@@ -319,17 +319,7 @@ public class GameObject { }
 
         public static List<string> GetAllLevels()
         {
-            List<string> levelList = new List<string>();
-
-            string[] files = Directory.GetFiles(RootLevelPath);
-
-            for (int i = 0; i < files.Length; i++)
-            {
-                if (files[i].EndsWith(".lvl"))
-                {
-                    levelList.Add(Path.GetFileNameWithoutExtension(files[i]));
-                }
-            }
+            List<string> levelList = AssetLocations.LevelFiles;
 
             levelList.Sort();
 
@@ -338,23 +328,11 @@ public class GameObject { }
 
         public static LevelDescription GetLevel(string name)
         {
-            LevelDescription fromJson = null;
-            string path = LevelToPath(name);
-
-            string json = ReadAllBytesFromTextAsset(path);
-            fromJson = JsonConvert.DeserializeObject<LevelDescription>(json);
-
-            return fromJson;
+            return ReadObjectFromFile<LevelDescription>(LevelToPath(name));
         }
         public static List<Turret> GetTurrets()
         {
-            List<Turret> fromJson = null;
-            string path = RootLevelPath + Path.DirectorySeparatorChar + "turrets.dic";
-
-            string json = ReadAllBytesFromTextAsset(path);
-            fromJson = JsonConvert.DeserializeObject<List<Turret>>(json);
-
-            return fromJson;
+            return ReadObjectFromFile<List<Turret>>(AssetLocations.TurretFile);
         }
 
         public static Turret LookupTurret(string name)
@@ -377,14 +355,7 @@ public class GameObject { }
 
         public static List<EnemyDescription> GetEnemies()
         {
-            List<EnemyDescription> fromJson = null;
-            string path = RootLevelPath + Path.DirectorySeparatorChar + "enemies.dic";
-
-
-            string json = ReadAllBytesFromTextAsset(path);
-            fromJson = JsonConvert.DeserializeObject<List<EnemyDescription>>(json);
-
-            return fromJson;
+            return ReadObjectFromFile<List<EnemyDescription>>(AssetLocations.EnemyFile);
         }
 
 
@@ -408,13 +379,7 @@ public class GameObject { }
 
         public static List<Projectile> GetProjectiles()
         {
-            List<Projectile> fromJson = null;
-            string path = RootLevelPath + Path.DirectorySeparatorChar + "projectiles.dic";
-
-            string json = ReadAllBytesFromTextAsset(path);
-            fromJson = JsonConvert.DeserializeObject<List<Projectile>>(json);
-
-            return fromJson;
+            return ReadObjectFromFile<List<Projectile>>(AssetLocations.ProjectileFile);
         }
 
 
@@ -435,6 +400,40 @@ public class GameObject { }
 
             return found;
         }
+
+
+
+        public static string ReadAllBytesFromTextAsset(string filePath)
+        {
+            string result = "";
+#if LEVEL_EDITOR != true
+            TextAsset fileAsset = Resources.Load<TextAsset>(filePath);
+            if (null != fileAsset)
+            {
+                using (StreamReader sr = new StreamReader(new MemoryStream(fileAsset.bytes)))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            
+#endif
+            return result;
+        }
+
+        public static T ReadObjectFromFile<T>(string filePath)
+        {
+            T fromJson;
+            string path = RootLevelPath + Path.DirectorySeparatorChar + filePath;
+
+
+            string json = ReadAllBytesFromTextAsset(path);
+            fromJson = JsonConvert.DeserializeObject<T>(json);
+
+            return fromJson;
+        }
+
+
+
 
         public static List<Projectile> GetTestProjectiles()
         {
@@ -535,23 +534,6 @@ public class GameObject { }
             list.Add(turret);
 
             return list;
-        }
-
-        public static string ReadAllBytesFromTextAsset(string filePath)
-        {
-            string result = "";
-#if LEVEL_EDITOR != true
-            TextAsset fileAsset = Resources.Load<TextAsset>(filePath);
-            if (null != fileAsset)
-            {
-                using (StreamReader sr = new StreamReader(new MemoryStream(fileAsset.bytes)))
-                {
-                    result = sr.ReadToEnd();
-                }
-            }
-            
-#endif
-            return result;
         }
 
             public static LevelDescription GetTestLevel()
