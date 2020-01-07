@@ -323,9 +323,9 @@ public class GameObject { }
         }
 
 
-        static string LevelToPath(string level)
+        static string LevelToFilename(string level)
         {
-            return RootLevelPath + Path.DirectorySeparatorChar + level + "-lvl.json";
+            return level + "-lvl.json";
         }
 
         public static List<string> GetAllLevels()
@@ -339,7 +339,7 @@ public class GameObject { }
 
         public static LevelDescription GetLevel(string name)
         {
-            return ReadObjectFromFile<LevelDescription>(LevelToPath(name));
+            return ReadObjectFromFile<LevelDescription>(LevelToFilename(name));
         }
         public static List<Turret> GetTurrets()
         {
@@ -418,7 +418,12 @@ public class GameObject { }
         {
             string result = "";
 #if LEVEL_EDITOR != true
-            TextAsset fileAsset = Resources.Load<TextAsset>(filePath);
+            if (!filePath.EndsWith(".json"))
+            {
+                Debug.LogError("File does not end with '.json': " + filePath);
+            }
+            string pathWithoutJsonExtension = filePath.Substring(0, filePath.Length - 5);
+            TextAsset fileAsset = Resources.Load<TextAsset>(pathWithoutJsonExtension);
             if (null != fileAsset)
             {
                 using (StreamReader sr = new StreamReader(new MemoryStream(fileAsset.bytes)))
