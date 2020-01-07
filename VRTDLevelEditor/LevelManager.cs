@@ -22,7 +22,7 @@ namespace VRTD.LevelEditor
 
         static string LevelToPath(string level)
         {
-            return FilenameToPath(level + ".lvl");
+            return FilenameToPath(level + "-lvl.json");
         }
 
         static T ReadObjectFromFile<T>(string filename)
@@ -101,9 +101,11 @@ namespace VRTD.LevelEditor
 
             for (int i = 0; i < files.Length; i++)
             {
-                if (files[i].EndsWith(".lvl"))
+                if (files[i].EndsWith("-lvl.json"))
                 {
-                    levelList.Add(Path.GetFileNameWithoutExtension(files[i]));
+                    string levelwithextra = Path.GetFileNameWithoutExtension(files[i]);
+                    string levelname = levelwithextra.Substring(0, levelwithextra.Length - 4);
+                    levelList.Add(levelname);
                 }
             }
 
@@ -166,6 +168,7 @@ namespace VRTD.LevelEditor
             {
                 directory += Path.DirectorySeparatorChar + "UnityProject" +
                     Path.DirectorySeparatorChar + "Assets" +
+                    Path.DirectorySeparatorChar + "Resources" +
                     Path.DirectorySeparatorChar + "Levels";
             }
             else

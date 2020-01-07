@@ -40,15 +40,15 @@ public class GameObject { }
     [Serializable]
     public class AssetDirectory
     {
-        public static string ThisFile = "assetdirectory.idx";
+        public static string ThisFile = "assetdirectory.json";
 
         public List<string> LevelFiles;
 
-        public string TurretFile = "turrets.dic";
+        public string TurretFile = "turrets.json";
 
-        public string EnemyFile = "enemies.dic";
+        public string EnemyFile = "enemies.json";
 
-        public string ProjectileFile = "projectiles.dic";
+        public string ProjectileFile = "projectiles.json";
     }
 
     public class LevelLoadException : Exception
@@ -61,11 +61,22 @@ public class GameObject { }
 
     public class LevelLoader
     {
-        static string RootLevelPath = Application.streamingAssetsPath + Path.DirectorySeparatorChar + "Levels";
+        static string RootLevelPath = "Levels";
         private static List<Turret> turrets = null;
         private static List<EnemyDescription> enemies = null;
         private static List<Projectile> projectiles = null;
-        private static AssetDirectory AssetLocations = ReadObjectFromFile<AssetDirectory>(AssetDirectory.ThisFile);
+        private static AssetDirectory AssetLocations
+        {
+            get
+            {
+                if (null == _al)
+                {
+                    _al = ReadObjectFromFile<AssetDirectory>(AssetDirectory.ThisFile);
+                }
+                return _al;
+            }
+        }
+        private static AssetDirectory _al = null;
 
         public static List<Turret> Turrets
         {
@@ -314,7 +325,7 @@ public class GameObject { }
 
         static string LevelToPath(string level)
         {
-            return RootLevelPath + Path.DirectorySeparatorChar + level + ".lvl";
+            return RootLevelPath + Path.DirectorySeparatorChar + level + "-lvl.json";
         }
 
         public static List<string> GetAllLevels()
@@ -414,6 +425,10 @@ public class GameObject { }
                 {
                     result = sr.ReadToEnd();
                 }
+            }
+            else
+            {
+                Debug.LogError("Failed to open file: " + filePath);
             }
             
 #endif
