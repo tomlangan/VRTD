@@ -22,7 +22,7 @@ namespace VRTD.LevelEditor
 
         static string LevelToPath(string level)
         {
-            return FilenameToPath(level + "-lvl.json");
+            return FilenameToPath(level + "-lvl.txt");
         }
 
         static T ReadObjectFromFile<T>(string filename)
@@ -101,7 +101,7 @@ namespace VRTD.LevelEditor
 
             for (int i = 0; i < files.Length; i++)
             {
-                if (files[i].EndsWith("-lvl.json"))
+                if (files[i].EndsWith("-lvl.txt"))
                 {
                     string levelwithextra = Path.GetFileNameWithoutExtension(files[i]);
                     string levelname = levelwithextra.Substring(0, levelwithextra.Length - 4);

@@ -40,15 +40,15 @@ public class GameObject { }
     [Serializable]
     public class AssetDirectory
     {
-        public static string ThisFile = "assetdirectory.json";
+        public static string ThisFile = "assetdirectory.txt";
 
         public List<string> LevelFiles;
 
-        public string TurretFile = "turrets.json";
+        public string TurretFile = "turrets.txt";
 
-        public string EnemyFile = "enemies.json";
+        public string EnemyFile = "enemies.txt";
 
-        public string ProjectileFile = "projectiles.json";
+        public string ProjectileFile = "projectiles.txt";
     }
 
     public class LevelLoadException : Exception
@@ -325,7 +325,7 @@ public class GameObject { }
 
         static string LevelToFilename(string level)
         {
-            return level + "-lvl.json";
+            return level + "-lvl.txt";
         }
 
         public static List<string> GetAllLevels()
@@ -418,11 +418,11 @@ public class GameObject { }
         {
             string result = "";
 #if LEVEL_EDITOR != true
-            if (!filePath.EndsWith(".json"))
+            if (!filePath.EndsWith(".txt"))
             {
-                Debug.LogError("File does not end with '.json': " + filePath);
+                Debug.LogError("File does not end with '.txt': " + filePath);
             }
-            string pathWithoutJsonExtension = filePath.Substring(0, filePath.Length - 5);
+            string pathWithoutJsonExtension = filePath.Substring(0, filePath.Length - 4);
             TextAsset fileAsset = Resources.Load<TextAsset>(pathWithoutJsonExtension);
             if (null != fileAsset)
             {
@@ -433,7 +433,7 @@ public class GameObject { }
             }
             else
             {
-                Debug.LogError("Failed to open file: " + filePath);
+                Debug.LogError("Failed to open file: " + pathWithoutJsonExtension);
             }
             
 #endif
