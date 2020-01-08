@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-/Users/tomlangan/TD/VRTD.apk
+F:/git/VRTD/UnityProject/VRTD.apk
 SceneListBegin?
 Assets/Scenes/LevelScene.unity
 SceneListEnd?
@@ -9,6 +9,7 @@ bf5cb87c773ea378a3f5ac036aab367b Assembly-CSharp.dll:.SocialPlatformManager
 3c08375166df118bd1801438fc36b92f Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 329a4358a2c40fe3c40f44951200bd91 Assembly-CSharp.dll:.OvrAvatarBody
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.GameObjectFactory
+99d999018d3c1c5fb2bea275f7609d4d Oculus.VR.dll:.OVRMixedRealityCaptureSettings
 77c21079ace8d76ce6e941d3dabbfe6e Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 06cb1bb98d1aeb23695b6b732ec291d7 Assembly-CSharp.dll:.VRUIToggle
 0c2ecdae097ba779e0a9e100ed96bb10 Oculus.VR.dll:.OVRCameraRig

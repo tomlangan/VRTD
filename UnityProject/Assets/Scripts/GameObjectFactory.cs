@@ -39,7 +39,9 @@ public class GameObjectFactory : MonoBehaviour
                     go = InstantiateObject("TurretSpaceTile");
                     break;
                 case 'D':
-                    go = InstantiateObject("TerrainTile");
+                    // Don't instantiate terrain tiles now that there's a backdrop
+                    continue;
+                    //go = InstantiateObject("TerrainTile");
                     break;
             }
             if (null == go)
