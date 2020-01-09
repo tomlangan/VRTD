@@ -19,6 +19,8 @@ TagManager:
   - VRUIButtonIcon
   - VRUIList
   - ListUI
+  - TurretSpace
+  - TurretInstance
   layers:
   - Default
   - TransparentFX

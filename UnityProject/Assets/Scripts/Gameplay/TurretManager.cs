@@ -30,6 +30,7 @@ namespace VRTD.Gameplay
             LastShotTime = 0.0F;
             CalculateRoadSegmentsInRangeByDistance(levelDesc);
             go = GameObjectFactory.InstantiateObject(turretType.Asset);
+            go.tag = "TurretInstance";
             GameObjectFactory.SetMapPos(go, Position);
         }
 

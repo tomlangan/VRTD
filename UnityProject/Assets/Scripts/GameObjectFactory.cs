@@ -9,7 +9,8 @@ public class GameObjectFactory : MonoBehaviour
     static Dictionary<string, GameObject> Objects = new Dictionary<string, GameObject>();
     static float MidPointWidth;
     static float MidPointDepth;
-
+    static float TranslationMultiplier = 2.0F;
+    static float ScalingMultiplier = 2.0F;
 
 
     public static void CreateMapObjects(LevelDescription Desc)
@@ -27,28 +28,31 @@ public class GameObjectFactory : MonoBehaviour
             switch (Desc.Map[i])
             {
                 case 'E':
-                    go = InstantiateObject("RoadTile");
+                    // Entrance
+                    go = InstantiateObject("SM_Env_Path_Stone_02");
                     break;
                 case 'X':
-                    go = InstantiateObject("RoadTile");
+                    // Exit
+                    go = InstantiateObject("SM_Env_Path_Stone_02");
                     break;
                 case 'R':
-                    go = InstantiateObject("RoadTile");
+                    // Road
+                    go = InstantiateObject("SM_Env_Path_Stone_02");
                     break;
                 case 'T':
-                    go = InstantiateObject("TurretSpaceTile");
+                    // Turret Space
+                    go = InstantiateObject("SM_Env_Path_Cobble_Stone_01");
+                    go.tag = "TurretSpace";
                     break;
                 case 'D':
                     // Don't instantiate terrain tiles now that there's a backdrop
                     continue;
-                    //go = InstantiateObject("TerrainTile");
-                    break;
             }
             if (null == go)
             {
                 throw new Exception("Couldn't find asset");
             }
-
+            go.transform.localScale = (Vector3.one * ScalingMultiplier);
             SetMapPos(go, pos);
         }
     }
@@ -83,11 +87,13 @@ public class GameObjectFactory : MonoBehaviour
 
     public static Vector3 MapPosToVec3(Vector3 pos)
     {
-        return new Vector3(pos.x - MidPointWidth, pos.y, MidPointDepth - pos.z);
+        Vector3 translatedPos =  new Vector3(pos.x - MidPointWidth, pos.y, MidPointDepth - pos.z);
+
+        return translatedPos * TranslationMultiplier;
     }
 
     public static MapPos Vec3ToMapPos(Vector3 vec)
     {
-        return new MapPos((int)(vec.x + MidPointWidth), (int)(MidPointDepth + -vec.z));
+        return new MapPos((int)((vec.x + MidPointWidth) / TranslationMultiplier), (int)((MidPointDepth + -vec.z) / TranslationMultiplier));
     }
 }

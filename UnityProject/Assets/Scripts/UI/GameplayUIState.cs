@@ -168,14 +168,14 @@ public class GameplayUIState : MonoBehaviour
 
     private void AttemptSelectObjectFromClearState(GameObject go)
     {
-        if (go.name.StartsWith("TurretSpace"))
+        if (go.tag.StartsWith("TurretSpace"))
         {
             SelectedObject = go;
             UIState = State.TurretSpaceSelected;
             TurretUIObject = CreateTurretSelectUI();
             ShowUIAttachedToObject(go, TurretUIObject.transform.gameObject);
         }
-        else if (go.name.EndsWith("Turret(Clone)"))
+        else if (go.tag.StartsWith("TurretInstance"))
         {
             SelectedObject = go;
             UIState = State.TurretSelected;
