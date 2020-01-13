@@ -98,8 +98,11 @@ public class Level : MonoBehaviour
 
     void LoadLevel(string levelName)
     {
+        CleanupLevel();
+
         LevelDesc = LevelLoader.GetLevel(levelName);
         LevelLoader.LoadAndValidateLevel(LevelDesc);
+        GameObjectFactory.Initialize(LevelDesc);
         Waves = new WaveManager(LevelDesc);
         Turrets = new TurretManager(LevelDesc);
         Projectiles = new ProjectileManager();
@@ -111,8 +114,33 @@ public class Level : MonoBehaviour
         LivesRemaining = LevelDesc.Lives;
         GameTime = 0.0F;
 
+        CountdownStartTime = GameTime;
+        State = LevelState.WaveCountdown;
+        Waves.AdvanceToNextWave(GameTime);
+        ShowHUDUI();
+        ShowCountdownUI();
     }
 
+    void CleanupLevel()
+    {
+        if (null != Projectiles)
+        {
+            Projectiles.DestroyAll();
+            Projectiles = null;
+        }
+        if (null != Turrets)
+        {
+            Turrets.DestroyAll();
+            Turrets = null;
+        }
+        if (null != Waves)
+        {
+            Waves.DestroyAll();
+            Waves = null;
+        }
+        GameObjectFactory.Cleanup();
+        LevelDesc = null;
+    }
 
     void TickWaveCountdown()
     {
@@ -166,7 +194,7 @@ public class Level : MonoBehaviour
             GameObject go = Pointer.Hitting;
             if (go.name.StartsWith("TurretSpace"))
             {
-                TurretInstance turret = Turrets.GetTurretAtPosition(GameObjectFactory.Vec3ToMapPos(go.transform.position));
+                TurretInstance turret = Turrets.GetTurretAtPosition(GameObjectFactory.WorldVec3ToMapPos(go.transform.position));
 
                 if (null != turret)
                 {
@@ -230,11 +258,6 @@ public class Level : MonoBehaviour
     private bool OnLevelSelected(int index, string levelName, object context)
     {
         LoadLevel(levelName);
-        CountdownStartTime = GameTime;
-        State = LevelState.WaveCountdown;
-        Waves.AdvanceToNextWave(GameTime);
-        ShowHUDUI();
-        ShowCountdownUI();
 
         return false;
     }
@@ -259,12 +282,19 @@ public class Level : MonoBehaviour
     {
         HUD = Instantiate<HUDUI>(HUDUITemplate);
 
-        Vector3 uiPos = new Vector3(0.0F, 5.0F, 15.0F);
+        Vector3 uiPos = new Vector3(0.0F, 5.0F, 10.0F);
         Vector3 uiForward = (uiPos - TargetManager.transform.position).normalized;
 
         HUD.transform.gameObject.SetActive(true);
         HUD.transform.gameObject.transform.position = uiPos;
         HUD.transform.gameObject.transform.forward = uiForward;
+        HUD.OnRestartLevelClicked += HUD_OnRestartLevelClicked;
+    }
+
+    private void HUD_OnRestartLevelClicked()
+    {
+        // Are we leaking a bunch of objects doing this?
+        LoadLevel(LevelDesc.Name);
     }
 
     private void UpdateHUD()
@@ -315,7 +345,7 @@ public class Level : MonoBehaviour
 
     private bool OnTurretSelected(int index, string turretName, object context)
     {
-        MapPos position = GameObjectFactory.Vec3ToMapPos(GameplayUI.SelectedObject.transform.position);
+        MapPos position = GameObjectFactory.WorldVec3ToMapPos(GameplayUI.SelectedObject.transform.position);
         Turret turretSelected = LevelLoader.LookupTurret(LevelDesc.AllowedTurrets[index]);
 
         if (Coin >= turretSelected.Cost)

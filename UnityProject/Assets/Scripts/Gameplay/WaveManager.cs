@@ -121,8 +121,11 @@ namespace VRTD.Gameplay
                 ActiveEffects.Remove(ei);
             }
             ActiveEffects.Clear();
-            MapPosition.EnemiesOccupying.Remove(this);
-            MapPosition = null;
+            if (null != MapPosition)
+            {
+                MapPosition.EnemiesOccupying.Remove(this);
+                MapPosition = null;
+            }
             if (null != go)
             {
                 GameObjectFactory.Destroy(go);
@@ -305,6 +308,16 @@ namespace VRTD.Gameplay
             LivesLostToReport = 0;
             return ret;
         }
+
+        public void DestroyAll()
+        {
+            for (int i = Enemies.Count; i > 0; i--)
+            {
+                EnemyInstance enemy = Enemies[i - 1];
+                enemy.Destroy();
+                Enemies.Remove(enemy);
+            }
+        }
     }
 
     public class WaveManager
@@ -339,6 +352,15 @@ namespace VRTD.Gameplay
 
             WavesStarted++;
             Debug.Log("  Wave " + WavesStarted);
+        }
+
+        public void DestroyAll()
+        {
+            if (null != CurrentWave)
+            {
+                CurrentWave.DestroyAll();
+                CurrentWave = null;
+            }
         }
     }
 }

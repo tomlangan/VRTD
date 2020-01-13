@@ -6,17 +6,32 @@ using VRTD.Gameplay;
 
 public class GameObjectFactory : MonoBehaviour
 {
-    static Dictionary<string, GameObject> Objects = new Dictionary<string, GameObject>();
     static float MidPointWidth;
     static float MidPointDepth;
     static float TranslationMultiplier = 2.0F;
-    static float ScalingMultiplier = 2.0F;
+    static List<GameObject> MapObjects = null;
 
-
-    public static void CreateMapObjects(LevelDescription Desc)
+    public static void Initialize(LevelDescription Desc)
     {
         MidPointWidth = Desc.FieldWidth / 2.0f;
         MidPointDepth = Desc.FieldDepth / 2.0f;
+        MapObjects = new List<GameObject>();
+    }
+
+    public static void Cleanup()
+    {
+        if (null != MapObjects)
+        {
+            for (int i = 0; i < MapObjects.Count; i++)
+            {
+                Destroy(MapObjects[i]);
+            }
+            MapObjects = null;
+        }
+    }
+
+    public static void CreateMapObjects(LevelDescription Desc)
+    {
 
         MapPos pos = new MapPos(0,0);
         GameObject go = null;
@@ -29,19 +44,19 @@ public class GameObjectFactory : MonoBehaviour
             {
                 case 'E':
                     // Entrance
-                    go = InstantiateObject("SM_Env_Path_Stone_02");
+                    go = InstantiateObject("RoadSegment");
                     break;
                 case 'X':
                     // Exit
-                    go = InstantiateObject("SM_Env_Path_Stone_02");
+                    go = InstantiateObject("RoadSegment");
                     break;
                 case 'R':
                     // Road
-                    go = InstantiateObject("SM_Env_Path_Stone_02");
+                    go = InstantiateObject("RoadSegment");
                     break;
                 case 'T':
                     // Turret Space
-                    go = InstantiateObject("SM_Env_Path_Cobble_Stone_01");
+                    go = InstantiateObject("TurretSpaceSegment");
                     go.tag = "TurretSpace";
                     break;
                 case 'D':
@@ -52,8 +67,8 @@ public class GameObjectFactory : MonoBehaviour
             {
                 throw new Exception("Couldn't find asset");
             }
-            go.transform.localScale = (Vector3.one * ScalingMultiplier);
             SetMapPos(go, pos);
+            MapObjects.Add(go);
         }
     }
 
@@ -71,12 +86,12 @@ public class GameObjectFactory : MonoBehaviour
 
     public static void SetMapPos(GameObject go, MapPos pos)
     {
-        SetWorldPos(go, MapPosToVec3(pos.Pos));
+        SetWorldPos(go, MapPosToWorldVec3(pos.Pos));
     }
 
     public static void SetMapPos(GameObject go, Vector3 pos)
     {
-        SetWorldPos(go, MapPosToVec3(pos));
+        SetWorldPos(go, MapPosToWorldVec3(pos));
     }
 
     public static void SetWorldPos(GameObject go, Vector3 pos)
@@ -85,15 +100,15 @@ public class GameObjectFactory : MonoBehaviour
     }
 
 
-    public static Vector3 MapPosToVec3(Vector3 pos)
+    public static Vector3 MapPosToWorldVec3(Vector3 pos)
     {
         Vector3 translatedPos =  new Vector3(pos.x - MidPointWidth, pos.y, MidPointDepth - pos.z);
 
         return translatedPos * TranslationMultiplier;
     }
 
-    public static MapPos Vec3ToMapPos(Vector3 vec)
+    public static MapPos WorldVec3ToMapPos(Vector3 vec)
     {
-        return new MapPos((int)((vec.x + MidPointWidth) / TranslationMultiplier), (int)((MidPointDepth + -vec.z) / TranslationMultiplier));
+        return new MapPos((int)((vec.x / TranslationMultiplier) + MidPointWidth), (int)(MidPointDepth - (vec.z / TranslationMultiplier)));
     }
 }

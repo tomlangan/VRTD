@@ -59,10 +59,10 @@ public class DesktopInputHandler : MonoBehaviour
             InputDemuxer.SetCursorRay(new Ray(VirtualHandPosition, VirtualHandDirection));
 
             Buttons[InputState.InputIntent.Selection] = Input.GetMouseButtonDown(0);
-            Buttons[InputState.InputIntent.Grab] = Input.GetMouseButtonDown(1);
+            Buttons[InputState.InputIntent.Grab] = Input.GetMouseButtonDown(2);
 
 
-            if (Input.GetMouseButton(2))
+            if (Input.GetMouseButton(1))
             {
                 Vector2 currentPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
                 if (wasMiddleClickEnabled)

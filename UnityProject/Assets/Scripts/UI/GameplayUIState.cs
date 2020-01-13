@@ -180,7 +180,7 @@ public class GameplayUIState : MonoBehaviour
             SelectedObject = go;
             UIState = State.TurretSelected;
             // Need to get the turret instance
-            MapPos pos = GameObjectFactory.Vec3ToMapPos(SelectedObject.transform.position);
+            MapPos pos = GameObjectFactory.WorldVec3ToMapPos(SelectedObject.transform.position);
             TurretInstance turretInstance = null;
             foreach (TurretInstance t in TurretManagerInstance.Turrets)
             {

@@ -9,6 +9,9 @@ using VRTD.Gameplay;
 
 public class HUDUI : MonoBehaviour
 {
+    public delegate void OptionClickedDelegate();
+    public event OptionClickedDelegate OnRestartLevelClicked;
+
     public string WavePosition = "";
     public string CurrentWave = "";
     public string NextEnemy = "";
@@ -30,6 +33,13 @@ public class HUDUI : MonoBehaviour
         NextEnemyText = textFields[4];
         LivesText = textFields[6];
         CoinText = textFields[7];
+
+        Button[] buttonFields = gameObject.GetComponentsInChildren<Button>();
+
+        buttonFields[0].onClick.AddListener(() =>
+        {
+            OnRestartLevelClicked?.Invoke();
+        });
     }
 
     // Update is called once per frame
