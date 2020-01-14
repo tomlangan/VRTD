@@ -11,6 +11,7 @@ public class GameObjectFactory : MonoBehaviour
     static float TranslationMultiplier = 2.0F;
     static List<GameObject> MapObjects = null;
 
+
     public static void Initialize(LevelDescription Desc)
     {
         MidPointWidth = Desc.FieldWidth / 2.0f;
@@ -68,6 +69,10 @@ public class GameObjectFactory : MonoBehaviour
                 throw new Exception("Couldn't find asset");
             }
             SetMapPos(go, pos);
+            // Rotate
+            int rotationMult = (int)UnityEngine.Random.Range(0.0F, 3.99F);
+            Quaternion rotation = Quaternion.AngleAxis(90.0F * rotationMult, Vector3.up);
+            go.transform.rotation = rotation;
             MapObjects.Add(go);
         }
     }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2020-01-13T10:52:32.014-08:00
-  initializedAtString: 2020-01-13T10:52:32.014-08:00
+  lastUpdatedAtString: 2020-01-14T15:24:49.561-08:00
+  initializedAtString: 2020-01-14T15:24:49.561-08:00
   currentGitRemote:
     name: origin
     url: https://github.com/tomlangan/VRTD

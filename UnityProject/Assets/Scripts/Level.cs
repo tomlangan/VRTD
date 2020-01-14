@@ -49,6 +49,8 @@ public class Level : MonoBehaviour
 
         Debug.Log("Start()");
 
+        UnityEngine.Random.InitState(42);
+
 
         Debug.Log("State ==> Loading");
         State = LevelState.Loading;
@@ -282,7 +284,7 @@ public class Level : MonoBehaviour
     {
         HUD = Instantiate<HUDUI>(HUDUITemplate);
 
-        Vector3 uiPos = new Vector3(0.0F, 5.0F, 10.0F);
+        Vector3 uiPos = new Vector3(0.0F, 8.0F, 12.0F);
         Vector3 uiForward = (uiPos - TargetManager.transform.position).normalized;
 
         HUD.transform.gameObject.SetActive(true);
