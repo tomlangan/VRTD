@@ -13,19 +13,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2020-01-08T22:17:24.000-08:00
-  initializedAtString: 2020-01-08T22:17:23.984-08:00
+  lastUpdatedAtString: 2020-01-14T15:28:00.295-08:00
+  initializedAtString: 2020-01-14T15:26:42.688-08:00
   localBranches:
   - name: master
     tracking: origin/master
   remoteBranches:
-  - name: origin/HEAD
-    tracking: '[None]'
   - name: origin/master
     tracking: '[None]'
   remotes:
   - name: origin
-    url: https://github.com/tomlangan/VRTD.git
+    url: https://github.com/tomlangan/VRTD
     login: 
     user: 
     host: 
@@ -38,30 +36,24 @@ MonoBehaviour:
     - name: master
       remote:
         name: origin
-        url: https://github.com/tomlangan/VRTD.git
+        url: https://github.com/tomlangan/VRTD
       trackingBranch: master
   remoteConfigBranches:
     keys:
     - origin
     subKeys:
     - Values:
-      - HEAD
       - master
     subKeyValues:
     - Values:
-      - name: HEAD
-        remote:
-          name: origin
-          url: https://github.com/tomlangan/VRTD.git
-        trackingBranch: 
       - name: master
         remote:
           name: origin
-          url: https://github.com/tomlangan/VRTD.git
+          url: https://github.com/tomlangan/VRTD
         trackingBranch: 
   configRemotes:
     keys:
     - origin
     values:
     - name: origin
-      url: https://github.com/tomlangan/VRTD.git
+      url: https://github.com/tomlangan/VRTD
