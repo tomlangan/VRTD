@@ -5,6 +5,7 @@ using System;
 using System.Numerics;
 #else
 using UnityEngine;
+using UnityEngine.UI;
 #endif
 
 
@@ -45,8 +46,17 @@ namespace VRTD.Gameplay
             ActiveEffects = new List<EffectInstance>();
             MapPosition = null;
             go = GameObjectFactory.InstantiateObject(Desc.Asset);
+            GameObject healthIndicatorGo = GameObjectFactory.InstantiateObject("EnemyHealthIndicator");
+            healthIndicatorGo.transform.parent = go.transform;
         }
 
+
+        void UpdateHealthIndicator()
+        {
+            Slider enemyHealthSlider = go.GetComponentInChildren<Slider>();
+
+            enemyHealthSlider.value = HealthRemaining / Desc.HitPoints;
+        }
 
         public void UpdatePosition(LevelDescription levelDesc)
         {
@@ -104,10 +114,12 @@ namespace VRTD.Gameplay
                 Vector3 movement = direction * progressFromCenter;
                 Vector3 newPosition = levelDesc.Road[posIndex].Pos + movement;
                 Vector3 forward = (newPosition - Position).normalized;
+                forward.z = -forward.z;
                 Position = newPosition;
 
                 GameObjectFactory.SetMapPos(go, Position);
                 go.transform.forward = forward;
+                UpdateHealthIndicator();
 #endif
             }
         }

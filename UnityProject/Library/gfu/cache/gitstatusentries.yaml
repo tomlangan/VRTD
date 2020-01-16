@@ -13,24 +13,144 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-01-15T21:21:17.606-08:00
+  lastUpdatedAtString: 2020-01-15T22:42:05.239-08:00
   initializedAtString: 2020-01-15T20:31:34.641-08:00
   entries:
-  - path: UnityProject\Assets\PolygonKnights\Textures\Characters_Texture_Ninja.png
-    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Textures\Characters_Texture_Ninja.png
-    projectPath: Assets\PolygonKnights\Textures\Characters_Texture_Ninja.png
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Knight_01_Orange.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Knight_01_Orange.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Characters\Character_Knight_01_Orange.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Knight_01_Orange.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Knight_01_Orange.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Characters\Character_Knight_01_Orange.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Knight_02_Black.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Knight_02_Black.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Characters\Character_Knight_02_Black.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Knight_02_Black.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Knight_02_Black.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Characters\Character_Knight_02_Black.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Soldier_01_Yellow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Soldier_01_Yellow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Characters\Character_Soldier_01_Yellow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Soldier_01_Yellow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Characters\Character_Soldier_01_Yellow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Characters\Character_Soldier_01_Yellow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\Resources\AssassinEnemy.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\AssassinEnemy.prefab
+    projectPath: Assets\Resources\AssassinEnemy.prefab
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Resources\Character_Soldier_02_Ninja.prefab
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Character_Soldier_02_Ninja.prefab
-    projectPath: Assets\Resources\Character_Soldier_02_Ninja.prefab
+  - path: UnityProject\Assets\Resources\BossEnemy.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\BossEnemy.prefab
+    projectPath: Assets\Resources\BossEnemy.prefab
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Resources\VirtualHand.prefab
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\VirtualHand.prefab
-    projectPath: Assets\Resources\VirtualHand.prefab
+  - path: UnityProject\Assets\Resources\Character_Knight_01_Orange.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Character_Knight_01_Orange.prefab
+    projectPath: Assets\Resources\Character_Knight_01_Orange.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\Character_Knight_01_Orange.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Character_Knight_01_Orange.prefab.meta
+    projectPath: Assets\Resources\Character_Knight_01_Orange.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\Character_Knight_02_Black.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Character_Knight_02_Black.prefab
+    projectPath: Assets\Resources\Character_Knight_02_Black.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\Character_Knight_02_Black.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Character_Knight_02_Black.prefab.meta
+    projectPath: Assets\Resources\Character_Knight_02_Black.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\Character_Soldier_01_Yellow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Character_Soldier_01_Yellow.prefab
+    projectPath: Assets\Resources\Character_Soldier_01_Yellow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\Character_Soldier_01_Yellow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Character_Soldier_01_Yellow.prefab.meta
+    projectPath: Assets\Resources\Character_Soldier_01_Yellow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\EnemyHealthIndicator.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\EnemyHealthIndicator.prefab
+    projectPath: Assets\Resources\EnemyHealthIndicator.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\EnemyHealthIndicator.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\EnemyHealthIndicator.prefab.meta
+    projectPath: Assets\Resources\EnemyHealthIndicator.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\EnemyHealthSlider.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\EnemyHealthSlider.prefab
+    projectPath: Assets\Resources\EnemyHealthSlider.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\EnemyHealthSlider.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\EnemyHealthSlider.prefab.meta
+    projectPath: Assets\Resources\EnemyHealthSlider.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\Levels\2-0-lvl.txt
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\2-0-lvl.txt
+    projectPath: Assets\Resources\Levels\2-0-lvl.txt
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Resources\Levels\Test-lvl.txt
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\Test-lvl.txt
+    projectPath: Assets\Resources\Levels\Test-lvl.txt
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Resources\ListUI.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\ListUI.prefab
+    projectPath: Assets\Resources\ListUI.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Resources\SwarmEnemy.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\SwarmEnemy.prefab
+    projectPath: Assets\Resources\SwarmEnemy.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Resources\TankEnemy.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\TankEnemy.prefab
+    projectPath: Assets\Resources\TankEnemy.prefab
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -52,9 +172,21 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\gfu\cache\branches.yaml
+    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\branches.yaml
+    projectPath: Library\gfu\cache\branches.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: UnityProject\Library\gfu\cache\gitlocks.yaml
     fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gitlocks.yaml
     projectPath: Library\gfu\cache\gitlocks.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\gfu\cache\gitlog.yaml
+    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gitlog.yaml
+    projectPath: Library\gfu\cache\gitlog.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -70,27 +202,21 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\gfu\cache\repoinfo.yaml
-    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\repoinfo.yaml
-    projectPath: Library\gfu\cache\repoinfo.yaml
+  - path: UnityProject\Library\metadata\07\0773e9c3ba96a5740a1636a4a4d9a584
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\07\0773e9c3ba96a5740a1636a4a4d9a584
+    projectPath: Library\metadata\07\0773e9c3ba96a5740a1636a4a4d9a584
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\metadata\46\4666aa07171de483790e4416c7aa6e1f.info
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\46\4666aa07171de483790e4416c7aa6e1f.info
-    projectPath: Library\metadata\46\4666aa07171de483790e4416c7aa6e1f.info
+  - path: UnityProject\Library\metadata\07\0773e9c3ba96a5740a1636a4a4d9a584.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\07\0773e9c3ba96a5740a1636a4a4d9a584.info
+    projectPath: Library\metadata\07\0773e9c3ba96a5740a1636a4a4d9a584.info
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
   - path: UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
     fullPath: F:\git\VRTD\UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
     projectPath: Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\96\96131906495ea8549a1dd3584f40d667
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\96\96131906495ea8549a1dd3584f40d667
-    projectPath: Library\metadata\96\96131906495ea8549a1dd3584f40d667
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -106,27 +232,15 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\shadercompiler-UnityShaderCompiler.exe0.log
-    fullPath: F:\git\VRTD\UnityProject\Library\shadercompiler-UnityShaderCompiler.exe0.log
-    projectPath: Library\shadercompiler-UnityShaderCompiler.exe0.log
+  - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-0773e9c3ba96a5740a.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-0773e9c3ba96a5740a.json
+    projectPath: Library\StateCache\Hierarchy\c4cdc8-0773e9c3ba96a5740a.json
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
   - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-mainStage.json
     fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-mainStage.json
     projectPath: Library\StateCache\Hierarchy\c4cdc8-mainStage.json
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\StateCache\SceneView\b8f745-00a5158b9625349c9b.json
-    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-00a5158b9625349c9b.json
-    projectPath: Library\StateCache\SceneView\b8f745-00a5158b9625349c9b.json
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\StateCache\SceneView\b8f745-4666aa07171de48379.json
-    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-4666aa07171de48379.json
-    projectPath: Library\StateCache\SceneView\b8f745-4666aa07171de48379.json
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3

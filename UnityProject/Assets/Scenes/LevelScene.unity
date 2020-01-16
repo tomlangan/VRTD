@@ -958,7 +958,7 @@ Transform:
   - {fileID: 1240226723}
   - {fileID: 1474706255}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &94974563 stripped
 Transform:
@@ -2464,7 +2464,7 @@ Transform:
   m_Children:
   - {fileID: 1280378712}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &279162131
 PrefabInstance:
@@ -8192,7 +8192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4990641287273850, guid: 817524d1195160b45ae0856a42a10121, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4990641287273850, guid: 817524d1195160b45ae0856a42a10121, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9277,7 +9277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 415236, guid: bc6b7d6f0fb98544a873a3d69729fe66, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 415236, guid: bc6b7d6f0fb98544a873a3d69729fe66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12620,7 +12620,7 @@ PrefabInstance:
     - target: {fileID: 224448037844886652, guid: d059e607b40323249bfb332898724073,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224448037844886652, guid: d059e607b40323249bfb332898724073,
         type: 3}
@@ -13514,7 +13514,7 @@ Transform:
   - {fileID: 2030420361}
   - {fileID: 2064171107}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1449813729
 MonoBehaviour:
@@ -13533,7 +13533,7 @@ MonoBehaviour:
   DesktopInput: {fileID: 573466149}
   VRInput: {fileID: 2030420360}
   LocalAvatar: {fileID: 2064171106}
-  Target: 1
+  Target: 0
 --- !u!1001 &1453116054
 PrefabInstance:
   m_ObjectHideFlags: 0
