@@ -13533,7 +13533,7 @@ MonoBehaviour:
   DesktopInput: {fileID: 573466149}
   VRInput: {fileID: 2030420360}
   LocalAvatar: {fileID: 2064171106}
-  Target: 0
+  Target: 1
 --- !u!1001 &1453116054
 PrefabInstance:
   m_ObjectHideFlags: 0

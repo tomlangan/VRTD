@@ -51,7 +51,6 @@ namespace VRTD.Gameplay
         public void UpdatePosition(LevelDescription levelDesc)
         {
 
-
             if (ReachedFinishLine)
             {
                 Destroy();
@@ -94,7 +93,7 @@ namespace VRTD.Gameplay
                 }
                 else if ((intraMapProgress >= 0.5F) && (posIndex == (levelDesc.Road.Count - 1)))
                 {
-                    // straight down
+                    // straight up
                     direction = new Vector3(0.0F, 0.0F, 1.0F);
                 }
                 else
@@ -103,11 +102,12 @@ namespace VRTD.Gameplay
                 }
 
                 Vector3 movement = direction * progressFromCenter;
-                //Position = BasePosition + movement;
-                Position = levelDesc.Road[posIndex].Pos + movement;
+                Vector3 newPosition = levelDesc.Road[posIndex].Pos + movement;
+                Vector3 forward = (newPosition - Position).normalized;
+                Position = newPosition;
 
                 GameObjectFactory.SetMapPos(go, Position);
-                go.transform.forward = direction;
+                go.transform.forward = forward;
 #endif
             }
         }
