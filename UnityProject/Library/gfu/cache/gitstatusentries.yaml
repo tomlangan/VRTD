@@ -13,30 +13,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-01-16T22:26:13.615-08:00
+  lastUpdatedAtString: 2020-01-16T22:47:52.348-08:00
   initializedAtString: 2020-01-15T20:31:34.641-08:00
   entries:
-  - path: UnityProject\Assets\Resources\EnemyHealthIndicator.prefab
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\EnemyHealthIndicator.prefab
-    projectPath: Assets\Resources\EnemyHealthIndicator.prefab
+  - path: UnityProject\Assets\Resources\Levels\enemies.txt
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\enemies.txt
+    projectPath: Assets\Resources\Levels\enemies.txt
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Resources\EnemyHealthSlider.prefab
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\EnemyHealthSlider.prefab
-    projectPath: Assets\Resources\EnemyHealthSlider.prefab
+  - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+    projectPath: Assets\Resources\Levels\projectiles.txt
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\Gameplay\WaveManager.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\WaveManager.cs
-    projectPath: Assets\Scripts\Gameplay\WaveManager.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\Level.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Level.cs
-    projectPath: Assets\Scripts\Level.cs
+  - path: UnityProject\Assets\Resources\Levels\Test-lvl.txt
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\Test-lvl.txt
+    projectPath: Assets\Resources\Levels\Test-lvl.txt
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -73,42 +67,6 @@ MonoBehaviour:
   - path: UnityProject\Library\gfu\cache\gittrackingstatus.yaml
     fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gittrackingstatus.yaml
     projectPath: Library\gfu\cache\gittrackingstatus.yaml
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\gfu\cache\repoinfo.yaml
-    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\repoinfo.yaml
-    projectPath: Library\gfu\cache\repoinfo.yaml
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50
-    projectPath: Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
-    projectPath: Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp.dll
-    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp.dll
-    projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
-    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
-    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-mainStage.json
-    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-mainStage.json
-    projectPath: Library\StateCache\Hierarchy\c4cdc8-mainStage.json
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
