@@ -43,6 +43,7 @@ public class Level : MonoBehaviour
     private MessageUI CountdownUI;
     private HUDUI HUD;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -147,10 +148,8 @@ public class Level : MonoBehaviour
     void TickWaveCountdown()
     {
         Debug.Assert((GameTime - CountdownStartTime) > 0);
-        //TimerUIText.text = FormatTime(WAVE_COUNTDOWN_TIME - (GameTime - CountdownStartTime));
 
         float elapsed = GameTime - CountdownStartTime;
-        UpdateHUD();
 
         if (elapsed < WAVE_COUNTDOWN_TIME)
         {
@@ -165,6 +164,8 @@ public class Level : MonoBehaviour
             Debug.Log("State ==> Playing");
             State = LevelState.Playing;
         }
+
+        UpdateHUD();
     }
 
     void TickGameplay()
@@ -213,7 +214,7 @@ public class Level : MonoBehaviour
                 GameplayUI.TriggerSelectAction();
         }
 
-        //TimerUIText.text = FormatTime(GameTime - Waves.StartTime);
+        UpdateHUD();
     }
     
     void OnLevelComplete()

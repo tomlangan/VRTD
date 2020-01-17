@@ -48,14 +48,14 @@ namespace VRTD.Gameplay
             go = GameObjectFactory.InstantiateObject(Desc.Asset);
             GameObject healthIndicatorGo = GameObjectFactory.InstantiateObject("EnemyHealthIndicator");
             healthIndicatorGo.transform.parent = go.transform;
+            healthIndicatorGo.transform.forward = Vector3.back;
         }
 
 
         void UpdateHealthIndicator()
         {
-            Slider enemyHealthSlider = go.GetComponentInChildren<Slider>();
-
-            enemyHealthSlider.value = HealthRemaining / Desc.HitPoints;
+            Slider[] enemyHealthSlider = go.GetComponentsInChildren<Slider>();
+            enemyHealthSlider[0].value = HealthRemaining / Desc.HitPoints;
         }
 
         public void UpdatePosition(LevelDescription levelDesc)

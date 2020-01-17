@@ -65,7 +65,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.049999997, y: 0.049999997, z: 0.049999997}
   m_Children:
-  - {fileID: 95600533853067018}
+  - {fileID: 3621507317290006469}
   m_Father: {fileID: 2167881386643445398}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -205,15 +205,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2167881387204961502}
     m_Modifications:
+    - target: {fileID: 91773564410946391, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1171027465148381183, guid: b253d6f4e04cf0a499260c965523d55f,
         type: 3}
       propertyPath: m_Name
       value: EnemyHealthSlider
       objectReference: {fileID: 0}
+    - target: {fileID: 1792402614085664187, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792402614085664187, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 2228617058003681302, guid: b253d6f4e04cf0a499260c965523d55f,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 0.023
       objectReference: {fileID: 0}
     - target: {fileID: 2228617058003681302, guid: b253d6f4e04cf0a499260c965523d55f,
         type: 3}
@@ -340,6 +355,51 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3195287534909935496, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195287534909935496, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195287534909935496, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195287534909935496, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195287534909935496, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195287534909935496, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195287534909935496, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3195287534909935496, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313570646461882585, guid: b253d6f4e04cf0a499260c965523d55f,
+        type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3627510997492056984, guid: b253d6f4e04cf0a499260c965523d55f,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -357,9 +417,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b253d6f4e04cf0a499260c965523d55f, type: 3}
---- !u!224 &95600533853067018 stripped
+--- !u!224 &3621507317290006469 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2253621219450449735, guid: b253d6f4e04cf0a499260c965523d55f,
+  m_CorrespondingSourceObject: {fileID: 3195287534909935496, guid: b253d6f4e04cf0a499260c965523d55f,
     type: 3}
   m_PrefabInstance: {fileID: 2167881387330648141}
   m_PrefabAsset: {fileID: 0}
