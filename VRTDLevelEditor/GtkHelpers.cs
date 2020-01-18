@@ -65,15 +65,12 @@ namespace VRTD.LevelEditor
             if (null != t)
             {
                 t.Stop();
-                t.Close();
-                t = null;
             }
             if (null != Callback)
             {
                 Gtk.Application.Invoke(delegate
                 {
                     Callback(o, a);
-                    Callback = null;
                 });
             }
         }

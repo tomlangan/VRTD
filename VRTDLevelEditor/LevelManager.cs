@@ -184,8 +184,27 @@ namespace VRTD.LevelEditor
             return ReadObjectFromFile<List<Turret>>(FilenameToPath(AssetLocations.TurretFile));
         }
 
+        public static Turret LookupTurret(string turretName)
+        {
+            Turret t = null;
+            List<Turret> Turrets = GetTurrets();
+            for (int i = 0; i < Turrets.Count; i++)
+            {
+                if (Turrets[i].Name == turretName)
+                {
+                    t = Turrets[i];
+                }
+            }
+
+            return t;
+        }
+
         public static void WriteTurrets(List<Turret> turrets)
         {
+            if (null == turrets)
+            {
+                throw new Exception("turret list should never be null");
+            }
             string levelAsJSon = JsonConvert.SerializeObject(turrets);
             using (FileStream fs = File.Open(FilenameToPath(AssetLocations.TurretFile), FileMode.Create))
             {
@@ -200,6 +219,22 @@ namespace VRTD.LevelEditor
         public static List<EnemyDescription> GetEnemies()
         {
             return ReadObjectFromFile<List<EnemyDescription>>(FilenameToPath(AssetLocations.EnemyFile));
+        }
+
+
+        public static EnemyDescription LookupEnemy(string name)
+        {
+            EnemyDescription enemy = null;
+            List<EnemyDescription> Enemies = GetEnemies();
+            for (int i = 0; i < Enemies.Count; i++)
+            {
+                if (Enemies[i].Name == name)
+                {
+                    enemy = Enemies[i];
+                }
+            }
+
+            return enemy;
         }
 
         public static void WriteEnemies(List<EnemyDescription> enemies)
@@ -218,6 +253,20 @@ namespace VRTD.LevelEditor
         public static List<Projectile> GetProjectiles()
         {
             return ReadObjectFromFile<List<Projectile>>(FilenameToPath(AssetLocations.ProjectileFile));
+        }
+        public static Projectile LookupProjectile(string name)
+        {
+            Projectile p = null;
+            List<Projectile> Projectiles = GetProjectiles();
+            for (int i = 0; i < Projectiles.Count; i++)
+            {
+                if (Projectiles[i].Name == name)
+                {
+                    p = Projectiles[i];
+                }
+            }
+
+            return p;
         }
 
         public static void WriteProjectiles(List<Projectile> projectiles)

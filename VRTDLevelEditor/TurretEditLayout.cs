@@ -14,6 +14,8 @@ namespace VRTD.LevelEditor
         public List<Turret> Turrets;
         List<string> ProjectileNames;
         VBox Layout = null;
+        HBox DPSfield = null;
+        HBox FireRateField = null;
 
         public TurretEditLayout() : base(null, null)
         {
@@ -31,21 +33,17 @@ namespace VRTD.LevelEditor
                 Layout.Hide();
                 Layout.Destroy();
                 Layout = null;
+                FireRateField = null;
+                DPSfield = null;
             }
 
             Turrets = LevelManager.GetTurrets();
-            Turret = null;
             for (int i = 0; i < Turrets.Count; i++)
             {
                 if (Turrets[i].Name == selectedStr)
                 {
                     Turret = Turrets[i];
                 }
-            }
-
-            if (Turret == null)
-            {
-                throw new Exception("Could not find turret " + selectedStr);
             }
 
             Layout = new VBox(false, 0);
@@ -60,9 +58,9 @@ namespace VRTD.LevelEditor
             field.Show();
 
 
-            field = GtkHelpers.TextEntryField("Fire Rate", Turret.FireRate.ToString(), FireRate_Changed, true, GtkHelpers.ValueType.Float);
-            Layout.PackStart(field, false, false, 0);
-            field.Show();
+            FireRateField = GtkHelpers.TextEntryField("Fire Rate", Turret.FireRate.ToString(), FireRate_Changed, true, GtkHelpers.ValueType.Float);
+            Layout.PackStart(FireRateField, false, false, 0);
+            FireRateField.Show();
 
 
             field = GtkHelpers.TextEntryField("Range", Turret.Range.ToString(), Range_Changed, true, GtkHelpers.ValueType.Float);
@@ -73,6 +71,7 @@ namespace VRTD.LevelEditor
             field = GtkHelpers.TextEntryField("Cost", Turret.Cost.ToString(), Cost_Changed, true, GtkHelpers.ValueType.Float);
             Layout.PackStart(field, false, false, 0);
             field.Show();
+
 
             List<Projectile> projectiles = LevelManager.GetProjectiles();
             ProjectileNames = new List<string>();
@@ -90,6 +89,11 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
+            DPSfield = GtkHelpers.TextEntryField("Damage per Sec", Turret.Cost.ToString(), DPS_Changed, true, GtkHelpers.ValueType.Float);
+            Layout.PackStart(DPSfield, false, false, 0);
+            DPSfield.Show();
+
+            RecalculateDPS();
 
             Show();
             ShowAll();
@@ -136,6 +140,7 @@ namespace VRTD.LevelEditor
                     float newVal = float.Parse(newName);
                     Turret.FireRate = newVal;
                     WriteChanges();
+                    RecalculateDPS();
                 }
                 catch(Exception ex)
                 {
@@ -179,6 +184,46 @@ namespace VRTD.LevelEditor
             }
         }
 
+        private void DPS_Changed(object sender, EventArgs e)
+        {
+            string newName = ((Entry)sender).Text;
+            if (newName.Length > 0)
+            {
+                try
+                {
+                    float newDPS = float.Parse(newName);
+                    Turret.FireRate = CalculateDamagePerShot() / newDPS;
+                    WriteChanges();
+                    ((Entry)FireRateField.Children[1]).Text = Turret.FireRate.ToString();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+        private float CalculateDamagePerShot()
+        {
+            Projectile p = LevelManager.LookupProjectile(Turret.Projectile);
+            float damagePerShot = 0.0F;
+            for (int i = 0; i < p.Effects.Count; i++)
+            {
+                if (p.Effects[i].EffectType == ProjectileEffectType.Damage)
+                {
+                    damagePerShot += p.Effects[i].EffectImpact;
+                }
+            }
+            return damagePerShot;
+        }
+
+        private void RecalculateDPS()
+        {
+            float shotsPerSec = 1.0F / Turret.FireRate;
+            float DPS = CalculateDamagePerShot() * shotsPerSec;
+
+            ((Entry)DPSfield.Children[1]).Text = DPS.ToString();
+        }
+
         private void Projectile_Changed(object sender, EventArgs e)
         {
             if (null == sender)
@@ -191,6 +236,7 @@ namespace VRTD.LevelEditor
             {
                 Turret.Projectile = newValue;
                 WriteChanges();
+                RecalculateDPS();
             }
         }
 
