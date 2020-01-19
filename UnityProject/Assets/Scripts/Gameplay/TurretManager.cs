@@ -69,7 +69,7 @@ namespace VRTD.Gameplay
             }
         }
 
-        EnemyInstance FindNearestEnemyInRange()
+        public EnemyInstance FindNearestEnemyInRange()
         {
             EnemyInstance nearestEnemyFound = null;
             for (int i = 0; i < RoadSegmentsInRange.Count; i++)
@@ -95,7 +95,9 @@ namespace VRTD.Gameplay
                 }
 
                 LastShotTime = LastShotTime + TurretType.FireRate;
+#if LEVEL_EDITOR == false
                 Projectiles.Fire(this, nearestEnemyInRange, LastShotTime);
+#endif
                 timeSinceLastShot = (waveTime - LastShotTime);
             }
         }

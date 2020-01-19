@@ -12,7 +12,7 @@ namespace VRTD.LevelEditor
         Widget EditorWidget = null;
         ListStore ListModel;
         HBox TopLevelHBox;
-        public enum EditorMode { Level, Turret, Enemy, Projectile }
+        public enum EditorMode { Level, Turret, Enemy, Projectile, Analysis }
         EditorMode CurrentMode;
 
         public MainWindow() :
@@ -69,6 +69,10 @@ namespace VRTD.LevelEditor
                 case EditorMode.Projectile:
                     EditorWidget = new ProjectileEditLayout();
                     ((ProjectileEditLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
+                    break;
+                case EditorMode.Analysis:
+                    EditorWidget = new LevelAnalysisLayout();
+                    ((LevelAnalysisLayout)EditorWidget).TreeRefreshNeeded += TreeRefreshNeeded_Event;
                     break;
             }
 
@@ -127,6 +131,10 @@ namespace VRTD.LevelEditor
                     levelColumn.Title = "Projectiles";
                     PopulateTreeWithProjectilees();
                     break;
+                case EditorMode.Analysis:
+                    levelColumn.Title = "Analysis";
+                    PopulateTreeWithLevels();
+                    break;
             }
 
             tree.Show();
@@ -164,6 +172,10 @@ namespace VRTD.LevelEditor
             modeButton.Clicked += projectile_clicked_event;
             modeHbox.PackStart(modeButton, false, false, 5);
 
+            modeButton = new Button("Analysis");
+            modeButton.Show();
+            modeButton.Clicked += analysis_clicked_event;
+            modeHbox.PackStart(modeButton, false, false, 5);
 
             vbox.PackStart(EditorWidget, true, true, 5);
             EditorWidget.Show();
@@ -190,6 +202,9 @@ namespace VRTD.LevelEditor
                 case EditorMode.Projectile:
                     PopulateTreeWithProjectilees();
                     break;
+                case EditorMode.Analysis:
+                    PopulateTreeWithLevels();
+                    break;
             }
         }
 
@@ -213,6 +228,9 @@ namespace VRTD.LevelEditor
                         break;
                     case EditorMode.Projectile:
                         ((ProjectileEditLayout)EditorWidget).SetProjectile(selectedStr);
+                        break;
+                    case EditorMode.Analysis:
+                        LoadLevel(selectedStr);
                         break;
                 }
             }
@@ -473,7 +491,16 @@ namespace VRTD.LevelEditor
             Application.Quit();
             */
 
-            ((LevelEditLayout)EditorWidget).SetLevel(LevelDesc);
+
+            switch (CurrentMode)
+            {
+                case EditorMode.Level:
+                    ((LevelEditLayout)EditorWidget).SetLevel(LevelDesc);
+                    break;
+                case EditorMode.Analysis:
+                    ((LevelAnalysisLayout)EditorWidget).SetLevel(LevelDesc);
+                    break;
+            }
         }
 
         static void delete_event(object obj, DeleteEventArgs args)
@@ -499,6 +526,10 @@ namespace VRTD.LevelEditor
         void projectile_clicked_event(object obj, EventArgs args)
         {
             AddWidgetsAndShow(EditorMode.Projectile);
+        }
+        void analysis_clicked_event(object obj, EventArgs args)
+        {
+            AddWidgetsAndShow(EditorMode.Analysis);
         }
     }
 }

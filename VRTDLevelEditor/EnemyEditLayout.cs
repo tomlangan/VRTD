@@ -181,6 +181,19 @@ namespace VRTD.LevelEditor
             }
         }
 
+
+        public static float CalculateDPSforWave(EnemyDescription enemy)
+        {
+            float DPS = 0.0F;
+
+            float hitPointsPerEnemy = enemy.HitPoints;
+            float spawnRate = enemy.SpawnRate;
+
+            DPS = hitPointsPerEnemy * (1.0F / spawnRate);
+
+            return DPS;
+        }
+
         public void AddEnemy()
         {
 

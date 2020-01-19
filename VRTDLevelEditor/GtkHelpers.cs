@@ -149,6 +149,23 @@ namespace VRTD.LevelEditor
             return box;
         }
 
+        public static HBox ReadOnlyTextField(string fieldName, string value)
+        {
+            HBox box = new HBox(false, 20);
+
+            Label label = new Label(fieldName);
+            box.PackStart(label, false, false, 0);
+            label.Show();
+
+            Label entry = new Label();
+            entry.WidthRequest = 200;
+            box.PackStart(entry, false, false, 0);
+            entry.Text = value;
+
+            entry.Show();
+
+            return box;
+        }
 
         public static HBox ComboBox(string fieldName, string[] values, int initialValueIndex, EventHandler callback, bool deferred = false)
         {

@@ -6,11 +6,24 @@ using System.Collections.Generic;
 
 namespace VRTD.LevelEditor
 {
-    public class LevelEditLayout : ScrolledWindow
-    {
-        static string[] LayoutOptions = { "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "100" };
 
+    public class WaveStats
+    {
+        public float MaxDPSDealtSingleEnemy;
+        public float MaxHPPSProducted;
+        public float MaxDPSOverall;
+    }
+
+    public class TurretStats
+    {
+        public TurretInstance Turret;
+        public float MaxDPSOverall;
+    }
+
+    public class LevelAnalysisLayout : ScrolledWindow
+    {
         public LevelDescription LevelDesc { get; set; }
+        Dictionary<int, int> TurretSelections;
         VBox Layout = null;
         public delegate void TreeRefreshNeededFunc();
         public event TreeRefreshNeededFunc TreeRefreshNeeded;
@@ -24,7 +37,7 @@ namespace VRTD.LevelEditor
         TreeView AllowedTurretTree;
         ListStore AllowedTurretModel;
 
-        public LevelEditLayout() : base(null, null)
+        public LevelAnalysisLayout() : base(null, null)
         {
         }
 
@@ -33,7 +46,7 @@ namespace VRTD.LevelEditor
         {
             GtkHelpers.FlushAllDeferredEvents();
 
-            Destroyed += LevelEditLayout_Destroyed;
+            Destroyed += LevelAnalysisLayout_Destroyed;
 
             if (null != Layout)
             {
@@ -44,26 +57,21 @@ namespace VRTD.LevelEditor
 
             LevelDesc = desc;
 
+            TurretSelections = new Dictionary<int, int>();
+            RecalculateAllStats();
+
             Layout = new VBox(false, 0);
             AddWithViewport(Layout);
 
-            HBox field = GtkHelpers.TextEntryField("Level Name", desc.Name, Name_Changed, true);
+            HBox field = GtkHelpers.ReadOnlyTextField("Level Name", desc.Name);
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
-            field = GtkHelpers.TextEntryField("Lives", desc.Lives.ToString(), Lives_Changed, true, GtkHelpers.ValueType.Int);
+            field = GtkHelpers.ReadOnlyTextField("Lives", desc.Lives.ToString());
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
-            field = GtkHelpers.ComboBox("Width", LayoutOptions, (desc.FieldWidth / 5 - 1), Width_Changed, true);
-            Layout.PackStart(field, false, false, 0);
-            field.Show();
-
-            field = GtkHelpers.ComboBox("Depth", LayoutOptions, (desc.FieldDepth / 5 - 1), Depth_Changed, true);
-            Layout.PackStart(field, false, false, 0);
-            field.Show();
-
-            field = GtkHelpers.TextEntryField("Starting Coins", desc.StartingCoins.ToString(), StartingCoins_Changed, true, GtkHelpers.ValueType.Int);
+            field = GtkHelpers.ReadOnlyTextField("Starting Coins", desc.StartingCoins.ToString());
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
@@ -86,19 +94,19 @@ namespace VRTD.LevelEditor
             TreeViewColumn difficultyColumn = new TreeViewColumn();
 
             CellRendererCombo comboCellRenderer = new CellRendererCombo();
-            comboCellRenderer.Editable = true;
+            comboCellRenderer.Editable = false;
             comboCellRenderer.Edited += ComboCellRenderer_Edited;
             comboCellRenderer.Model = comboModel;
             comboCellRenderer.TextColumn = 0;
             comboCellRenderer.HasEntry = false;
 
             CellRendererText countCellRenderer = new CellRendererText();
-            countCellRenderer.Editable = true;
+            countCellRenderer.Editable = false;
             countCellRenderer.Edited += CountCell_Edited;
 
 
             CellRendererText difficultyCellRenderer = new CellRendererText();
-            difficultyCellRenderer.Editable = true;
+            difficultyCellRenderer.Editable = false;
             difficultyCellRenderer.Edited += DifficultyCell_Edited;
 
 
@@ -165,7 +173,6 @@ namespace VRTD.LevelEditor
             Layout.PackStart(ErrorEntry, false, false, 10);
             ErrorEntry.Show();
 
-            ValidateDescriptionAndReportIssues();
 
             //
             // Allowed turrets
@@ -431,7 +438,7 @@ namespace VRTD.LevelEditor
             }
         }
 
-        private void LevelEditLayout_Destroyed(object sender, EventArgs e)
+        private void LevelAnalysisLayout_Destroyed(object sender, EventArgs e)
         {
             GtkHelpers.FlushAllDeferredEvents();
         }
@@ -455,79 +462,50 @@ namespace VRTD.LevelEditor
         {
             Button b = (Button)sender;
             int index = MapMappings[b];
+            string turretString = "None";
 
-            char newchar = 'D';
-            if (index < LevelDesc.FieldWidth)
+            //
+            // Only the 3 main states
+            // 
+            if (LevelDesc.Map[index] == 'T')
             {
-                //
-                // First row --> allow Entry
-                // 
-                switch (LevelDesc.Map[index])
+                int turretIndex = 0;
+
+                if (!TurretSelections.TryGetValue(index, out turretIndex))
                 {
-                    case 'D':
-                        newchar = 'R';
-                        break;
-                    case 'R':
-                        newchar = 'T';
-                        break;
-                    case 'T':
-                        newchar = 'E';
-                        break;
-                    case 'E':
-                        newchar = 'D';
-                        break;
+                    if (LevelDesc.AllowedTurrets.Count > 0)
+                    {
+                        turretIndex = 0;
+                        TurretSelections[index] = turretIndex;
+                        turretString = LevelDesc.AllowedTurrets[turretIndex];
+                    }
                 }
-            }
-            else if ((index / LevelDesc.FieldWidth) == (LevelDesc.FieldDepth - 1))
-            {
-                //
-                // Last row --> allow Exit
-                // 
-                switch (LevelDesc.Map[index])
+                else
                 {
-                    case 'D':
-                        newchar = 'R';
-                        break;
-                    case 'R':
-                        newchar = 'T';
-                        break;
-                    case 'T':
-                        newchar = 'X';
-                        break;
-                    case 'X':
-                        newchar = 'D';
-                        break;
+                    turretIndex = (turretIndex + 1) % LevelDesc.AllowedTurrets.Count;
+                    TurretSelections[index] = turretIndex;
+                    turretString = LevelDesc.AllowedTurrets[turretIndex];
+
                 }
-            }
-            else
-            {
-                //
-                // Only the 3 main states
-                // 
-                switch (LevelDesc.Map[index])
-                {
-                    case 'D':
-                        newchar = 'R';
-                        break;
-                    case 'R':
-                        newchar = 'T';
-                        break;
-                    case 'T':
-                        newchar = 'D';
-                        break;
-                }
+               
             }
 
             // Update location on map
             MapTable.Remove(b);
             b = new Button();
-            LevelDesc.Map[index] = newchar;
-            SetFieldButtonType(b, newchar);
+            UpdateFieldTurretButton(b, turretString);
             SetButtonOnTable(b, LevelDesc, index);
 
-            // Validate changes, write new map
-            ValidateDescriptionAndReportIssues();
             WriteChanges();
+        }
+
+
+        private void UpdateFieldTurretButton(Button b, string name)
+        {
+            Gdk.Color col = new Gdk.Color();
+            col = GtkHelpers.Color("grey");
+            b.ModifyBg(StateType.Normal, col);
+            b.Label = name;
         }
 
         private void SetFieldButtonType(Button b, char c)
@@ -546,7 +524,7 @@ namespace VRTD.LevelEditor
                     break;
                 case 'T':
                     col = GtkHelpers.Color("grey");
-                    s = "T";
+                    s = "None";
                     break;
                 case 'E':
                     col = GtkHelpers.Color("red");
@@ -572,117 +550,23 @@ namespace VRTD.LevelEditor
 
         }
 
-        private void Name_Changed(object sender, EventArgs e)
+        private void CalculateStatsForTurrets()
         {
-            if (null == sender)
+            for (int i=0; i<LevelDesc.Turrets.Count; i++)
             {
-                return;
-            }
-            string newName = ((Entry)sender).Text;
-            if ((newName != LevelDesc.Name) && (newName.Length > 0))
-            {
-                LevelManager.RenameLevel(LevelDesc.Name, newName);
-                LevelDesc.Name = newName;
-                WriteChanges();
-                if (null != TreeRefreshNeeded)
-                {
-                    TreeRefreshNeeded();
-                }
+                Turret t = LevelManager.LookupTurret(LevelDesc.AllowedTurrets[i]);
             }
         }
 
 
-        private void Lives_Changed(object sender, EventArgs e)
+        private void CalculateStatsForWave(EnemyWave wave)
         {
-            string newName = ((Entry)sender).Text;
-            if (newName.Length > 0)
-            {
-                try
-                {
-                    int newVal = int.Parse(newName);
-                    LevelDesc.Lives = newVal;
-                    WriteChanges();
-                }
-                catch (Exception ex)
-                {
-                }
-            }
+
         }
 
-        private void StartingCoins_Changed(object sender, EventArgs e)
+        private void RecalculateAllStats()
         {
-            string newName = ((Entry)sender).Text;
-            if (newName.Length > 0)
-            {
-                try
-                {
-                    int newVal = int.Parse(newName);
-                    LevelDesc.StartingCoins = newVal;
-                    WriteChanges();
-                }
-                catch (Exception ex)
-                {
-                }
-            }
-        }
 
-        private void Width_Changed(object sender, EventArgs e)
-        {
-            if (null == sender)
-            {
-                return;
-            }
-            int newIndex = ((ComboBox)sender).Active;
-            int newValue = int.Parse(LayoutOptions[newIndex]);
-            if (LevelDesc.FieldWidth != newValue)
-            {
-                LevelDesc.FieldWidth = newValue;
-                WriteChanges();
-            }
-
-            // Need to redraw the field
-            int newFieldSize = LevelDesc.FieldWidth * LevelDesc.FieldDepth;
-            ResizeMap(newFieldSize);
-        }
-
-
-        private void Depth_Changed(object sender, EventArgs e)
-        {
-            if (null == sender)
-            {
-                return;
-            }
-            int newIndex = ((ComboBox)sender).Active;
-            int newValue = int.Parse(LayoutOptions[newIndex]);
-            if (LevelDesc.FieldDepth != newValue)
-            {
-                LevelDesc.FieldDepth = newValue;
-                WriteChanges();
-            }
-
-
-            // Need to redraw the field
-            int newFieldSize = LevelDesc.FieldWidth * LevelDesc.FieldDepth;
-            ResizeMap(newFieldSize);
-        }
-
-
-        private void ResizeMap(int newFieldSize)
-        {
-            if (LevelDesc.Map.Count > newFieldSize)
-            {
-                LevelDesc.Map.RemoveRange(newFieldSize, LevelDesc.Map.Count - newFieldSize);
-            }
-            else if (LevelDesc.Map.Count < newFieldSize)
-            {
-                int itemsToAdd = newFieldSize - LevelDesc.Map.Count;
-                for (int i = 0; i < itemsToAdd; i++)
-                {
-                    LevelDesc.Map.Add('D');
-                }
-            }
-
-            SetLevel(LevelDesc);
         }
 
 
@@ -691,42 +575,6 @@ namespace VRTD.LevelEditor
             LevelManager.WriteLevel(LevelDesc.Name, LevelDesc);
         }
 
-        bool ValidateDescriptionAndReportIssues()
-        {
-            bool issuesFound = false;
-            bool warningsFound = false;
-            string issueText = "No issues";
-            string warningText = "";
-
-            try
-            {
-                LevelLoader.LoadAndValidateLevel(LevelDesc);
-            }
-            catch (LevelLoadException e)
-            {
-                issuesFound = true;
-                issueText = e.Message;
-            }
-
-
-            if (issuesFound)
-            {
-                ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("red"));
-                ErrorEntry.Text = "Issues: " + Environment.NewLine + issueText;
-            }
-            else if (warningsFound)
-            {
-                ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("orange"));
-                ErrorEntry.Text = "Warnings: " + Environment.NewLine + warningText;
-            }
-            else
-            {
-                ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("green"));
-                ErrorEntry.Text = "No issues";
-            }
-
-            return true;
-        }
     }
 }
 

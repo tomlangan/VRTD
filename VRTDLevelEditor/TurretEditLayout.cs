@@ -192,7 +192,7 @@ namespace VRTD.LevelEditor
                 try
                 {
                     float newDPS = float.Parse(newName);
-                    Turret.FireRate = CalculateDamagePerShot() / newDPS;
+                    Turret.FireRate = CalculateDamagePerShot(Turret) / newDPS;
                     WriteChanges();
                     ((Entry)FireRateField.Children[1]).Text = Turret.FireRate.ToString();
                 }
@@ -202,9 +202,9 @@ namespace VRTD.LevelEditor
             }
         }
 
-        private float CalculateDamagePerShot()
+        public static float CalculateDamagePerShot(Turret t)
         {
-            Projectile p = LevelManager.LookupProjectile(Turret.Projectile);
+            Projectile p = LevelManager.LookupProjectile(t.Projectile);
             float damagePerShot = 0.0F;
             for (int i = 0; i < p.Effects.Count; i++)
             {
@@ -219,7 +219,7 @@ namespace VRTD.LevelEditor
         private void RecalculateDPS()
         {
             float shotsPerSec = 1.0F / Turret.FireRate;
-            float DPS = CalculateDamagePerShot() * shotsPerSec;
+            float DPS = CalculateDamagePerShot(Turret) * shotsPerSec;
 
             ((Entry)DPSfield.Children[1]).Text = DPS.ToString();
         }

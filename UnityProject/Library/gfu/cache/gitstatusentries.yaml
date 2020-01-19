@@ -13,30 +13,516 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-01-16T22:48:26.370-08:00
-  initializedAtString: 2020-01-15T20:31:34.641-08:00
+  lastUpdatedAtString: 2020-01-18T14:55:10.393-08:00
+  initializedAtString: 2020-01-18T14:51:31.654-08:00
   entries:
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Brazier_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Brazier_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Brazier_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Brazier_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Brazier_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Brazier_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Cart_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Cart_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Cart_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Cart_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Cart_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Cart_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_CartHay_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_CartHay_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_CartHay_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_CartHay_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_CartHay_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_CartHay_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Crate_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Crate_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Crate_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Crate_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Crate_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Crate_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_02_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_02_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_02_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_02_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_02_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Fence_02_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Grate_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Grate_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Grate_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Grate_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Grate_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Grate_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_02_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_02_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_02_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_02_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_02_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Gravestone_02_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Guillotine_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Guillotine_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Guillotine_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Guillotine_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Guillotine_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Guillotine_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Lampost_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Lampost_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Lampost_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Lampost_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Lampost_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Lampost_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_02_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_02_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_02_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_02_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_02_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Plinth_02_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Rowboat_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Rowboat_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Rowboat_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Rowboat_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Rowboat_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Rowboat_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_ShopSign_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_ShopSign_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_ShopSign_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_ShopSign_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_ShopSign_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_ShopSign_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_Base_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_Base_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_Base_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_Base_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_Base_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Statue_Base_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Trapdoor_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Trapdoor_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Trapdoor_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Trapdoor_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Trapdoor_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_Trapdoor_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab.meta
+    projectPath: Assets\PolygonKnights\Prefabs\Props\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\Scripts\Gameplay\obj.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\obj.meta
+    projectPath: Assets\Scripts\Gameplay\obj.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow.meta
+    projectPath: Assets\Scripts\Gameplay\Snow.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Brazier_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Brazier_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Brazier_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Brazier_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Brazier_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Brazier_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Cart_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Cart_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Cart_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Cart_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Cart_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Cart_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_CartHay_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_CartHay_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_CartHay_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_CartHay_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_CartHay_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_CartHay_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Crate_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Crate_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Crate_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Crate_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Crate_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Crate_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_02_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_02_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_02_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_02_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_02_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Fence_02_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Grate_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Grate_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Grate_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Grate_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Grate_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Grate_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_02_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_02_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_02_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_02_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_02_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Gravestone_02_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Guillotine_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Guillotine_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Guillotine_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Guillotine_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Guillotine_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Guillotine_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Lampost_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Lampost_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Lampost_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Lampost_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Lampost_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Lampost_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_02_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_02_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_02_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_02_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_02_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Plinth_02_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Rowboat_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Rowboat_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Rowboat_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Rowboat_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Rowboat_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Rowboat_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_ShopSign_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_ShopSign_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_ShopSign_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_ShopSign_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_ShopSign_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_ShopSign_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_Base_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_Base_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_Base_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_Base_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_Base_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Statue_Base_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Trapdoor_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Trapdoor_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Trapdoor_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Trapdoor_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_Trapdoor_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_Trapdoor_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab.meta
+    projectPath: Assets\Scripts\Gameplay\Snow\SM_Prop_WaterWheel_Support_01_Snow.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: UnityProject\Library\assetDatabase3
     fullPath: F:\git\VRTD\UnityProject\Library\assetDatabase3
     projectPath: Library\assetDatabase3
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\gfu\cache\branches.yaml
-    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\branches.yaml
-    projectPath: Library\gfu\cache\branches.yaml
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: UnityProject\Library\gfu\cache\gitlocks.yaml
     fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gitlocks.yaml
     projectPath: Library\gfu\cache\gitlocks.yaml
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\gfu\cache\gitlog.yaml
-    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gitlog.yaml
-    projectPath: Library\gfu\cache\gitlog.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -49,6 +535,78 @@ MonoBehaviour:
   - path: UnityProject\Library\gfu\cache\gittrackingstatus.yaml
     fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gittrackingstatus.yaml
     projectPath: Library\gfu\cache\gittrackingstatus.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\gfu\cache\repoinfo.yaml
+    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\repoinfo.yaml
+    projectPath: Library\gfu\cache\repoinfo.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
+    projectPath: Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\90\90ecf9dc58b02844b8c9ac6ecf89005b
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\90\90ecf9dc58b02844b8c9ac6ecf89005b
+    projectPath: Library\metadata\90\90ecf9dc58b02844b8c9ac6ecf89005b
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\shadercompiler-UnityShaderCompiler.exe0.log
+    fullPath: F:\git\VRTD\UnityProject\Library\shadercompiler-UnityShaderCompiler.exe0.log
+    projectPath: Library\shadercompiler-UnityShaderCompiler.exe0.log
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\StateCache\Hierarchy\c4cdc8-mainStage.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\Hierarchy\c4cdc8-mainStage.json
+    projectPath: Library\StateCache\Hierarchy\c4cdc8-mainStage.json
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: VRTDLevelEditor\bin\Debug\VRTDGameplay.dll
+    fullPath: F:\git\VRTD\VRTDLevelEditor\bin\Debug\VRTDGameplay.dll
+    projectPath: ..\VRTDLevelEditor\bin\Debug\VRTDGameplay.dll
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: VRTDLevelEditor\EnemyEditLayout.cs
+    fullPath: F:\git\VRTD\VRTDLevelEditor\EnemyEditLayout.cs
+    projectPath: ..\VRTDLevelEditor\EnemyEditLayout.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: VRTDLevelEditor\LevelEditLayout.cs
+    fullPath: F:\git\VRTD\VRTDLevelEditor\LevelEditLayout.cs
+    projectPath: ..\VRTDLevelEditor\LevelEditLayout.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.csprojAssemblyReference.cache
+    fullPath: F:\git\VRTD\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.csprojAssemblyReference.cache
+    projectPath: ..\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.csprojAssemblyReference.cache
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: VRTDLevelEditor\TurretEditLayout.cs
+    fullPath: F:\git\VRTD\VRTDLevelEditor\TurretEditLayout.cs
+    projectPath: ..\VRTDLevelEditor\TurretEditLayout.cs
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
