@@ -16,7 +16,8 @@ namespace VRTD.LevelEditor
 
     public class TurretStats
     {
-        public TurretInstance Turret;
+        public Turret t;
+        public TurretInstance Instance;
         public float MaxDPSOverall;
     }
 
@@ -29,13 +30,12 @@ namespace VRTD.LevelEditor
         public event TreeRefreshNeededFunc TreeRefreshNeeded;
         Table MapTable;
         Dictionary<Button, int> MapMappings;
-        Entry ErrorEntry;
         TreeView WavesTree;
         ListStore WavesModel;
-        TreeView AvailTurretTree;
-        ListStore AvailTurretModel;
         TreeView AllowedTurretTree;
         ListStore AllowedTurretModel;
+        List<TurretStats> TurretStatList;
+        List<WaveStats> WaveStatList;
 
         public LevelAnalysisLayout() : base(null, null)
         {
@@ -92,56 +92,60 @@ namespace VRTD.LevelEditor
             TreeViewColumn enemyCoumn = new TreeViewColumn();
             TreeViewColumn countColumn = new TreeViewColumn();
             TreeViewColumn difficultyColumn = new TreeViewColumn();
+            TreeViewColumn singleEnemyColumn = new TreeViewColumn();
+            TreeViewColumn maxHPPSColumn = new TreeViewColumn();
+            TreeViewColumn maxDPSColumn = new TreeViewColumn();
 
-            CellRendererCombo comboCellRenderer = new CellRendererCombo();
-            comboCellRenderer.Editable = false;
-            comboCellRenderer.Edited += ComboCellRenderer_Edited;
-            comboCellRenderer.Model = comboModel;
-            comboCellRenderer.TextColumn = 0;
-            comboCellRenderer.HasEntry = false;
+            CellRendererCombo textCellRenderer = new CellRendererCombo();
+            textCellRenderer.Editable = false;
 
-            CellRendererText countCellRenderer = new CellRendererText();
-            countCellRenderer.Editable = false;
-            countCellRenderer.Edited += CountCell_Edited;
-
-
-            CellRendererText difficultyCellRenderer = new CellRendererText();
-            difficultyCellRenderer.Editable = false;
-            difficultyCellRenderer.Edited += DifficultyCell_Edited;
-
-
-            enemyCoumn.PackStart(comboCellRenderer, true);
+            enemyCoumn.PackStart(textCellRenderer, true);
             enemyCoumn.Title = "Enemy";
-            enemyCoumn.AddAttribute(comboCellRenderer, "text", 1);
+            enemyCoumn.AddAttribute(textCellRenderer, "text", 1);
             WavesTree.AppendColumn(enemyCoumn);
 
-            countColumn.PackStart(countCellRenderer, true);
+            countColumn.PackStart(textCellRenderer, true);
             countColumn.Title = "Count";
-            countColumn.AddAttribute(countCellRenderer, "text", 2);
+            countColumn.AddAttribute(textCellRenderer, "text", 2);
             WavesTree.AppendColumn(countColumn);
 
-            difficultyColumn.PackStart(difficultyCellRenderer, true);
+            difficultyColumn.PackStart(textCellRenderer, true);
             difficultyColumn.Title = "Difficulty Multiplier";
-            difficultyColumn.AddAttribute(difficultyCellRenderer, "text", 3);
+            difficultyColumn.AddAttribute(textCellRenderer, "text", 3);
             WavesTree.AppendColumn(difficultyColumn);
 
             //
             // Add column:  Max damage that can be dished to a single enemy given turret coverage + enemy speed
             //
 
+            singleEnemyColumn.PackStart(textCellRenderer, true);
+            singleEnemyColumn.Title = "Single Enemy DPS";
+            singleEnemyColumn.AddAttribute(textCellRenderer, "text", 4);
+            WavesTree.AppendColumn(singleEnemyColumn);
+
             //
             // Add column: Max hit points of the wave
             //
 
+            maxHPPSColumn.PackStart(textCellRenderer, true);
+            maxHPPSColumn.Title = "Max Hitpoints/s";
+            maxHPPSColumn.AddAttribute(textCellRenderer, "text", 5);
+            WavesTree.AppendColumn(maxHPPSColumn);
+
             //
-            // Add column: Max hit points of all the turrets combined firing at full capacity
+            // Add column: Max damage of all the turrets combined firing at full capacity
             //
+
+            maxDPSColumn.PackStart(textCellRenderer, true);
+            maxDPSColumn.Title = "Max DPS overall";
+            maxDPSColumn.AddAttribute(textCellRenderer, "text", 6);
+            WavesTree.AppendColumn(maxDPSColumn);
 
             //
             // Add column: Given all the factors, theoretical headroom of DPS
             //
 
-            WavesModel = new ListStore(typeof(int), typeof(string), typeof(int), typeof(float));
+            WavesModel = new ListStore(typeof(int), typeof(string), typeof(int), typeof(float), typeof(float), typeof(float), typeof(float));
             WavesTree.Model = WavesModel;
             WavesTree.Selection.Mode = SelectionMode.Single;
 
@@ -166,13 +170,6 @@ namespace VRTD.LevelEditor
             Layout.PackStart(map, false, true, 0);
             map.Show();
 
-            ErrorEntry = new Entry(500);
-            ErrorEntry.IsEditable = false;
-            ErrorEntry.Text = "No issues";
-            ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("green"));
-            Layout.PackStart(ErrorEntry, false, false, 10);
-            ErrorEntry.Show();
-
 
             //
             // Allowed turrets
@@ -182,63 +179,20 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, true, false, 0);
             field.Show();
 
-            AvailTurretTree = new TreeView();
             AllowedTurretTree = new TreeView();
 
             TreeViewColumn availCol = new TreeViewColumn();
             TreeViewColumn allowedCol = new TreeViewColumn();
 
-            CellRendererText availCellrenderer = new CellRendererText();
-            availCellrenderer.Editable = false;
 
-            CellRendererText allowedCellRenderer = new CellRendererText();
-            allowedCellRenderer.Editable = false;
-
-            availCol.PackStart(availCellrenderer, true);
-            availCol.Title = "Not allowed turrets";
-            availCol.AddAttribute(availCellrenderer, "text", 1);
-            AvailTurretTree.AppendColumn(availCol);
-
-
-            allowedCol.PackStart(allowedCellRenderer, true);
+            allowedCol.PackStart(textCellRenderer, true);
             allowedCol.Title = "Allowed Turrets";
-            allowedCol.AddAttribute(allowedCellRenderer, "text", 1);
+            allowedCol.AddAttribute(textCellRenderer, "text", 1);
             AllowedTurretTree.AppendColumn(allowedCol);
-
-            AvailTurretModel = new ListStore(typeof(int), typeof(string));
-            AvailTurretTree.Model = AvailTurretModel;
-            AvailTurretTree.Selection.Mode = SelectionMode.Multiple;
 
             AllowedTurretModel = new ListStore(typeof(int), typeof(string));
             AllowedTurretTree.Model = AllowedTurretModel;
             AllowedTurretTree.Selection.Mode = SelectionMode.Multiple;
-
-            field.PackStart(AvailTurretTree, true, true, 0);
-            AvailTurretTree.Show();
-
-            VBox turretButtons = new VBox(true, 0);
-            field.PackStart(turretButtons, true, true, 0);
-            turretButtons.Show();
-
-            b = new Button(">>");
-            turretButtons.PackStart(b, false, false, 0);
-            b.Clicked += AddAllTurrets_Clicked;
-            b.Show();
-
-            b = new Button(">");
-            turretButtons.PackStart(b, false, false, 0);
-            b.Clicked += AddSelectedTurrets_Clicked;
-            b.Show();
-
-            b = new Button("<");
-            turretButtons.PackStart(b, false, false, 0);
-            b.Clicked += RemoveSelectedTurrets_Clicked;
-            b.Show();
-
-            b = new Button("<<");
-            turretButtons.PackStart(b, false, false, 0);
-            b.Clicked += RemoveAllTurrets_Clicked;
-            b.Show();
 
             field.PackEnd(AllowedTurretTree, true, true, 0);
             AllowedTurretTree.Show();
@@ -250,85 +204,17 @@ namespace VRTD.LevelEditor
             ShowAll();
         }
 
-        private void RemoveAllTurrets_Clicked(object sender, EventArgs e)
-        {
-            LevelDesc.AllowedTurrets.RemoveRange(0, LevelDesc.AllowedTurrets.Count);
-            PopulateTurretTrees(LevelDesc);
-            WriteChanges();
-        }
-
-        private void RemoveSelectedTurrets_Clicked(object sender, EventArgs e)
-        {
-            TreePath[] treePath = AllowedTurretTree.Selection.GetSelectedRows();
-
-            for (int i = treePath.Length; i > 0; i--)
-            {
-                TreeIter iter;
-                AllowedTurretModel.GetIter(out iter, treePath[(i - 1)]);
-
-                string turretName = (string)AllowedTurretModel.GetValue(iter, 1);
-                LevelDesc.AllowedTurrets.Remove(turretName);
-            }
-
-            PopulateTurretTrees(LevelDesc);
-            WriteChanges();
-        }
-
-        private void AddSelectedTurrets_Clicked(object sender, EventArgs e)
-        {
-            TreePath[] treePath = AvailTurretTree.Selection.GetSelectedRows();
-
-            for (int i = treePath.Length; i > 0; i--)
-            {
-                TreeIter iter;
-                AvailTurretModel.GetIter(out iter, treePath[(i - 1)]);
-
-                string turretName = (string)AvailTurretModel.GetValue(iter, 1);
-                LevelDesc.AllowedTurrets.Add(turretName);
-            }
-
-            PopulateTurretTrees(LevelDesc);
-            WriteChanges();
-        }
-
-        private void AddAllTurrets_Clicked(object sender, EventArgs e)
-        {
-            LevelDesc.AllowedTurrets.RemoveRange(0, LevelDesc.AllowedTurrets.Count);
-            List<Turret> AvailTurrets = LevelManager.GetTurrets();
-            for (int i = 0; i < AvailTurrets.Count; i++)
-            {
-                LevelDesc.AllowedTurrets.Add(AvailTurrets[i].Name);
-            }
-            PopulateTurretTrees(LevelDesc);
-            WriteChanges();
-        }
 
         private void PopulateTurretTrees(LevelDescription desc)
         {
-            AvailTurretModel.Clear();
             AllowedTurretModel.Clear();
 
             List<Turret> AvailTurrets = LevelManager.GetTurrets();
 
             for (int i = 0; i < desc.AllowedTurrets.Count; i++)
             {
-                for (int j = 0; j < AvailTurrets.Count; j++)
-                {
-                    if (AvailTurrets[j].Name == desc.AllowedTurrets[i])
-                    {
-                        AvailTurrets.Remove(AvailTurrets[j]);
-                    }
-                }
-
                 object[] values = { i, desc.AllowedTurrets[i] };
                 AllowedTurretModel.AppendValues(values);
-            }
-            
-
-            for (int j = 0; j < AvailTurrets.Count; j++)
-            {
-                object[] values = { j, AvailTurrets[j].Name };
-                AvailTurretModel.AppendValues(values);
             }
         }
 
@@ -433,7 +319,7 @@ namespace VRTD.LevelEditor
 
             for (int i = 0; i < desc.Waves.Count; i++)
             {
-                object[] values = { i, desc.Waves[i].Enemy, desc.Waves[i].Count, desc.Waves[i].DifficultyMultiplier };
+                object[] values = { i, desc.Waves[i].Enemy, desc.Waves[i].Count, desc.Waves[i].DifficultyMultiplier, WaveStatList[i].MaxDPSDealtSingleEnemy, WaveStatList[i].MaxHPPSProducted, WaveStatList[i].MaxDPSOverall };
                 WavesModel.AppendValues(values);
             }
         }
@@ -487,16 +373,16 @@ namespace VRTD.LevelEditor
                     turretString = LevelDesc.AllowedTurrets[turretIndex];
 
                 }
-               
+
+                RecalculateAllStats();
+                PopulateTreeWithWaves(LevelDesc);
+
+                // Update location on map
+                MapTable.Remove(b);
+                b = new Button();
+                UpdateFieldTurretButton(b, turretString);
+                SetButtonOnTable(b, LevelDesc, index);
             }
-
-            // Update location on map
-            MapTable.Remove(b);
-            b = new Button();
-            UpdateFieldTurretButton(b, turretString);
-            SetButtonOnTable(b, LevelDesc, index);
-
-            WriteChanges();
         }
 
 
@@ -552,21 +438,55 @@ namespace VRTD.LevelEditor
 
         private void CalculateStatsForTurrets()
         {
-            for (int i=0; i<LevelDesc.Turrets.Count; i++)
+            TurretStatList = new List<TurretStats>();
+
+            for (int i = 0; i < LevelDesc.Map.Count; i++)
             {
-                Turret t = LevelManager.LookupTurret(LevelDesc.AllowedTurrets[i]);
+                int turretIndex = 0;
+                if (TurretSelections.TryGetValue(i, out turretIndex))
+                {
+                    Turret t = LevelManager.LookupTurret(LevelDesc.AllowedTurrets[turretIndex]);
+
+                    TurretStats stats = new TurretStats();
+                    stats.t = t;
+                    stats.Instance = new TurretInstance(t, new MapPos(i % LevelDesc.FieldWidth, i / LevelDesc.FieldWidth), LevelDesc, null);
+                    stats.MaxDPSOverall = TurretEditLayout.CalculateDamagePerShot(t);
+
+                    TurretStatList.Add(stats);
+                }
             }
         }
 
 
-        private void CalculateStatsForWave(EnemyWave wave)
+        private void CalculateStatsForWaves(List<TurretStats> Turrets)
         {
+            WaveStatList = new List<WaveStats>();
 
+            float maxDPSOverall = 0.0F;
+            for (int j = 0; j < Turrets.Count; j++)
+            {
+                maxDPSOverall += Turrets[j].MaxDPSOverall;
+            }
+
+            for (int i=0; i<LevelDesc.Waves.Count; i++)
+            {
+                EnemyWave wave = LevelDesc.Waves[i];
+
+                WaveStats stats = new WaveStats();
+
+                stats.MaxDPSDealtSingleEnemy = 0.0F;
+                stats.MaxDPSOverall = maxDPSOverall;
+                stats.MaxHPPSProducted = EnemyEditLayout.CalculateDPSforWave(LevelManager.LookupEnemy(wave.Enemy));
+
+
+                WaveStatList.Add(stats);
+            }
         }
 
         private void RecalculateAllStats()
         {
-
+            CalculateStatsForTurrets();
+            CalculateStatsForWaves(TurretStatList);
         }
 
 
