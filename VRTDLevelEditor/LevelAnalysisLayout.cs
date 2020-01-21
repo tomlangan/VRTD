@@ -12,6 +12,8 @@ namespace VRTD.LevelEditor
         public float MaxDPSDealtSingleEnemy;
         public float MaxHPPSProducted;
         public float MaxDPSOverall;
+        public int CoinNeeded;
+        public int CoinAvail;
     }
 
     public class TurretStats
@@ -36,6 +38,9 @@ namespace VRTD.LevelEditor
         ListStore AllowedTurretModel;
         List<TurretStats> TurretStatList;
         List<WaveStats> WaveStatList;
+        LevelSolution Solution = null;
+        TreeViewColumn SaveSolutionColumn = null;
+        TreeViewColumn LoadSolutionColumn = null;
 
         public LevelAnalysisLayout() : base(null, null)
         {
@@ -53,9 +58,16 @@ namespace VRTD.LevelEditor
                 Layout.Hide();
                 Layout.Destroy();
                 Layout = null;
+                SaveSolutionColumn = null;
+                LoadSolutionColumn = null;
             }
 
             LevelDesc = desc;
+            Solution = LevelManager.ReadLevelSolution(desc.Name);
+            if (null == Solution)
+            {
+                Solution = new LevelSolution();
+            }
 
             TurretSelections = new Dictionary<int, int>();
             RecalculateAllStats();
@@ -78,6 +90,7 @@ namespace VRTD.LevelEditor
             WavesTree = new TreeView();
             Layout.PackStart(WavesTree, false, false, 0);
             WavesTree.Show();
+            WavesTree.ButtonReleaseEvent += WavesTree_ButtonReleaseEvent;
 
             List<EnemyDescription> enemies = LevelManager.GetEnemies();
             ListStore comboModel = new ListStore(typeof(string));
@@ -95,8 +108,10 @@ namespace VRTD.LevelEditor
             TreeViewColumn singleEnemyColumn = new TreeViewColumn();
             TreeViewColumn maxHPPSColumn = new TreeViewColumn();
             TreeViewColumn maxDPSColumn = new TreeViewColumn();
+            TreeViewColumn turretCostVsMaxCoin = new TreeViewColumn();
 
-            CellRendererCombo textCellRenderer = new CellRendererCombo();
+
+            CellRendererText textCellRenderer = new CellRendererText();
             textCellRenderer.Editable = false;
 
             enemyCoumn.PackStart(textCellRenderer, true);
@@ -141,29 +156,41 @@ namespace VRTD.LevelEditor
             maxDPSColumn.AddAttribute(textCellRenderer, "text", 6);
             WavesTree.AppendColumn(maxDPSColumn);
 
+
             //
-            // Add column: Given all the factors, theoretical headroom of DPS
+            // Add column: Max coin earned by start of wave
             //
 
-            WavesModel = new ListStore(typeof(int), typeof(string), typeof(int), typeof(float), typeof(float), typeof(float), typeof(float));
+
+            turretCostVsMaxCoin.PackStart(textCellRenderer, true);
+            turretCostVsMaxCoin.Title = "Coin Need/Avail";
+            turretCostVsMaxCoin.AddAttribute(textCellRenderer, "text", 7);
+            WavesTree.AppendColumn(turretCostVsMaxCoin);
+
+            //
+            // Solution save/load 
+            //
+
+
+            SaveSolutionColumn = new TreeViewColumn();
+            LoadSolutionColumn = new TreeViewColumn(); ;
+
+            SaveSolutionColumn.PackStart(textCellRenderer, true);
+            SaveSolutionColumn.Title = "Save Solution";
+            SaveSolutionColumn.AddAttribute(textCellRenderer, "text", 8);
+            WavesTree.AppendColumn(SaveSolutionColumn);
+
+
+            LoadSolutionColumn.PackStart(textCellRenderer, true);
+            LoadSolutionColumn.Title = "Load Solution";
+            LoadSolutionColumn.AddAttribute(textCellRenderer, "text", 9);
+            WavesTree.AppendColumn(LoadSolutionColumn);
+
+            WavesModel = new ListStore(typeof(int), typeof(string), typeof(int), typeof(float), typeof(float), typeof(float), typeof(float), typeof(string), typeof(string), typeof(string));
             WavesTree.Model = WavesModel;
             WavesTree.Selection.Mode = SelectionMode.Single;
 
             PopulateTreeWithWaves(desc);
-
-            field = new HBox(false, 5);
-            Layout.PackStart(field, false, false, 0);
-            field.Show();
-
-            Button b = new Button("+");
-            b.Clicked += NewWave_Clicked;
-            b.Show();
-            field.PackStart(b, false, false, 0);
-
-            b = new Button("-");
-            b.Clicked += RemoveWave_Clicked;
-            b.Show();
-            field.PackStart(b, false, false, 0);
 
 
             Table map = GetFieldTable(desc);
@@ -204,6 +231,80 @@ namespace VRTD.LevelEditor
             ShowAll();
         }
 
+        private void WavesTree_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
+        {
+            TreePath path;
+            TreeViewColumn column = null;
+            int X = 0;
+            int Y = 0;
+            WavesTree.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out path, out column, out X, out Y);
+
+            if (Y == 8)
+            {
+                SaveSolutionClicked(X);
+            }
+            else if (Y == 9)
+            {
+                LoadSolutionClicked(X);
+            }
+        }
+
+
+        private void LoadSolutionClicked(int rowIndex)
+        {
+            TreeIter selected;
+            if (WavesTree.Selection.GetSelected(out selected))
+            {
+                int row = (int)WavesModel.GetValue(selected, 0);
+                string action = (string)WavesModel.GetValue(selected, 9);
+                if (action != "Load")
+                {
+                    return;
+                }
+
+
+                for (int i = 0; i < Solution.WaveSolutions.Count; i++)
+                {
+                    if (Solution.WaveSolutions[i].WaveIndex == row)
+                    {
+                        SetSolution(Solution.WaveSolutions[i]);
+                    }
+                }
+            }
+        }
+
+
+        private void SaveSolutionClicked(int rowIndex)
+        {
+            TreeIter selected;
+            if (WavesTree.Selection.GetSelected(out selected))
+            {
+                int row = (int)WavesModel.GetValue(selected, 0);
+                string action = (string)WavesModel.GetValue(selected, 8);
+                if (action != "Save")
+                {
+                    return;
+                }
+
+                WaveSolution sol = GenerateWaveSolution();
+                sol.WaveIndex = row;
+
+                for (int i = 0; i < Solution.WaveSolutions.Count; i++)
+                {
+                    if (Solution.WaveSolutions[i].WaveIndex == row)
+                    {
+                        Solution.WaveSolutions.RemoveAt(i);
+                        break;
+                    }
+                }
+
+                Solution.WaveSolutions.Add(sol);
+                WriteSolution();
+            }
+
+            RecalculateAllStats();
+            PopulateTreeWithWaves(LevelDesc);
+        }
 
         private void PopulateTurretTrees(LevelDescription desc)
         {
@@ -236,8 +337,6 @@ namespace VRTD.LevelEditor
                 {
                     LevelDesc.Waves.RemoveAt(row);
                     WavesModel.Remove(ref selected);
-
-                    WriteChanges();
                 }
             }
         }
@@ -250,7 +349,6 @@ namespace VRTD.LevelEditor
             wave.DifficultyMultiplier = 1.0F;
             LevelDesc.Waves.Add(wave);
 
-            WriteChanges();
 
             PopulateTreeWithWaves(LevelDesc);
         }
@@ -265,7 +363,6 @@ namespace VRTD.LevelEditor
                 {
                     WavesModel.SetValue(iter, 1, args.NewText);
                     LevelDesc.Waves[row].Enemy = args.NewText;
-                    WriteChanges();
                 }
             }
         }
@@ -284,7 +381,6 @@ namespace VRTD.LevelEditor
                     {
                         WavesModel.SetValue(iter, 2, newValue);
                         LevelDesc.Waves[row].Count = newValue;
-                        WriteChanges();
                     }
                 }
                 catch (Exception ex) { }
@@ -306,20 +402,93 @@ namespace VRTD.LevelEditor
                     {
                         WavesModel.SetValue(iter, 3, newValue);
                         LevelDesc.Waves[row].DifficultyMultiplier = newValue;
-                        WriteChanges();
                     }
                 }
                 catch (Exception ex) { }
             }
         }
 
+        private int AllowedTurretIndexFromName(string name)
+        {
+            int index = 0;
+            bool found = false;
+
+            for (int i = 0; i < LevelDesc.AllowedTurrets.Count; i++)
+            {
+                if (LevelDesc.AllowedTurrets[i] == name)
+                {
+                    index = i;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                throw new Exception("Could not find allowed turret: " + name);
+            }
+            return index;
+        }
+
+        private WaveSolution GenerateWaveSolution()
+        {
+            WaveSolution sol = new WaveSolution();
+
+
+            for (int i = 0; i < LevelDesc.Map.Count; i++)
+            {
+                if (LevelDesc.Map[i] == 'T')
+                {
+                    int turretIndex = 0;
+
+                    if (!TurretSelections.TryGetValue(i, out turretIndex))
+                    {
+
+                        WaveSolutionTurret t = new WaveSolutionTurret();
+
+                        t.pos.x = (i % LevelDesc.FieldWidth);
+                        t.pos.z = (i / LevelDesc.FieldDepth);
+                        t.Name = LevelDesc.AllowedTurrets[turretIndex];
+
+                        sol.Turrets.Add(t);
+                    }
+                }
+            }
+
+            return sol;
+        }
+
         private void PopulateTreeWithWaves(LevelDescription desc)
         {
             WavesModel.Clear();
+            WaveSolution currentSolution = GenerateWaveSolution();
+            Dictionary<int, WaveSolution> waveSolves = new Dictionary<int, WaveSolution>();
+            for (int i = 0; i < Solution.WaveSolutions.Count; i++)
+            {
+                waveSolves.Add(Solution.WaveSolutions[i].WaveIndex, Solution.WaveSolutions[i]);
+            }
 
             for (int i = 0; i < desc.Waves.Count; i++)
             {
-                object[] values = { i, desc.Waves[i].Enemy, desc.Waves[i].Count, desc.Waves[i].DifficultyMultiplier, WaveStatList[i].MaxDPSDealtSingleEnemy, WaveStatList[i].MaxHPPSProducted, WaveStatList[i].MaxDPSOverall };
+                string saveString = "Save";
+                string loadString = "n/a";
+                WaveSolution solution = null;
+                if (waveSolves.TryGetValue(i, out solution))
+                {
+                    if (solution.Same(currentSolution))
+                    {
+                        saveString = "n/a";
+                        loadString = "n/a";
+                    }
+                    else
+                    {
+                        saveString = "Save";
+                        loadString = "Load";
+                    }
+                }
+
+                string coinString = WaveStatList[i].CoinNeeded.ToString() + "/" + WaveStatList[i].CoinAvail.ToString();
+                object[] values = { i, desc.Waves[i].Enemy, desc.Waves[i].Count, desc.Waves[i].DifficultyMultiplier, WaveStatList[i].MaxDPSDealtSingleEnemy, WaveStatList[i].MaxHPPSProducted, WaveStatList[i].MaxDPSOverall, coinString, saveString, loadString };
                 WavesModel.AppendValues(values);
             }
         }
@@ -436,6 +605,40 @@ namespace VRTD.LevelEditor
 
         }
 
+
+        private void SetSolution(WaveSolution sol)
+        {
+            TurretSelections.Clear();
+            int turretIndex = 0;
+            for (int i = 0; i < LevelDesc.Map.Count; i++)
+            {
+                if (LevelDesc.Map[i] == 'T')
+                {
+                    int x = i % LevelDesc.FieldWidth;
+                    int z = i / LevelDesc.FieldDepth;
+
+                    for (int j=0; j < sol.Turrets.Count; j++)
+                    {
+                        if ((sol.Turrets[j].pos.x == x) &&
+                            (sol.Turrets[j].pos.z == z))
+                        {
+                            TurretSelections.Add(turretIndex, AllowedTurretIndexFromName(sol.Turrets[i].Name));
+
+                            // Update location on map
+                            Button b = (Button)MapTable.Children[i];
+                            MapTable.Remove(b);
+                            UpdateFieldTurretButton(b, sol.Turrets[i].Name);
+                            SetButtonOnTable(b, LevelDesc, i);
+                        }
+                    }
+                    turretIndex++;
+                }
+            }
+
+            RecalculateAllStats();
+            PopulateTreeWithWaves(LevelDesc);
+        }
+
         private void CalculateStatsForTurrets()
         {
             TurretStatList = new List<TurretStats>();
@@ -463,10 +666,14 @@ namespace VRTD.LevelEditor
             WaveStatList = new List<WaveStats>();
 
             float maxDPSOverall = 0.0F;
+            int coinNeeded = 0;
             for (int j = 0; j < Turrets.Count; j++)
             {
                 maxDPSOverall += Turrets[j].MaxDPSOverall;
+                coinNeeded += Turrets[j].t.Cost;
             }
+
+            int maxCoinEarned = LevelDesc.StartingCoins;
 
             for (int i=0; i<LevelDesc.Waves.Count; i++)
             {
@@ -474,10 +681,14 @@ namespace VRTD.LevelEditor
 
                 WaveStats stats = new WaveStats();
 
+                EnemyDescription enemy = LevelManager.LookupEnemy(wave.Enemy);
                 stats.MaxDPSDealtSingleEnemy = 0.0F;
                 stats.MaxDPSOverall = maxDPSOverall;
-                stats.MaxHPPSProducted = EnemyEditLayout.CalculateDPSforWave(LevelManager.LookupEnemy(wave.Enemy));
+                stats.MaxHPPSProducted = EnemyEditLayout.CalculateDPSforWave(enemy);
+                stats.CoinNeeded = coinNeeded;
+                stats.CoinAvail = maxCoinEarned;
 
+                maxCoinEarned += (enemy.Coins * wave.Count);
 
                 WaveStatList.Add(stats);
             }
@@ -490,9 +701,9 @@ namespace VRTD.LevelEditor
         }
 
 
-        void WriteChanges()
+        void WriteSolution()
         {
-            LevelManager.WriteLevel(LevelDesc.Name, LevelDesc);
+            LevelManager.WriteLevelSolution(LevelDesc.Name, Solution);
         }
 
     }
