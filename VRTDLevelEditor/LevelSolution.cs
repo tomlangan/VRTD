@@ -30,10 +30,6 @@ namespace VRTD.LevelEditor
 
         public bool Same(WaveSolution s)
         {
-            if (s.WaveIndex != WaveIndex)
-            {
-                return false;
-            }
 
             if (s.Turrets.Count != Turrets.Count)
             {

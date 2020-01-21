@@ -32,6 +32,7 @@ namespace VRTD.LevelEditor
         public event TreeRefreshNeededFunc TreeRefreshNeeded;
         Table MapTable;
         Dictionary<Button, int> MapMappings;
+        List<Button> MapButtons;
         TreeView WavesTree;
         ListStore WavesModel;
         TreeView AllowedTurretTree;
@@ -505,6 +506,7 @@ namespace VRTD.LevelEditor
         {
             MapTable = new Table((uint)desc.FieldDepth, (uint)desc.FieldWidth, true);
             MapMappings = new Dictionary<Button, int>();
+            MapButtons = new List<Button>();
 
             for (uint i = 0; i < desc.Map.Count; i++)
             {
@@ -538,9 +540,14 @@ namespace VRTD.LevelEditor
                         turretString = LevelDesc.AllowedTurrets[turretIndex];
                     }
                 }
+                else if((turretIndex + 1) == LevelDesc.AllowedTurrets.Count)
+                {
+                    TurretSelections.Remove(index);
+                    turretString = "None";
+                }
                 else
                 {
-                    turretIndex = (turretIndex + 1) % LevelDesc.AllowedTurrets.Count;
+                    turretIndex++;
                     TurretSelections[index] = turretIndex;
                     turretString = LevelDesc.AllowedTurrets[turretIndex];
 
@@ -602,6 +609,7 @@ namespace VRTD.LevelEditor
             uint xpos = (uint)(index % desc.FieldWidth);
             uint ypos = (uint)(index / desc.FieldWidth);
             MapMappings.Add(b, index);
+            MapButtons.Add(b);
             MapTable.Attach(b, xpos, xpos + 1, ypos, ypos + 1);
             b.Clicked += Map_Clicked;
             b.Show();
@@ -612,30 +620,40 @@ namespace VRTD.LevelEditor
         private void SetSolution(WaveSolution sol)
         {
             TurretSelections.Clear();
-            int turretIndex = 0;
+            int turretCount = 0;
             for (int i = 0; i < LevelDesc.Map.Count; i++)
             {
                 if (LevelDesc.Map[i] == 'T')
                 {
                     int x = i % LevelDesc.FieldWidth;
                     int z = i / LevelDesc.FieldDepth;
+                    Button b = MapButtons[i];
 
+                    bool turretMatch = false;
                     for (int j=0; j < sol.Turrets.Count; j++)
                     {
                         if ((sol.Turrets[j].pos.x == x) &&
                             (sol.Turrets[j].pos.z == z))
                         {
-                            TurretSelections.Add(turretIndex, AllowedTurretIndexFromName(sol.Turrets[i].Name));
+                            TurretSelections.Add(i, AllowedTurretIndexFromName(sol.Turrets[j].Name));
 
                             // Update location on map
-                            Button b = (Button)MapTable.Children[i];
-                            MapTable.Remove(b);
-                            UpdateFieldTurretButton(b, sol.Turrets[i].Name);
-                            SetButtonOnTable(b, LevelDesc, i);
+                            UpdateFieldTurretButton(b, sol.Turrets[j].Name);
+                            turretCount++;
+                            turretMatch = true;
                         }
                     }
-                    turretIndex++;
+                    if (!turretMatch)
+                    {
+                        UpdateFieldTurretButton(b, "None");
+                    }
                 }
+            }
+
+            if(turretCount != sol.Turrets.Count)
+            {
+                // TODO: This should be reported as an issue, not an excption
+                throw new Exception("Not all turrets from solution were represented here - did the map change?");
             }
 
             RecalculateAllStats();
