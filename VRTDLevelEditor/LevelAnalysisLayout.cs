@@ -234,73 +234,76 @@ namespace VRTD.LevelEditor
         private void WavesTree_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
         {
             TreePath path;
-            TreeViewColumn column = null;
-            int X = 0;
-            int Y = 0;
-            WavesTree.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out path, out column, out X, out Y);
-
-            if (Y == 8)
+            TreeViewColumn column;
+            int x = Convert.ToInt32(args.Event.X);
+            int y = Convert.ToInt32(args.Event.Y);
+            if (!WavesTree.GetPathAtPos(x, y, out path, out column))
             {
-                SaveSolutionClicked(X);
+                throw new Exception("Could not find WaveModel at " + x + "," + y.ToString());
             }
-            else if (Y == 9)
+
+            TreeIter iter;
+            if (!WavesModel.GetIter(out iter, path))
             {
-                LoadSolutionClicked(X);
+                throw new Exception("Could not find WaveModel at " + x + "," + y.ToString());
             }
-        }
 
+            int row = (int)WavesModel.GetValue(iter, 0);
 
-        private void LoadSolutionClicked(int rowIndex)
-        {
-            TreeIter selected;
-            if (WavesTree.Selection.GetSelected(out selected))
+            if (column == SaveSolutionColumn)
             {
-                int row = (int)WavesModel.GetValue(selected, 0);
-                string action = (string)WavesModel.GetValue(selected, 9);
-                if (action != "Load")
-                {
-                    return;
-                }
-
-
-                for (int i = 0; i < Solution.WaveSolutions.Count; i++)
-                {
-                    if (Solution.WaveSolutions[i].WaveIndex == row)
-                    {
-                        SetSolution(Solution.WaveSolutions[i]);
-                    }
-                }
+                SaveSolutionClicked(iter);
+            }
+            else if (column == LoadSolutionColumn)
+            {
+                LoadSolutionClicked(iter);
             }
         }
 
 
-        private void SaveSolutionClicked(int rowIndex)
+        private void LoadSolutionClicked(TreeIter iter)
         {
-            TreeIter selected;
-            if (WavesTree.Selection.GetSelected(out selected))
+            int row = (int)WavesModel.GetValue(iter, 0);
+            string action = (string)WavesModel.GetValue(iter, 9);
+            if (action != "Load")
             {
-                int row = (int)WavesModel.GetValue(selected, 0);
-                string action = (string)WavesModel.GetValue(selected, 8);
-                if (action != "Save")
-                {
-                    return;
-                }
-
-                WaveSolution sol = GenerateWaveSolution();
-                sol.WaveIndex = row;
-
-                for (int i = 0; i < Solution.WaveSolutions.Count; i++)
-                {
-                    if (Solution.WaveSolutions[i].WaveIndex == row)
-                    {
-                        Solution.WaveSolutions.RemoveAt(i);
-                        break;
-                    }
-                }
-
-                Solution.WaveSolutions.Add(sol);
-                WriteSolution();
+                return;
             }
+
+
+            for (int i = 0; i < Solution.WaveSolutions.Count; i++)
+            {
+                if (Solution.WaveSolutions[i].WaveIndex == row)
+                {
+                    SetSolution(Solution.WaveSolutions[i]);
+                }
+            }
+        }
+
+
+        private void SaveSolutionClicked(TreeIter iter)
+        {
+            int row = (int)WavesModel.GetValue(iter, 0);
+            string action = (string)WavesModel.GetValue(iter, 8);
+            if (action != "Save")
+            {
+                return;
+            }
+
+            WaveSolution sol = GenerateWaveSolution();
+            sol.WaveIndex = row;
+
+            for (int i = 0; i < Solution.WaveSolutions.Count; i++)
+            {
+                if (Solution.WaveSolutions[i].WaveIndex == row)
+                {
+                    Solution.WaveSolutions.RemoveAt(i);
+                    break;
+                }
+            }
+
+            Solution.WaveSolutions.Add(sol);
+            WriteSolution();
 
             RecalculateAllStats();
             PopulateTreeWithWaves(LevelDesc);
@@ -441,7 +444,7 @@ namespace VRTD.LevelEditor
                 {
                     int turretIndex = 0;
 
-                    if (!TurretSelections.TryGetValue(i, out turretIndex))
+                    if (TurretSelections.TryGetValue(i, out turretIndex))
                     {
 
                         WaveSolutionTurret t = new WaveSolutionTurret();

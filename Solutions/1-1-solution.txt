@@ -1,0 +1,1 @@
+{"WaveSolutions":[{"WaveIndex":0,"Turrets":[{"pos":{"EnemiesOccupying":null,"x":5,"z":5,"Pos":{"X":5.0,"Y":0.0,"Z":5.0}},"Name":"Basic Turret"}]},{"WaveIndex":1,"Turrets":[{"pos":{"EnemiesOccupying":null,"x":5,"z":5,"Pos":{"X":5.0,"Y":0.0,"Z":5.0}},"Name":"Basic Turret"}]}]}
