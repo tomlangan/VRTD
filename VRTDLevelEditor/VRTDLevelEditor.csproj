@@ -69,6 +69,7 @@
     <Compile Include="TurretEditLayout.cs" />
     <Compile Include="EnemyEditLayout.cs" />
     <Compile Include="ProjectileEditLayout.cs" />
+    <Compile Include="WaveSimulator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

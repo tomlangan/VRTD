@@ -9,11 +9,12 @@ namespace VRTD.LevelEditor
 
     public class WaveStats
     {
-        public float MaxDPSDealtSingleEnemy;
+        public float MaxDmgDealtSingleEnemy;
         public float MaxHPPSProducted;
         public float MaxDPSOverall;
         public int CoinNeeded;
         public int CoinAvail;
+        public WaveSimulatorDamageStats FullSimulation;
     }
 
     public class TurretStats
@@ -109,7 +110,9 @@ namespace VRTD.LevelEditor
             TreeViewColumn singleEnemyColumn = new TreeViewColumn();
             TreeViewColumn maxHPPSColumn = new TreeViewColumn();
             TreeViewColumn maxDPSColumn = new TreeViewColumn();
+            TreeViewColumn simColumn = new TreeViewColumn();
             TreeViewColumn turretCostVsMaxCoin = new TreeViewColumn();
+            TreeViewColumn issuesColumn = new TreeViewColumn();
 
 
             CellRendererText textCellRenderer = new CellRendererText();
@@ -135,7 +138,7 @@ namespace VRTD.LevelEditor
             //
 
             singleEnemyColumn.PackStart(textCellRenderer, true);
-            singleEnemyColumn.Title = "Single Enemy DPS";
+            singleEnemyColumn.Title = "Single Enemy Damage";
             singleEnemyColumn.AddAttribute(textCellRenderer, "text", 4);
             WavesTree.AppendColumn(singleEnemyColumn);
 
@@ -159,13 +162,23 @@ namespace VRTD.LevelEditor
 
 
             //
+            // Add column: Simulated damage / kills
+            //
+
+            simColumn.PackStart(textCellRenderer, true);
+            simColumn.Title = "Sim damage/kills";
+            simColumn.AddAttribute(textCellRenderer, "text", 7);
+            WavesTree.AppendColumn(simColumn);
+
+
+            //
             // Add column: Max coin earned by start of wave
             //
 
 
             turretCostVsMaxCoin.PackStart(textCellRenderer, true);
             turretCostVsMaxCoin.Title = "Coin Need/Avail";
-            turretCostVsMaxCoin.AddAttribute(textCellRenderer, "text", 7);
+            turretCostVsMaxCoin.AddAttribute(textCellRenderer, "text", 8);
             WavesTree.AppendColumn(turretCostVsMaxCoin);
 
             //
@@ -178,18 +191,30 @@ namespace VRTD.LevelEditor
 
             SaveSolutionColumn.PackStart(textCellRenderer, true);
             SaveSolutionColumn.Title = "Save Solution";
-            SaveSolutionColumn.AddAttribute(textCellRenderer, "text", 8);
+            SaveSolutionColumn.AddAttribute(textCellRenderer, "text", 9);
             WavesTree.AppendColumn(SaveSolutionColumn);
 
 
             LoadSolutionColumn.PackStart(textCellRenderer, true);
             LoadSolutionColumn.Title = "Load Solution";
-            LoadSolutionColumn.AddAttribute(textCellRenderer, "text", 9);
+            LoadSolutionColumn.AddAttribute(textCellRenderer, "text", 10);
             WavesTree.AppendColumn(LoadSolutionColumn);
 
-            WavesModel = new ListStore(typeof(int), typeof(string), typeof(int), typeof(float), typeof(float), typeof(float), typeof(float), typeof(string), typeof(string), typeof(string));
+
+            //
+            // Add column: Issues
+            //
+
+
+            issuesColumn.PackStart(textCellRenderer, true);
+            issuesColumn.Title = "Issues";
+            issuesColumn.AddAttribute(textCellRenderer, "markup", 11);
+            WavesTree.AppendColumn(issuesColumn);
+
+            WavesModel = new ListStore(typeof(int), typeof(string), typeof(int), typeof(float), typeof(float), typeof(float), typeof(float), typeof(string), typeof(string), typeof(string), typeof(string), typeof(string));
             WavesTree.Model = WavesModel;
             WavesTree.Selection.Mode = SelectionMode.Single;
+
 
             PopulateTreeWithWaves(desc);
 
@@ -491,10 +516,37 @@ namespace VRTD.LevelEditor
                     }
                 }
 
+                string simDamageKills = WaveStatList[i].FullSimulation.DamagePerEnemy.ToString() + "/" + WaveStatList[i].FullSimulation.EnemiesKilled;
                 string coinString = WaveStatList[i].CoinNeeded.ToString() + "/" + WaveStatList[i].CoinAvail.ToString();
-                object[] values = { i, desc.Waves[i].Enemy, desc.Waves[i].Count, desc.Waves[i].DifficultyMultiplier, WaveStatList[i].MaxDPSDealtSingleEnemy, WaveStatList[i].MaxHPPSProducted, WaveStatList[i].MaxDPSOverall, coinString, saveString, loadString };
+                string issues = EnumerateSolutionIssues(i, currentSolution);
+                object[] values = { i, desc.Waves[i].Enemy, desc.Waves[i].Count, desc.Waves[i].DifficultyMultiplier, WaveStatList[i].MaxDmgDealtSingleEnemy, WaveStatList[i].MaxHPPSProducted, WaveStatList[i].MaxDPSOverall, simDamageKills, coinString, saveString, loadString, issues};
                 WavesModel.AppendValues(values);
             }
+        }
+
+        private string EnumerateSolutionIssues(int waveIndex, WaveSolution solution)
+        {
+            bool issuesFound = false;
+            string issuesString = "";
+            WaveStats stats = WaveStatList[waveIndex];
+
+            //
+            // Is it possible to afford this solution?
+            //
+
+            if (stats.CoinAvail < stats.CoinNeeded)
+            {
+                issuesFound = true;
+                issuesString += "Can't afford at start of wave";
+            }
+
+
+            if (!issuesFound)
+            {
+                return "<span foreground='green'>None</span>";
+            }
+
+            return "<span foreground='red'>" + issuesString + "</span>";
         }
 
         private void LevelAnalysisLayout_Destroyed(object sender, EventArgs e)
@@ -652,8 +704,12 @@ namespace VRTD.LevelEditor
 
             if(turretCount != sol.Turrets.Count)
             {
-                // TODO: This should be reported as an issue, not an excption
-                throw new Exception("Not all turrets from solution were represented here - did the map change?");
+
+                MessageDialog md = new MessageDialog(null,
+                DialogFlags.Modal, MessageType.Warning,
+                ButtonsType.OkCancel, "Some turret positions do not match turret slots - did the map change?  Dropped the turrets that don't match.");
+                int result = md.Run();
+                md.Destroy();
             }
 
             RecalculateAllStats();
@@ -682,6 +738,14 @@ namespace VRTD.LevelEditor
         }
 
 
+        private WaveSimulatorDamageStats SimulateWave(EnemyDescription enemy, WaveSolution solution, int enemyCount, bool invincible)
+        {
+
+            WaveSimulator sim = new WaveSimulator(LevelDesc);
+
+            return sim.SimulateDamageToEnemies(enemy, solution, enemyCount, invincible);
+        }
+
         private void CalculateStatsForWaves(List<TurretStats> Turrets)
         {
             WaveStatList = new List<WaveStats>();
@@ -699,13 +763,18 @@ namespace VRTD.LevelEditor
             for (int i=0; i<LevelDesc.Waves.Count; i++)
             {
                 EnemyWave wave = LevelDesc.Waves[i];
-
+                EnemyDescription enemyDesc = LevelManager.LookupEnemy(wave.Enemy);
+                WaveSolution solution = GenerateWaveSolution();
                 WaveStats stats = new WaveStats();
 
+                WaveSimulatorDamageStats singleEnemyStats = SimulateWave(enemyDesc, solution, 1, true);
+                WaveSimulatorDamageStats fullWaveStats = SimulateWave(enemyDesc, solution, wave.Count, false); 
+
                 EnemyDescription enemy = LevelManager.LookupEnemy(wave.Enemy);
-                stats.MaxDPSDealtSingleEnemy = 0.0F;
+                stats.MaxDmgDealtSingleEnemy = singleEnemyStats.DamageDealt;
                 stats.MaxDPSOverall = maxDPSOverall;
                 stats.MaxHPPSProducted = EnemyEditLayout.CalculateDPSforWave(enemy);
+                stats.FullSimulation = fullWaveStats;
                 stats.CoinNeeded = coinNeeded;
                 stats.CoinAvail = maxCoinEarned;
 

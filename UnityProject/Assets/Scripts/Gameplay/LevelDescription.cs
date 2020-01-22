@@ -12,9 +12,20 @@ public class Vector3Int
     public int z;
 
     public Vector3Int(int xset, int yset, int zset) { x = xset; y = yset; z = zset; }
-    public Vector3Int normalized
+}
+
+public class VectorHelpers
+{
+    public static Vector3 Normalize(Vector3 direction)
     {
-        get { return this; }
+        float maxScalar = (direction.X > direction.Y ? direction.X : direction.Y);
+        maxScalar = (maxScalar > direction.Z ? maxScalar : direction.Z);
+        maxScalar = (maxScalar < 0 ? -maxScalar : maxScalar);
+        if (0.0F == maxScalar)
+        {
+            return direction;
+        }
+        return new Vector3(direction.X / maxScalar, direction.Y / maxScalar, direction.Z / maxScalar);
     }
 }
 #else

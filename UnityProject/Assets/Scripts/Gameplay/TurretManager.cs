@@ -74,9 +74,17 @@ namespace VRTD.Gameplay
             EnemyInstance nearestEnemyFound = null;
             for (int i = 0; i < RoadSegmentsInRange.Count; i++)
             {
-                if (RoadSegmentsInRange[i].EnemiesOccupying.Count > 0)
+                for (int j = 0; j < RoadSegmentsInRange[i].EnemiesOccupying.Count; j++)
                 {
-                    nearestEnemyFound = RoadSegmentsInRange[i].EnemiesOccupying[0];
+                    if (RoadSegmentsInRange[i].EnemiesOccupying[j].IsActive)
+                    {
+                        nearestEnemyFound = RoadSegmentsInRange[i].EnemiesOccupying[j];
+                        break;
+                    }
+                }
+                if(
+                    null != nearestEnemyFound)
+                {
                     break;
                 }
             }
@@ -95,9 +103,10 @@ namespace VRTD.Gameplay
                 }
 
                 LastShotTime = LastShotTime + TurretType.FireRate;
-#if LEVEL_EDITOR == false
+
+                Debug.Log("TURRET FIRE: " + this.TurretType.Name);
                 Projectiles.Fire(this, nearestEnemyInRange, LastShotTime);
-#endif
+
                 timeSinceLastShot = (waveTime - LastShotTime);
             }
         }
@@ -122,10 +131,8 @@ namespace VRTD.Gameplay
 
 
 
-        public void AddTurret(string turretType, MapPos position, ProjectileManager projectiles)
+        public void AddTurret(Turret turret, MapPos position, ProjectileManager projectiles)
         {
-            Turret turret = LevelLoader.LookupTurret(turretType);
-
             Turrets.Add(new TurretInstance(turret, position, LevelDesc, projectiles));
         }
 

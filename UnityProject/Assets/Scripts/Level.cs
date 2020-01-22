@@ -353,7 +353,7 @@ public class Level : MonoBehaviour
 
         if (Coin >= turretSelected.Cost)
         {
-            Turrets.AddTurret(LevelDesc.AllowedTurrets[index], position, Projectiles);
+            Turrets.AddTurret(LevelLoader.LookupTurret(LevelDesc.AllowedTurrets[index]), position, Projectiles);
             Coin -= turretSelected.Cost;
         }
 

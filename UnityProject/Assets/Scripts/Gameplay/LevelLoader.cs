@@ -19,8 +19,14 @@ namespace VRTD.Gameplay
 
     public class Debug
     {
-        public static void Assert(bool b) { }
-        public static void Log(string s) { }
+        public static void Assert(bool b)
+        {
+            if (!b)
+            {
+                throw new Exception("Error");
+            }
+        }
+        public static void Log(string s) { System.Diagnostics.Debug.WriteLine(s);  }
     }
 
 

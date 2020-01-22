@@ -94,11 +94,19 @@ namespace VRTD.Gameplay
                 float progressFromCenter = Math.Abs(0.5F - intraMapProgress);
 #else
                 float progressFromCenter = Mathf.Abs(0.5F - intraMapProgress);
+#endif
                 Vector3 direction;
 
                 if ((intraMapProgress < 0.5F) && (posIndex > 0))
                 {
-                    direction = (levelDesc.Road[posIndex - 1].Pos - levelDesc.Road[posIndex].Pos).normalized;
+                    direction = levelDesc.Road[posIndex - 1].Pos - levelDesc.Road[posIndex].Pos;
+#if LEVEL_EDITOR
+                    direction = VectorHelpers.Normalize(direction);
+#else
+                    direction = direction..normalized;
+#endif
+
+
                 }
                 else if ((intraMapProgress < 0.5F) && (posIndex == 0))
                 {
@@ -112,16 +120,31 @@ namespace VRTD.Gameplay
                 }
                 else
                 {
-                    direction = (levelDesc.Road[posIndex + 1].Pos - levelDesc.Road[posIndex].Pos).normalized;
+                    direction = levelDesc.Road[posIndex + 1].Pos - levelDesc.Road[posIndex].Pos;
+#if LEVEL_EDITOR
+                    direction = VectorHelpers.Normalize(direction);
+#else
+                    direction = direction.normalized;
+#endif
                 }
 
                 Vector3 movement = direction * progressFromCenter;
                 Vector3 newPosition = levelDesc.Road[posIndex].Pos + movement;
-                Vector3 forward = (newPosition - Position).normalized;
+                Vector3 forward = newPosition - Position;
+#if LEVEL_EDITOR
+                forward = VectorHelpers.Normalize(forward);
+                forward.Z = -forward.Z;
+#else
+                forward = forward.normalized;
                 forward.z = -forward.z;
+#endif
+
+
                 Position = newPosition;
 
+
                 GameObjectFactory.SetMapPos(go, Position);
+#if !LEVEL_EDITOR
                 go.transform.forward = forward;
                 UpdateHealthIndicator();
 #endif
@@ -152,6 +175,8 @@ namespace VRTD.Gameplay
 
     public class WaveInstance
     {
+        public delegate void SimulatorDamageCallback(EnemyInstance enemy, float damage);
+        SimulatorDamageCallback DamageCallback = null;
         LevelDescription LevelDesc;
         public EnemyDescription EnemyType;
         public List<EnemyInstance> Enemies;
@@ -164,17 +189,18 @@ namespace VRTD.Gameplay
         int RoadSegments;
         public bool IsCompleted;
 
-        public WaveInstance(LevelDescription levelDesc, EnemyWave waveDescription, int roadSegments, float gameTime)
+        public WaveInstance(LevelDescription levelDesc, EnemyWave waveDescription, EnemyDescription enemyDesc, float gameTime, SimulatorDamageCallback damageCallback = null)
         {
-            EnemyType = LevelLoader.LookupEnemy(waveDescription.Enemy);
+            EnemyType = enemyDesc;  
             LevelDesc = levelDesc;
             Desc = waveDescription;
             Enemies = new List<EnemyInstance>();
-            RoadSegments = roadSegments;
+            RoadSegments = levelDesc.Road.Count;
             WaveStartTime = gameTime;
             LastSpawnTime = WaveStartTime;
             CoinEarnedToReport = 0;
             LivesLostToReport = 0;
+            DamageCallback = damageCallback;
         }
 
         public void Advance(float waveTime)
@@ -249,24 +275,34 @@ namespace VRTD.Gameplay
                             break;
                     }
 
+                    Debug.Log("EFFECT APPLIED: " + effect.Effect.EffectType + " Damage: " + damage);
+
                     if (effect.Completed)
                     {
                         effect.Destroy();
                         enemy.ActiveEffects.Remove(effect);
                         effect = null;
                     }
+
                 }
 
-                if (enemy.HealthRemaining <= damage)
+                if (null != DamageCallback)
                 {
-                    // Enemy is dead 
-                    enemy.HealthRemaining = 0.0F;
-                    enemy.Destroy();
-                    CoinEarnedToReport += enemy.Desc.Coins;
+                    DamageCallback.Invoke(enemy, damage);
                 }
                 else
                 {
-                    enemy.HealthRemaining -= damage;
+                    if (enemy.HealthRemaining <= damage)
+                    {
+                        // Enemy is dead 
+                        enemy.HealthRemaining = 0.0F;
+                        enemy.Destroy();
+                        CoinEarnedToReport += enemy.Desc.Coins;
+                    }
+                    else
+                    {
+                        enemy.HealthRemaining -= damage;
+                    }
                 }
 
                 enemy.SpeedSlowdown = slowdown;
@@ -364,7 +400,7 @@ namespace VRTD.Gameplay
         {
             Debug.Assert(WavesStarted < LevelDesc.Waves.Count);
 
-            CurrentWave = new WaveInstance(LevelDesc, LevelDesc.Waves[WavesStarted], RoadSegments, gameTime);
+            CurrentWave = new WaveInstance(LevelDesc, LevelDesc.Waves[WavesStarted], LevelLoader.LookupEnemy(LevelDesc.Waves[WavesStarted].Enemy), gameTime);
 
             WavesStarted++;
             Debug.Log("  Wave " + WavesStarted);
