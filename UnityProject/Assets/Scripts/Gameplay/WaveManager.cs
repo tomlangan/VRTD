@@ -103,7 +103,7 @@ namespace VRTD.Gameplay
 #if LEVEL_EDITOR
                     direction = VectorHelpers.Normalize(direction);
 #else
-                    direction = direction..normalized;
+                    direction = direction.normalized;
 #endif
 
 

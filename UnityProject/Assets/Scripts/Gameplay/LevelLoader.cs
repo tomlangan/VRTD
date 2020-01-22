@@ -26,7 +26,10 @@ namespace VRTD.Gameplay
                 throw new Exception("Error");
             }
         }
-        public static void Log(string s) { System.Diagnostics.Debug.WriteLine(s);  }
+        public static void Log(string s)
+        {
+            //System.Diagnostics.Debug.WriteLine(s);
+        }
     }
 
 

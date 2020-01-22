@@ -537,9 +537,18 @@ namespace VRTD.LevelEditor
             if (stats.CoinAvail < stats.CoinNeeded)
             {
                 issuesFound = true;
-                issuesString += "Can't afford at start of wave";
+                issuesString += "Can't afford at start of wave  ";
             }
 
+            //
+            // Are all the enemies killed in simulation?
+            //
+
+            if (LevelDesc.Waves[waveIndex].Count < stats.FullSimulation.EnemiesKilled)
+            {
+                issuesFound = true;
+                issuesString += "Enemies survived simulation  ";
+            }
 
             if (!issuesFound)
             {
