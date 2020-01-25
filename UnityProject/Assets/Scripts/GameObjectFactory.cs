@@ -86,6 +86,7 @@ public class GameObjectFactory : MonoBehaviour
 
     public static void DestroyObject(GameObject go)
     {
+        go.SetActive(false);
         Destroy(go);
     }
 

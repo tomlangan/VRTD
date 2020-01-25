@@ -28,7 +28,7 @@ public class Level : MonoBehaviour
 
 
     const float WAVE_COUNTDOWN_TIME = 5.0F;
-    const float MISSILE_COUNTDOWN_TIME = 5.0F;
+    const float MISSILE_COUNTDOWN_TIME = 1.0F;
     LevelDescription LevelDesc;
     WaveManager Waves = null;
     TurretManager Turrets = null;
@@ -388,10 +388,13 @@ public class Level : MonoBehaviour
             RaycastHit hitinfo = new RaycastHit();
             if (Physics.Raycast(Pointer.State.SecondaryHandRay, out hitinfo))
             {
-                if (hitinfo.transform.gameObject.tag == "Grass")
+                if (hitinfo.transform.gameObject.tag == "Grass"
+                    ||
+                    hitinfo.transform.gameObject.tag == "Road")
                 {
                     Projectiles.Fire("Hand Missile", Pointer.State.SecondaryHandRay.origin, Pointer.State.SecondaryHandRay.direction, hitinfo.distance, GameTime);
                     LastMissileTime = GameTime;
+                    Debug.Log("Fired hand missile");
                 }
             }
         }

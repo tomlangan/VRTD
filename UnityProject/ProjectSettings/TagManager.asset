@@ -21,6 +21,8 @@ TagManager:
   - ListUI
   - TurretSpace
   - TurretInstance
+  - Grass
+  - Road
   layers:
   - Default
   - TransparentFX

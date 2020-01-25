@@ -141,7 +141,7 @@ namespace VRTD.Gameplay
             Vector3 normalized = Vector3.Normalize(direction);
             Direction = new Ray(sourcePos, normalized);
 #else
-            Position = new Vector3(sourcePos.x, PROJECTILE_HEIGHT, sourcePos.z);
+            Position = sourcePos;
             Direction = new Ray(sourcePos, direction.normalized);
 #endif
             IsComplete = false;
@@ -168,30 +168,28 @@ namespace VRTD.Gameplay
             float distanceMovedThisFrame = (float)(waveTime - LastUpdateTime) * ProjectileType.AirSpeed;
             LastUpdateTime = waveTime;
 
-            // If we hit the target, apply the effects (damage, slow, etc)
-            if (distanceMovedThisFrame >= DistanceToTravel)
-            {
-                IsComplete = true;
-                DistanceToTravel = 0.0F;
-                for (int j = 0; j < ProjectileType.Effects.Count; j++)
-                {
-                    EffectInstance projectileEffect = new EffectInstance(Enemy, ProjectileType.Effects[j], waveTime);
-                    Enemy.ActiveEffects.Add(projectileEffect);
-                }
-                Destroy();
-                return;
-            }
-
 #if LEVEL_EDITOR
             Vector3 normalizedDir = Vector3.Normalize(Direction.direction);
             Vector3 progress = normalizedDir * distanceMovedThisFrame;
 #else
             Vector3 progress = Direction.direction.normalized * distanceMovedThisFrame;
 #endif
-            DistanceToTravel -= distanceMovedThisFrame;
+
             Position += progress;
             Direction.origin = Position;
-            GameObjectFactory.SetMapPos(go, Position);
+
+            // If we hit the target, apply the effects (damage, slow, etc)
+            if (distanceMovedThisFrame >= DistanceToTravel)
+            {
+                IsComplete = true;
+                DistanceToTravel = 0.0F;
+                ApplyEffects(Position, waveTime);
+                Destroy();
+                return;
+            }
+
+            DistanceToTravel -= distanceMovedThisFrame;
+            GameObjectFactory.SetWorldPos(go, Position);
         }
 
       
@@ -240,12 +238,12 @@ namespace VRTD.Gameplay
             for (int i = 0; i < LevelDesc.Road.Count; i++)
             {
                 MapPos roadItem = LevelDesc.Road[i];
-
-                if (Vector3.Distance(mapcontactpos.Pos, roadItem.Pos) <= radius)
+                float distanceFromRoadSegment = Vector3.Distance(mapcontactpos.Pos, roadItem.Pos);
+                if (distanceFromRoadSegment <= radius)
                 {
-                    for (int j = 0; j < mapcontactpos.EnemiesOccupying.Count; j++)
+                    for (int j = 0; j < roadItem.EnemiesOccupying.Count; j++)
                     {
-                        enemies.Add(mapcontactpos.EnemiesOccupying[j]);
+                        enemies.Add(roadItem.EnemiesOccupying[j]);
                     }
                 }
             }
