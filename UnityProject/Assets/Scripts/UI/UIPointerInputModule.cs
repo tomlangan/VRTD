@@ -591,7 +591,7 @@ public class UIPointerInputModule : PointerInputModule
         leftData.Reset();
 
         //Now set the world space ray. This ray is what the user uses to point at UI elements
-        leftData.worldSpaceRay = TargetManager.InputDirection;
+        leftData.worldSpaceRay = Pointer.State.DominantHandRay; 
         leftData.scrollDelta = GetExtraScrollDelta();
 
         //Populate some default values
@@ -602,8 +602,6 @@ public class UIPointerInputModule : PointerInputModule
         var raycast = FindFirstRaycast(m_RaycastResultCache);
         leftData.pointerCurrentRaycast = raycast;
         m_RaycastResultCache.Clear();
-
-        Pointer.SetCursorRay(TargetManager.InputDirection);
 
         OVRRaycaster ovrRaycaster = raycast.module as OVRRaycaster;
         // We're only interested in intersections from OVRRaycasters
@@ -621,7 +619,7 @@ public class UIPointerInputModule : PointerInputModule
                 // Set are gaze indicator with this world position and normal
                 Vector3 worldPos = raycast.worldPosition;
                 Vector3 normal = GetRectTransformNormal(graphicRect);
-                Pointer.SetCursorStartDest(TargetManager.InputDirection.origin, worldPos, normal);
+                Pointer.SetCursorStartDest(Pointer.State.DominantHandRay.origin, worldPos, normal);
             }
         }
 

@@ -5,6 +5,22 @@ using System;
 using UnityEngine;
 #else
 using System.Numerics;
+
+public class RaycastHit
+{
+    public float distance;
+}
+
+public class Ray
+{
+    public Vector3 origin;
+    public Vector3 direction;
+    public Ray(Vector3 orig, Vector3 dir)
+    {
+        origin = orig;
+        direction = dir;
+    }
+}
 #endif
 
 
@@ -81,11 +97,19 @@ namespace VRTD.Gameplay
         public float LastUpdateTime;
         public float FireTime;
         public EnemyInstance Enemy;
+        public Ray Direction;
+        float DistanceToTravel;
         public bool IsComplete;
         GameObject go = null;
+        bool heatSeeking = false;
+        LevelDescription LevelDesc;
 
-        public ProjectileInstance(Projectile projectile, Vector3 sourcePos, EnemyInstance enemy, float waveTimeFired)
+        //
+        // Heat seeking
+        //
+        public ProjectileInstance(Projectile projectile, Vector3 sourcePos, EnemyInstance enemy, float waveTimeFired, LevelDescription desc)
         {
+            LevelDesc = desc;
             ProjectileType = projectile;
             LastUpdateTime = waveTimeFired;
             FireTime = waveTimeFired;
@@ -98,10 +122,82 @@ namespace VRTD.Gameplay
             IsComplete = false;
             go = GameObjectFactory.InstantiateObject(ProjectileType.Asset);
             GameObjectFactory.SetMapPos(go, Position);
+            heatSeeking = true;
+        }
+
+
+        //
+        // Directional
+        //
+        public ProjectileInstance(Projectile projectile, Vector3 sourcePos, Vector3 direction, float distance, float waveTimeFired, LevelDescription desc)
+        {
+            LevelDesc = desc;
+            ProjectileType = projectile;
+            DistanceToTravel = distance;
+            LastUpdateTime = waveTimeFired;
+            FireTime = waveTimeFired;
+#if LEVEL_EDITOR
+            Position = new Vector3(sourcePos.X, PROJECTILE_HEIGHT, sourcePos.X);
+            Vector3 normalized = Vector3.Normalize(direction);
+            Direction = new Ray(sourcePos, normalized);
+#else
+            Position = new Vector3(sourcePos.x, PROJECTILE_HEIGHT, sourcePos.z);
+            Direction = new Ray(sourcePos, direction.normalized);
+#endif
+            IsComplete = false;
+            go = GameObjectFactory.InstantiateObject(ProjectileType.Asset);
+            GameObjectFactory.SetMapPos(go, Position);
+            heatSeeking = false;
         }
 
         public void Advance(float waveTime)
         {
+            if (heatSeeking)
+            {
+                AdvanceHeatSeeking(waveTime);
+            }
+            else
+            {
+                AdvanceDirectional(waveTime);
+            }
+
+        }
+
+        void AdvanceDirectional(float waveTime)
+        {
+            float distanceMovedThisFrame = (float)(waveTime - LastUpdateTime) * ProjectileType.AirSpeed;
+            LastUpdateTime = waveTime;
+
+            // If we hit the target, apply the effects (damage, slow, etc)
+            if (distanceMovedThisFrame >= DistanceToTravel)
+            {
+                IsComplete = true;
+                DistanceToTravel = 0.0F;
+                for (int j = 0; j < ProjectileType.Effects.Count; j++)
+                {
+                    EffectInstance projectileEffect = new EffectInstance(Enemy, ProjectileType.Effects[j], waveTime);
+                    Enemy.ActiveEffects.Add(projectileEffect);
+                }
+                Destroy();
+                return;
+            }
+
+#if LEVEL_EDITOR
+            Vector3 normalizedDir = Vector3.Normalize(Direction.direction);
+            Vector3 progress = normalizedDir * distanceMovedThisFrame;
+#else
+            Vector3 progress = Direction.direction.normalized * distanceMovedThisFrame;
+#endif
+            DistanceToTravel -= distanceMovedThisFrame;
+            Position += progress;
+            Direction.origin = Position;
+            GameObjectFactory.SetMapPos(go, Position);
+        }
+
+      
+
+        void AdvanceHeatSeeking(float waveTime)
+        { 
             if (!Enemy.IsActive)
             {
                 Debug.Log("  enemy no longer active (projectile dead)");
@@ -118,12 +214,7 @@ namespace VRTD.Gameplay
             if (distanceMovedThisFrame >= hypotenuse)
             {
                 IsComplete = true;
-                Debug.Log("PROJECTILE HIT: " + this.ProjectileType.Name);
-                for (int j = 0; j < ProjectileType.Effects.Count; j++)
-                {
-                    EffectInstance projectileEffect = new EffectInstance(Enemy, ProjectileType.Effects[j], waveTime);
-                    Enemy.ActiveEffects.Add(projectileEffect);
-                }
+                ApplyEffects(Enemy.Position, waveTime, Enemy);
                 Destroy();
                 return;
             }
@@ -137,10 +228,60 @@ namespace VRTD.Gameplay
             Vector3 progress = direction * distanceMovedThisFrame;
             Position += progress;
             GameObjectFactory.SetMapPos(go, Position);
-
-            Debug.Log("   projectile distance: " + (distanceMovedThisFrame - hypotenuse).ToString() + " --> " + Vector3.Distance(Position, Enemy.Position).ToString());
-
         }
+
+
+        List<EnemyInstance> FindEnemiesInBlastRadius(Vector3 contactPos, float radius)
+        {
+            List<EnemyInstance> enemies = new List<EnemyInstance>();
+
+            MapPos mapcontactpos = GameObjectFactory.WorldVec3ToMapPos(contactPos);
+
+            for (int i = 0; i < LevelDesc.Road.Count; i++)
+            {
+                MapPos roadItem = LevelDesc.Road[i];
+
+                if (Vector3.Distance(mapcontactpos.Pos, roadItem.Pos) <= radius)
+                {
+                    for (int j = 0; j < mapcontactpos.EnemiesOccupying.Count; j++)
+                    {
+                        enemies.Add(mapcontactpos.EnemiesOccupying[j]);
+                    }
+                }
+            }
+
+            return enemies;
+        }
+
+        void ApplyEffects(Vector3 pos, float waveTime, EnemyInstance enemy = null)
+        {
+
+            for (int j = 0; j < ProjectileType.Effects.Count; j++)
+            {
+                EffectInstance projectileEffect = new EffectInstance(Enemy, ProjectileType.Effects[j], waveTime);
+                if (ProjectileType.Effects[j].EffectRadius == 0.0F)
+                {
+                    if (null == enemy)
+                    {
+                        throw new Exception("Projectiles with zero range need to be heat seeking");
+                    }
+                    enemy.ActiveEffects.Add(projectileEffect);
+                }
+                else
+                {
+                    List<EnemyInstance> enemies = FindEnemiesInBlastRadius(pos, ProjectileType.Effects[j].EffectRadius);
+                    if (enemy != null && !enemies.Contains(enemy))
+                    {
+                        enemies.Add(enemy);
+                    }
+                    for(int i = 0; i < enemies.Count; i++)
+                    {
+                        enemies[i].ActiveEffects.Add(projectileEffect);
+                    }
+                }
+            }
+        }
+
 
         public void Destroy()
         {
@@ -164,9 +305,11 @@ namespace VRTD.Gameplay
         public ProjectileDefCallback ProjectileReader;
 
         public List<ProjectileInstance> ProjectilesInFlight = null;
+        LevelDescription LevelDesc = null;
 
-        public ProjectileManager(ProjectileDefCallback readerCallback = null)
+        public ProjectileManager(LevelDescription desc, ProjectileDefCallback readerCallback = null)
         {
+            LevelDesc = desc;
             ProjectilesInFlight = new List<ProjectileInstance>();
 
             if (null == readerCallback)
@@ -182,9 +325,14 @@ namespace VRTD.Gameplay
 
         public void Fire(TurretInstance turret, EnemyInstance target, float fireTime)
         {
-            ProjectileInstance projectile = new ProjectileInstance(ProjectileReader(turret.TurretType.Projectile), new Vector3(turret.Position.x, 0.0F, turret.Position.z), target, fireTime);
+            ProjectileInstance projectile = new ProjectileInstance(ProjectileReader(turret.TurretType.Projectile), new Vector3(turret.Position.x, 0.0F, turret.Position.z), target, fireTime, LevelDesc);
             Debug.Assert(target.HealthRemaining > 0.0F);
-            Debug.Log("  fired " + projectile.ProjectileType.Name);
+            ProjectilesInFlight.Add(projectile);
+        }
+
+        public void Fire(string projectileName, Vector3 origin, Vector3 direction, float distance, float fireTime)
+        {
+            ProjectileInstance projectile = new ProjectileInstance(ProjectileReader(projectileName), origin, direction, distance, fireTime, LevelDesc);
             ProjectilesInFlight.Add(projectile);
         }
 

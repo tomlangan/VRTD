@@ -84,6 +84,8 @@ namespace VRTD.Gameplay
         public float EffectDuration { get; set; }
 
         public float EffectImpact { get; set; }
+
+        public float EffectRadius { get; set; }
     }
 
     [Serializable]

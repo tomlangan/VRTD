@@ -38,7 +38,7 @@ namespace VRTD.LevelEditor
                     &&
                     (enemy.HealthRemaining <= damage))
                 {
-                    DamageStats.DamageDealt += enemy.HealthRemaining;
+                    DamageStats.DamageDealt = enemy.Desc.HitPoints;
                     enemy.HealthRemaining = 0.0F;
 
                     // Enemy is dead
@@ -75,7 +75,7 @@ namespace VRTD.LevelEditor
 
             ResetLevelDescState(LevelDesc);
             TurretManager turrets = new TurretManager(LevelDesc);
-            ProjectileManager projectiles = new ProjectileManager(LevelManager.LookupProjectile);
+            ProjectileManager projectiles = new ProjectileManager(LevelDesc, LevelManager.LookupProjectile);
             WaveInstance wave = new WaveInstance(LevelDesc, waveDesc, enemy, 0.0F, SimulatorDamageCallback);
 
             for (int i = 0; i < solution.Turrets.Count; i++)

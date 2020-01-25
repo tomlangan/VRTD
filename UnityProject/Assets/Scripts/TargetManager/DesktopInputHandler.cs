@@ -56,10 +56,9 @@ public class DesktopInputHandler : MonoBehaviour
             Vector3 SelectionRayTarget = new Vector3((70.0F * xRelativePosFromCenter) - 2.0F , 0.0F, (100.0F * zRelativePosFromCenter) + 15.0F);
             VirtualHandDirection = (SelectionRayTarget - VirtualHandPosition).normalized;
 
-            InputDemuxer.SetCursorRay(new Ray(VirtualHandPosition, VirtualHandDirection));
 
             Buttons[InputState.InputIntent.Selection] = Input.GetMouseButtonDown(0);
-            Buttons[InputState.InputIntent.Grab] = Input.GetMouseButtonDown(2);
+            Buttons[InputState.InputIntent.MissileTrigger] = Input.GetKeyDown(KeyCode.X);
 
 
             if (Input.GetMouseButton(1))
@@ -78,7 +77,7 @@ public class DesktopInputHandler : MonoBehaviour
                 wasMiddleClickEnabled = false;
             }
 
-            InputDemuxer.SetButtonState(Buttons);
+            InputDemuxer.SetInputState(Buttons, new Ray(VirtualHandPosition, VirtualHandDirection), new Ray(VirtualHandPosition, VirtualHandDirection));
         }
     }
 

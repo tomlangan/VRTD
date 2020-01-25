@@ -290,7 +290,7 @@ namespace VRTD.LevelEditor
         private void LoadSolutionClicked(TreeIter iter)
         {
             int row = (int)WavesModel.GetValue(iter, 0);
-            string action = (string)WavesModel.GetValue(iter, 9);
+            string action = (string)WavesModel.GetValue(iter, 10);
             if (action != "Load")
             {
                 return;
@@ -310,7 +310,7 @@ namespace VRTD.LevelEditor
         private void SaveSolutionClicked(TreeIter iter)
         {
             int row = (int)WavesModel.GetValue(iter, 0);
-            string action = (string)WavesModel.GetValue(iter, 8);
+            string action = (string)WavesModel.GetValue(iter, 9);
             if (action != "Save")
             {
                 return;
@@ -544,7 +544,7 @@ namespace VRTD.LevelEditor
             // Are all the enemies killed in simulation?
             //
 
-            if (LevelDesc.Waves[waveIndex].Count < stats.FullSimulation.EnemiesKilled)
+            if (LevelDesc.Waves[waveIndex].Count > stats.FullSimulation.EnemiesKilled)
             {
                 issuesFound = true;
                 issuesString += "Enemies survived simulation  ";

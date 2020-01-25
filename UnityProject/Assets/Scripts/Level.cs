@@ -25,10 +25,10 @@ public class Level : MonoBehaviour
     public GameObject ListTemplateTextOnly;
     public GameObject ListTemplateWithCoin;
 
-    //public UnityEngine.UI.Text TimerUIText;
 
 
     const float WAVE_COUNTDOWN_TIME = 5.0F;
+    const float MISSILE_COUNTDOWN_TIME = 5.0F;
     LevelDescription LevelDesc;
     WaveManager Waves = null;
     TurretManager Turrets = null;
@@ -39,6 +39,7 @@ public class Level : MonoBehaviour
     bool Loading = false;
     int Coin = 0;
     int LivesRemaining = 0;
+    float LastMissileTime = 0.0F;
 
     private MessageUI CountdownUI;
     private HUDUI HUD;
@@ -108,7 +109,7 @@ public class Level : MonoBehaviour
         GameObjectFactory.Initialize(LevelDesc);
         Waves = new WaveManager(LevelDesc);
         Turrets = new TurretManager(LevelDesc);
-        Projectiles = new ProjectileManager();
+        Projectiles = new ProjectileManager(LevelDesc);
         Debug.Log("Creating road objects");
         GameObjectFactory.CreateMapObjects(LevelDesc);
         InitializeGameplayUISettings();
@@ -116,6 +117,7 @@ public class Level : MonoBehaviour
         Coin = LevelDesc.StartingCoins;
         LivesRemaining = LevelDesc.Lives;
         GameTime = 0.0F;
+        LastMissileTime = 0.0F;
 
         CountdownStartTime = GameTime;
         State = LevelState.WaveCountdown;
@@ -213,6 +215,11 @@ public class Level : MonoBehaviour
         {
                 GameplayUI.TriggerSelectAction();
         }
+        if (Pointer.State.ButtonDown.TryGetValue(InputState.InputIntent.MissileTrigger, out value) && value)
+        {
+            ProcessMissileTrigger();
+        }
+
 
         UpdateHUD();
     }
@@ -370,5 +377,23 @@ public class Level : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void ProcessMissileTrigger()
+    {
+        float timeSinceLastMissile = GameTime - LastMissileTime;
+        if (timeSinceLastMissile >= MISSILE_COUNTDOWN_TIME)
+        {
+
+            RaycastHit hitinfo = new RaycastHit();
+            if (Physics.Raycast(Pointer.State.SecondaryHandRay, out hitinfo))
+            {
+                if (hitinfo.transform.gameObject.tag == "Grass")
+                {
+                    Projectiles.Fire("Hand Missile", Pointer.State.SecondaryHandRay.origin, Pointer.State.SecondaryHandRay.direction, hitinfo.distance, GameTime);
+                    LastMissileTime = GameTime;
+                }
+            }
+        }
     }
 }

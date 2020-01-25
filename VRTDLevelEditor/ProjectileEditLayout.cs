@@ -82,6 +82,7 @@ namespace VRTD.LevelEditor
             TreeViewColumn typeCoumn = new TreeViewColumn();
             TreeViewColumn impactColumn = new TreeViewColumn();
             TreeViewColumn durationColumn = new TreeViewColumn();
+            TreeViewColumn radiusColumn = new TreeViewColumn();
 
             CellRendererText durationCellRenderer = new CellRendererText();
             durationCellRenderer.Editable = true;
@@ -91,6 +92,10 @@ namespace VRTD.LevelEditor
             CellRendererText impactCellRenderer = new CellRendererText();
             impactCellRenderer.Editable = true;
             impactCellRenderer.Edited += ImpactCell_Edited;
+
+            CellRendererText radiusCellRenderer = new CellRendererText();
+            radiusCellRenderer.Editable = true;
+            radiusCellRenderer.Edited += RadiusCellRenderer_Edited;
 
             CellRendererCombo comboCellRenderer = new CellRendererCombo();
             comboCellRenderer.Editable = true;
@@ -114,7 +119,13 @@ namespace VRTD.LevelEditor
             impactColumn.AddAttribute(impactCellRenderer, "text", 3);
             EffectsTree.AppendColumn(impactColumn);
 
-            EffectsModel = new ListStore(typeof(int), typeof(string), typeof(float), typeof(float));
+
+            radiusColumn.PackStart(radiusCellRenderer, true);
+            radiusColumn.Title = "Radius";
+            radiusColumn.AddAttribute(radiusCellRenderer, "text", 4);
+            EffectsTree.AppendColumn(radiusColumn);
+
+            EffectsModel = new ListStore(typeof(int), typeof(string), typeof(float), typeof(float), typeof(float));
             EffectsTree.Model = EffectsModel;
             EffectsTree.Selection.Mode = SelectionMode.Single;
 
@@ -262,6 +273,28 @@ namespace VRTD.LevelEditor
             }
         }
 
+
+        private void RadiusCellRenderer_Edited(object o, EditedArgs args)
+        {
+            TreeIter iter;
+            if (EffectsModel.GetIterFromString(out iter, args.Path))
+            {
+                try
+                {
+                    float newValue = float.Parse(args.NewText);
+                    int row = (int)EffectsModel.GetValue(iter, 0);
+                    float currentValue = Projectile.Effects[row].EffectRadius;
+                    if (newValue != currentValue)
+                    {
+                        EffectsModel.SetValue(iter, 4, newValue);
+                        Projectile.Effects[row].EffectRadius = newValue;
+                        WriteChanges();
+                    }
+                }
+                catch (Exception ex) { }
+            }
+        }
+
         private void PopulateTreeWithEffects()
         {
             EffectsModel.Clear();
@@ -270,7 +303,7 @@ namespace VRTD.LevelEditor
             {
                 string effect = Enum.GetName(typeof(ProjectileEffectType), Projectile.Effects[i].EffectType);
                 //string effect = (Projectile.Effects[i].EffectType == ProjectileEffectType.Damage ? "Damage" : "Slow");
-                object[] values = { i, effect, Projectile.Effects[i].EffectDuration, Projectile.Effects[i].EffectImpact };
+                object[] values = { i, effect, Projectile.Effects[i].EffectDuration, Projectile.Effects[i].EffectImpact, Projectile.Effects[i].EffectRadius };
                 EffectsModel.AppendValues(values);
             }
         }

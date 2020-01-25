@@ -5,9 +5,11 @@ using UnityEngine;
 public class VRInputHandler : MonoBehaviour
 {
     public InputPointer InputDemuxer;
-    public Ray InputDirection = new Ray();
+    //public Ray InputDirection = new Ray();
     public OVRCameraRig OVRCamera;
-    OVRInput.Controller ActiveController;
+    OVRInput.Controller DominantHand;
+    Ray DominantHandRay = new Ray();
+    Ray SecondaryHandRay = new Ray();
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +20,13 @@ public class VRInputHandler : MonoBehaviour
         switch (handedness)
         {
             case OVRInput.Handedness.LeftHanded:
-                SetActiveHand(OVRInput.Controller.LTouch);
+                DominantHand = OVRInput.Controller.LTouch;
                 break;
             case OVRInput.Handedness.RightHanded:
-                SetActiveHand(OVRInput.Controller.RTouch);
+                DominantHand = OVRInput.Controller.RTouch;
                 break;
             case OVRInput.Handedness.Unsupported:
-                SetActiveHand(OVRInput.Controller.RTouch);
+                DominantHand = OVRInput.Controller.RTouch;
                 break;
         }
     }
@@ -35,55 +37,45 @@ public class VRInputHandler : MonoBehaviour
         OVRInput.Update();
 
         //
-        // Update dominant hand
-        //
-
-        bool leftPressed = OVRInput.Get(OVRInput.Button.Any, OVRInput.Controller.LTouch);
-        bool rightPressed = OVRInput.Get(OVRInput.Button.Any, OVRInput.Controller.RTouch);
-
-        if (leftPressed && !rightPressed)
-        {
-            SetActiveHand(OVRInput.Controller.LTouch);
-        }
-        else if (!leftPressed && rightPressed)
-        {
-            SetActiveHand(OVRInput.Controller.RTouch);
-        }
-
-        //
         // Update buttons pressed
         //
 
         Dictionary<InputState.InputIntent, bool> Buttons = new Dictionary<InputState.InputIntent, bool>();
 
 
-        if (ActiveController == OVRInput.Controller.LTouch)
+        if (DominantHand == OVRInput.Controller.LTouch)
         {
-            Buttons[InputState.InputIntent.Selection] = OVRInput.Get(OVRInput.Button.One, ActiveController) || OVRInput.Get(OVRInput.RawButton.LIndexTrigger, ActiveController);
-            Buttons[InputState.InputIntent.Grab] = OVRInput.Get(OVRInput.RawButton.LHandTrigger, ActiveController);
+            Buttons[InputState.InputIntent.Selection] = OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch) || OVRInput.Get(OVRInput.RawButton.LIndexTrigger, OVRInput.Controller.LTouch);
+            Buttons[InputState.InputIntent.MissileTrigger] = OVRInput.Get(OVRInput.RawButton.RHandTrigger, OVRInput.Controller.RTouch);
         }
         else
         {
-            Buttons[InputState.InputIntent.Selection] = OVRInput.Get(OVRInput.Button.One, ActiveController) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger, ActiveController);
-            Buttons[InputState.InputIntent.Grab] = OVRInput.Get(OVRInput.RawButton.RHandTrigger, ActiveController);
+            Buttons[InputState.InputIntent.Selection] = OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger, OVRInput.Controller.RTouch);
+            Buttons[InputState.InputIntent.MissileTrigger] = OVRInput.Get(OVRInput.RawButton.LHandTrigger, OVRInput.Controller.LTouch);
         }
 
-        InputDemuxer.SetButtonState(Buttons);
 
         //
         // Update input direction
         //
 
         Vector3 cameraPos = OVRCamera.transform.position;
-        InputDirection.origin = OVRInput.GetLocalControllerPosition(ActiveController) + cameraPos;
-        if (ActiveController == OVRInput.Controller.RTouch)
+        if (DominantHand == OVRInput.Controller.RTouch)
         {
-            InputDirection.direction = OVRCamera.rightControllerAnchor.forward;
+            DominantHandRay.origin = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch) + cameraPos;
+            DominantHandRay.direction = OVRCamera.rightControllerAnchor.forward;
+            SecondaryHandRay.origin = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + cameraPos;
+            SecondaryHandRay.direction = OVRCamera.leftControllerAnchor.forward;
         }
         else
         {
-            InputDirection.direction = OVRCamera.leftControllerAnchor.forward;
+            SecondaryHandRay.origin = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch) + cameraPos;
+            SecondaryHandRay.direction = OVRCamera.rightControllerAnchor.forward;
+            DominantHandRay.origin = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + cameraPos;
+            DominantHandRay.direction = OVRCamera.leftControllerAnchor.forward;
         }
+
+        InputDemuxer.SetInputState(Buttons, DominantHandRay, SecondaryHandRay);
     }
 
     private void FixedUpdate()
@@ -91,8 +83,8 @@ public class VRInputHandler : MonoBehaviour
         OVRInput.FixedUpdate();
     }
 
-    private void SetActiveHand(OVRInput.Controller controller)
+    private void SetDominantHand(OVRInput.Controller controller)
     {
-        ActiveController = controller;
+        DominantHand = controller;
     }
 }

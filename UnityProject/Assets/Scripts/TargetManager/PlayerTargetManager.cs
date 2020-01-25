@@ -12,7 +12,6 @@ public class PlayerTargetManager : MonoBehaviour
     public DesktopInputHandler DesktopInput;
     public VRInputHandler VRInput;
     public OvrAvatar LocalAvatar;
-    public Ray InputDirection = new Ray();
     public TargetPlatform Target = TargetPlatform.VR;
 
     public Transform CameraTransform
@@ -64,17 +63,12 @@ public class PlayerTargetManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   void Update()
     {
         if (TargetPlatform.Desktop == Target)
         {
-            InputDirection = DesktopInput.GetVirtualHandRay();
             MainCamera.transform.Rotate(-DesktopInput.MiddleClickMouseMovement.y * 0.1F, DesktopInput.MiddleClickMouseMovement.x * 0.1F, 0.0F);
 
-        }
-        else if (TargetPlatform.VR == Target)
-        {
-            InputDirection = VRInput.InputDirection;
         }
     }
 }

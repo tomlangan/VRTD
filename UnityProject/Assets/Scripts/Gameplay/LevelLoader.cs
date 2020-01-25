@@ -40,6 +40,7 @@ public class GameObject { }
         public static GameObject InstantiateObject(string asset) { return new GameObject(); }
         public static void SetMapPos(GameObject go, VRTD.Gameplay.MapPos Position) { }
         public static void SetMapPos(GameObject go, Vector3 Position) { }
+        public static MapPos WorldVec3ToMapPos(Vector3 vec3) { return new MapPos(); }
         public static void Destroy(GameObject go) { }
     }
 #endif

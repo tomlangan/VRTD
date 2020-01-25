@@ -6,12 +6,18 @@ using VRTD.Gameplay;
 
 public class InputState
 { 
-    public enum InputIntent { Selection, Grab }
-    public static InputIntent[] Intents = { InputIntent.Selection, InputIntent.Grab };    
+    public enum InputIntent { Selection, MissileTrigger }
+    public static InputIntent[] Intents = { InputIntent.Selection, InputIntent.MissileTrigger };    
 
     public Dictionary<InputIntent, bool> ButtonDown = new Dictionary<InputIntent, bool>();
     public Dictionary<InputIntent, bool> ButtonUp = new Dictionary<InputIntent, bool>();
     public Dictionary<InputIntent, bool> ButtonState = new Dictionary<InputIntent, bool>();
+
+    public Ray DominantHandRay;
+    public Ray SecondaryHandRay;
+
+    public Vector3 DominantHandPointingAt;
+    public bool DominantHandHasHitTarget;
 }
 
 public class InputPointer : MonoBehaviour
@@ -24,11 +30,6 @@ public class InputPointer : MonoBehaviour
     public GameObject Hitting;
     public InputState State;
 
-
-    private Vector3 _startPoint;
-    private Vector3 _forward;
-    private Vector3 _endPoint;
-    private bool _hitTarget;
 
     private void Start()
     {
@@ -43,26 +44,20 @@ public class InputPointer : MonoBehaviour
 
     public void SetCursorStartDest(Vector3 start, Vector3 dest, Vector3 normal)
     {
-        _startPoint = start;
-        _endPoint = dest;
-        _hitTarget = true;
+        State.DominantHandRay.origin = start;
+        State.DominantHandRay.direction = (dest - start).normalized;
+        State.DominantHandPointingAt = dest;
+        State.DominantHandHasHitTarget = true;
     }
 
-    public void SetCursorRay(Ray r)
-    {
-        _startPoint = r.origin;
-        _forward = r.direction;
-        _hitTarget = false;
-    }
-
-    public void SetButtonState(Dictionary<InputState.InputIntent, bool> ButtonState)
+    public void SetInputState(Dictionary<InputState.InputIntent, bool> buttonState, Ray dominantHandRay, Ray secondaryHandRay)
     {
         State.ButtonDown.Clear();
         State.ButtonUp.Clear();
         foreach (InputState.InputIntent i in InputState.Intents)
         {
             bool value = false;
-            if (!ButtonState.TryGetValue(i, out value))
+            if (!buttonState.TryGetValue(i, out value))
             {
                 value = false;
             }
@@ -77,25 +72,28 @@ public class InputPointer : MonoBehaviour
             }
             State.ButtonState[i] = value;
         }
+        State.DominantHandRay = dominantHandRay;
+        State.SecondaryHandRay = secondaryHandRay;
+        State.DominantHandHasHitTarget = false;
     }
 
     private void LateUpdate()
     {
-        InputLine.SetPosition(0, _startPoint);
-        if (_hitTarget)
+        InputLine.SetPosition(0, State.DominantHandRay.origin);
+        if (State.DominantHandHasHitTarget)
         {
-            InputLine.SetPosition(1, _endPoint);
-            UpdateLine(_startPoint, (_endPoint - _startPoint).normalized);
+            InputLine.SetPosition(1, State.DominantHandPointingAt);
+            UpdateLine(State.DominantHandRay.origin, (State.DominantHandPointingAt - State.DominantHandRay.origin).normalized);
             if (cursorVisual)
             {
-                cursorVisual.transform.position = _endPoint;
+                cursorVisual.transform.position = State.DominantHandPointingAt;
                 cursorVisual.SetActive(true);
             }
         }
         else
         {
-            UpdateLine(_startPoint, _forward);
-            InputLine.SetPosition(1, _startPoint + maxLength * _forward);
+            UpdateLine(State.DominantHandRay.origin, State.DominantHandRay.direction);
+            InputLine.SetPosition(1, State.DominantHandRay.origin + maxLength * State.DominantHandRay.direction);
             if (cursorVisual) cursorVisual.SetActive(false);
         }
     }
@@ -113,7 +111,10 @@ public class InputPointer : MonoBehaviour
 
     void OnDisable()
     {
-        if (cursorVisual) cursorVisual.SetActive(false);
+        if (cursorVisual)
+        {
+            cursorVisual.SetActive(false);
+        }
     }
 
 }
