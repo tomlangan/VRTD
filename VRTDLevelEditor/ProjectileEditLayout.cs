@@ -59,6 +59,9 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
+            field = GtkHelpers.TextEntryField("Impact Asset", Projectile.ImpactAsset, ImpactAsset_Changed, true);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
 
             field = GtkHelpers.TextEntryField("AirSpeed", Projectile.AirSpeed.ToString(), AirSpeed_Changed, true, GtkHelpers.ValueType.Float);
             Layout.PackStart(field, false, false, 0);
@@ -327,6 +330,16 @@ namespace VRTD.LevelEditor
             if ((newName != Projectile.Asset) && (newName.Length > 0))
             {
                 Projectile.Asset = newName;
+                WriteChanges();
+            }
+        }
+
+        private void ImpactAsset_Changed(object sender, EventArgs e)
+        {
+            string newName = ((Entry)sender).Text;
+            if ((newName != Projectile.ImpactAsset) && (newName.Length > 0))
+            {
+                Projectile.ImpactAsset = newName;
                 WriteChanges();
             }
         }

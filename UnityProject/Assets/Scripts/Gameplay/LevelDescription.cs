@@ -95,6 +95,8 @@ namespace VRTD.Gameplay
 
         public string Asset { get; set; }
 
+        public string ImpactAsset { get; set; }
+
         public float AirSpeed { get; set; }
 
         public List<ProjectileEffect> Effects;

@@ -183,7 +183,7 @@ namespace VRTD.Gameplay
             {
                 IsComplete = true;
                 DistanceToTravel = 0.0F;
-                ApplyEffects(Position, waveTime);
+                ProcessImpact(Position, waveTime);
                 Destroy();
                 return;
             }
@@ -212,7 +212,7 @@ namespace VRTD.Gameplay
             if (distanceMovedThisFrame >= hypotenuse)
             {
                 IsComplete = true;
-                ApplyEffects(Enemy.Position, waveTime, Enemy);
+                ProcessImpact(Enemy.Position, waveTime, Enemy);
                 Destroy();
                 return;
             }
@@ -251,8 +251,13 @@ namespace VRTD.Gameplay
             return enemies;
         }
 
-        void ApplyEffects(Vector3 pos, float waveTime, EnemyInstance enemy = null)
+        void ProcessImpact(Vector3 pos, float waveTime, EnemyInstance enemy = null)
         {
+            if (!string.IsNullOrEmpty(ProjectileType.ImpactAsset))
+            {
+                GameObject impactVisual = GameObjectFactory.InstantiateObject(ProjectileType.ImpactAsset);
+                impactVisual.transform.position = Position;
+            }
 
             for (int j = 0; j < ProjectileType.Effects.Count; j++)
             {
