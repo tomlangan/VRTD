@@ -255,8 +255,10 @@ namespace VRTD.Gameplay
         {
             if (!string.IsNullOrEmpty(ProjectileType.ImpactAsset))
             {
+#if LEVEL_EDITOR == false
                 GameObject impactVisual = GameObjectFactory.InstantiateObject(ProjectileType.ImpactAsset);
                 impactVisual.transform.position = Position;
+#endif
             }
 
             for (int j = 0; j < ProjectileType.Effects.Count; j++)
