@@ -147,6 +147,7 @@ namespace VRTD.Gameplay
             IsComplete = false;
             go = GameObjectFactory.InstantiateObject(ProjectileType.Asset);
             GameObjectFactory.SetMapPos(go, Position);
+            go.transform.forward = direction;
             heatSeeking = false;
         }
 
@@ -223,6 +224,7 @@ namespace VRTD.Gameplay
 #else
             Vector3 direction = (Enemy.Position - Position).normalized;
 #endif
+            go.transform.forward = direction;
             Vector3 progress = direction * distanceMovedThisFrame;
             Position += progress;
             GameObjectFactory.SetMapPos(go, Position);

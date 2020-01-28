@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
-    y: 44
-    width: 1440
-    height: 787
+    x: 7.513044
+    y: 50.08696
+    width: 2123
+    height: 1105
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
@@ -43,8 +43,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1440
-    height: 787
+    width: 2122.8523
+    height: 1105.2522
   m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
@@ -64,7 +64,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1440
+    width: 2122.8523
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -85,8 +85,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 767
-    width: 1440
+    y: 1085.2522
+    width: 2122.8523
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -109,12 +109,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1440
-    height: 737
-  m_MinSize: {x: 683, y: 498}
-  m_MaxSize: {x: 14004, y: 14048}
+    width: 2122.8523
+    height: 1055.2522
+  m_MinSize: {x: 685, y: 498}
+  m_MaxSize: {x: 14006, y: 14048}
   vertical: 0
-  controlID: 50
+  controlID: 61
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,12 +134,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1158
-    height: 737
+    width: 1706
+    height: 1055.2522
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 51
+  controlID: 62
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -159,12 +159,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1158
-    height: 450
+    width: 1706
+    height: 644
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 15
+  controlID: 63
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -182,13 +182,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 212
-    height: 450
+    width: 312
+    height: 644
   m_MinSize: {x: 202, y: 224}
   m_MaxSize: {x: 4002, y: 4024}
-  m_ActualView: {fileID: 16}
+  m_ActualView: {fileID: 17}
   m_Panes:
-  - {fileID: 16}
+  - {fileID: 17}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &9
@@ -206,18 +206,18 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 212
+    x: 312
     y: 0
-    width: 946
-    height: 450
+    width: 1394
+    height: 644
   m_MinSize: {x: 204, y: 224}
   m_MaxSize: {x: 4004, y: 4024}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 16}
   m_Panes:
-  - {fileID: 15}
-  - {fileID: 17}
+  - {fileID: 16}
   - {fileID: 18}
-  - {fileID: 12}
+  - {fileID: 19}
+  - {fileID: 13}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &10
@@ -236,15 +236,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 450
-    width: 1158
-    height: 287
+    y: 644
+    width: 1706
+    height: 411
   m_MinSize: {x: 232, y: 274}
   m_MaxSize: {x: 10002, y: 10024}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 20}
   m_Panes:
-  - {fileID: 19}
   - {fileID: 20}
+  - {fileID: 21}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &11
@@ -262,20 +262,488 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1158
+    x: 1706
     y: 0
-    width: 282
-    height: 737
-  m_MinSize: {x: 277, y: 74}
-  m_MaxSize: {x: 4002, y: 4024}
-  m_ActualView: {fileID: 21}
+    width: 416
+    height: 1055.2522
+  m_MinSize: {x: 279, y: 74}
+  m_MaxSize: {x: 4004, y: 4024}
+  m_ActualView: {fileID: 22}
   m_Panes:
-  - {fileID: 21}
+  - {fileID: 22}
+  - {fileID: 15}
   - {fileID: 14}
-  - {fileID: 13}
+  - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 3
 --- !u!114 &12
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -185891209, guid: 68c7e4565cde54155bb78d8e935f1ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: File History
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 1713.8088
+    y: 80.13914
+    width: 412
+    height: 1035.2522
+  m_PersistentViewDataDictionary: {fileID: 0}
+  locked: 0
+  fileHistoryView:
+    currentFileLogHasUpdate: 1
+    currentStatusEntriesHasUpdate: 1
+    gitFileLog:
+      path: UnityProject/Assets/Resources/Levels/projectiles.txt
+      logEntries:
+      - commitID: 846369bd2a97a5bfc2df288a60c8ed401c3e1deb
+        mergeA: 
+        mergeB: 
+        authorName: Tom Langan
+        authorEmail: tom.langan@hotmail.com
+        commitEmail: tom.langan@hotmail.com
+        commitName: Tom Langan
+        summary: Added explosions to missiles
+        description: 
+        timeString: 2020-01-25T21:54:45.000-08:00
+        commitTimeString: 2020-01-25T21:54:45.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 5183c50b1df9c32e069773712bf7a8543ef31fd2
+        mergeA: 
+        mergeB: 
+        authorName: Tom Langan
+        authorEmail: tom.langan@hotmail.com
+        commitEmail: tom.langan@hotmail.com
+        commitName: Tom Langan
+        summary: Missiles working OK now
+        description: 
+        timeString: 2020-01-25T14:54:33.000-08:00
+        commitTimeString: 2020-01-25T14:54:33.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 18f534435a9acffd2c6ef20de9c39e569e5d2e53
+        mergeA: 
+        mergeB: 
+        authorName: Tom Langan
+        authorEmail: tom.langan@hotmail.com
+        commitEmail: tom.langan@hotmail.com
+        commitName: Tom Langan
+        summary: Blast radius projectiles mostly working
+        description: 
+        timeString: 2020-01-25T11:33:29.000-08:00
+        commitTimeString: 2020-01-25T11:33:29.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 5109c3499c99e9877d9accc6c725e09ed5f38959
+        mergeA: 
+        mergeB: 
+        authorName: tomlangan
+        authorEmail: 35125342+tomlangan@users.noreply.github.com
+        commitEmail: 35125342+tomlangan@users.noreply.github.com
+        commitName: tomlangan
+        summary: Some game balance on level 1-1
+        description: 
+        timeString: 2020-01-16T22:48:13.000-08:00
+        commitTimeString: 2020-01-16T22:48:13.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: a5a6cf0f6decc9d1b77ec2d4ad8e9adba9d65e31
+        mergeA: 
+        mergeB: 
+        authorName: Tom Langan
+        authorEmail: tom.langan@hotmail.com
+        commitEmail: tom.langan@hotmail.com
+        commitName: Tom Langan
+        summary: Fixed android build?
+        description: 
+        timeString: 2020-01-07T21:14:14.000-08:00
+        commitTimeString: 2020-01-07T21:14:14.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+    historyControl:
+      scroll: {x: 0, y: 0}
+      entries:
+      - commitID: 846369bd2a97a5bfc2df288a60c8ed401c3e1deb
+        mergeA: 
+        mergeB: 
+        authorName: Tom Langan
+        authorEmail: tom.langan@hotmail.com
+        commitEmail: tom.langan@hotmail.com
+        commitName: Tom Langan
+        summary: Added explosions to missiles
+        description: 
+        timeString: 2020-01-25T21:54:45.000-08:00
+        commitTimeString: 2020-01-25T21:54:45.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 5183c50b1df9c32e069773712bf7a8543ef31fd2
+        mergeA: 
+        mergeB: 
+        authorName: Tom Langan
+        authorEmail: tom.langan@hotmail.com
+        commitEmail: tom.langan@hotmail.com
+        commitName: Tom Langan
+        summary: Missiles working OK now
+        description: 
+        timeString: 2020-01-25T14:54:33.000-08:00
+        commitTimeString: 2020-01-25T14:54:33.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 18f534435a9acffd2c6ef20de9c39e569e5d2e53
+        mergeA: 
+        mergeB: 
+        authorName: Tom Langan
+        authorEmail: tom.langan@hotmail.com
+        commitEmail: tom.langan@hotmail.com
+        commitName: Tom Langan
+        summary: Blast radius projectiles mostly working
+        description: 
+        timeString: 2020-01-25T11:33:29.000-08:00
+        commitTimeString: 2020-01-25T11:33:29.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: 5109c3499c99e9877d9accc6c725e09ed5f38959
+        mergeA: 
+        mergeB: 
+        authorName: tomlangan
+        authorEmail: 35125342+tomlangan@users.noreply.github.com
+        commitEmail: 35125342+tomlangan@users.noreply.github.com
+        commitName: tomlangan
+        summary: Some game balance on level 1-1
+        description: 
+        timeString: 2020-01-16T22:48:13.000-08:00
+        commitTimeString: 2020-01-16T22:48:13.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      - commitID: a5a6cf0f6decc9d1b77ec2d4ad8e9adba9d65e31
+        mergeA: 
+        mergeB: 
+        authorName: Tom Langan
+        authorEmail: tom.langan@hotmail.com
+        commitEmail: tom.langan@hotmail.com
+        commitName: Tom Langan
+        summary: Fixed android build?
+        description: 
+        timeString: 2020-01-07T21:14:14.000-08:00
+        commitTimeString: 2020-01-07T21:14:14.000-08:00
+        changes:
+        - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 4
+          workTreeStatus: 0
+      statusAhead: 0
+      selectedIndex: 0
+    selectedEntry:
+      commitID: 846369bd2a97a5bfc2df288a60c8ed401c3e1deb
+      mergeA: 
+      mergeB: 
+      authorName: Tom Langan
+      authorEmail: tom.langan@hotmail.com
+      commitEmail: tom.langan@hotmail.com
+      commitName: Tom Langan
+      summary: Added explosions to missiles
+      description: 
+      timeString: 2020-01-25T21:54:45.000-08:00
+      commitTimeString: 2020-01-25T21:54:45.000-08:00
+      changes:
+      - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+        fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+        projectPath: Assets\Resources\Levels\projectiles.txt
+        originalPath: 
+        indexStatus: 3
+        workTreeStatus: 0
+    treeChanges:
+      assets:
+        keys: []
+        values: []
+      folders:
+        keys:
+        - UnityProject
+        - UnityProject\Assets
+        - UnityProject\Assets\Resources
+        - UnityProject\Assets\Resources\Levels
+        values:
+        - path: UnityProject
+          label: UnityProject
+          level: 0
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 0
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: UnityProject\Assets
+          label: Assets
+          level: 1
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 0
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: UnityProject\Assets\Resources
+          label: Resources
+          level: 2
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 0
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: UnityProject\Assets\Resources\Levels
+          label: Levels
+          level: 3
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 0
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+      checkedFileNodes:
+        keys: []
+        values: []
+      title: 
+      pathSeparator: \
+      displayRootNode: 0
+      isSelectable: 1
+      isCheckable: 0
+      isUsingGlobalSelection: 0
+      nodes:
+      - path: 
+        label: 
+        level: -1
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UnityProject
+        label: UnityProject
+        level: 0
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UnityProject\Assets
+        label: Assets
+        level: 1
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UnityProject\Assets\Resources
+        label: Resources
+        level: 2
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UnityProject\Assets\Resources\Levels
+        label: Levels
+        level: 3
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+        label: projectiles.txt
+        level: 4
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: UnityProject\Assets\Resources\Levels\projectiles.txt
+          fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+          projectPath: Assets\Resources\Levels\projectiles.txt
+          originalPath: 
+          indexStatus: 3
+          workTreeStatus: 0
+      selectedNode:
+        path: 
+        label: 
+        level: 0
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+    detailsScroll: {x: 0, y: 0}
+    gitStatusEntries: []
+    lastStatusEntriesChangedEvent:
+      updatedTimeString: 2020-01-26T21:08:38.043-08:00
+      cacheType: 6
+    lastFileLogChangedEvent:
+      updatedTimeString: 0001-01-01T00:00:00.000+00:00
+      cacheType: 4
+  selectedObject: {fileID: 4900000, guid: 31d87f2672d8048ccb2745832a8e49c8, type: 3}
+  selectedObjectAssetPath: Assets\Resources\Levels\projectiles.txt
+  selectedObjectRepositoryPath: UnityProject/Assets/Resources/Levels/projectiles.txt
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -407,7 +875,7 @@ MonoBehaviour:
   m_CurrentEditor: 0
   m_LayerEditor:
     m_SelectedLayerIndex: 0
---- !u!114 &13
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -642,13 +1110,13 @@ MonoBehaviour:
     gitStatusEntries: []
     changedFilesText: No changed files
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 2020-01-22T06:54:09.831-08:00
+      updatedTimeString: 2020-01-26T20:50:20.134-08:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 0001-01-01T00:00:00.000+00:00
+      updatedTimeString: 2020-01-26T21:08:38.043-08:00
       cacheType: 6
     lastLocksChangedEvent:
-      updatedTimeString: 0001-01-01T00:00:00.000+00:00
+      updatedTimeString: 2020-01-26T21:07:53.082-08:00
       cacheType: 7
   historyView:
     currentLogHasUpdate: 0
@@ -739,23 +1207,11 @@ MonoBehaviour:
       timeString: 2019-12-13T14:35:07.000-08:00
       commitTimeString: 2019-12-13T14:35:07.000-08:00
       changes:
-      - path: .gitattributes
-        fullPath: /Users/tomlangan/TD/.gitattributes
-        projectPath: .gitattributes
+      - path: UnityProject\Assets\Resources\Levels\projectiles.txt
+        fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
+        projectPath: Assets\Resources\Levels\projectiles.txt
         originalPath: 
-        indexStatus: 4
-        workTreeStatus: 0
-      - path: .gitignore
-        fullPath: /Users/tomlangan/TD/.gitignore
-        projectPath: .gitignore
-        originalPath: 
-        indexStatus: 4
-        workTreeStatus: 0
-      - path: Assets/.gitignore
-        fullPath: /Users/tomlangan/TD/Assets/.gitignore
-        projectPath: Assets/.gitignore
-        originalPath: 
-        indexStatus: 4
+        indexStatus: 3
         workTreeStatus: 0
     treeChanges:
       assets:
@@ -1022,7 +1478,7 @@ MonoBehaviour:
   appManagerProgressMessage: Initialized
   connections: []
   primaryConnectionUsername: tomlangan
---- !u!114 &14
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1053,7 +1509,7 @@ MonoBehaviour:
   - https://public-cdn.cloud.unity3d.com/editor/production/cloud/hub
   m_RegisteredViewInstances:
   - {fileID: 0}
---- !u!114 &15
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1074,10 +1530,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 212
-    y: 75
-    width: 942
-    height: 430
+    x: 319.72177
+    y: 80.13914
+    width: 1390
+    height: 624
   m_PersistentViewDataDictionary: {fileID: 0}
   m_WindowGUID: b8f745bb65c174c01bcc149be977f32e
   m_SceneLighting: 1
@@ -1085,9 +1541,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 730, y: -12, z: 0}
+    m_Target: {x: -5.31, y: -3.3, z: 0}
     speed: 2
-    m_Value: {x: 730, y: -12, z: 0}
+    m_Value: {x: -5.31, y: -3.3, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1107,21 +1563,21 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
     yGrid:
-      m_Target: 1
+      m_Target: 0
       speed: 2
-      m_Value: 1
+      m_Value: 0
     zGrid:
       m_Target: 0
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.27567542, y: -0.28074965, z: 0.084543005, w: -0.91544265}
+    m_Target: {x: -0.09882545, y: -0.016991215, z: 0.0016851907, w: -0.9949629}
     speed: 2
-    m_Value: {x: -0.27567542, y: -0.28074965, z: 0.084543005, w: -0.91544265}
+    m_Value: {x: -0.098825, y: -0.016991138, z: 0.001685183, w: -0.99495834}
   m_Size:
-    m_Target: 273.63406
+    m_Target: 5.9827466
     speed: 2
-    m_Value: 273.63406
+    m_Value: 5.9827466
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1133,7 +1589,7 @@ MonoBehaviour:
   m_ReplacementString: 
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &16
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1154,31 +1610,31 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 75
-    width: 210
-    height: 430
+    x: 7.513044
+    y: 80.13914
+    width: 310
+    height: 624
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 52290000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 40c8ffff
+      m_SelectedIDs: b0ac0000
+      m_LastClickedID: 44208
+      m_ExpandedIDs: 545effff2860ffffdefbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: 20019
+        m_OriginalName: 20019
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 43984
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -1188,7 +1644,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: c4cdc85820430424e9fc85a63d3ff11c
---- !u!114 &17
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1209,10 +1665,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 212
-    y: 75
-    width: 942
-    height: 430
+    x: 319.72177
+    y: 80.13914
+    width: 1390
+    height: 624
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
@@ -1224,10 +1680,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -471
-    m_HBaseRangeMax: 471
-    m_VBaseRangeMin: -206.5
-    m_VBaseRangeMax: 206.5
+    m_HBaseRangeMin: -580.17395
+    m_HBaseRangeMax: 580.17395
+    m_VBaseRangeMin: -253.35654
+    m_VBaseRangeMax: 253.35654
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1245,30 +1701,30 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
-      width: 942
-      height: 413
-    m_Scale: {x: 2.6878324, y: 2.6878324}
-    m_Translation: {x: 420.72696, y: 19.539284}
+      width: 1390
+      height: 607
+    m_Scale: {x: 2.6878326, y: 2.6878324}
+    m_Translation: {x: 644.727, y: 116.53928}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -156.53021
-      y: -7.269532
-      width: 350.4683
-      height: 153.65541
+      x: -239.86873
+      y: -43.358093
+      width: 517.1453
+      height: 225.83253
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 1
-  m_LastWindowPixelSize: {x: 1884, y: 860}
+  m_LastWindowPixelSize: {x: 1665.1041, y: 747.5}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
   m_XRRenderMode: 0
---- !u!114 &18
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1294,7 +1750,7 @@ MonoBehaviour:
     width: 1385
     height: 652
   m_PersistentViewDataDictionary: {fileID: 0}
---- !u!114 &19
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1315,10 +1771,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 525
-    width: 1156
-    height: 267
+    x: 7.513044
+    y: 723.7566
+    width: 1704
+    height: 391
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -1332,20 +1788,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Game Explosions
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Game Explosions
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: /Users/tomlangan/TD/UnityProject
+  m_LastProjectPath: F:\git\VRTD\UnityProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 499.00336}
-    m_SelectedIDs: a6770000
-    m_LastClickedID: 30630
-    m_ExpandedIDs: 0000000036650000e06500006e66000028670000fa670000086900005c690000d6690000ee690000ce6a0000746b0000be6b0000106c0000506c0000546f0000ee710000a072000082740000387600009c760000a676000004770000a6770000587b00005c7b0000847b00001885000000ca9a3b
+    scrollPos: {x: 0, y: 180}
+    m_SelectedIDs: 12380000
+    m_LastClickedID: 14354
+    m_ExpandedIDs: 00000000042f00001e300000f6300000fa3100001433000082340000f8340000a2350000d035000020370000f23700000a3900000c39000062390000123a0000163e0000b0410000a642000090450000ea4700006048000076480000f8480000b64900005c4f0000604f0000b04f0000f65a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1373,7 +1829,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000036650000e06500006e66000028670000fa670000086900005c690000d6690000ee690000ce6a0000746b0000be6b0000106c0000506c0000546f0000ee710000a072000082740000387600009c760000a676000004770000a6770000587b00005c7b0000847b000018850000
+    m_ExpandedIDs: 00000000042f00001e300000f6300000fa3100001433000082340000f8340000a2350000d035000020370000f23700007a3800000a39000062390000163e0000b0410000a642000090450000ea4700006048000076480000f8480000b64900005c4f0000604f0000b04f0000f65a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1404,18 +1860,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000223500007e230000683500005c3800007a350000ce50000084350000d235000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: 2
+      m_OriginalName: 2
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 12438
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
@@ -1428,7 +1884,7 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_DirectoriesAreaWidth: 205
---- !u!114 &20
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1449,12 +1905,12 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 744.62616
-    width: 1717
-    height: 377
+    x: 7.513044
+    y: 723.7566
+    width: 1704
+    height: 391
   m_PersistentViewDataDictionary: {fileID: 0}
---- !u!114 &21
+--- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1475,10 +1931,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1158
-    y: 75
-    width: 280
-    height: 717
+    x: 1713.8088
+    y: 80.13914
+    width: 412
+    height: 1035.2522
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
