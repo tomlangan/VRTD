@@ -46,12 +46,12 @@ public class VRInputHandler : MonoBehaviour
         if (DominantHand == OVRInput.Controller.LTouch)
         {
             Buttons[InputState.InputIntent.Selection] = OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.LTouch) || OVRInput.Get(OVRInput.RawButton.LIndexTrigger, OVRInput.Controller.LTouch);
-            Buttons[InputState.InputIntent.MissileTrigger] = OVRInput.Get(OVRInput.RawButton.RHandTrigger, OVRInput.Controller.RTouch);
+            Buttons[InputState.InputIntent.MissileTrigger] = OVRInput.Get(OVRInput.RawButton.RIndexTrigger, OVRInput.Controller.RTouch);
         }
         else
         {
             Buttons[InputState.InputIntent.Selection] = OVRInput.Get(OVRInput.Button.One, OVRInput.Controller.RTouch) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger, OVRInput.Controller.RTouch);
-            Buttons[InputState.InputIntent.MissileTrigger] = OVRInput.Get(OVRInput.RawButton.LHandTrigger, OVRInput.Controller.LTouch);
+            Buttons[InputState.InputIntent.MissileTrigger] = OVRInput.Get(OVRInput.RawButton.LIndexTrigger, OVRInput.Controller.LTouch);
         }
 
 

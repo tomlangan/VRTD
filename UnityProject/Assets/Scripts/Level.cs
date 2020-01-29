@@ -71,7 +71,7 @@ public class Level : MonoBehaviour
                 {
                     Loading = true;
                     GameTime = 0.0F;
-
+                    PreloadAssets();
 
                     Debug.Log("State ==> LevelSelect");
                     State = LevelState.LevelSelect;
@@ -398,5 +398,10 @@ public class Level : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void PreloadAssets()
+    {
+        GameObject loaded = GameObjectFactory.InstantiateObject("HandMissile");
     }
 }

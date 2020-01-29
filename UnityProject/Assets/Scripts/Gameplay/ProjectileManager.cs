@@ -191,6 +191,7 @@ namespace VRTD.Gameplay
 
             DistanceToTravel -= distanceMovedThisFrame;
             GameObjectFactory.SetWorldPos(go, Position);
+            go.transform.forward = Direction.direction;
         }
 
       
@@ -224,10 +225,10 @@ namespace VRTD.Gameplay
 #else
             Vector3 direction = (Enemy.Position - Position).normalized;
 #endif
-            go.transform.forward = direction;
             Vector3 progress = direction * distanceMovedThisFrame;
             Position += progress;
             GameObjectFactory.SetMapPos(go, Position);
+            go.transform.forward = direction;
         }
 
 

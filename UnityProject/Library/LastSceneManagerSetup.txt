@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Game Explosions/Demo Game Explosions.unity
+- path: Assets/Scenes/LevelScene.unity
   isLoaded: 1
   isActive: 1

@@ -23,6 +23,7 @@ TagManager:
   - TurretInstance
   - Grass
   - Road
+  - RocketLauncherArm
   layers:
   - Default
   - TransparentFX
