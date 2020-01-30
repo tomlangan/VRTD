@@ -379,6 +379,7 @@
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Version1.5\Avatar_PC_SingleComponent.shader" />
     <None Include="Assets\Resources\Levels\enemies.txt" />
     <None Include="Assets\Oculus\Avatar\Samples\CrossPlatform\Readme.txt" />
+    <None Include="Assets\Visuals\Free Guns Pack\READ_ME.txt" />
     <None Include="Assets\Oculus\SampleFramework\Core\CustomHands\Materials\Hands_DiffBump.shader" />
     <None Include="Assets\Oculus\SampleFramework\Core\Video\Resources\Multiview Stereo.shader" />
     <None Include="Assets\Oculus\SampleFramework\Usage\Locomotion\Shaders\TriPlanarWorld.shader" />

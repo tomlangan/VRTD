@@ -403,5 +403,6 @@ public class Level : MonoBehaviour
     private void PreloadAssets()
     {
         GameObject loaded = GameObjectFactory.InstantiateObject("HandMissile");
+        GameObjectFactory.DestroyObject(loaded);
     }
 }
