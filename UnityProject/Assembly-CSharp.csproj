@@ -364,6 +364,7 @@
     <Compile Include="Assets\Scripts\UI\ListUI.cs" />
     <Compile Include="Assets\Scripts\UI\MessageUI.cs" />
     <Compile Include="Assets\Scripts\UI\UIPointerInputModule.cs" />
+    <Compile Include="Assets\Scripts\Utilities.cs" />
     <Compile Include="Assets\VRUI - Material Design\Demo\SampleSceneManager.cs" />
     <Compile Include="Assets\VRUI - Material Design\Scripts\VRUIButtonIconToggle.cs" />
     <Compile Include="Assets\VRUI - Material Design\Scripts\VRUICheckbox.cs" />

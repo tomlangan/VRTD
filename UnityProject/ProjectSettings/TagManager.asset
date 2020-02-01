@@ -24,6 +24,7 @@ TagManager:
   - Grass
   - Road
   - RocketLauncherArm
+  - Enemy
   layers:
   - Default
   - TransparentFX

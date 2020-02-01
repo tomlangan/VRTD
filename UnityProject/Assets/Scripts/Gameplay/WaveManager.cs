@@ -23,7 +23,7 @@ namespace VRTD.Gameplay
         public Vector3 Position;
         public List<EffectInstance> ActiveEffects;
         MapPos MapPosition;
-        GameObject go;
+        public GameObject go;
 
         public bool IsActive
         {
@@ -48,6 +48,7 @@ namespace VRTD.Gameplay
             go = GameObjectFactory.InstantiateObject(Desc.Asset);
             GameObject healthIndicatorGo = GameObjectFactory.InstantiateObject("EnemyHealthIndicator");
 #if LEVEL_EDITOR == false
+            go.tag = "Enemy";
             healthIndicatorGo.transform.parent = go.transform;
             healthIndicatorGo.transform.forward = Vector3.back;
 #endif
@@ -74,7 +75,7 @@ namespace VRTD.Gameplay
                 int posIndex = (int)LinearProgress;
                 MapPos newMapPos = null;
 
-                Debug.Assert(posIndex < levelDesc.Road.Count);
+                Utilities.Assert(posIndex < levelDesc.Road.Count);
 
                 newMapPos = levelDesc.Road[posIndex];
 
@@ -205,7 +206,7 @@ namespace VRTD.Gameplay
 
         public void Advance(float waveTime)
         {
-            Debug.Assert(!IsCompleted);
+            Utilities.Assert(!IsCompleted);
 
 
             SpawnNewEnemies(waveTime);
@@ -237,7 +238,6 @@ namespace VRTD.Gameplay
                     Enemies.Add(newEnemy);
                     LastSpawnTime = nextSpawnTime;
                     SpawnedCount++;
-                    Debug.Log("     Spawned Enemy " + SpawnedCount);
                 }
                 else
                 {
@@ -275,7 +275,6 @@ namespace VRTD.Gameplay
                             break;
                     }
 
-                    Debug.Log("EFFECT APPLIED: " + effect.Effect.EffectType + " Damage: " + damage);
 
                     if (effect.Completed)
                     {
@@ -361,6 +360,20 @@ namespace VRTD.Gameplay
             return ret;
         }
 
+        public EnemyInstance GetEnemyFromGameObject(GameObject go)
+        {
+            for (int i = 0; i < Enemies.Count; i++)
+            {
+                if (Enemies[i].go == go)
+                {
+                    return Enemies[i];
+                }
+            }
+
+            // Didn't find it
+            return null;
+        }
+
         public void DestroyAll()
         {
             for (int i = Enemies.Count; i > 0; i--)
@@ -398,12 +411,12 @@ namespace VRTD.Gameplay
 
         public void AdvanceToNextWave(float gameTime)
         {
-            Debug.Assert(WavesStarted < LevelDesc.Waves.Count);
+            Utilities.Assert(WavesStarted < LevelDesc.Waves.Count);
 
             CurrentWave = new WaveInstance(LevelDesc, LevelDesc.Waves[WavesStarted], LevelLoader.LookupEnemy(LevelDesc.Waves[WavesStarted].Enemy), gameTime);
 
             WavesStarted++;
-            Debug.Log("  Wave " + WavesStarted);
+            Utilities.Log("  Wave " + WavesStarted);
         }
 
         public void DestroyAll()

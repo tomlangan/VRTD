@@ -104,8 +104,8 @@ namespace VRTD.Gameplay
 
                 LastShotTime = LastShotTime + TurretType.FireRate;
 
-                Debug.Log("TURRET FIRE: " + this.TurretType.Name);
-                Projectiles.Fire(this, nearestEnemyInRange, LastShotTime);
+                Utilities.Log("TURRET FIRE: " + this.TurretType.Name);
+                Projectiles.Fire(TurretType.Projectile, new Vector3(Position.x, 0.25F, Position.z), nearestEnemyInRange, LastShotTime);
 
                 timeSinceLastShot = (waveTime - LastShotTime);
             }

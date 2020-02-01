@@ -37,7 +37,7 @@ public class OVRManifestPreprocessor
 		if (!File.Exists(srcFile))
 		{
 			Debug.LogError("Cannot find Android manifest template for submission." +
-				" Please delete the OVR folder and reimport the Oculus Utilities.");
+				" Please delete the OVR folder and reimport the Oculus Debug.");
 			return;
 		}
 

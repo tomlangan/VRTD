@@ -1325,7 +1325,7 @@ public class OvrAvatar : MonoBehaviour
             // Verify length (-1 for laughter)
             if (currentFrame.Visemes.Length != (VISEME_COUNT - 1))
             {
-                Debug.LogError("Unexpected number of visemes " + currentFrame.Visemes);
+                Utilities.LogError("Unexpected number of visemes " + currentFrame.Visemes);
                 return;
             }
 

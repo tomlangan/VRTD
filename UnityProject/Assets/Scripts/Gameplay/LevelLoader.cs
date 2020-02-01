@@ -43,6 +43,8 @@ public class GameObject { }
         public static MapPos WorldVec3ToMapPos(Vector3 vec3) { return new MapPos(); }
         public static void Destroy(GameObject go) { }
         public static void SetWorldPos(GameObject go, Vector3 vec3) { }
+
+        public Vector3 forward;
     }
 #endif
 
@@ -431,7 +433,7 @@ public class GameObject { }
 #if LEVEL_EDITOR != true
             if (!filePath.EndsWith(".txt"))
             {
-                Debug.LogError("File does not end with '.txt': " + filePath);
+                Utilities.LogError("File does not end with '.txt': " + filePath);
             }
             string pathWithoutJsonExtension = filePath.Substring(0, filePath.Length - 4);
             TextAsset fileAsset = Resources.Load<TextAsset>(pathWithoutJsonExtension);
@@ -444,7 +446,7 @@ public class GameObject { }
             }
             else
             {
-                Debug.LogError("Failed to open file: " + pathWithoutJsonExtension);
+                Utilities.LogError("Failed to open file: " + pathWithoutJsonExtension);
             }
             
 #endif

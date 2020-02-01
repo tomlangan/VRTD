@@ -333,7 +333,7 @@ partial class OculusBuildApp : EditorWindow
 					if (e.Data.Contains("SUCCESSFUL"))
 					{
 						UnityEngine.Debug.LogFormat("APK Build Completed: {0}",
-							Path.Combine(Path.Combine(gradleProjectPath, "build\\outputs\\apk\\debug"), productName + "-debug.apk").Replace("/", "\\"));
+							Path.Combine(Path.Combine(gradleProjectPath, "build\\outputs\\apk\\debug"), productName + "-Debug.apk").Replace("/", "\\"));
 						if (!apkOutputSuccessful.HasValue)
 						{
 							apkOutputSuccessful = true;
@@ -464,10 +464,10 @@ partial class OculusBuildApp : EditorWindow
 			}
 
 			// Search for output APK in gradle output directory
-			apkPathLocal = Path.Combine(gradleExportFolder, productName + "-debug.apk");
+			apkPathLocal = Path.Combine(gradleExportFolder, productName + "-Debug.apk");
 			if (!System.IO.File.Exists(apkPathLocal))
 			{
-				UnityEngine.Debug.LogError(string.Format("Could not find {0} in the gradle project.", productName + "-debug.apk"));
+				UnityEngine.Debug.LogError(string.Format("Could not find {0} in the gradle project.", productName + "-Debug.apk"));
 				return false;
 			}
 
@@ -494,7 +494,7 @@ partial class OculusBuildApp : EditorWindow
 
 			// Install the APK package on the device
 			IncrementProgressBar("Installing APK . . .");
-			string apkPath = REMOTE_APK_PATH + "/" + productName + "-debug.apk";
+			string apkPath = REMOTE_APK_PATH + "/" + productName + "-Debug.apk";
 			apkPath = apkPath.Replace(" ", "\\ ");
 			string[] installCommand = { "-d shell", "pm install -r", apkPath };
 

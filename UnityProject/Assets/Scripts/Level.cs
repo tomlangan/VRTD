@@ -49,12 +49,12 @@ public class Level : MonoBehaviour
     void Start()
     {
 
-        Debug.Log("Start()");
+        Utilities.Log("Start()");
 
         UnityEngine.Random.InitState(42);
 
 
-        Debug.Log("State ==> Loading");
+        Utilities.Log("State ==> Loading");
         State = LevelState.Loading;
     }
 
@@ -73,7 +73,7 @@ public class Level : MonoBehaviour
                     GameTime = 0.0F;
                     PreloadAssets();
 
-                    Debug.Log("State ==> LevelSelect");
+                    Utilities.Log("State ==> LevelSelect");
                     State = LevelState.LevelSelect;
                     ShowLevelSelectUI();
                     Loading = false;
@@ -93,7 +93,7 @@ public class Level : MonoBehaviour
 
             case LevelState.StatsScreen:
                 // For now, select level again
-                Debug.Log("State ==> LevelSelect");
+                Utilities.Log("State ==> LevelSelect");
                 State = LevelState.LevelSelect;
                 ShowLevelSelectUI();
                 break;
@@ -110,7 +110,7 @@ public class Level : MonoBehaviour
         Waves = new WaveManager(LevelDesc);
         Turrets = new TurretManager(LevelDesc);
         Projectiles = new ProjectileManager(LevelDesc);
-        Debug.Log("Creating road objects");
+        Utilities.Log("Creating road objects");
         GameObjectFactory.CreateMapObjects(LevelDesc);
         InitializeGameplayUISettings();
 
@@ -149,7 +149,7 @@ public class Level : MonoBehaviour
 
     void TickWaveCountdown()
     {
-        Debug.Assert((GameTime - CountdownStartTime) > 0);
+        Utilities.Assert((GameTime - CountdownStartTime) > 0);
 
         float elapsed = GameTime - CountdownStartTime;
 
@@ -163,7 +163,7 @@ public class Level : MonoBehaviour
             CountdownUI.transform.gameObject.SetActive(false);
             CountdownUI.enabled = false;
 
-            Debug.Log("State ==> Playing");
+            Utilities.Log("State ==> Playing");
             State = LevelState.Playing;
         }
 
@@ -187,7 +187,7 @@ public class Level : MonoBehaviour
         else if (Waves.CurrentWave.IsCompleted)
         {
 
-            Debug.Log("State ==> WaveCountdown");
+            Utilities.Log("State ==> WaveCountdown");
             ShowCountdownUI();
             Waves.AdvanceToNextWave(GameTime);
             State = LevelState.WaveCountdown;
@@ -226,7 +226,7 @@ public class Level : MonoBehaviour
     
     void OnLevelComplete()
     {
-        Debug.Log("State ==> StatsScreen");
+        Utilities.Log("State ==> StatsScreen");
         State = LevelState.StatsScreen;
         HideHUDUI();
     }
@@ -394,7 +394,18 @@ public class Level : MonoBehaviour
                 {
                     Projectiles.Fire("Hand Missile", Pointer.State.SecondaryHandRay.origin, Pointer.State.SecondaryHandRay.direction, hitinfo.distance, GameTime);
                     LastMissileTime = GameTime;
-                    Debug.Log("Fired hand missile");
+                    Utilities.Log("Fired hand missile");
+                }
+                else if (hitinfo.transform.gameObject.tag == "Enemy")
+                {
+                    EnemyInstance enemy = Waves.CurrentWave.GetEnemyFromGameObject(hitinfo.transform.gameObject);
+                    if (null == enemy)
+                    {
+                        throw new Exception("Couldn't find enemy from GameObject lookup!");
+                    }
+                    Projectiles.Fire("Hand Missile", Pointer.State.SecondaryHandRay.origin, enemy, GameTime);
+                    LastMissileTime = GameTime;
+                    Utilities.Log("Fired hand missile");
                 }
             }
         }

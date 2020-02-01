@@ -33,6 +33,7 @@ namespace VRTD.Gameplay
         public float StartTime;
         public float LastTime;
         public bool Completed;
+        public float ImpactHandicap = 1.0F;
         GameObject go;
 
         public EffectInstance(EnemyInstance enemy, ProjectileEffect effect, float waveStartTime)
@@ -46,7 +47,7 @@ namespace VRTD.Gameplay
 
         public float AdvanceAndReportImpact(float waveTime)
         {
-            Debug.Assert(!Completed);
+            Utilities.Assert(!Completed);
 
             float impactPercent = 0.0F;
 
@@ -75,7 +76,7 @@ namespace VRTD.Gameplay
             }
             LastTime = waveTime;
 
-            return (impactPercent * Effect.EffectImpact);
+            return (impactPercent * Effect.EffectImpact * ImpactHandicap);
         }
 
         public void Destroy()
@@ -147,7 +148,9 @@ namespace VRTD.Gameplay
             IsComplete = false;
             go = GameObjectFactory.InstantiateObject(ProjectileType.Asset);
             GameObjectFactory.SetMapPos(go, Position);
+#if LEVEL_EDITOR == false
             go.transform.forward = direction;
+#endif
             heatSeeking = false;
         }
 
@@ -191,7 +194,9 @@ namespace VRTD.Gameplay
 
             DistanceToTravel -= distanceMovedThisFrame;
             GameObjectFactory.SetWorldPos(go, Position);
+#if LEVEL_EDITOR == false
             go.transform.forward = Direction.direction;
+#endif
         }
 
       
@@ -200,7 +205,7 @@ namespace VRTD.Gameplay
         { 
             if (!Enemy.IsActive)
             {
-                Debug.Log("  enemy no longer active (projectile dead)");
+                Utilities.Log("  enemy no longer active (projectile dead)");
                 IsComplete = true;
                 Destroy();
                 return;
@@ -228,7 +233,9 @@ namespace VRTD.Gameplay
             Vector3 progress = direction * distanceMovedThisFrame;
             Position += progress;
             GameObjectFactory.SetMapPos(go, Position);
+#if LEVEL_EDITOR == false
             go.transform.forward = direction;
+#endif
         }
 
 
@@ -236,20 +243,6 @@ namespace VRTD.Gameplay
         {
             List<EnemyInstance> enemies = new List<EnemyInstance>();
 
-            MapPos mapcontactpos = GameObjectFactory.WorldVec3ToMapPos(contactPos);
-
-            for (int i = 0; i < LevelDesc.Road.Count; i++)
-            {
-                MapPos roadItem = LevelDesc.Road[i];
-                float distanceFromRoadSegment = Vector3.Distance(mapcontactpos.Pos, roadItem.Pos);
-                if (distanceFromRoadSegment <= radius)
-                {
-                    for (int j = 0; j < roadItem.EnemiesOccupying.Count; j++)
-                    {
-                        enemies.Add(roadItem.EnemiesOccupying[j]);
-                    }
-                }
-            }
 
             return enemies;
         }
@@ -266,25 +259,48 @@ namespace VRTD.Gameplay
 
             for (int j = 0; j < ProjectileType.Effects.Count; j++)
             {
-                EffectInstance projectileEffect = new EffectInstance(Enemy, ProjectileType.Effects[j], waveTime);
+                EffectInstance projectileEffect = null;
                 if (ProjectileType.Effects[j].EffectRadius == 0.0F)
                 {
                     if (null == enemy)
                     {
                         throw new Exception("Projectiles with zero range need to be heat seeking");
                     }
+                    projectileEffect = new EffectInstance(Enemy, ProjectileType.Effects[j], waveTime);
                     enemy.ActiveEffects.Add(projectileEffect);
                 }
                 else
                 {
-                    List<EnemyInstance> enemies = FindEnemiesInBlastRadius(pos, ProjectileType.Effects[j].EffectRadius);
-                    if (enemy != null && !enemies.Contains(enemy))
+                    MapPos mapcontactpos = GameObjectFactory.WorldVec3ToMapPos(pos);
+
+                    for (int i = 0; i < LevelDesc.Road.Count; i++)
                     {
-                        enemies.Add(enemy);
-                    }
-                    for(int i = 0; i < enemies.Count; i++)
-                    {
-                        enemies[i].ActiveEffects.Add(projectileEffect);
+                        MapPos roadItem = LevelDesc.Road[i];
+                        float distanceFromRoadSegment = Vector3.Distance(mapcontactpos.Pos, roadItem.Pos);
+                        if (distanceFromRoadSegment <= ProjectileType.Effects[j].EffectRadius)
+                        {
+                            for (int k = 0; k < roadItem.EnemiesOccupying.Count; k++)
+                            {
+                                projectileEffect = new EffectInstance(Enemy, ProjectileType.Effects[j], waveTime);
+                                EnemyInstance currentEnemy = roadItem.EnemiesOccupying[j];
+                                if (currentEnemy == enemy)
+                                {
+                                    // Direct hit -- apply major impact
+                                    projectileEffect.ImpactHandicap = 1.0F;
+                                }
+                                else if (distanceFromRoadSegment < (ProjectileType.Effects[j].EffectRadius/2))
+                                {
+                                    // Within half of radius
+                                    projectileEffect.ImpactHandicap = 0.5F;
+                                }
+                                else
+                                {
+                                    // outer radius
+                                    projectileEffect.ImpactHandicap = 0.25F;
+                                }
+                                currentEnemy.ActiveEffects.Add(projectileEffect);
+                            }
+                        }
                     }
                 }
             }
@@ -300,7 +316,7 @@ namespace VRTD.Gameplay
                     GameObjectFactory.Destroy(go);
                 }catch (Exception e)
                 {
-                    Debug.Log(e.Message);
+                    Utilities.Log(e.Message);
                 }
                 go = null;
             }
@@ -331,10 +347,10 @@ namespace VRTD.Gameplay
         }
 
 
-        public void Fire(TurretInstance turret, EnemyInstance target, float fireTime)
+        public void Fire(string projectileName, Vector3 origin, EnemyInstance target, float fireTime)
         {
-            ProjectileInstance projectile = new ProjectileInstance(ProjectileReader(turret.TurretType.Projectile), new Vector3(turret.Position.x, 0.0F, turret.Position.z), target, fireTime, LevelDesc);
-            Debug.Assert(target.HealthRemaining > 0.0F);
+            ProjectileInstance projectile = new ProjectileInstance(ProjectileReader(projectileName), origin, target, fireTime, LevelDesc);
+            Utilities.Assert(target.HealthRemaining > 0.0F);
             ProjectilesInFlight.Add(projectile);
         }
 
