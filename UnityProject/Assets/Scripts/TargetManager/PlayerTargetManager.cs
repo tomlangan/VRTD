@@ -6,13 +6,27 @@ using UnityEngine;
 public class PlayerTargetManager : MonoBehaviour
 {
     public enum TargetPlatform { Desktop, VR }
+    public enum InputTarget { MenuScene, TowerDefenseScene }
 
-	public OVRCameraRig OVRCamera;
+    public OVRCameraRig OVRCamera;
 	public Camera MainCamera;
     public DesktopInputHandler DesktopInput;
     public VRInputHandler VRInput;
     public OvrAvatar LocalAvatar;
     public TargetPlatform Target = TargetPlatform.VR;
+    public InputTarget InputMode
+    {
+        get
+        {
+            return inputMode;
+        }
+        set
+        {
+            inputMode = value;
+            DesktopInput.InputMode = inputMode;
+        }
+    }
+    private InputTarget inputMode = InputTarget.TowerDefenseScene;
     private GameObject RocketLauncherArm = null;
 
     public Transform CameraTransform

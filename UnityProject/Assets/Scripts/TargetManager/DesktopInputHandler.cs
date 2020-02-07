@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DesktopInputHandler : MonoBehaviour
 {
+
     public InputPointer InputDemuxer;
     public GameObject VirtualHand;
     //This is the distance the clickable plane is from the camera. Set it in the Inspector before running.
@@ -14,6 +15,7 @@ public class DesktopInputHandler : MonoBehaviour
     public Vector2 MiddleClickMouseMovement = new Vector2();
     private Vector2 PreviousMiddleClickMousePos = new Vector2();
     private bool wasMiddleClickEnabled = false;
+    public PlayerTargetManager.InputTarget InputMode = PlayerTargetManager.InputTarget.TowerDefenseScene;
 
     // Start is called before the first frame update
     void Start()
@@ -52,9 +54,19 @@ public class DesktopInputHandler : MonoBehaviour
             float xRelativePosFromCenter = (Input.mousePosition.x - (Screen.width / 2)) / Screen.width;
             float zPos = Input.mousePosition.y / Screen.height;
             float zRelativePosFromCenter = zPos - 0.5F;
-            // Black magic that needs to change if we ever change the camera position!
-            Vector3 SelectionRayTarget = new Vector3((70.0F * xRelativePosFromCenter) - 2.0F , 0.0F, (100.0F * zRelativePosFromCenter) + 15.0F);
-            VirtualHandDirection = (SelectionRayTarget - VirtualHandPosition).normalized;
+            if (InputMode == PlayerTargetManager.InputTarget.TowerDefenseScene)
+            {
+
+                // Black magic that needs to change if we ever change the camera position!
+                Vector3 SelectionRayTarget = new Vector3((70.0F * xRelativePosFromCenter) - 2.0F, 0.0F, (100.0F * zRelativePosFromCenter) + 15.0F);
+                VirtualHandDirection = (SelectionRayTarget - VirtualHandPosition).normalized;
+            }
+            else if (InputMode == PlayerTargetManager.InputTarget.MenuScene)
+            {
+
+                VirtualHandDirection = new Vector3(10.0F * xRelativePosFromCenter, 10.0F * zRelativePosFromCenter, 20.0F);
+                VirtualHandDirection = VirtualHandDirection.normalized;
+            }
 
 
             Buttons[InputState.InputIntent.Selection] = Input.GetMouseButtonDown(0);
