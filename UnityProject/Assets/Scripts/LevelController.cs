@@ -43,6 +43,7 @@ public class LevelController : MonoBehaviour
 
     private MessageUI CountdownUI;
     private HUDUI HUD;
+    private GameObject RocketLauncherArm = null;
 
 
     // Start is called before the first frame update
@@ -56,6 +57,8 @@ public class LevelController : MonoBehaviour
 
         Utilities.Log("State ==> Loading");
         State = LevelState.Loading;
+
+        RocketLauncherArm = GameObject.FindWithTag("RocketLauncherArm");
     }
 
     // Update is called once per frame
@@ -97,6 +100,24 @@ public class LevelController : MonoBehaviour
                 State = LevelState.LevelSelect;
                 ShowLevelSelectUI();
                 break;
+        }
+
+        UpdateSelfAvatar();
+    }
+
+    void UpdateSelfAvatar()
+    {
+        if (TargetManager.Target == PlayerTargetManager.TargetPlatform.VR)
+        {
+            RocketLauncherArm.transform.position = TargetManager.OVRCamera.leftControllerAnchor.position;
+            RocketLauncherArm.transform.forward = TargetManager.OVRCamera.leftControllerAnchor.forward;
+            RocketLauncherArm.transform.rotation = TargetManager.OVRCamera.leftControllerAnchor.rotation;
+        }
+        else if (TargetManager.Target == PlayerTargetManager.TargetPlatform.Desktop)
+        {
+            TargetManager.MainCamera.transform.Rotate(-DesktopInput.MiddleClickMouseMovement.y * 0.1F, DesktopInput.MiddleClickMouseMovement.x * 0.1F, 0.0F);
+            RocketLauncherArm.transform.forward = DesktopInput.VirtualHandDirection;
+            RocketLauncherArm.transform.position = DesktopInput.VirtualHandPosition;
         }
     }
 

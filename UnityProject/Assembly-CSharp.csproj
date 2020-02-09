@@ -366,7 +366,6 @@
     <Compile Include="Assets\Scripts\UI\MessageUI.cs" />
     <Compile Include="Assets\Scripts\UI\UIPointerInputModule.cs" />
     <Compile Include="Assets\Scripts\Utilities.cs" />
-    <Compile Include="Assets\Scripts\x.cs" />
     <Compile Include="Assets\Visuals\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\Visuals\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
     <Compile Include="Assets\Visuals\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />

@@ -27,7 +27,6 @@ public class PlayerTargetManager : MonoBehaviour
         }
     }
     private InputTarget inputMode = InputTarget.TowerDefenseScene;
-    private GameObject RocketLauncherArm = null;
 
     public Transform CameraTransform
     {
@@ -47,8 +46,6 @@ public class PlayerTargetManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        RocketLauncherArm = GameObject.FindWithTag("RocketLauncherArm");
-
         if (TargetPlatform.Desktop == Target)
         {
             MainCamera.enabled = true;
@@ -82,17 +79,5 @@ public class PlayerTargetManager : MonoBehaviour
     // Update is called once per frame
    void Update()
     {
-        if (TargetPlatform.VR == Target)
-        {
-            RocketLauncherArm.transform.position = OVRCamera.leftControllerAnchor.position;
-            RocketLauncherArm.transform.forward = OVRCamera.leftControllerAnchor.forward;
-            RocketLauncherArm.transform.rotation = OVRCamera.leftControllerAnchor.rotation;
-        }
-        else if (TargetPlatform.Desktop == Target)
-        {
-            MainCamera.transform.Rotate(-DesktopInput.MiddleClickMouseMovement.y * 0.1F, DesktopInput.MiddleClickMouseMovement.x * 0.1F, 0.0F);
-            RocketLauncherArm.transform.forward = DesktopInput.VirtualHandDirection;
-            RocketLauncherArm.transform.position = DesktopInput.VirtualHandPosition;
-        }
     }
 }
