@@ -43,6 +43,8 @@ namespace VRTD.LevelEditor
         LevelSolution Solution = null;
         TreeViewColumn SaveSolutionColumn = null;
         TreeViewColumn LoadSolutionColumn = null;
+        float HandMissilesPerSec = 3.0F;
+        float HandMissileAccuracyHandicapAverage = 0.5F;
 
         public LevelAnalysisLayout() : base(null, null)
         {
@@ -88,6 +90,17 @@ namespace VRTD.LevelEditor
             field = GtkHelpers.ReadOnlyTextField("Starting Coins", desc.StartingCoins.ToString());
             Layout.PackStart(field, false, false, 0);
             field.Show();
+
+
+            field = GtkHelpers.TextEntryField("Hand Missiles Per Sec", HandMissilesPerSec.ToString(), AssumedFireRatePerSecChanged_Changed, true, GtkHelpers.ValueType.Float);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
+
+
+            field = GtkHelpers.TextEntryField("Hand Missile Average Accuracy Handicap", HandMissileAccuracyHandicapAverage.ToString(), AssumedHandMissileAccuracyHandicap_Changed, true, GtkHelpers.ValueType.Float);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
+
 
             WavesTree = new TreeView();
             Layout.PackStart(WavesTree, false, false, 0);
@@ -413,6 +426,39 @@ namespace VRTD.LevelEditor
                     }
                 }
                 catch (Exception ex) { }
+            }
+        }
+
+
+        private void AssumedFireRatePerSecChanged_Changed(object sender, EventArgs e)
+        {
+            string newName = ((Entry)sender).Text;
+            if (newName.Length > 0)
+            {
+                try
+                {
+                    float newVal = float.Parse(newName);
+                    HandMissilesPerSec  = newVal;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+        private void AssumedHandMissileAccuracyHandicap_Changed(object sender, EventArgs e)
+        {
+            string newName = ((Entry)sender).Text;
+            if (newName.Length > 0)
+            {
+                try
+                {
+                    float newVal = float.Parse(newName);
+                    HandMissileAccuracyHandicapAverage = newVal;
+                }
+                catch (Exception ex)
+                {
+                }
             }
         }
 

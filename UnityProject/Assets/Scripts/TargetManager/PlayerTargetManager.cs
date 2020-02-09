@@ -6,14 +6,27 @@ using UnityEngine;
 public class PlayerTargetManager : MonoBehaviour
 {
     public enum TargetPlatform { Desktop, VR }
+    public enum InputTarget { MenuScene, TowerDefenseScene }
 
-	public OVRCameraRig OVRCamera;
+    public OVRCameraRig OVRCamera;
 	public Camera MainCamera;
     public DesktopInputHandler DesktopInput;
     public VRInputHandler VRInput;
     public OvrAvatar LocalAvatar;
     public TargetPlatform Target = TargetPlatform.VR;
-    private GameObject RocketLauncherArm = null;
+    public InputTarget InputMode
+    {
+        get
+        {
+            return inputMode;
+        }
+        set
+        {
+            inputMode = value;
+            DesktopInput.InputMode = inputMode;
+        }
+    }
+    private InputTarget inputMode = InputTarget.TowerDefenseScene;
 
     public Transform CameraTransform
     {
@@ -33,8 +46,6 @@ public class PlayerTargetManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        RocketLauncherArm = GameObject.FindWithTag("RocketLauncherArm");
-
         if (TargetPlatform.Desktop == Target)
         {
             MainCamera.enabled = true;
@@ -68,17 +79,5 @@ public class PlayerTargetManager : MonoBehaviour
     // Update is called once per frame
    void Update()
     {
-        if (TargetPlatform.VR == Target)
-        {
-            RocketLauncherArm.transform.position = OVRCamera.leftControllerAnchor.position;
-            RocketLauncherArm.transform.forward = OVRCamera.leftControllerAnchor.forward;
-            RocketLauncherArm.transform.rotation = OVRCamera.leftControllerAnchor.rotation;
-        }
-        else if (TargetPlatform.Desktop == Target)
-        {
-            MainCamera.transform.Rotate(-DesktopInput.MiddleClickMouseMovement.y * 0.1F, DesktopInput.MiddleClickMouseMovement.x * 0.1F, 0.0F);
-            RocketLauncherArm.transform.forward = DesktopInput.VirtualHandDirection;
-            RocketLauncherArm.transform.position = DesktopInput.VirtualHandPosition;
-        }
     }
 }

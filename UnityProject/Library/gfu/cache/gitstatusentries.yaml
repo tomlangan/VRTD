@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-01-31T22:20:34.525-08:00
-  initializedAtString: 2020-01-31T21:30:42.269-08:00
+  lastUpdatedAtString: 2020-02-08T22:07:28.837-08:00
+  initializedAtString: 2020-02-08T21:15:13.143-08:00
   entries:
   - path: UnityProject\Assembly-CSharp.csproj
     fullPath: F:\git\VRTD\UnityProject\Assembly-CSharp.csproj
@@ -22,96 +22,72 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Oculus\Avatar\Scripts\OvrAvatar.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Oculus\Avatar\Scripts\OvrAvatar.cs
-    projectPath: Assets\Oculus\Avatar\Scripts\OvrAvatar.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Oculus\VR\Editor\OVRBuild.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Oculus\VR\Editor\OVRBuild.cs
-    projectPath: Assets\Oculus\VR\Editor\OVRBuild.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Oculus\VR\Editor\OVREngineConfigurationUpdater.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Oculus\VR\Editor\OVREngineConfigurationUpdater.cs
-    projectPath: Assets\Oculus\VR\Editor\OVREngineConfigurationUpdater.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Oculus\VR\Editor\OVRManifestPreprocessor.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Oculus\VR\Editor\OVRManifestPreprocessor.cs
-    projectPath: Assets\Oculus\VR\Editor\OVRManifestPreprocessor.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Resources\Levels\projectiles.txt
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\Levels\projectiles.txt
-    projectPath: Assets\Resources\Levels\projectiles.txt
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Resources\OVRBuildConfig.asset
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\OVRBuildConfig.asset
-    projectPath: Assets\Resources\OVRBuildConfig.asset
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Scenes\LevelScene.unity
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scenes\LevelScene.unity
-    projectPath: Assets\Scenes\LevelScene.unity
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\Gameplay\LevelLoader.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\LevelLoader.cs
-    projectPath: Assets\Scripts\Gameplay\LevelLoader.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\Gameplay\ProjectileManager.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\ProjectileManager.cs
-    projectPath: Assets\Scripts\Gameplay\ProjectileManager.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\Gameplay\TurretManager.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\TurretManager.cs
-    projectPath: Assets\Scripts\Gameplay\TurretManager.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\Gameplay\WaveManager.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\WaveManager.cs
-    projectPath: Assets\Scripts\Gameplay\WaveManager.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\Level.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Level.cs
-    projectPath: Assets\Scripts\Level.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\UI\UIPointerInputModule.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\UI\UIPointerInputModule.cs
-    projectPath: Assets\Scripts\UI\UIPointerInputModule.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\Utilities.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Utilities.cs
-    projectPath: Assets\Scripts\Utilities.cs
+  - path: UnityProject\Assets\Resources\PlayerTargetManager.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\PlayerTargetManager.prefab
+    projectPath: Assets\Resources\PlayerTargetManager.prefab
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
-  - path: UnityProject\Assets\Scripts\Utilities.cs.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Utilities.cs.meta
-    projectPath: Assets\Scripts\Utilities.cs.meta
+  - path: UnityProject\Assets\Resources\PlayerTargetManager.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\PlayerTargetManager.prefab.meta
+    projectPath: Assets\Resources\PlayerTargetManager.prefab.meta
     originalPath: 
     indexStatus: 1
     workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\RocketLauncherArm.prefab
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\RocketLauncherArm.prefab
+    projectPath: Assets\Resources\RocketLauncherArm.prefab
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Resources\RocketLauncherArm.prefab.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\RocketLauncherArm.prefab.meta
+    projectPath: Assets\Resources\RocketLauncherArm.prefab.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\Scenes\CastleScene.unity
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scenes\CastleScene.unity
+    projectPath: Assets\Scenes\CastleScene.unity
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scenes\MenuScene.unity
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scenes\MenuScene.unity
+    projectPath: Assets\Scenes\MenuScene.unity
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scripts\LevelController.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\LevelController.cs
+    projectPath: Assets\Scripts\LevelController.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scripts\TargetManager\PlayerTargetManager.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\TargetManager\PlayerTargetManager.cs
+    projectPath: Assets\Scripts\TargetManager\PlayerTargetManager.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scripts\TargetManager\VRInputHandler.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\TargetManager\VRInputHandler.cs
+    projectPath: Assets\Scripts\TargetManager\VRInputHandler.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Assets\Scripts\x.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\x.cs
+    projectPath: Assets\Scripts\x.cs
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
+  - path: UnityProject\Assets\Scripts\x.cs.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\x.cs.meta
+    projectPath: Assets\Scripts\x.cs.meta
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 5
   - path: UnityProject\Library\assetDatabase3
     fullPath: F:\git\VRTD\UnityProject\Library\assetDatabase3
     projectPath: Library\assetDatabase3
@@ -121,18 +97,6 @@ MonoBehaviour:
   - path: UnityProject\Library\CurrentLayout.dwlt
     fullPath: F:\git\VRTD\UnityProject\Library\CurrentLayout.dwlt
     projectPath: Library\CurrentLayout.dwlt
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\EditorUserBuildSettings.asset
-    fullPath: F:\git\VRTD\UnityProject\Library\EditorUserBuildSettings.asset
-    projectPath: Library\EditorUserBuildSettings.asset
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\expandedItems
-    fullPath: F:\git\VRTD\UnityProject\Library\expandedItems
-    projectPath: Library\expandedItems
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -160,21 +124,27 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\LastBuild.buildreport
-    fullPath: F:\git\VRTD\UnityProject\Library\LastBuild.buildreport
-    projectPath: Library\LastBuild.buildreport
+  - path: UnityProject\Library\InspectorExpandedItems.asset
+    fullPath: F:\git\VRTD\UnityProject\Library\InspectorExpandedItems.asset
+    projectPath: Library\InspectorExpandedItems.asset
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\metadata\00\00f3402a2ea5bff4880c0313515240cd
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\00\00f3402a2ea5bff4880c0313515240cd
-    projectPath: Library\metadata\00\00f3402a2ea5bff4880c0313515240cd
+  - path: UnityProject\Library\LastSceneManagerSetup.txt
+    fullPath: F:\git\VRTD\UnityProject\Library\LastSceneManagerSetup.txt
+    projectPath: Library\LastSceneManagerSetup.txt
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\metadata\14\14d88a39d2bd7e84aae476037bea66c7
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\14\14d88a39d2bd7e84aae476037bea66c7
-    projectPath: Library\metadata\14\14d88a39d2bd7e84aae476037bea66c7
+  - path: UnityProject\Library\metadata\19\19ac3ff48933a4b8db66e777e3508619
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\19\19ac3ff48933a4b8db66e777e3508619
+    projectPath: Library\metadata\19\19ac3ff48933a4b8db66e777e3508619
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\metadata\62\62644b06868e2a04b8537380604ab133
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\62\62644b06868e2a04b8537380604ab133
+    projectPath: Library\metadata\62\62644b06868e2a04b8537380604ab133
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -183,67 +153,13 @@ MonoBehaviour:
     projectPath: Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
-    projectPath: Library\metadata\7d\7da7fd849738bf348929d1e8f1b08f1e
+    workTreeStatus: 5
+  - path: UnityProject\Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50.info
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50.info
+    projectPath: Library\metadata\78\78cbe05c8173f884e8dfcd51de9b6c50.info
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\90\90ecf9dc58b02844b8c9ac6ecf89005b
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\90\90ecf9dc58b02844b8c9ac6ecf89005b
-    projectPath: Library\metadata\90\90ecf9dc58b02844b8c9ac6ecf89005b
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\a2\a28ce1d751fc1480883ec5b42b0a2585
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\a2\a28ce1d751fc1480883ec5b42b0a2585
-    projectPath: Library\metadata\a2\a28ce1d751fc1480883ec5b42b0a2585
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\c8\c86538ded11bfe24c8c79818bb9ea66a
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\c8\c86538ded11bfe24c8c79818bb9ea66a
-    projectPath: Library\metadata\c8\c86538ded11bfe24c8c79818bb9ea66a
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\cb\cb6d935937a68c94f94a22d20898d695
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\cb\cb6d935937a68c94f94a22d20898d695
-    projectPath: Library\metadata\cb\cb6d935937a68c94f94a22d20898d695
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\fb\fb6426f323b7f024ebb25886b5182c4c
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\fb\fb6426f323b7f024ebb25886b5182c4c
-    projectPath: Library\metadata\fb\fb6426f323b7f024ebb25886b5182c4c
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\metadata\fe\fef522d0247215a43be6b1a8819bd940
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\fe\fef522d0247215a43be6b1a8819bd940
-    projectPath: Library\metadata\fe\fef522d0247215a43be6b1a8819bd940
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\boot.config
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\boot.config
-    projectPath: Library\PlayerDataCache\Android\Data\boot.config
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\globalgamemanagers
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\globalgamemanagers
-    projectPath: Library\PlayerDataCache\Android\Data\globalgamemanagers
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\level0
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\level0
-    projectPath: Library\PlayerDataCache\Android\Data\level0
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp.dll
     fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
@@ -328,51 +244,15 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\StateCache\SceneView\b8f745-mainStage.json
+    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-mainStage.json
+    projectPath: Library\StateCache\SceneView\b8f745-mainStage.json
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: UnityProject\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     fullPath: F:\git\VRTD\UnityProject\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     projectPath: obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
-    fullPath: F:\git\VRTD\UnityProject\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
-    projectPath: obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\ProjectSettings\QualitySettings.asset
-    fullPath: F:\git\VRTD\UnityProject\ProjectSettings\QualitySettings.asset
-    projectPath: ProjectSettings\QualitySettings.asset
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\ProjectSettings\TagManager.asset
-    fullPath: F:\git\VRTD\UnityProject\ProjectSettings\TagManager.asset
-    projectPath: ProjectSettings\TagManager.asset
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: VRTDLevelEditor\bin\Debug\VRTDGameplay.dll
-    fullPath: F:\git\VRTD\VRTDLevelEditor\bin\Debug\VRTDGameplay.dll
-    projectPath: ..\VRTDLevelEditor\bin\Debug\VRTDGameplay.dll
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: VRTDLevelEditor\bin\Debug\VRTDLevelEditor.exe
-    fullPath: F:\git\VRTD\VRTDLevelEditor\bin\Debug\VRTDLevelEditor.exe
-    projectPath: ..\VRTDLevelEditor\bin\Debug\VRTDLevelEditor.exe
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.csprojAssemblyReference.cache
-    fullPath: F:\git\VRTD\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.csprojAssemblyReference.cache
-    projectPath: ..\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.csprojAssemblyReference.cache
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.exe
-    fullPath: F:\git\VRTD\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.exe
-    projectPath: ..\VRTDLevelEditor\obj\anycpu\Debug\VRTDLevelEditor.exe
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
