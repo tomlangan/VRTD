@@ -4,6 +4,24 @@ using System.IO;
 using Newtonsoft.Json;
 #if LEVEL_EDITOR
 using System.Numerics;
+public class Debug
+{
+    public static void Assert(bool b)
+    {
+        if (!b)
+        {
+            throw new Exception("Error");
+        }
+    }
+    public static void Log(string s)
+    {
+        //System.Diagnostics.Debug.WriteLine(s);
+    }
+    public static void LogError(string s)
+    {
+        //System.Diagnostics.Debug.WriteLine(s);
+    }
+}
 #else
 using UnityEngine;
 #endif
@@ -17,20 +35,6 @@ namespace VRTD.Gameplay
         public static string streamingAssetsPath = "Assets";
     }
 
-    public class Debug
-    {
-        public static void Assert(bool b)
-        {
-            if (!b)
-            {
-                throw new Exception("Error");
-            }
-        }
-        public static void Log(string s)
-        {
-            //System.Diagnostics.Debug.WriteLine(s);
-        }
-    }
 
 
 public class GameObject { }
