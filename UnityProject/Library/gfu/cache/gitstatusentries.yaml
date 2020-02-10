@@ -13,60 +13,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-02-09T17:19:50.334-08:00
+  lastUpdatedAtString: 2020-02-09T22:25:28.768-08:00
   initializedAtString: 2020-02-09T16:27:00.740-08:00
   entries:
-  - path: UnityProject\Assembly-CSharp-firstpass.csproj
-    fullPath: F:\git\VRTD\UnityProject\Assembly-CSharp-firstpass.csproj
-    projectPath: Assembly-CSharp-firstpass.csproj
+  - path: UnityProject\Assembly-CSharp.csproj
+    fullPath: F:\git\VRTD\UnityProject\Assembly-CSharp.csproj
+    projectPath: Assembly-CSharp.csproj
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Plugins\Android.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Plugins\Android.meta
-    projectPath: Assets\Plugins\Android.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Plugins\Android\AndroidManifest.xml
-    fullPath: F:\git\VRTD\UnityProject\Assets\Plugins\Android\AndroidManifest.xml
-    projectPath: Assets\Plugins\Android\AndroidManifest.xml
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Plugins\Android\AndroidManifest.xml.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Plugins\Android\AndroidManifest.xml.meta
-    projectPath: Assets\Plugins\Android\AndroidManifest.xml.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Scripts\InputPointer.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\InputPointer.cs
-    projectPath: Assets\Scripts\InputPointer.cs
+  - path: UnityProject\Assets\Scripts\Utilities.cs.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Utilities.cs.meta
+    projectPath: Assets\Scripts\Utilities.cs.meta
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\assetDatabase3
     fullPath: F:\git\VRTD\UnityProject\Library\assetDatabase3
     projectPath: Library\assetDatabase3
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\CurrentLayout.dwlt
-    fullPath: F:\git\VRTD\UnityProject\Library\CurrentLayout.dwlt
-    projectPath: Library\CurrentLayout.dwlt
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\EditorUserBuildSettings.asset
-    fullPath: F:\git\VRTD\UnityProject\Library\EditorUserBuildSettings.asset
-    projectPath: Library\EditorUserBuildSettings.asset
+  - path: UnityProject\Library\gfu\cache\branches.yaml
+    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\branches.yaml
+    projectPath: Library\gfu\cache\branches.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
   - path: UnityProject\Library\gfu\cache\gitlocks.yaml
     fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gitlocks.yaml
     projectPath: Library\gfu\cache\gitlocks.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\gfu\cache\gitlog.yaml
+    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gitlog.yaml
+    projectPath: Library\gfu\cache\gitlog.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -82,21 +64,15 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\gfu\cache\repoinfo.yaml
-    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\repoinfo.yaml
-    projectPath: Library\gfu\cache\repoinfo.yaml
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: UnityProject\Library\LastBuild.buildreport
     fullPath: F:\git\VRTD\UnityProject\Library\LastBuild.buildreport
     projectPath: Library\LastBuild.buildreport
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\metadata\89\895f09b5659194699801541bce780034
-    fullPath: F:\git\VRTD\UnityProject\Library\metadata\89\895f09b5659194699801541bce780034
-    projectPath: Library\metadata\89\895f09b5659194699801541bce780034
+  - path: UnityProject\Library\metadata\14\14d88a39d2bd7e84aae476037bea66c7
+    fullPath: F:\git\VRTD\UnityProject\Library\metadata\14\14d88a39d2bd7e84aae476037bea66c7
+    projectPath: Library\metadata\14\14d88a39d2bd7e84aae476037bea66c7
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -112,9 +88,9 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\boot.config
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\boot.config
-    projectPath: Library\PlayerDataCache\Android\Data\boot.config
+  - path: UnityProject\Library\PlayerDataCache\Android\Data\d6a622c773beb5346998b63956dc1902
+    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\d6a622c773beb5346998b63956dc1902
+    projectPath: Library\PlayerDataCache\Android\Data\d6a622c773beb5346998b63956dc1902
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -147,37 +123,37 @@ MonoBehaviour:
     projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor.dll
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
     fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
     projectPath: Library\ScriptAssemblies\Assembly-CSharp-Editor-firstpass.dll
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\ScriptAssemblies\Oculus.VR.dll
     fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Oculus.VR.dll
     projectPath: Library\ScriptAssemblies\Oculus.VR.dll
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\ScriptAssemblies\Oculus.VR.Editor.dll
     fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Oculus.VR.Editor.dll
     projectPath: Library\ScriptAssemblies\Oculus.VR.Editor.dll
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\ScriptAssemblies\Oculus.VR.Scripts.Editor.dll
     fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Oculus.VR.Scripts.Editor.dll
     projectPath: Library\ScriptAssemblies\Oculus.VR.Scripts.Editor.dll
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
     fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
     projectPath: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
@@ -189,7 +165,7 @@ MonoBehaviour:
     projectPath: Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
     fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
     projectPath: Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll
@@ -207,13 +183,13 @@ MonoBehaviour:
     projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll
     fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll
     projectPath: Library\ScriptAssemblies\Unity.XR.Oculus.Editor.dll
     originalPath: 
     indexStatus: 0
-    workTreeStatus: 3
+    workTreeStatus: 5
   - path: UnityProject\Library\shadercompiler-UnityShaderCompiler.exe0.log
     fullPath: F:\git\VRTD\UnityProject\Library\shadercompiler-UnityShaderCompiler.exe0.log
     projectPath: Library\shadercompiler-UnityShaderCompiler.exe0.log
@@ -226,9 +202,9 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\StateCache\SceneView\b8f745-mainStage.json
-    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-mainStage.json
-    projectPath: Library\StateCache\SceneView\b8f745-mainStage.json
+  - path: UnityProject\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+    fullPath: F:\git\VRTD\UnityProject\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+    projectPath: obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3

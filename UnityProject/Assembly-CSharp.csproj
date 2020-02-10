@@ -353,6 +353,7 @@
     <Compile Include="Assets\Scripts\Gameplay\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\Gameplay\ProjectileManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\TurretManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Utilities.cs" />
     <Compile Include="Assets\Scripts\Gameplay\WaveManager.cs" />
     <Compile Include="Assets\Scripts\InputPointer.cs" />
     <Compile Include="Assets\Scripts\LevelController.cs" />
@@ -365,7 +366,6 @@
     <Compile Include="Assets\Scripts\UI\ListUI.cs" />
     <Compile Include="Assets\Scripts\UI\MessageUI.cs" />
     <Compile Include="Assets\Scripts\UI\UIPointerInputModule.cs" />
-    <Compile Include="Assets\Scripts\Utilities.cs" />
     <Compile Include="Assets\Visuals\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\Visuals\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
     <Compile Include="Assets\Visuals\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
