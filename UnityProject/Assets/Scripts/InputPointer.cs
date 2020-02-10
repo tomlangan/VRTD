@@ -79,7 +79,7 @@ public class InputPointer : MonoBehaviour
 
     private void LateUpdate()
     {
-        InputLine.SetPosition(0, State.DominantHandRay.origin);
+        InputLine.SetPosition(0,  State.DominantHandRay.origin - this.transform.position);
         if (State.DominantHandHasHitTarget)
         {
             InputLine.SetPosition(1, State.DominantHandPointingAt);

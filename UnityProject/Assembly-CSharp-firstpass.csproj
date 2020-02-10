@@ -68,6 +68,7 @@
     <Compile Include="Assets\Plugins\BetterStreamingAssets\BSA_SubReadOnlyStream.cs" />
     <Compile Include="Assets\Plugins\BetterStreamingAssets\BSA_TestSceneGUI.cs" />
     <Compile Include="Assets\Plugins\BetterStreamingAssets\BSA_ZipArchive.cs" />
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
     <None Include="Assets\Plugins\BetterStreamingAssets\README.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>F:/git/VRTD/UnityProject/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
