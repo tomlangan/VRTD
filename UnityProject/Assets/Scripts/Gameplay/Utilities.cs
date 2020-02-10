@@ -1,5 +1,7 @@
 ﻿using System;
+#if LEVEL_EDITOR == false
 using UnityEngine;
+#endif
 
 public class Utilities
 {

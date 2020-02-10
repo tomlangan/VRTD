@@ -48,6 +48,7 @@
     <Compile Include="ProjectileManager.cs" />
     <Compile Include="TurretManager.cs" />
     <Compile Include="WaveManager.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
