@@ -82,8 +82,8 @@ public class InputPointer : MonoBehaviour
         InputLine.SetPosition(0,  State.DominantHandRay.origin - this.transform.position);
         if (State.DominantHandHasHitTarget)
         {
-            InputLine.SetPosition(1, State.DominantHandPointingAt);
-            UpdateLine(State.DominantHandRay.origin, (State.DominantHandPointingAt - State.DominantHandRay.origin).normalized);
+            InputLine.SetPosition(1, State.DominantHandPointingAt - this.transform.position);
+            UpdateLineHitTest(State.DominantHandRay.origin, (State.DominantHandPointingAt - State.DominantHandRay.origin).normalized);
             if (cursorVisual)
             {
                 cursorVisual.transform.position = State.DominantHandPointingAt;
@@ -92,14 +92,14 @@ public class InputPointer : MonoBehaviour
         }
         else
         {
-            UpdateLine(State.DominantHandRay.origin, State.DominantHandRay.direction);
-            InputLine.SetPosition(1, State.DominantHandRay.origin + maxLength * State.DominantHandRay.direction);
+            UpdateLineHitTest(State.DominantHandRay.origin, State.DominantHandRay.direction);
+            InputLine.SetPosition(1, (State.DominantHandRay.origin + maxLength * State.DominantHandRay.direction) - this.transform.position);
             if (cursorVisual) cursorVisual.SetActive(false);
         }
     }
 
     // make laser beam a behavior with a prop that enables or disables
-    private void UpdateLine(Vector3 start, Vector3 direction)
+    private void UpdateLineHitTest(Vector3 start, Vector3 direction)
     {
         RaycastHit hit;
         if (Physics.Raycast(start, direction, out hit))
