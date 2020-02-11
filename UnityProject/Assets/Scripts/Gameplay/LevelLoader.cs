@@ -310,10 +310,6 @@ public class GameObject { }
             }
 
 
-            if (0 == level.Turrets.Count)
-            {
-                throw new LevelLoadException("No found!");
-            }
 
             level.Road = WalkAndValidateRoad(level.Map, level.FieldWidth, level.FieldDepth, level.Entry, level.Exit);
 

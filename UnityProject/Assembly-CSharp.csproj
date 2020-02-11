@@ -504,7 +504,6 @@
     <None Include="Assets\Oculus\Avatar\Resources\Materials\AvatarSurfaceShaderSelfOccluding.shader" />
     <None Include="Assets\Visuals\Day-Night Skyboxes\Textures\Readme for Assigning.txt" />
     <None Include="Assets\Visuals\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
-    <None Include="Assets\Scripts\Gameplay\obj\anycpu\Debug\VRTDGameplay.csproj.FileListAbsolute.txt" />
     <None Include="Assets\Visuals\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
     <None Include="Assets\Visuals\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\AvatarSurfaceShaderPBS.shader" />
@@ -558,6 +557,7 @@
     <None Include="Assets\Visuals\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
     <None Include="Assets\Visuals\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader" />
     <None Include="Assets\Visuals\SKY city lite\Foliage\Materials\Vegetation.shader" />
+    <None Include="Assets\Resources\Levels\1-6-lvl.txt" />
     <None Include="Assets\Visuals\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
     <None Include="Assets\Visuals\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
     <None Include="Assets\Visuals\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />

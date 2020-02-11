@@ -707,6 +707,23 @@ namespace VRTD.LevelEditor
                 issuesFound = true;
                 issueText = e.Message;
             }
+            catch (Exception ex)
+            {
+                MessageDialog md = new MessageDialog(null,
+                DialogFlags.Modal, MessageType.Warning,
+                ButtonsType.OkCancel, "Fatal error loading level " + LevelDesc.Name + ". Delete?  Cancel will close the app.");
+                int result = md.Run();
+                md.Destroy();
+
+                if (result == -5)
+                {
+                    LevelManager.DeleteLevel(LevelDesc.Name);
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
 
 
             if (issuesFound)
