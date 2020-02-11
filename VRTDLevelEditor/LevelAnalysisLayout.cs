@@ -67,6 +67,8 @@ namespace VRTD.LevelEditor
             }
 
             LevelDesc = desc;
+            LoadAndValidateLevelDesc();
+
             Solution = LevelManager.ReadLevelSolution(desc.Name);
             if (null == Solution)
             {
@@ -845,6 +847,39 @@ namespace VRTD.LevelEditor
             CalculateStatsForWaves(TurretStatList);
         }
 
+
+        bool LoadAndValidateLevelDesc()
+        {
+
+            try
+            {
+                LevelLoader.LoadAndValidateLevel(LevelDesc);
+            }
+            catch (LevelLoadException e)
+            {
+                // It's OK....
+            }
+            catch (Exception ex)
+            {
+                MessageDialog md = new MessageDialog(null,
+                DialogFlags.Modal, MessageType.Warning,
+                ButtonsType.OkCancel, "Fatal error loading level " + LevelDesc.Name + ". Delete?  Cancel will close the app.");
+                int result = md.Run();
+                md.Destroy();
+
+                if (result == -5)
+                {
+                    LevelManager.DeleteLevel(LevelDesc.Name);
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
+
+
+            return true;
+        }
 
         void WriteSolution()
         {

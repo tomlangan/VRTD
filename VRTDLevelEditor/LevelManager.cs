@@ -184,7 +184,11 @@ namespace VRTD.LevelEditor
 
         public static LevelDescription ReadLevel(string level)
         {
-            return ReadObjectFromFile<LevelDescription>(LevelToPath(level));
+            LevelDescription desc = ReadObjectFromFile<LevelDescription>(LevelToPath(level));
+
+            
+
+            return desc;
         }
 
         public static void DeleteLevel(string level)
