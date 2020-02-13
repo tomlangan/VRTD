@@ -239,14 +239,6 @@ namespace VRTD.Gameplay
         }
 
 
-        List<EnemyInstance> FindEnemiesInBlastRadius(Vector3 contactPos, float radius)
-        {
-            List<EnemyInstance> enemies = new List<EnemyInstance>();
-
-
-            return enemies;
-        }
-
         void ProcessImpact(Vector3 pos, float waveTime, EnemyInstance enemy = null)
         {
             if (!string.IsNullOrEmpty(ProjectileType.ImpactAsset))

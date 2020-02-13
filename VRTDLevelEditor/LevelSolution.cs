@@ -56,6 +56,7 @@ namespace VRTD.LevelEditor
         }
     }
 
+    
     [Serializable]
     public class LevelSolution
     {
@@ -64,7 +65,12 @@ namespace VRTD.LevelEditor
             WaveSolutions = new List<WaveSolution>();
         }
 
+        public float AssumedHandMissileFrequency;
+
+        public float AssumedHandMissileAvgDamagePct;
+
         public List<WaveSolution> WaveSolutions;
 
     }
+    
 }

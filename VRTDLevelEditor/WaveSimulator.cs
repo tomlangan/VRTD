@@ -60,13 +60,20 @@ namespace VRTD.LevelEditor
             }
         }
         
-        public WaveSimulatorDamageStats SimulateDamageToEnemies(EnemyDescription enemy, WaveSolution solution, int enemyCount, bool invincible)
+        public WaveSimulatorDamageStats SimulateDamageToEnemies(
+            EnemyDescription enemy,
+            WaveSolution solution,
+            float HandMissileFreqency,
+            float HandMissileDamantPctAverage,
+            int enemyCount,
+            bool invincible)
         {
             DamageStats = new WaveSimulatorDamageStats();
             InvincibleEnemies = invincible;
 
             float waveTime = 0.0F;
             float timeDelta = 1.0F / 72.0F;
+            float previousHandMissileTime = 0.0f;
 
             EnemyWave waveDesc = new EnemyWave();
             waveDesc.Count = enemyCount;
@@ -92,6 +99,17 @@ namespace VRTD.LevelEditor
                 wave.Advance(waveTime);
                 projectiles.AdvanceAll(waveTime);
                 turrets.Fire(waveTime);
+
+                float timeSinceLastHandMissile = waveTime - previousHandMissileTime;
+
+                if (timeSinceLastHandMissile >= HandMissileFreqency)
+                {
+                    // Real projectiles have to incur flight time but we'll simulate
+                    // the damage as instanntaneous to keep it simple.  Also real projectiles
+                    // have blast radius that should hit multiple enemies. We'll just hit one.
+
+                    
+                }
 
                 waveTime += timeDelta;
             } while (!wave.IsCompleted);

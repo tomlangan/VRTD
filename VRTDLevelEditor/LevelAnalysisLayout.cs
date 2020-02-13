@@ -43,8 +43,8 @@ namespace VRTD.LevelEditor
         LevelSolution Solution = null;
         TreeViewColumn SaveSolutionColumn = null;
         TreeViewColumn LoadSolutionColumn = null;
-        float HandMissilesPerSec = 3.0F;
-        float HandMissileAccuracyHandicapAverage = 0.5F;
+        float HandMissileFreqency = 3.0F;
+        float HandMissileDamantPctAverage = 0.5F;
 
         public LevelAnalysisLayout() : base(null, null)
         {
@@ -73,6 +73,8 @@ namespace VRTD.LevelEditor
             if (null == Solution)
             {
                 Solution = new LevelSolution();
+                Solution.AssumedHandMissileFrequency = HandMissileFreqency;
+                Solution.AssumedHandMissileAvgDamagePct = HandMissileDamantPctAverage;
             }
 
             TurretSelections = new Dictionary<int, int>();
@@ -94,12 +96,12 @@ namespace VRTD.LevelEditor
             field.Show();
 
 
-            field = GtkHelpers.TextEntryField("Hand Missiles Per Sec", HandMissilesPerSec.ToString(), AssumedFireRatePerSecChanged_Changed, true, GtkHelpers.ValueType.Float);
+            field = GtkHelpers.TextEntryField("Hand Missile Frequency (sec)", HandMissileFreqency.ToString(), AssumedFireRatePerSecChanged_Changed, true, GtkHelpers.ValueType.Float);
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
 
-            field = GtkHelpers.TextEntryField("Hand Missile Average Accuracy Handicap", HandMissileAccuracyHandicapAverage.ToString(), AssumedHandMissileAccuracyHandicap_Changed, true, GtkHelpers.ValueType.Float);
+            field = GtkHelpers.TextEntryField("Hand Missile Average Accuracy Handicap", HandMissileDamantPctAverage.ToString(), AssumedHandMissileAccuracyHandicap_Changed, true, GtkHelpers.ValueType.Float);
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
@@ -440,7 +442,7 @@ namespace VRTD.LevelEditor
                 try
                 {
                     float newVal = float.Parse(newName);
-                    HandMissilesPerSec  = newVal;
+                    HandMissileFreqency  = newVal;
                 }
                 catch (Exception ex)
                 {
@@ -456,7 +458,7 @@ namespace VRTD.LevelEditor
                 try
                 {
                     float newVal = float.Parse(newName);
-                    HandMissileAccuracyHandicapAverage = newVal;
+                    HandMissileDamantPctAverage = newVal;
                 }
                 catch (Exception ex)
                 {
@@ -800,7 +802,7 @@ namespace VRTD.LevelEditor
 
             WaveSimulator sim = new WaveSimulator(LevelDesc);
 
-            return sim.SimulateDamageToEnemies(enemy, solution, enemyCount, invincible);
+            return sim.SimulateDamageToEnemies(enemy, solution, HandMissileFreqency, HandMissileDamantPctAverage, enemyCount, invincible);
         }
 
         private void CalculateStatsForWaves(List<TurretStats> Turrets)
@@ -883,6 +885,8 @@ namespace VRTD.LevelEditor
 
         void WriteSolution()
         {
+                Solution.AssumedHandMissileFrequency = HandMissileFreqency;
+                Solution.AssumedHandMissileAvgDamagePct = HandMissileDamantPctAverage;
             LevelManager.WriteLevelSolution(LevelDesc.Name, Solution);
         }
 

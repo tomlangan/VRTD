@@ -186,7 +186,6 @@ namespace VRTD.LevelEditor
         {
             LevelDescription desc = ReadObjectFromFile<LevelDescription>(LevelToPath(level));
 
-            
 
             return desc;
         }
