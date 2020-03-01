@@ -265,7 +265,7 @@ public partial class AudioManager : MonoBehaviour {
 	GetGameObject()
 	-----------------------
 	*/
- 	static public GameObject GetGameObject() {
+	static public GameObject GetGameObject() {
 		if ( theAudioManager == null ) {
 			if ( !FindAudioManager() ) {
 				return null;
