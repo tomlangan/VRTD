@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2020-02-29T21:28:10.963-08:00
-  initializedAtString: 2020-02-25T21:29:00.083-08:00
+  lastUpdatedAtString: 2020-03-01T21:36:40.807-08:00
+  initializedAtString: 2020-03-01T21:36:40.807-08:00
   currentGitRemote:
     name: origin
-    url: https://github.com/tomlangan/VRTD.git
+    url: https://github.com/tomlangan/VRTD
     login: 
     user: 
     host: 
@@ -30,9 +30,9 @@ MonoBehaviour:
     name: master
     remote:
       name: origin
-      url: https://github.com/tomlangan/VRTD.git
+      url: https://github.com/tomlangan/VRTD
     trackingBranch: master
   currentConfigRemote:
     name: origin
-    url: https://github.com/tomlangan/VRTD.git
+    url: https://github.com/tomlangan/VRTD
   currentHead: 
