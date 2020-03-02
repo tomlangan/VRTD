@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1440
+    width: 1440.0001
     height: 786
   m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -64,7 +64,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1440
+    width: 1440.0001
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 766
-    width: 1440
+    width: 1440.0001
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1440
+    width: 1440.0001
     height: 736
   m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
@@ -7151,7 +7151,7 @@ MonoBehaviour:
       indexStatus: 0
       workTreeStatus: 3
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 0001-01-01T00:00:00.000+00:00
+      updatedTimeString: 2020-02-22T13:42:56.627-08:00
       cacheType: 6
     lastFileLogChangedEvent:
       updatedTimeString: 2020-02-19T18:54:09.359-08:00
@@ -36240,7 +36240,7 @@ MonoBehaviour:
       updatedTimeString: 2020-02-19T18:54:09.352-08:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 0001-01-01T00:00:00.000+00:00
+      updatedTimeString: 2020-02-22T13:42:56.627-08:00
       cacheType: 6
     lastLocksChangedEvent:
       updatedTimeString: 2020-02-19T18:54:14.118-08:00
@@ -36744,7 +36744,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 0}=
       m_SelectedIDs: 3a3c0000
       m_LastClickedID: 0
       m_ExpandedIDs: 6ef8ffffdefbffff
@@ -36846,7 +36846,7 @@ MonoBehaviour:
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 1
-  m_LastWindowPixelSize: {x: 1882, y: 884}
+  m_LastWindowPixelSize: {x: 1127.2395, y: 529.4791}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -36915,13 +36915,13 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: /Users/tomlangan/TD/UnityProject
+  m_LastProjectPath: F:\git\VRTD\UnityProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -36983,7 +36983,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000223500007e230000683500005c3800007a350000ce50000084350000d235000000000000e43b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
