@@ -61,6 +61,10 @@ namespace VRTD.Gameplay
         public int Count { get; set; }
 
         public float DifficultyMultiplier { get; set; }
+
+
+        public string DescriptionHeading { get; set; }
+        public string DescriptionBody { get; set; }
     }
 
     //
@@ -175,6 +179,9 @@ namespace VRTD.Gameplay
     public class LevelDescription
     {
         public string Name { get; set; }
+
+        public string DescriptionHeading { get; set; }
+        public string DescriptionBody { get; set; }
 
         public List<EnemyWave> Waves;
 

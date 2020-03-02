@@ -67,6 +67,15 @@ namespace VRTD.LevelEditor
             Layout.PackStart(field, false, false, 0);
             field.Show();
 
+            field = GtkHelpers.TextEntryField("Description Heading", desc.DescriptionHeading, DescriptionHeading_Changed);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
+
+            field = GtkHelpers.TextEntryField("Description Body", desc.DescriptionBody, DescriptionBody_Changed);
+            Layout.PackStart(field, false, false, 0);
+            field.Show();
+
+
             WavesTree = new TreeView();
             Layout.PackStart(WavesTree, false, false, 0);
             WavesTree.Show();
@@ -84,6 +93,7 @@ namespace VRTD.LevelEditor
             TreeViewColumn enemyCoumn = new TreeViewColumn();
             TreeViewColumn countColumn = new TreeViewColumn();
             TreeViewColumn difficultyColumn = new TreeViewColumn();
+            TreeViewColumn descriptionBodyColumn = new TreeViewColumn();
 
             CellRendererCombo comboCellRenderer = new CellRendererCombo();
             comboCellRenderer.Editable = true;
@@ -101,6 +111,9 @@ namespace VRTD.LevelEditor
             difficultyCellRenderer.Editable = true;
             difficultyCellRenderer.Edited += DifficultyCell_Edited;
 
+            CellRendererText descriptionbodyRenderer = new CellRendererText();
+            descriptionbodyRenderer.Editable = true;
+            descriptionbodyRenderer.Edited += DescriptionbodyRenderer_Edited;
 
             enemyCoumn.PackStart(comboCellRenderer, true);
             enemyCoumn.Title = "Enemy";
@@ -116,6 +129,11 @@ namespace VRTD.LevelEditor
             difficultyColumn.Title = "Difficulty Multiplier";
             difficultyColumn.AddAttribute(difficultyCellRenderer, "text", 3);
             WavesTree.AppendColumn(difficultyColumn);
+
+            descriptionBodyColumn.PackStart(descriptionbodyRenderer, true);
+            descriptionBodyColumn.Title = "Description Body";
+            descriptionBodyColumn.AddAttribute(difficultyCellRenderer, "text", 4);
+            WavesTree.AppendColumn(descriptionBodyColumn);
 
             //
             // Add column:  Max damage that can be dished to a single enemy given turret coverage + enemy speed
@@ -133,7 +151,7 @@ namespace VRTD.LevelEditor
             // Add column: Given all the factors, theoretical headroom of DPS
             //
 
-            WavesModel = new ListStore(typeof(int), typeof(string), typeof(int), typeof(float));
+            WavesModel = new ListStore(typeof(int), typeof(string), typeof(int), typeof(float), typeof(string));
             WavesTree.Model = WavesModel;
             WavesTree.Selection.Mode = SelectionMode.Single;
 
@@ -241,6 +259,22 @@ namespace VRTD.LevelEditor
 
             Show();
             ShowAll();
+        }
+
+        private void DescriptionbodyRenderer_Edited(object o, EditedArgs args)
+        {
+
+            TreeIter iter;
+            if (WavesModel.GetIterFromString(out iter, args.Path))
+            {
+                int row = (int)WavesModel.GetValue(iter, 0);
+                if (args.NewText != LevelDesc.Waves[row].DescriptionBody)
+                {
+                    WavesModel.SetValue(iter, 4, args.NewText);
+                    LevelDesc.Waves[row].DescriptionBody = args.NewText;
+                    WriteChanges();
+                }
+            }
         }
 
         private void RemoveAllTurrets_Clicked(object sender, EventArgs e)
@@ -426,7 +460,7 @@ namespace VRTD.LevelEditor
 
             for (int i = 0; i < desc.Waves.Count; i++)
             {
-                object[] values = { i, desc.Waves[i].Enemy, desc.Waves[i].Count, desc.Waves[i].DifficultyMultiplier };
+                object[] values = { i, desc.Waves[i].Enemy, desc.Waves[i].Count, desc.Waves[i].DifficultyMultiplier, desc.Waves[i].DescriptionBody};
                 WavesModel.AppendValues(values);
             }
         }
@@ -624,6 +658,20 @@ namespace VRTD.LevelEditor
                 {
                 }
             }
+        }
+
+        private void DescriptionHeading_Changed(object sender, EventArgs e)
+        {
+            string newText = ((Entry)sender).Text;
+            LevelDesc.DescriptionHeading = newText;
+            WriteChanges();
+        }
+
+        private void DescriptionBody_Changed(object sender, EventArgs e)
+        {
+            string newText = ((Entry)sender).Text;
+            LevelDesc.DescriptionBody = newText;
+            WriteChanges();
         }
 
         private void Width_Changed(object sender, EventArgs e)

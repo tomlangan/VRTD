@@ -177,7 +177,7 @@ public class LevelController : MonoBehaviour
         if (elapsed < WAVE_COUNTDOWN_TIME)
         {
             int secsRemaining = (int)(WAVE_COUNTDOWN_TIME - elapsed + 0.5F);
-            CountdownUI.Message = secsRemaining.ToString();
+            CountdownUI.Countdown = secsRemaining.ToString();
         }
         else
         {
@@ -299,7 +299,8 @@ public class LevelController : MonoBehaviour
         CountdownUI = Instantiate<MessageUI>(MessageUITemplate);
 
         CountdownUI.Title = "Get ready!";
-        CountdownUI.Message = "5";
+        CountdownUI.Message = "";
+        CountdownUI.Countdown = "5";
 
         Vector3 uiPos = new Vector3(0.0F, 5.0F, -8.0F);
         Vector3 uiForward = (uiPos - TargetManager.transform.position).normalized;
