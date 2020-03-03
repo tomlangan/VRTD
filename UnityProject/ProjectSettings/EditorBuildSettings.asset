@@ -11,4 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CastleScene.unity
     guid: 2f10d3f443241412ab9c703591d30270
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d3e8195d2ec460841b55a451bcd2428c,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 073fcc8487be16d4c8fc9a9d1e0e2f1a,
+      type: 2}

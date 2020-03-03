@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public PlayerTargetManager TargetManager;
+    public DesktopInputHandler DesktopInput;
 
     private Button StartButton;
 
@@ -24,6 +25,17 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateSelfAvatar();
+    }
+
+    void UpdateSelfAvatar()
+    {
+        if (TargetManager.Target == PlayerTargetManager.TargetPlatform.VR)
+        {
+        }
+        else if (TargetManager.Target == PlayerTargetManager.TargetPlatform.Desktop)
+        {
+            TargetManager.MainCamera.transform.Rotate(-DesktopInput.MiddleClickMouseMovement.y * 0.1F, DesktopInput.MiddleClickMouseMovement.x * 0.1F, 0.0F);
+        }
     }
 }
