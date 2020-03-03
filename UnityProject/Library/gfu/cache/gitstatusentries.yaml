@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 6
-  lastUpdatedAtString: 2020-03-02T20:49:04.838-08:00
-  initializedAtString: 2020-03-01T21:42:06.597-08:00
+  lastUpdatedAtString: 2020-03-02T21:18:33.373-08:00
+  initializedAtString: 2020-03-02T21:13:20.536-08:00
   entries:
   - path: UnityProject\Assembly-CSharp.csproj
     fullPath: F:\git\VRTD\UnityProject\Assembly-CSharp.csproj
@@ -40,33 +40,21 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Resources\ListUI.prefab
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\ListUI.prefab
-    projectPath: Assets\Resources\ListUI.prefab
+  - path: UnityProject\Assets\EntitlementCheck.cs
+    fullPath: F:\git\VRTD\UnityProject\Assets\EntitlementCheck.cs
+    projectPath: Assets\EntitlementCheck.cs
     originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
+    indexStatus: 1
+    workTreeStatus: 1
+  - path: UnityProject\Assets\EntitlementCheck.cs.meta
+    fullPath: F:\git\VRTD\UnityProject\Assets\EntitlementCheck.cs.meta
+    projectPath: Assets\EntitlementCheck.cs.meta
+    originalPath: 
+    indexStatus: 1
+    workTreeStatus: 1
   - path: UnityProject\Assets\Resources\MessageUIWith1Button.prefab
     fullPath: F:\git\VRTD\UnityProject\Assets\Resources\MessageUIWith1Button.prefab
     projectPath: Assets\Resources\MessageUIWith1Button.prefab
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Resources\MessageUIWith1Button.prefab.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\MessageUIWith1Button.prefab.meta
-    projectPath: Assets\Resources\MessageUIWith1Button.prefab.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Resources\MessageUIWithButtons.prefab
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\MessageUIWithButtons.prefab
-    projectPath: Assets\Resources\MessageUIWithButtons.prefab
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\Resources\OVRBuildConfig.asset
-    fullPath: F:\git\VRTD\UnityProject\Assets\Resources\OVRBuildConfig.asset
-    projectPath: Assets\Resources\OVRBuildConfig.asset
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -76,105 +64,27 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Assets\Scripts\Gameplay\obj.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\obj.meta
-    projectPath: Assets\Scripts\Gameplay\obj.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Scripts\Gameplay\obj\anycpu.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\obj\anycpu.meta
-    projectPath: Assets\Scripts\Gameplay\obj\anycpu.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Scripts\Gameplay\obj\anycpu\Debug.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\obj\anycpu\Debug.meta
-    projectPath: Assets\Scripts\Gameplay\obj\anycpu\Debug.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Scripts\Gameplay\obj\anycpu\Debug\TempPE.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\Gameplay\obj\anycpu\Debug\TempPE.meta
-    projectPath: Assets\Scripts\Gameplay\obj\anycpu\Debug\TempPE.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\Scripts\MenuController.cs
-    fullPath: F:\git\VRTD\UnityProject\Assets\Scripts\MenuController.cs
-    projectPath: Assets\Scripts\MenuController.cs
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Assets\XR.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\XR.meta
-    projectPath: Assets\XR.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\XR\Loaders.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\XR\Loaders.meta
-    projectPath: Assets\XR\Loaders.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\XR\Loaders\Oculus Loader.asset
-    fullPath: F:\git\VRTD\UnityProject\Assets\XR\Loaders\Oculus Loader.asset
-    projectPath: Assets\XR\Loaders\Oculus Loader.asset
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\XR\Loaders\Oculus Loader.asset.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\XR\Loaders\Oculus Loader.asset.meta
-    projectPath: Assets\XR\Loaders\Oculus Loader.asset.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\XR\Settings.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\XR\Settings.meta
-    projectPath: Assets\XR\Settings.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\XR\Settings\Oculus Settings.asset
-    fullPath: F:\git\VRTD\UnityProject\Assets\XR\Settings\Oculus Settings.asset
-    projectPath: Assets\XR\Settings\Oculus Settings.asset
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\XR\Settings\Oculus Settings.asset.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\XR\Settings\Oculus Settings.asset.meta
-    projectPath: Assets\XR\Settings\Oculus Settings.asset.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\XR\XRGeneralSettings.asset
-    fullPath: F:\git\VRTD\UnityProject\Assets\XR\XRGeneralSettings.asset
-    projectPath: Assets\XR\XRGeneralSettings.asset
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Assets\XR\XRGeneralSettings.asset.meta
-    fullPath: F:\git\VRTD\UnityProject\Assets\XR\XRGeneralSettings.asset.meta
-    projectPath: Assets\XR\XRGeneralSettings.asset.meta
-    originalPath: 
-    indexStatus: 1
-    workTreeStatus: 1
-  - path: UnityProject\Library\AssetImportState
-    fullPath: F:\git\VRTD\UnityProject\Library\AssetImportState
-    projectPath: Library\AssetImportState
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: UnityProject\Library\EditorUserBuildSettings.asset
     fullPath: F:\git\VRTD\UnityProject\Library\EditorUserBuildSettings.asset
     projectPath: Library\EditorUserBuildSettings.asset
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\Library\gfu\cache\branches.yaml
+    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\branches.yaml
+    projectPath: Library\gfu\cache\branches.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: UnityProject\Library\gfu\cache\gitlocks.yaml
     fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gitlocks.yaml
     projectPath: Library\gfu\cache\gitlocks.yaml
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
+  - path: UnityProject\Library\gfu\cache\gitlog.yaml
+    fullPath: F:\git\VRTD\UnityProject\Library\gfu\cache\gitlog.yaml
+    projectPath: Library\gfu\cache\gitlog.yaml
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
@@ -196,222 +106,6 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\InspectorExpandedItems.asset
-    fullPath: F:\git\VRTD\UnityProject\Library\InspectorExpandedItems.asset
-    projectPath: Library\InspectorExpandedItems.asset
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\LastBuild.buildreport
-    fullPath: F:\git\VRTD\UnityProject\Library\LastBuild.buildreport
-    projectPath: Library\LastBuild.buildreport
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\0000000000000000f000000000000000
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\0000000000000000f000000000000000
-    projectPath: Library\PlayerDataCache\Android\Data\0000000000000000f000000000000000
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\176faebcc612eb147900defeda2149cb
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\176faebcc612eb147900defeda2149cb
-    projectPath: Library\PlayerDataCache\Android\Data\176faebcc612eb147900defeda2149cb
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\20553fac56ec59645857c0732b787431
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\20553fac56ec59645857c0732b787431
-    projectPath: Library\PlayerDataCache\Android\Data\20553fac56ec59645857c0732b787431
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\22a046c12fc7f3c4d98a98add109fa96
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\22a046c12fc7f3c4d98a98add109fa96
-    projectPath: Library\PlayerDataCache\Android\Data\22a046c12fc7f3c4d98a98add109fa96
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\2ab721dccaa7e6f4693cedd904dfdcac
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\2ab721dccaa7e6f4693cedd904dfdcac
-    projectPath: Library\PlayerDataCache\Android\Data\2ab721dccaa7e6f4693cedd904dfdcac
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\2bd7618c3fa0e4b4ab8e08dc3fadc376
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\2bd7618c3fa0e4b4ab8e08dc3fadc376
-    projectPath: Library\PlayerDataCache\Android\Data\2bd7618c3fa0e4b4ab8e08dc3fadc376
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\38ad33c152e32ee46a9bbbb0e656f7e1
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\38ad33c152e32ee46a9bbbb0e656f7e1
-    projectPath: Library\PlayerDataCache\Android\Data\38ad33c152e32ee46a9bbbb0e656f7e1
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\502d438d2584976448c3cdb146ed836d
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\502d438d2584976448c3cdb146ed836d
-    projectPath: Library\PlayerDataCache\Android\Data\502d438d2584976448c3cdb146ed836d
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\561ccac587275c745aec500620f12fc7
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\561ccac587275c745aec500620f12fc7
-    projectPath: Library\PlayerDataCache\Android\Data\561ccac587275c745aec500620f12fc7
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\5cc0bb380c5b865429879896be84a5ed
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\5cc0bb380c5b865429879896be84a5ed
-    projectPath: Library\PlayerDataCache\Android\Data\5cc0bb380c5b865429879896be84a5ed
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\680577023e93e564c9b00f18b0164afa
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\680577023e93e564c9b00f18b0164afa
-    projectPath: Library\PlayerDataCache\Android\Data\680577023e93e564c9b00f18b0164afa
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\715c7954d6ecf9c409c1b94da791812d
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\715c7954d6ecf9c409c1b94da791812d
-    projectPath: Library\PlayerDataCache\Android\Data\715c7954d6ecf9c409c1b94da791812d
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\7d8da3d06466cc04da8c020819170a59
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\7d8da3d06466cc04da8c020819170a59
-    projectPath: Library\PlayerDataCache\Android\Data\7d8da3d06466cc04da8c020819170a59
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\80b6b34e742970d4bb0cdef9c74b04ae
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\80b6b34e742970d4bb0cdef9c74b04ae
-    projectPath: Library\PlayerDataCache\Android\Data\80b6b34e742970d4bb0cdef9c74b04ae
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\873aaf52f432945df9937ea75a74c0e7
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\873aaf52f432945df9937ea75a74c0e7
-    projectPath: Library\PlayerDataCache\Android\Data\873aaf52f432945df9937ea75a74c0e7
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\93a54b3b63bcc6d49b16f6bdb655b940
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\93a54b3b63bcc6d49b16f6bdb655b940
-    projectPath: Library\PlayerDataCache\Android\Data\93a54b3b63bcc6d49b16f6bdb655b940
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\9aa46566e1d86644c9a55e3037e935f6
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\9aa46566e1d86644c9a55e3037e935f6
-    projectPath: Library\PlayerDataCache\Android\Data\9aa46566e1d86644c9a55e3037e935f6
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\9fb4a3be60417d043865e457a9d51e63
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\9fb4a3be60417d043865e457a9d51e63
-    projectPath: Library\PlayerDataCache\Android\Data\9fb4a3be60417d043865e457a9d51e63
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\a31796e9e8816c7448b55d584c9417f1
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\a31796e9e8816c7448b55d584c9417f1
-    projectPath: Library\PlayerDataCache\Android\Data\a31796e9e8816c7448b55d584c9417f1
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\a8577c885e80d8043946ac5b7abcf9a1
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\a8577c885e80d8043946ac5b7abcf9a1
-    projectPath: Library\PlayerDataCache\Android\Data\a8577c885e80d8043946ac5b7abcf9a1
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\b3e87b1024f5fa8408d004b398e7b0c0
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\b3e87b1024f5fa8408d004b398e7b0c0
-    projectPath: Library\PlayerDataCache\Android\Data\b3e87b1024f5fa8408d004b398e7b0c0
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\b63b8499772e217499fd377d260c392e
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\b63b8499772e217499fd377d260c392e
-    projectPath: Library\PlayerDataCache\Android\Data\b63b8499772e217499fd377d260c392e
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\boot.config
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\boot.config
-    projectPath: Library\PlayerDataCache\Android\Data\boot.config
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\ced943c76cb8fb8489bab18c3dfcdcd3
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\ced943c76cb8fb8489bab18c3dfcdcd3
-    projectPath: Library\PlayerDataCache\Android\Data\ced943c76cb8fb8489bab18c3dfcdcd3
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\d6708eb99dec8334fb83db57b764097a
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\d6708eb99dec8334fb83db57b764097a
-    projectPath: Library\PlayerDataCache\Android\Data\d6708eb99dec8334fb83db57b764097a
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\d6a622c773beb5346998b63956dc1902
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\d6a622c773beb5346998b63956dc1902
-    projectPath: Library\PlayerDataCache\Android\Data\d6a622c773beb5346998b63956dc1902
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\eaeac9ce83896a04691d2590189776f5
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\eaeac9ce83896a04691d2590189776f5
-    projectPath: Library\PlayerDataCache\Android\Data\eaeac9ce83896a04691d2590189776f5
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\globalgamemanagers
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\globalgamemanagers
-    projectPath: Library\PlayerDataCache\Android\Data\globalgamemanagers
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\globalgamemanagers.assets
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\globalgamemanagers.assets
-    projectPath: Library\PlayerDataCache\Android\Data\globalgamemanagers.assets
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\level0
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\level0
-    projectPath: Library\PlayerDataCache\Android\Data\level0
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\Resources\unity_builtin_extra
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\Resources\unity_builtin_extra
-    projectPath: Library\PlayerDataCache\Android\Data\Resources\unity_builtin_extra
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\PlayerDataCache\Android\Data\sharedassets0.assets
-    fullPath: F:\git\VRTD\UnityProject\Library\PlayerDataCache\Android\Data\sharedassets0.assets
-    projectPath: Library\PlayerDataCache\Android\Data\sharedassets0.assets
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
-    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
-    projectPath: Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-    fullPath: F:\git\VRTD\UnityProject\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-    projectPath: Library\ScriptAssemblies\Unity.TextMeshPro.dll
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: UnityProject\Library\shadercompiler-UnityShaderCompiler.exe0.log
     fullPath: F:\git\VRTD\UnityProject\Library\shadercompiler-UnityShaderCompiler.exe0.log
     projectPath: Library\shadercompiler-UnityShaderCompiler.exe0.log
@@ -424,87 +118,21 @@ MonoBehaviour:
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
-  - path: UnityProject\Library\StateCache\SceneView\b8f745-mainStage.json
-    fullPath: F:\git\VRTD\UnityProject\Library\StateCache\SceneView\b8f745-mainStage.json
-    projectPath: Library\StateCache\SceneView\b8f745-mainStage.json
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
   - path: UnityProject\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     fullPath: F:\git\VRTD\UnityProject\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     projectPath: obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
+  - path: UnityProject\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+    fullPath: F:\git\VRTD\UnityProject\obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+    projectPath: obj\Debug\Assembly-CSharp-Editor.csprojAssemblyReference.cache
+    originalPath: 
+    indexStatus: 0
+    workTreeStatus: 3
   - path: UnityProject\obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
     fullPath: F:\git\VRTD\UnityProject\obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
     projectPath: obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\obj\Debug\Oculus.VR.csprojAssemblyReference.cache
-    fullPath: F:\git\VRTD\UnityProject\obj\Debug\Oculus.VR.csprojAssemblyReference.cache
-    projectPath: obj\Debug\Oculus.VR.csprojAssemblyReference.cache
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\obj\Debug\Oculus.VR.Editor.csprojAssemblyReference.cache
-    fullPath: F:\git\VRTD\UnityProject\obj\Debug\Oculus.VR.Editor.csprojAssemblyReference.cache
-    projectPath: obj\Debug\Oculus.VR.Editor.csprojAssemblyReference.cache
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Oculus.VR.csproj
-    fullPath: F:\git\VRTD\UnityProject\Oculus.VR.csproj
-    projectPath: Oculus.VR.csproj
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Oculus.VR.Editor.csproj
-    fullPath: F:\git\VRTD\UnityProject\Oculus.VR.Editor.csproj
-    projectPath: Oculus.VR.Editor.csproj
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Oculus.VR.Scripts.Editor.csproj
-    fullPath: F:\git\VRTD\UnityProject\Oculus.VR.Scripts.Editor.csproj
-    projectPath: Oculus.VR.Scripts.Editor.csproj
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\Packages\manifest.json
-    fullPath: F:\git\VRTD\UnityProject\Packages\manifest.json
-    projectPath: Packages\manifest.json
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\ProjectSettings\EditorBuildSettings.asset
-    fullPath: F:\git\VRTD\UnityProject\ProjectSettings\EditorBuildSettings.asset
-    projectPath: ProjectSettings\EditorBuildSettings.asset
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\ProjectSettings\ProjectSettings.asset
-    fullPath: F:\git\VRTD\UnityProject\ProjectSettings\ProjectSettings.asset
-    projectPath: ProjectSettings\ProjectSettings.asset
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\ProjectSettings\ProjectVersion.txt
-    fullPath: F:\git\VRTD\UnityProject\ProjectSettings\ProjectVersion.txt
-    projectPath: ProjectSettings\ProjectVersion.txt
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\ProjectSettings\QualitySettings.asset
-    fullPath: F:\git\VRTD\UnityProject\ProjectSettings\QualitySettings.asset
-    projectPath: ProjectSettings\QualitySettings.asset
-    originalPath: 
-    indexStatus: 0
-    workTreeStatus: 3
-  - path: UnityProject\ProjectSettings\XRSettings.asset
-    fullPath: F:\git\VRTD\UnityProject\ProjectSettings\XRSettings.asset
-    projectPath: ProjectSettings\XRSettings.asset
     originalPath: 
     indexStatus: 0
     workTreeStatus: 3
