@@ -1,0 +1,250 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango &ndash; 1.0: Text Attributes and Markup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango: Text Attributes and Markup"/>
+  <meta property="og:description" content="Reference for Pango-1.0: Text Attributes and Markup"/>
+  <meta name="twitter:title" content="Pango: Text Attributes and Markup"/>
+  <meta name="twitter:description" content="Reference for Pango-1.0: Text Attributes and Markup"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+      
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <section>
+    <div class="docblock">
+    <h1 id="text-attributes">Text Attributes<a class="md-anchor" href="#text-attributes" title="Permanent link"></a></h1>
+<p>Attributed text is used in a number of places in Pango. It is used as the
+input to the itemization process and also when creating a <a href="class.Layout.html"><code>PangoLayout</code></a>.</p>
+<p>Attributes can influence the various stages of the rendering pipeline. For example,
+font or size attributes will influence the font selection that is happening during
+itemization, font features and letterspacing attributes will influence shaping, and
+color or underline attributes will be used for&nbsp;rendering.</p>
+<p>Pango uses a simple structs for individual attributes, such as
+<a href="struct.AttrColor.html"><code>PangoAttrColor</code></a> or <a href="struct.AttrFontDesc.html"><code>PangoAttrFontDesc</code></a>. Each attribute has a type,
+and a start and end index that determine the range of characters that the attribute
+applies to. See the <a href="enum.AttrType.html"><code>PangoAttrType</code></a> enumeration for all the possible
+attribute&nbsp;types.</p>
+<p>Attributes rarely come alone. Pango uses the <a href="struct.AttrList.html"><code>PangoAttrList</code></a> structure
+to hold all attributes that apply to a piece of&nbsp;text.</p>
+<h1 id="pango-markup">Pango Markup<a class="md-anchor" href="#pango-markup" title="Permanent link"></a></h1>
+<p>Frequently, you want to display some text to the user with attributes applied to
+part of the text (for example, you might want bold or italicized words). With the
+base Pango interfaces, you could create a <a href="struct.AttrList.html"><code>PangoAttrList</code></a> and apply it to
+the text; the problem is that you&#8217;d need to apply attributes to some numeric range
+of characters, for example &#8220;characters 12-17.&#8221; This is broken from an
+internationalization standpoint; once the text is translated, the word you wanted
+to italicize could be in a different&nbsp;position.</p>
+<p>The solution is to include the text attributes in the string to be translated.
+Pango provides this feature with a small markup language. You can parse a marked-up
+string into the string text plus a <a href="struct.AttrList.html"><code>PangoAttrList</code></a> using either of
+<a href="func.parse_markup.html"><code>pango_parse_markup()</code></a> or <a href="func.markup_parser_new.html"><code>pango_markup_parser_new()</code></a>.</p>
+<p>A simple example of a marked-up string might&nbsp;be:</p>
+<div class="codehilite"><pre><span></span><code>&lt;span foreground=&quot;blue&quot; size=&quot;x-large&quot;&gt;Blue text&lt;/span&gt; is &lt;i&gt;cool&lt;/i&gt;!&quot;
+</code></pre></div>
+
+<p><img alt="Markup example" src="blue-text.png" /></p>
+<p>A more elaborate example of using markup to color combining marks in
+Arabic&nbsp;text:</p>
+<div class="codehilite"><pre><span></span><code>&lt;span foreground=&quot;purple&quot;&gt;ا&lt;/span&gt;&lt;span foreground=&quot;red&quot;&gt;َ&lt;/span&gt;ل&lt;span foreground=&quot;blue&quot;&gt;ْ&lt;/span&gt;ع&lt;span foreground=&quot;red&quot;&gt;َ&lt;/span&gt;ر&lt;span foreground=&quot;red&quot;&gt;َ&lt;/span&gt;ب&lt;span foreground=&quot;red&quot;&gt;ِ&lt;/span&gt;ي&lt;span foreground=&quot;green&quot;&gt;ّ&lt;/span&gt;&lt;span foreground=&quot;red&quot;&gt;َ&lt;/span&gt;ة&lt;span foreground=&quot;blue&quot;&gt;ُ&lt;/span&gt;
+</code></pre></div>
+
+<p><img alt="Markup example" src="arabic-markup.png" /></p>
+<p>Pango uses GMarkup to parse this language, which means that <span class="caps">XML</span> features
+such as numeric character entities such as <code>&amp;#169;</code> for © can be used&nbsp;too.</p>
+<p>The root tag of a marked-up document is <code>&lt;markup&gt;</code>, but <code>pango_parse_markup()</code>
+allows you to omit this tag, so you will most likely never need to use it.
+The most general markup tag is <code>&lt;span&gt;</code>, then there are some convenience&nbsp;tags.</p>
+<h2 id="the-span-attributes">The <code>&lt;span&gt;</code> Attributes<a class="md-anchor" href="#the-span-attributes" title="Permanent link"></a></h2>
+<dl>
+<dt>font</dt>
+<dt>font_desc</dt>
+<dd>A font description string, such as &#8220;Sans Italic 12&#8221;. See
+  <code>pango_font_description_from_string()</code> for a description of the format of
+  the string representation. Note that any other span attributes will override
+  this description. So if you have &#8220;Sans Italic&#8221; and also a style=&#8221;normal&#8221;
+  attribute, you will get Sans normal, not&nbsp;italic.</dd>
+<dt>font_family</dt>
+<dt>face</dt>
+<dd>A font family&nbsp;name.</dd>
+<dt>font_size</dt>
+<dt>size</dt>
+<dd>Font size in 1024ths of a point, or one of the absolute sizes &#8216;xx-small&#8217;,
+  &#8216;x-small&#8217;, &#8216;small&#8217;, &#8216;medium&#8217;, &#8216;large&#8217;, &#8216;x-large&#8217;, &#8216;xx-large&#8217;, or one of the
+  relative sizes &#8216;smaller&#8217; or &#8216;larger&#8217;. If you want to specify a absolute size,
+  it&#8217;s usually easier to take advantage of the ability to specify a partial font
+  description using &#8216;font&#8217;; you can use font=&#8216;12.5&#8217; rather than&nbsp;size=&#8216;12800&#8217;.</dd>
+<dt>font_style</dt>
+<dt>style</dt>
+<dd>One of &#8216;normal&#8217;, &#8216;oblique&#8217;,&nbsp;&#8216;italic&#8217;.</dd>
+<dt>font_weight</dt>
+<dt>weight</dt>
+<dd>One of &#8216;ultralight&#8217;, &#8216;light&#8217;, &#8216;normal&#8217;, &#8216;bold&#8217;, &#8216;ultrabold&#8217;, &#8216;heavy&#8217;, or a
+  numeric&nbsp;weight.</dd>
+<dt>font_variant</dt>
+<dt>variant</dt>
+<dd>One of &#8216;normal&#8217; or&nbsp;&#8216;smallcaps&#8217;.</dd>
+<dt>font_stretch</dt>
+<dt>stretch</dt>
+<dd>One of &#8216;ultracondensed&#8217;, &#8216;extracondensed&#8217;,
+  &#8216;condensed&#8217;, &#8216;semicondensed&#8217;, &#8216;normal&#8217;, &#8216;semiexpanded&#8217;, &#8216;expanded&#8217;,
+  &#8216;extraexpanded&#8217;,&nbsp;&#8216;ultraexpanded&#8217;.</dd>
+<dt>font_features</dt>
+<dd>A comma-separated list of OpenType font feature settings, in the same syntax as
+  accepted by <span class="caps">CSS</span>. E.g: <code>font_features='dlig=1, -kern, afrc on'</code>.</dd>
+<dt>foreground</dt>
+<dt>fgcolor</dt>
+<dt>color</dt>
+<dd>An <span class="caps">RGB</span> color specification such as &#8216;#<span class="caps">00FF00</span>&#8217; or a color name such as &#8216;red&#8217;.
+  Since 1.38, an <span class="caps">RGBA</span> color specification such as &#8216;#<span class="caps">00FF007F</span>&#8217; will be interpreted
+  as specifying both a foreground color and foreground&nbsp;alpha.</dd>
+<dt>background</dt>
+<dt>bgcolor</dt>
+<dd>An <span class="caps">RGB</span> color specification such as &#8216;#<span class="caps">00FF00</span>&#8217; or a color name such as &#8216;red&#8217;.
+  Since 1.38, an <span class="caps">RGBA</span> color specification such as &#8216;#<span class="caps">00FF007F</span>&#8217; will be interpreted
+  as specifying both a background color and background&nbsp;alpha.</dd>
+<dt>alpha</dt>
+<dt>fgalpha</dt>
+<dd>An alpha value for the foreground color, either a plain integer between 1 and
+  65536 or a percentage value like&nbsp;&#8216;50%&#8217;.</dd>
+<dt>background_alpha</dt>
+<dt>bgalpha</dt>
+<dd>An alpha value for the background color, either a plain integer between 1 and
+  65536 or a percentage value like&nbsp;&#8216;50%&#8217;.</dd>
+<dt>underline</dt>
+<dd>One of &#8216;none&#8217;, &#8216;single&#8217;, &#8216;double&#8217;, &#8216;low&#8217;,&nbsp;&#8216;error&#8217;.</dd>
+<dt>underline_color</dt>
+<dd>The color of underlines; an <span class="caps">RGB</span> color specification such as &#8216;#<span class="caps">00FF00</span>&#8217; or a color
+  name such as&nbsp;&#8216;red&#8217;.</dd>
+<dt>rise</dt>
+<dd>Vertical displacement, in Pango units. Can be negative for subscript, positive
+  for&nbsp;superscript.</dd>
+<dt>strikethrough</dt>
+<dd><span class="quo">&#8216;</span>true&#8217; or &#8216;false&#8217; whether to strike through the&nbsp;text.</dd>
+<dt>strikethrough_color</dt>
+<dd>The color of strikethrough lines; an <span class="caps">RGB</span> color specification such as &#8216;#<span class="caps">00FF00</span>&#8217;
+  or a color name such as&nbsp;&#8216;red&#8217;.</dd>
+<dt>fallback</dt>
+<dd><span class="quo">&#8216;</span>true&#8217; or &#8216;false&#8217; whether to enable fallback. If disabled, then characters will
+  only be used from the closest matching font on the system. No fallback will be
+  done to other fonts on the system that might contain the characters in the text.
+  Fallback is enabled by default. Most applications should not disable&nbsp;fallback.</dd>
+<dt>lang</dt>
+<dd>A language code, indicating the text&nbsp;language.</dd>
+<dt>letter_spacing</dt>
+<dd>Inter-letter spacing in 1024ths of a&nbsp;point.</dd>
+<dt>gravity</dt>
+<dd>One of &#8216;south&#8217;, &#8216;east&#8217;, &#8216;north&#8217;, &#8216;west&#8217;,&nbsp;&#8216;auto&#8217;.</dd>
+<dt>gravity_hint</dt>
+<dd>One of &#8216;natural&#8217;, &#8216;strong&#8217;,&nbsp;&#8216;line&#8217;.</dd>
+</dl>
+<h2 id="convenience-tags">Convenience Tags<a class="md-anchor" href="#convenience-tags" title="Permanent link"></a></h2>
+<dl>
+<dt><code>&lt;b&gt;</code></dt>
+<dd>Bold</dd>
+<dt><code>&lt;big&gt;</code></dt>
+<dd>Makes font relatively larger, equivalent to <code>&lt;span size="larger"&gt;</code></dd>
+<dt><code>&lt;i&gt;</code></dt>
+<dd>Italic</dd>
+<dt><code>&lt;s&gt;</code></dt>
+<dd>Strikethrough</dd>
+<dt><code>&lt;sub&gt;</code></dt>
+<dd>Subscript</dd>
+<dt><code>&lt;sup&gt;</code></dt>
+<dd>Superscript</dd>
+<dt><code>&lt;small&gt;</code></dt>
+<dd>Makes font relatively smaller, equivalent to <code>&lt;span size="smaller"&gt;</code></dd>
+<dt><code>&lt;tt&gt;</code></dt>
+<dd>Monospace&nbsp;font</dd>
+<dt><code>&lt;u&gt;</code></dt>
+<dd>Underline</dd>
+</dl>
+    </div>
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

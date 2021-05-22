@@ -1,0 +1,237 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PangoOT.RulesetDescription.equal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="PangoOT-1.0"/>
+  
+
+  
+  <meta priority="og:title" content="PangoOT.RulesetDescription.equal"/>
+  <meta priority="og:description" content="Reference for PangoOT.RulesetDescription.equal"/>
+  <meta name="twitter:title" content="PangoOT.RulesetDescription.equal"/>
+  <meta name="twitter:description" content="Reference for PangoOT.RulesetDescription.equal"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">PangoOT</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a href="struct.RulesetDescription.html">RulesetDescription</a>
+  </div>
+</div>
+<div class="section">
+  <h5>Methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.RulesetDescription.copy.html">copy</a>
+  
+    <a class="method current" href="method.RulesetDescription.equal.html">equal</a>
+  
+    <a class="method" href="method.RulesetDescription.free.html">free</a>
+  
+    <a class="method" href="method.RulesetDescription.hash.html">hash</a>
+  
+  </div>
+</div>
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Method</h3>
+    <h1><a href="index.html">PangoOT</a>.<a href="struct.RulesetDescription.html">RulesetDescription</a>.equal</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 style="display:flex;" id="declaration">
+        Declaration
+        <a class="anchor" href="#declaration"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-ot.h#L416">[src]</a>
+        
+      </h4>
+
+      <div class="docblock c-decl">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">gboolean</span>
+<span class="n">pango_ot_ruleset_description_equal</span> <span class="p">(</span>
+  <span class="k">const</span> <span class="n">PangoOTRulesetDescription</span><span class="o">*</span> <span class="n">desc1</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">PangoOTRulesetDescription</span><span class="o">*</span> <span class="n">desc2</span>
+<span class="p">)</span>
+</pre></div>
+</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 style="display:flex;" id="description">
+        Description
+        <a class="anchor" href="#description"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-ot-ruleset.c#L335">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <p>Compares two ruleset descriptions for equality.
+Two ruleset descriptions are considered equal if the rulesets
+they describe are provably identical.  This means that their
+script, language, and all feature sets should be equal.  For static feature
+sets, the array addresses are compared directly, while for other
+features, the list of features is compared one by one.
+(Two ruleset descriptions may result in identical rulesets
+being created, but still compare <code>FALSE</code>.)</p>
+      </div>
+
+      <div class="docblock">
+        <table>
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    
+    <div class="parameters toggle-wrapper">
+      <h4 id="parameters">
+        Parameters
+        <a href="#parameters" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          
+          <tr class="arg-name">
+            <td><code>desc2</code></td>
+            <td><a href="struct.RulesetDescription.html"><code>PangoOTRulesetDescription</code></a></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>a ruleset&nbsp;description</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          <tr><td>&nbsp;</td><td>Ownership is not transferred to the callee</td></tr>
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+    
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          <tr class="arg-name">
+            <td colspan="2">Returns:&nbsp;<code>gboolean</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td colspan="2"><p><code>TRUE</code> if two ruleset descriptions are identical,
+              <code>FALSE</code> otherwise.</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

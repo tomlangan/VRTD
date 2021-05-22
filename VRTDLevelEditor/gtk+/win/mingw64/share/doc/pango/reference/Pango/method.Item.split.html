@@ -1,0 +1,258 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.Item.split</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta priority="og:title" content="Pango.Item.split"/>
+  <meta priority="og:description" content="Reference for Pango.Item.split"/>
+  <meta name="twitter:title" content="Pango.Item.split"/>
+  <meta name="twitter:description" content="Reference for Pango.Item.split"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a href="struct.Item.html">Item</a>
+  </div>
+</div>
+<div class="section">
+  <h5>Methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.Item.apply_attrs.html">apply_attrs</a>
+  
+    <a class="method" href="method.Item.copy.html">copy</a>
+  
+    <a class="method" href="method.Item.free.html">free</a>
+  
+    <a class="method current" href="method.Item.split.html">split</a>
+  
+  </div>
+</div>
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Method</h3>
+    <h1><a href="index.html">Pango</a>.<a href="struct.Item.html">Item</a>.split</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 style="display:flex;" id="declaration">
+        Declaration
+        <a class="anchor" href="#declaration"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-item.h#L130">[src]</a>
+        
+      </h4>
+
+      <div class="docblock c-decl">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">PangoItem</span><span class="o">*</span>
+<span class="n">pango_item_split</span> <span class="p">(</span>
+  <span class="n">PangoItem</span><span class="o">*</span> <span class="n">orig</span><span class="p">,</span>
+  <span class="kt">int</span> <span class="n">split_index</span><span class="p">,</span>
+  <span class="kt">int</span> <span class="n">split_offset</span>
+<span class="p">)</span>
+</pre></div>
+</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 style="display:flex;" id="description">
+        Description
+        <a class="anchor" href="#description"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-item.c#L113">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <p>Modifies <code>orig</code> to cover only the text after <code>split_index</code>, and
+returns a new item that covers the text before <code>split_index</code> that
+used to be in <code>orig</code>.</p>
+<p>You can think of <code>split_index</code> as the length of the returned item.
+<code>split_index</code> may not be 0, and it may not be greater than or equal
+to the length of <code>orig</code> (that is, there must be at least one byte
+assigned to each item, you can&#8217;t create a zero-length item).
+<code>split_offset</code> is the length of the first item in chars, and must be
+provided because the text used to generate the item isn&#8217;t available,
+so <code>pango_item_split()</code> can&#8217;t count the char length of the split items&nbsp;itself.</p>
+      </div>
+
+      <div class="docblock">
+        <table>
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    
+    <div class="parameters toggle-wrapper">
+      <h4 id="parameters">
+        Parameters
+        <a href="#parameters" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          
+          <tr class="arg-name">
+            <td><code>split_index</code></td>
+            <td><code>int</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>byte index of position to split item, relative to the
+  start of the&nbsp;item</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <tr class="arg-name">
+            <td><code>split_offset</code></td>
+            <td><code>int</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>number of chars between start of <code>orig</code> and <code>split_index</code></p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+    
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          <tr class="arg-name">
+            <td colspan="2">Returns:&nbsp;<a href="struct.Item.html"><code>PangoItem</code></a></td>
+          </tr>
+          <tr class="arg-description">
+            <td colspan="2"><p>new item representing text before <code>split_index</code>, which
+  should be freed with <a href="method.Item.free.html"><code>pango_item_free()</code></a>.</p></td>
+          </tr>
+          
+          
+          
+          <tr><td>Ownership of the data is transferred to the caller</td></tr>
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

@@ -18,8 +18,9 @@ namespace VRTD.LevelEditor
         public MainWindow() :
                 base(WindowType.Toplevel)
         {
-            SetDefaultSize(800, 600);
+            SetDefaultSize(2160, 2160);
             SetPosition(WindowPosition.Center);
+            GtkHelpers.InitializeColors();
 
             if (!LevelManager.Initialize(this))
             {
@@ -42,7 +43,7 @@ namespace VRTD.LevelEditor
 
             if (null != TopLevelHBox)
             {
-                TopLevelHBox.HideAll();
+                TopLevelHBox.Hide();
                 TopLevelHBox.Destroy();
                 TopLevelHBox = null;
             }

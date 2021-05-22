@@ -1,0 +1,811 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.Script</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.Script"/>
+  <meta property="og:description" content="Reference for Pango.Script"/>
+  <meta name="twitter:title" content="Pango.Script"/>
+  <meta name="twitter:description" content="Reference for Pango.Script"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="enum.Script.html">Script</a>
+  </div>
+</div>
+
+
+<div class="section">
+  <h5>Type functions</h5>
+  <div class="links">
+  
+    <a class="func" href="type_func.Script.for_unichar.html">for_unichar</a>
+  
+    <a class="func" href="type_func.Script.get_sample_language.html">get_sample_language</a>
+  
+  </div>
+</div>
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Enumeration</h3>
+    <h1><a href="index.html">Pango</a>.Script</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 style="display:flex;" id="declaration">
+        Declaration
+        <a href="#declaration" class="anchor"></a>
+        
+      </h4>
+
+      <div class="docblock">
+        <pre><code>enum Pango.Script</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 style="display:flex;" id="description">
+        Description
+        <a href="#description" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-script.h#L37">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+      <p>The <code>PangoScript</code> enumeration identifies different writing&nbsp;systems.</p>
+<p>The values correspond to the names as defined in the Unicode standard. See
+<a href="http://www.unicode.org/reports/tr24/">Unicode Standard Annex 24: Script&nbsp;names</a></p>
+<p>Note that this enumeration is deprecated and will not be updated
+to include values in newer versions of the Unicode standard.
+Applications should use the <code>GUnicodeScript</code> enumeration instead,
+whose values are interchangeable with <code>PangoScript</code>.</p>
+      </div>
+
+      <div class="docblock">
+        <table class="attributes">
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    <div class="members toggle-wrapper">
+      <h4 id="members">
+        Members
+        <a href="#members" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      <table class="enum-members">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: -1">PANGO_SCRIPT_INVALID_CODE</code></td>
+          <td><p>a value never returned from <code>pango_script_for_unichar()</code></p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 0">PANGO_SCRIPT_COMMON</code></td>
+          <td><p>a character used by multiple different&nbsp;scripts</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 1">PANGO_SCRIPT_INHERITED</code></td>
+          <td><p>a mark glyph that takes its script from the
+base glyph to which it is&nbsp;attached</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 2">PANGO_SCRIPT_ARABIC</code></td>
+          <td><p>Arabic</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 3">PANGO_SCRIPT_ARMENIAN</code></td>
+          <td><p>Armenian</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 4">PANGO_SCRIPT_BENGALI</code></td>
+          <td><p>Bengali</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 5">PANGO_SCRIPT_BOPOMOFO</code></td>
+          <td><p>Bopomofo</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 6">PANGO_SCRIPT_CHEROKEE</code></td>
+          <td><p>Cherokee</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 7">PANGO_SCRIPT_COPTIC</code></td>
+          <td><p>Coptic</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 8">PANGO_SCRIPT_CYRILLIC</code></td>
+          <td><p>Cyrillic</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 9">PANGO_SCRIPT_DESERET</code></td>
+          <td><p>Deseret</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 10">PANGO_SCRIPT_DEVANAGARI</code></td>
+          <td><p>Devanagari</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 11">PANGO_SCRIPT_ETHIOPIC</code></td>
+          <td><p>Ethiopic</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 12">PANGO_SCRIPT_GEORGIAN</code></td>
+          <td><p>Georgian</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 13">PANGO_SCRIPT_GOTHIC</code></td>
+          <td><p>Gothic</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 14">PANGO_SCRIPT_GREEK</code></td>
+          <td><p>Greek</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 15">PANGO_SCRIPT_GUJARATI</code></td>
+          <td><p>Gujarati</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 16">PANGO_SCRIPT_GURMUKHI</code></td>
+          <td><p>Gurmukhi</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 17">PANGO_SCRIPT_HAN</code></td>
+          <td><p>Han</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 18">PANGO_SCRIPT_HANGUL</code></td>
+          <td><p>Hangul</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 19">PANGO_SCRIPT_HEBREW</code></td>
+          <td><p>Hebrew</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 20">PANGO_SCRIPT_HIRAGANA</code></td>
+          <td><p>Hiragana</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 21">PANGO_SCRIPT_KANNADA</code></td>
+          <td><p>Kannada</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 22">PANGO_SCRIPT_KATAKANA</code></td>
+          <td><p>Katakana</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 23">PANGO_SCRIPT_KHMER</code></td>
+          <td><p>Khmer</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 24">PANGO_SCRIPT_LAO</code></td>
+          <td><p>Lao</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 25">PANGO_SCRIPT_LATIN</code></td>
+          <td><p>Latin</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 26">PANGO_SCRIPT_MALAYALAM</code></td>
+          <td><p>Malayalam</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 27">PANGO_SCRIPT_MONGOLIAN</code></td>
+          <td><p>Mongolian</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 28">PANGO_SCRIPT_MYANMAR</code></td>
+          <td><p>Myanmar</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 29">PANGO_SCRIPT_OGHAM</code></td>
+          <td><p>Ogham</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 30">PANGO_SCRIPT_OLD_ITALIC</code></td>
+          <td><p>Old&nbsp;Italic</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 31">PANGO_SCRIPT_ORIYA</code></td>
+          <td><p>Oriya</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 32">PANGO_SCRIPT_RUNIC</code></td>
+          <td><p>Runic</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 33">PANGO_SCRIPT_SINHALA</code></td>
+          <td><p>Sinhala</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 34">PANGO_SCRIPT_SYRIAC</code></td>
+          <td><p>Syriac</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 35">PANGO_SCRIPT_TAMIL</code></td>
+          <td><p>Tamil</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 36">PANGO_SCRIPT_TELUGU</code></td>
+          <td><p>Telugu</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 37">PANGO_SCRIPT_THAANA</code></td>
+          <td><p>Thaana</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 38">PANGO_SCRIPT_THAI</code></td>
+          <td><p>Thai</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 39">PANGO_SCRIPT_TIBETAN</code></td>
+          <td><p>Tibetan</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 40">PANGO_SCRIPT_CANADIAN_ABORIGINAL</code></td>
+          <td><p>Canadian&nbsp;Aboriginal</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 41">PANGO_SCRIPT_YI</code></td>
+          <td><p>Yi</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 42">PANGO_SCRIPT_TAGALOG</code></td>
+          <td><p>Tagalog</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 43">PANGO_SCRIPT_HANUNOO</code></td>
+          <td><p>Hanunoo</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 44">PANGO_SCRIPT_BUHID</code></td>
+          <td><p>Buhid</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 45">PANGO_SCRIPT_TAGBANWA</code></td>
+          <td><p>Tagbanwa</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 46">PANGO_SCRIPT_BRAILLE</code></td>
+          <td><p>Braille</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 47">PANGO_SCRIPT_CYPRIOT</code></td>
+          <td><p>Cypriot</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 48">PANGO_SCRIPT_LIMBU</code></td>
+          <td><p>Limbu</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 49">PANGO_SCRIPT_OSMANYA</code></td>
+          <td><p>Osmanya</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 50">PANGO_SCRIPT_SHAVIAN</code></td>
+          <td><p>Shavian</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 51">PANGO_SCRIPT_LINEAR_B</code></td>
+          <td><p>Linear&nbsp;B</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 52">PANGO_SCRIPT_TAI_LE</code></td>
+          <td><p>Tai&nbsp;Le</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 53">PANGO_SCRIPT_UGARITIC</code></td>
+          <td><p>Ugaritic</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 54">PANGO_SCRIPT_NEW_TAI_LUE</code></td>
+          <td><p>New Tai Lue. Since&nbsp;1.10</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 55">PANGO_SCRIPT_BUGINESE</code></td>
+          <td><p>Buginese. Since&nbsp;1.10</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 56">PANGO_SCRIPT_GLAGOLITIC</code></td>
+          <td><p>Glagolitic. Since&nbsp;1.10</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 57">PANGO_SCRIPT_TIFINAGH</code></td>
+          <td><p>Tifinagh. Since&nbsp;1.10</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 58">PANGO_SCRIPT_SYLOTI_NAGRI</code></td>
+          <td><p>Syloti Nagri. Since&nbsp;1.10</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 59">PANGO_SCRIPT_OLD_PERSIAN</code></td>
+          <td><p>Old Persian. Since&nbsp;1.10</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 60">PANGO_SCRIPT_KHAROSHTHI</code></td>
+          <td><p>Kharoshthi. Since&nbsp;1.10</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 61">PANGO_SCRIPT_UNKNOWN</code></td>
+          <td><p>an unassigned code point. Since&nbsp;1.14</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 62">PANGO_SCRIPT_BALINESE</code></td>
+          <td><p>Balinese. Since&nbsp;1.14</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 63">PANGO_SCRIPT_CUNEIFORM</code></td>
+          <td><p>Cuneiform. Since&nbsp;1.14</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 64">PANGO_SCRIPT_PHOENICIAN</code></td>
+          <td><p>Phoenician. Since&nbsp;1.14</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 65">PANGO_SCRIPT_PHAGS_PA</code></td>
+          <td><p>Phags-pa. Since&nbsp;1.14</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 66">PANGO_SCRIPT_NKO</code></td>
+          <td><p>N&#8217;Ko. Since&nbsp;1.14</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 67">PANGO_SCRIPT_KAYAH_LI</code></td>
+          <td><p>Kayah Li. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 68">PANGO_SCRIPT_LEPCHA</code></td>
+          <td><p>Lepcha. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 69">PANGO_SCRIPT_REJANG</code></td>
+          <td><p>Rejang. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 70">PANGO_SCRIPT_SUNDANESE</code></td>
+          <td><p>Sundanese. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 71">PANGO_SCRIPT_SAURASHTRA</code></td>
+          <td><p>Saurashtra. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 72">PANGO_SCRIPT_CHAM</code></td>
+          <td><p>Cham. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 73">PANGO_SCRIPT_OL_CHIKI</code></td>
+          <td><p>Ol Chiki. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 74">PANGO_SCRIPT_VAI</code></td>
+          <td><p>Vai. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 75">PANGO_SCRIPT_CARIAN</code></td>
+          <td><p>Carian. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 76">PANGO_SCRIPT_LYCIAN</code></td>
+          <td><p>Lycian. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 77">PANGO_SCRIPT_LYDIAN</code></td>
+          <td><p>Lydian. Since&nbsp;1.20.1</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 78">PANGO_SCRIPT_BATAK</code></td>
+          <td><p>Batak. Since&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 79">PANGO_SCRIPT_BRAHMI</code></td>
+          <td><p>Brahmi. Since&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 80">PANGO_SCRIPT_MANDAIC</code></td>
+          <td><p>Mandaic. Since&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 81">PANGO_SCRIPT_CHAKMA</code></td>
+          <td><p>Chakma. Since:&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 82">PANGO_SCRIPT_MEROITIC_CURSIVE</code></td>
+          <td><p>Meroitic Cursive. Since:&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 83">PANGO_SCRIPT_MEROITIC_HIEROGLYPHS</code></td>
+          <td><p>Meroitic Hieroglyphs. Since:&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 84">PANGO_SCRIPT_MIAO</code></td>
+          <td><p>Miao. Since:&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 85">PANGO_SCRIPT_SHARADA</code></td>
+          <td><p>Sharada. Since:&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 86">PANGO_SCRIPT_SORA_SOMPENG</code></td>
+          <td><p>Sora Sompeng. Since:&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 87">PANGO_SCRIPT_TAKRI</code></td>
+          <td><p>Takri. Since:&nbsp;1.32</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 88">PANGO_SCRIPT_BASSA_VAH</code></td>
+          <td><p>Bassa. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 89">PANGO_SCRIPT_CAUCASIAN_ALBANIAN</code></td>
+          <td><p>Caucasian Albanian. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 90">PANGO_SCRIPT_DUPLOYAN</code></td>
+          <td><p>Duployan. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 91">PANGO_SCRIPT_ELBASAN</code></td>
+          <td><p>Elbasan. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 92">PANGO_SCRIPT_GRANTHA</code></td>
+          <td><p>Grantha. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 93">PANGO_SCRIPT_KHOJKI</code></td>
+          <td><p>Kjohki. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 94">PANGO_SCRIPT_KHUDAWADI</code></td>
+          <td><p>Khudawadi, Sindhi. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 95">PANGO_SCRIPT_LINEAR_A</code></td>
+          <td><p>Linear A. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 96">PANGO_SCRIPT_MAHAJANI</code></td>
+          <td><p>Mahajani. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 97">PANGO_SCRIPT_MANICHAEAN</code></td>
+          <td><p>Manichaean. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 98">PANGO_SCRIPT_MENDE_KIKAKUI</code></td>
+          <td><p>Mende Kikakui. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 99">PANGO_SCRIPT_MODI</code></td>
+          <td><p>Modi. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 100">PANGO_SCRIPT_MRO</code></td>
+          <td><p>Mro. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 101">PANGO_SCRIPT_NABATAEAN</code></td>
+          <td><p>Nabataean. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 102">PANGO_SCRIPT_OLD_NORTH_ARABIAN</code></td>
+          <td><p>Old North Arabian. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 103">PANGO_SCRIPT_OLD_PERMIC</code></td>
+          <td><p>Old Permic. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 104">PANGO_SCRIPT_PAHAWH_HMONG</code></td>
+          <td><p>Pahawh Hmong. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 105">PANGO_SCRIPT_PALMYRENE</code></td>
+          <td><p>Palmyrene. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 106">PANGO_SCRIPT_PAU_CIN_HAU</code></td>
+          <td><p>Pau Cin Hau. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 107">PANGO_SCRIPT_PSALTER_PAHLAVI</code></td>
+          <td><p>Psalter Pahlavi. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 108">PANGO_SCRIPT_SIDDHAM</code></td>
+          <td><p>Siddham. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 109">PANGO_SCRIPT_TIRHUTA</code></td>
+          <td><p>Tirhuta. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 110">PANGO_SCRIPT_WARANG_CITI</code></td>
+          <td><p>Warang Citi. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 111">PANGO_SCRIPT_AHOM</code></td>
+          <td><p>Ahom. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 112">PANGO_SCRIPT_ANATOLIAN_HIEROGLYPHS</code></td>
+          <td><p>Anatolian Hieroglyphs. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 113">PANGO_SCRIPT_HATRAN</code></td>
+          <td><p>Hatran. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 114">PANGO_SCRIPT_MULTANI</code></td>
+          <td><p>Multani. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 115">PANGO_SCRIPT_OLD_HUNGARIAN</code></td>
+          <td><p>Old Hungarian. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 116">PANGO_SCRIPT_SIGNWRITING</code></td>
+          <td><p>Signwriting. Since:&nbsp;1.40</p></td>
+        </tr>
+      
+      </table>
+      </div>
+    </div>
+
+    
+
+    
+    <div class="type-funcs toggle-wrapper">
+      <h4 id="type-functions">
+        Type functions
+        <a href="#type-functions" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="deprecated">
+          <h6><a href="type_func.Script.for_unichar.html">pango_script_for_unichar</a></h6>
+
+          <div class="docblock">
+            <p>Looks up the script for a particular&nbsp;character.</p>
+          </div>
+
+          <div class="docblock"><p>Deprecated since: 1.44.</p></div>
+        </div>
+      
+        <div class="">
+          <h6><a href="type_func.Script.get_sample_language.html">pango_script_get_sample_language</a></h6>
+
+          <div class="docblock">
+            <p>Finds a language tag that is reasonably representative of <code>script</code>.</p>
+          </div>
+
+          
+        </div>
+      
+    </div>
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

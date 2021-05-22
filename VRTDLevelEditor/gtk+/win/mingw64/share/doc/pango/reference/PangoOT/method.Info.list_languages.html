@@ -1,0 +1,270 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PangoOT.Info.list_languages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="PangoOT-1.0"/>
+  
+
+  
+  <meta priority="og:title" content="PangoOT.Info.list_languages"/>
+  <meta priority="og:description" content="Reference for PangoOT.Info.list_languages"/>
+  <meta name="twitter:title" content="PangoOT.Info.list_languages"/>
+  <meta name="twitter:description" content="Reference for PangoOT.Info.list_languages"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">PangoOT</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a href="class.Info.html">Info</a>
+  </div>
+</div>
+<div class="section">
+  <h5>Methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.Info.find_feature.html">find_feature</a>
+  
+    <a class="method" href="method.Info.find_language.html">find_language</a>
+  
+    <a class="method" href="method.Info.find_script.html">find_script</a>
+  
+    <a class="method" href="method.Info.list_features.html">list_features</a>
+  
+    <a class="method current" href="method.Info.list_languages.html">list_languages</a>
+  
+    <a class="method" href="method.Info.list_scripts.html">list_scripts</a>
+  
+  </div>
+</div>
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Method</h3>
+    <h1><a href="index.html">PangoOT</a>.<a href="class.Info.html">Info</a>.list_languages</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 style="display:flex;" id="declaration">
+        Declaration
+        <a class="anchor" href="#declaration"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-ot.h#L305">[src]</a>
+        
+      </h4>
+
+      <div class="docblock c-decl">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">PangoOTTag</span><span class="o">*</span>
+<span class="n">pango_ot_info_list_languages</span> <span class="p">(</span>
+  <span class="n">PangoOTInfo</span><span class="o">*</span> <span class="n">info</span><span class="p">,</span>
+  <span class="n">PangoOTTableType</span> <span class="n">table_type</span><span class="p">,</span>
+  <span class="n">guint</span> <span class="n">script_index</span><span class="p">,</span>
+  <span class="n">PangoOTTag</span> <span class="n">language_tag</span>
+<span class="p">)</span>
+</pre></div>
+</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 style="display:flex;" id="description">
+        Description
+        <a class="anchor" href="#description"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-ot-info.c#L261">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <p>Obtains the list of available languages for a given&nbsp;script.</p>
+      </div>
+
+      <div class="docblock">
+        <table>
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    
+    <div class="parameters toggle-wrapper">
+      <h4 id="parameters">
+        Parameters
+        <a href="#parameters" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          
+          <tr class="arg-name">
+            <td><code>table_type</code></td>
+            <td><a href="enum.TableType.html"><code>PangoOTTableType</code></a></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>the table type to obtain information&nbsp;about.</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <tr class="arg-name">
+            <td><code>script_index</code></td>
+            <td><code>guint</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>the index of the script to list languages&nbsp;for.</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <tr class="arg-name">
+            <td><code>language_tag</code></td>
+            <td><a href="alias.Tag.html"><code>PangoOTTag</code></a></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>unused&nbsp;parameter.</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+    
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          <tr class="arg-name">
+            <td colspan="2">Returns:&nbsp;<a href="alias.Tag.html"><code>PangoOTTag</code></a></td>
+          </tr>
+          <tr class="arg-description">
+            <td colspan="2"><p>a newly-allocated zero-terminated array containing the tags of the
+  available languages.  Should be freed using <code>g_free()</code>.</p></td>
+          </tr>
+          
+          
+          
+          <tr><td>Ownership is not transferred to the caller</td></tr>
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

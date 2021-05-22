@@ -1,0 +1,130 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango &ndash; 1.0: The Rendering Pipeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango: The Rendering Pipeline"/>
+  <meta property="og:description" content="Reference for Pango-1.0: The Rendering Pipeline"/>
+  <meta name="twitter:title" content="Pango: The Rendering Pipeline"/>
+  <meta name="twitter:description" content="Reference for Pango-1.0: The Rendering Pipeline"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+      
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <section>
+    <div class="docblock">
+    <h1 id="the-rendering-pipeline">The Rendering Pipeline<a class="md-anchor" href="#the-rendering-pipeline" title="Permanent link"></a></h1>
+<p>The Pango rendering pipeline takes a string of Unicode characters, converts them
+it into glyphs, and renders them on some output medium. This section describes the
+various stages of this pipeline and the APIs that implement&nbsp;them.</p>
+<p><img alt="Pango Rendering Pipeline" src="pipeline.png" /></p>
+<dl>
+<dt>Itemization</dt>
+<dd>breaks a piece of text into segments with consistent direction and shaping
+  properies. Among other things, this determines which font to use for each
+  character. Use <code>pango_itemize()</code> or <code>pango_itemize_with_base_dir()</code> to itemize&nbsp;text.</dd>
+<dt>Shaping</dt>
+<dd>converts characters into glyphs. Use <code>pango_shape()</code>, <code>pango_shape_full()</code> or
+  <code>pango_shape_with_flags()</code> to shape&nbsp;text.</dd>
+<dt>Line&nbsp;Breaking</dt>
+<dd>determines where line breaks should be inserted into a sequence of glyphs.
+  The function <code>pango_break()</code> determines possible line breaks. The actual line
+  breaking is done by <a href="class.Layout.html"><code>PangoLayout</code></a>.</dd>
+<dt>Justification</dt>
+<dd>adjusts inter-word spacing to form lines of even length. This is done by
+  <a href="class.Layout.html"><code>PangoLayout</code></a>.</dd>
+<dt>Rendering</dt>
+<dd>takes a string of positioned glyphs, and renders them onto a surface. This is
+  accomplished by a <a href="class.Renderer.html"><code>PangoRenderer</code></a> object. The functions
+  <code>pango_cairo_show_glyph_string()</code> and <code>pango_cairo_show_layout()</code> use a
+  <a href="class.Renderer.html"><code>PangoRenderer</code></a> to draw text onto a cairo&nbsp;surface.</dd>
+</dl>
+    </div>
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

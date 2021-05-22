@@ -1,0 +1,317 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.FontMetrics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.FontMetrics"/>
+  <meta property="og:description" content="Reference for Pango.FontMetrics"/>
+  <meta name="twitter:title" content="Pango.FontMetrics"/>
+  <meta name="twitter:description" content="Reference for Pango.FontMetrics"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="struct.FontMetrics.html#description">FontMetrics</a>
+  </div>
+</div>
+
+
+
+
+<div class="section">
+  <h5>Instance methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.FontMetrics.get_approximate_char_width.html">get_approximate_char_width</a>
+  
+    <a class="method" href="method.FontMetrics.get_approximate_digit_width.html">get_approximate_digit_width</a>
+  
+    <a class="method" href="method.FontMetrics.get_ascent.html">get_ascent</a>
+  
+    <a class="method" href="method.FontMetrics.get_descent.html">get_descent</a>
+  
+    <a class="method" href="method.FontMetrics.get_height.html">get_height</a>
+  
+    <a class="method" href="method.FontMetrics.get_strikethrough_position.html">get_strikethrough_position</a>
+  
+    <a class="method" href="method.FontMetrics.get_strikethrough_thickness.html">get_strikethrough_thickness</a>
+  
+    <a class="method" href="method.FontMetrics.get_underline_position.html">get_underline_position</a>
+  
+    <a class="method" href="method.FontMetrics.get_underline_thickness.html">get_underline_thickness</a>
+  
+    <a class="method" href="method.FontMetrics.ref.html">ref</a>
+  
+    <a class="method" href="method.FontMetrics.unref.html">unref</a>
+  
+  </div>
+</div>
+
+
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Struct</h3>
+    <h1><a href="index.html">Pango</a>.FontMetrics</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 style="display:flex;" id="description">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+          <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-font.h#L45">[src]</a>
+          
+        </h4>
+
+        <pre><code><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">PangoFontMetrics</span> <span class="p">{</span>
+  <span class="cm">/* No available fields */</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+
+        <div class="docblock">
+          <p>A <code>PangoFontMetrics</code> structure holds the overall metric information
+for a&nbsp;font.</p>
+<p>The information in a <code>PangoFontMetrics</code> structure may be restricted
+to a script. The fields of this structure are private to implementations
+of a font backend. See the documentation of the corresponding getters
+for documentation of their&nbsp;meaning.</p>
+        </div>
+
+        
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="methods">
+        Instance methods
+        <a href="#methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.get_approximate_char_width.html">pango_font_metrics_get_approximate_char_width</a></h6>
+
+          <div class="docblock">
+            <p>Gets the approximate character width for a font metrics&nbsp;structure.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.get_approximate_digit_width.html">pango_font_metrics_get_approximate_digit_width</a></h6>
+
+          <div class="docblock">
+            <p>Gets the approximate digit width for a font metrics&nbsp;structure.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.get_ascent.html">pango_font_metrics_get_ascent</a></h6>
+
+          <div class="docblock">
+            <p>Gets the ascent from a font metrics&nbsp;structure.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.get_descent.html">pango_font_metrics_get_descent</a></h6>
+
+          <div class="docblock">
+            <p>Gets the descent from a font metrics&nbsp;structure.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.get_height.html">pango_font_metrics_get_height</a></h6>
+
+          <div class="docblock">
+            <p>Gets the line height from a font metrics&nbsp;structure.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.get_strikethrough_position.html">pango_font_metrics_get_strikethrough_position</a></h6>
+
+          <div class="docblock">
+            <p>Gets the suggested position to draw the&nbsp;strikethrough.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.get_strikethrough_thickness.html">pango_font_metrics_get_strikethrough_thickness</a></h6>
+
+          <div class="docblock">
+            <p>Gets the suggested thickness to draw for the&nbsp;strikethrough.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.get_underline_position.html">pango_font_metrics_get_underline_position</a></h6>
+
+          <div class="docblock">
+            <p>Gets the suggested position to draw the&nbsp;underline.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.get_underline_thickness.html">pango_font_metrics_get_underline_thickness</a></h6>
+
+          <div class="docblock">
+            <p>Gets the suggested thickness to draw for the&nbsp;underline.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.ref.html">pango_font_metrics_ref</a></h6>
+
+          <div class="docblock">
+            <p>Increase the reference count of a font metrics structure by&nbsp;one.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.FontMetrics.unref.html">pango_font_metrics_unref</a></h6>
+
+          <div class="docblock">
+            <p>Decrease the reference count of a font metrics structure by one.
+If the result is zero, frees the structure and any associated&nbsp;memory.</p>
+          </div>
+
+          
+        </div>
+      
+      </div>
+
+    </div>
+    
+
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

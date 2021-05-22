@@ -1,0 +1,373 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.AttrType</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.AttrType"/>
+  <meta property="og:description" content="Reference for Pango.AttrType"/>
+  <meta name="twitter:title" content="Pango.AttrType"/>
+  <meta name="twitter:description" content="Reference for Pango.AttrType"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="enum.AttrType.html">AttrType</a>
+  </div>
+</div>
+
+
+<div class="section">
+  <h5>Type functions</h5>
+  <div class="links">
+  
+    <a class="func" href="type_func.AttrType.get_name.html">get_name</a>
+  
+    <a class="func" href="type_func.AttrType.register.html">register</a>
+  
+  </div>
+</div>
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Enumeration</h3>
+    <h1><a href="index.html">Pango</a>.AttrType</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 style="display:flex;" id="declaration">
+        Declaration
+        <a href="#declaration" class="anchor"></a>
+        
+      </h4>
+
+      <div class="docblock">
+        <pre><code>enum Pango.AttrType</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 style="display:flex;" id="description">
+        Description
+        <a href="#description" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-attributes.h#L130">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+      <p>The <code>PangoAttrType</code> distinguishes between different types of&nbsp;attributes.</p>
+<p>Along with the predefined values, it is possible to allocate additional
+values for custom attributes using [type_func@attr_type_register]. The predefined
+values are given below. The type of structure used to store the attribute is
+listed in parentheses after the&nbsp;description.</p>
+      </div>
+
+      <div class="docblock">
+        <table class="attributes">
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    <div class="members toggle-wrapper">
+      <h4 id="members">
+        Members
+        <a href="#members" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      <table class="enum-members">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 0">PANGO_ATTR_INVALID</code></td>
+          <td><p>does not&nbsp;happen</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 1">PANGO_ATTR_LANGUAGE</code></td>
+          <td><p>language (<a href="struct.AttrLanguage.html"><code>PangoAttrLanguage</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 2">PANGO_ATTR_FAMILY</code></td>
+          <td><p>font family name list (<a href="struct.AttrString.html"><code>PangoAttrString</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 3">PANGO_ATTR_STYLE</code></td>
+          <td><p>font slant style (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 4">PANGO_ATTR_WEIGHT</code></td>
+          <td><p>font weight (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 5">PANGO_ATTR_VARIANT</code></td>
+          <td><p>font variant (normal or small caps) (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 6">PANGO_ATTR_STRETCH</code></td>
+          <td><p>font stretch (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 7">PANGO_ATTR_SIZE</code></td>
+          <td><p>font size in points scaled by <code>PANGO_SCALE</code> (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 8">PANGO_ATTR_FONT_DESC</code></td>
+          <td><p>font description (<a href="struct.AttrFontDesc.html"><code>PangoAttrFontDesc</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 9">PANGO_ATTR_FOREGROUND</code></td>
+          <td><p>foreground color (<a href="struct.AttrColor.html"><code>PangoAttrColor</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 10">PANGO_ATTR_BACKGROUND</code></td>
+          <td><p>background color (<a href="struct.AttrColor.html"><code>PangoAttrColor</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 11">PANGO_ATTR_UNDERLINE</code></td>
+          <td><p>whether the text has an underline (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 12">PANGO_ATTR_STRIKETHROUGH</code></td>
+          <td><p>whether the text is struck-through (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 13">PANGO_ATTR_RISE</code></td>
+          <td><p>baseline displacement (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 14">PANGO_ATTR_SHAPE</code></td>
+          <td><p>shape (<a href="struct.AttrShape.html"><code>PangoAttrShape</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 15">PANGO_ATTR_SCALE</code></td>
+          <td><p>font size scale factor (<a href="struct.AttrFloat.html"><code>PangoAttrFloat</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 16">PANGO_ATTR_FALLBACK</code></td>
+          <td><p>whether fallback is enabled (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 17">PANGO_ATTR_LETTER_SPACING</code></td>
+          <td><p>letter spacing (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 18">PANGO_ATTR_UNDERLINE_COLOR</code></td>
+          <td><p>underline color (<a href="struct.AttrColor.html"><code>PangoAttrColor</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 19">PANGO_ATTR_STRIKETHROUGH_COLOR</code></td>
+          <td><p>strikethrough color (<a href="struct.AttrColor.html"><code>PangoAttrColor</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 20">PANGO_ATTR_ABSOLUTE_SIZE</code></td>
+          <td><p>font size in pixels scaled by <code>PANGO_SCALE</code> (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 21">PANGO_ATTR_GRAVITY</code></td>
+          <td><p>base text gravity (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 22">PANGO_ATTR_GRAVITY_HINT</code></td>
+          <td><p>gravity hint (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>)</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 23">PANGO_ATTR_FONT_FEATURES</code></td>
+          <td><p>OpenType font features (<a href="struct.AttrString.html"><code>PangoAttrString</code></a>). Since&nbsp;1.38</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 24">PANGO_ATTR_FOREGROUND_ALPHA</code></td>
+          <td><p>foreground alpha (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>). Since&nbsp;1.38</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 25">PANGO_ATTR_BACKGROUND_ALPHA</code></td>
+          <td><p>background alpha (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>). Since&nbsp;1.38</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 26">PANGO_ATTR_ALLOW_BREAKS</code></td>
+          <td><p>whether breaks are allowed (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>). Since&nbsp;1.44</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 27">PANGO_ATTR_SHOW</code></td>
+          <td><p>how to render invisible characters (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>). Since&nbsp;1.44</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 28">PANGO_ATTR_INSERT_HYPHENS</code></td>
+          <td><p>whether to insert hyphens at intra-word line breaks (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>). Since&nbsp;1.44</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 29">PANGO_ATTR_OVERLINE</code></td>
+          <td><p>whether the text has an overline (<a href="struct.AttrInt.html"><code>PangoAttrInt</code></a>). Since&nbsp;1.46</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 30">PANGO_ATTR_OVERLINE_COLOR</code></td>
+          <td><p>overline color (<a href="struct.AttrColor.html"><code>PangoAttrColor</code></a>). Since&nbsp;1.46</p></td>
+        </tr>
+      
+      </table>
+      </div>
+    </div>
+
+    
+
+    
+    <div class="type-funcs toggle-wrapper">
+      <h4 id="type-functions">
+        Type functions
+        <a href="#type-functions" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="type_func.AttrType.get_name.html">pango_attr_type_get_name</a></h6>
+
+          <div class="docblock">
+            <p>Fetches the attribute type&nbsp;name.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="type_func.AttrType.register.html">pango_attr_type_register</a></h6>
+
+          <div class="docblock">
+            <p>Allocate a new attribute type <span class="caps">ID</span>.</p>
+          </div>
+
+          
+        </div>
+      
+    </div>
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

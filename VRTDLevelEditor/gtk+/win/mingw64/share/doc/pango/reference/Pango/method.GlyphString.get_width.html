@@ -1,0 +1,212 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.GlyphString.get_width</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta priority="og:title" content="Pango.GlyphString.get_width"/>
+  <meta priority="og:description" content="Reference for Pango.GlyphString.get_width"/>
+  <meta name="twitter:title" content="Pango.GlyphString.get_width"/>
+  <meta name="twitter:description" content="Reference for Pango.GlyphString.get_width"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a href="struct.GlyphString.html">GlyphString</a>
+  </div>
+</div>
+<div class="section">
+  <h5>Methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.GlyphString.copy.html">copy</a>
+  
+    <a class="method" href="method.GlyphString.extents.html">extents</a>
+  
+    <a class="method" href="method.GlyphString.extents_range.html">extents_range</a>
+  
+    <a class="method" href="method.GlyphString.free.html">free</a>
+  
+    <a class="method" href="method.GlyphString.get_logical_widths.html">get_logical_widths</a>
+  
+    <a class="method current" href="method.GlyphString.get_width.html">get_width</a>
+  
+    <a class="method" href="method.GlyphString.index_to_x.html">index_to_x</a>
+  
+    <a class="method" href="method.GlyphString.set_size.html">set_size</a>
+  
+    <a class="method" href="method.GlyphString.x_to_index.html">x_to_index</a>
+  
+  </div>
+</div>
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Method</h3>
+    <h1><a href="index.html">Pango</a>.<a href="struct.GlyphString.html">GlyphString</a>.get_width</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 style="display:flex;" id="declaration">
+        Declaration
+        <a class="anchor" href="#declaration"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-glyph.h#L156">[src]</a>
+        
+      </h4>
+
+      <div class="docblock c-decl">
+        <pre><code><div class="highlight"><pre><span></span><span class="kt">int</span>
+<span class="n">pango_glyph_string_get_width</span> <span class="p">(</span>
+  <span class="n">PangoGlyphString</span><span class="o">*</span> <span class="n">glyphs</span>
+<span class="p">)</span>
+</pre></div>
+</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 style="display:flex;" id="description">
+        Description
+        <a class="anchor" href="#description"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/glyphstring.c#L291">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <p>Computes the logical width of the glyph&nbsp;string.</p>
+<p>This can also be computed using <a href="method.GlyphString.extents.html"><code>pango_glyph_string_extents()</code></a>.
+However, since this only computes the width, it&#8217;s much faster. This
+is in fact only a convenience function that computes the sum of
+<code>geometry</code>.width for each glyph in the <code>glyphs</code>.</p>
+      </div>
+
+      <div class="docblock">
+        <table>
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    
+
+    
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          <tr class="arg-name">
+            <td colspan="2">Returns:&nbsp;<code>int</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td colspan="2"><p>the logical width of the glyph&nbsp;string.</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

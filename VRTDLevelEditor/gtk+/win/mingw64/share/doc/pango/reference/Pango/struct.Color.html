@@ -1,0 +1,270 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.Color</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.Color"/>
+  <meta property="og:description" content="Reference for Pango.Color"/>
+  <meta name="twitter:title" content="Pango.Color"/>
+  <meta name="twitter:description" content="Reference for Pango.Color"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="struct.Color.html#description">Color</a>
+  </div>
+</div>
+
+
+
+
+<div class="section">
+  <h5>Instance methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.Color.copy.html">copy</a>
+  
+    <a class="method" href="method.Color.free.html">free</a>
+  
+    <a class="method" href="method.Color.parse.html">parse</a>
+  
+    <a class="method" href="method.Color.parse_with_alpha.html">parse_with_alpha</a>
+  
+    <a class="method" href="method.Color.to_string.html">to_string</a>
+  
+  </div>
+</div>
+
+
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Struct</h3>
+    <h1><a href="index.html">Pango</a>.Color</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 style="display:flex;" id="description">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+          <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-attributes.h#L34">[src]</a>
+          
+        </h4>
+
+        <pre><code><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">PangoColor</span> <span class="p">{</span>
+  <span class="n">guint16</span> <span class="n">red</span><span class="p">;</span>
+  <span class="n">guint16</span> <span class="n">green</span><span class="p">;</span>
+  <span class="n">guint16</span> <span class="n">blue</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+
+        <div class="docblock">
+          <p>The <code>PangoColor</code> structure is used to
+represent a color in an uncalibrated <span class="caps">RGB</span>&nbsp;color-space.</p>
+        </div>
+
+        
+        <div class="toggle-wrapper">
+          <h6 style="display:flex;">
+            Structure members
+            
+          </h6>
+
+          <div class="docblock">
+            <table>
+            
+              <tr>
+                <td><code>red</code></td>
+                <td><p>value of red&nbsp;component</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>green</code></td>
+                <td><p>value of green&nbsp;component</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>blue</code></td>
+                <td><p>value of blue&nbsp;component</p></td>
+              </tr>
+            
+            </table>
+          </div>
+        </div>
+        
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="methods">
+        Instance methods
+        <a href="#methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="method.Color.copy.html">pango_color_copy</a></h6>
+
+          <div class="docblock">
+            <p>Creates a copy of <code>src</code>.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Color.free.html">pango_color_free</a></h6>
+
+          <div class="docblock">
+            <p>Frees a color allocated by <code>pango_color_copy()</code>.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Color.parse.html">pango_color_parse</a></h6>
+
+          <div class="docblock">
+            <p>Fill in the fields of a color from a string&nbsp;specification.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Color.parse_with_alpha.html">pango_color_parse_with_alpha</a></h6>
+
+          <div class="docblock">
+            <p>Fill in the fields of a color from a string&nbsp;specification.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Color.to_string.html">pango_color_to_string</a></h6>
+
+          <div class="docblock">
+            <p>Returns a textual specification of <code>color</code>.</p>
+          </div>
+
+          
+        </div>
+      
+      </div>
+
+    </div>
+    
+
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

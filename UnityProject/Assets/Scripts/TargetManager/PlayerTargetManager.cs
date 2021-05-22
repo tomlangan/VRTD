@@ -58,7 +58,7 @@ public class PlayerTargetManager : MonoBehaviour
             LocalAvatar.enabled = false;
             OVRCamera.enabled = false;
             OVRCamera.transform.gameObject.SetActive(false);
-            OVRRaycaster.WorldCameraOverride = MainCamera;
+            //OVRRaycaster.WorldCameraOverride = MainCamera;
         }
         else if (TargetPlatform.VR == Target)
         {
@@ -72,7 +72,7 @@ public class PlayerTargetManager : MonoBehaviour
             LocalAvatar.enabled = true;
             VRInput.transform.gameObject.SetActive(true);
             VRInput.enabled = true;
-            OVRRaycaster.WorldCameraOverride = OVRCamera.centerEyeAnchor.gameObject.GetComponent<Camera>();
+            //OVRRaycaster.WorldCameraOverride = OVRCamera.centerEyeAnchor.gameObject.GetComponent<Camera>();
         }
     }
 

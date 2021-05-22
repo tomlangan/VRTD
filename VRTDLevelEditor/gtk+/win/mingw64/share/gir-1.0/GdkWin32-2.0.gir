@@ -1,0 +1,1011 @@
+<?xml version="1.0"?>
+<!-- This file was automatically generated from C sources - DO NOT EDIT!
+To affect the contents of this file, edit the original C definitions,
+and/or use gtk-doc annotations.  -->
+<repository version="1.2"
+            xmlns="http://www.gtk.org/introspection/core/1.0"
+            xmlns:c="http://www.gtk.org/introspection/c/1.0"
+            xmlns:glib="http://www.gtk.org/introspection/glib/1.0">
+  <include name="Gdk" version="2.0"/>
+  <include name="GdkPixbuf" version="2.0"/>
+  <include name="Gio" version="2.0"/>
+  <include name="Pango" version="1.0"/>
+  <namespace name="GdkWin32"
+             version="2.0"
+             shared-library="libgdk-win32-2.0-0.dll"
+             c:identifier-prefixes="Gdk"
+             c:symbol-prefixes="gdk">
+    <constant name="ALL_DEVICES_MASK"
+              value="1073741824"
+              c:type="GDK_ALL_DEVICES_MASK">
+      <source-position filename="gdkinput-win32.h" line="74"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <record name="AxisInfo" c:type="GdkAxisInfo">
+      <source-position filename="gdkinput-win32.h" line="45"/>
+      <field name="resolution" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="min_value" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="max_value" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+    </record>
+    <record name="ColormapPrivateWin32" c:type="GdkColormapPrivateWin32">
+      <source-position filename="gdkprivate-win32.h" line="176"/>
+      <field name="hpal" introspectable="0" writable="1">
+        <type c:type="HPALETTE"/>
+      </field>
+      <field name="current_size" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="use" writable="1">
+        <type name="Gdk.Win32PalEntryState" c:type="GdkWin32PalEntryState*"/>
+      </field>
+      <field name="private_val" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="hash" writable="1">
+        <type name="GLib.HashTable" c:type="GHashTable*">
+          <type name="gpointer" c:type="gpointer"/>
+          <type name="gpointer" c:type="gpointer"/>
+        </type>
+      </field>
+      <field name="info" introspectable="0" writable="1">
+        <type c:type="GdkColorInfo*"/>
+      </field>
+    </record>
+    <record name="CursorPrivate" c:type="GdkCursorPrivate">
+      <source-position filename="gdkprivate-win32.h" line="135"/>
+      <field name="cursor" writable="1">
+        <type name="Gdk.Cursor" c:type="GdkCursor"/>
+      </field>
+      <field name="hcursor" introspectable="0" writable="1">
+        <type c:type="HCURSOR"/>
+      </field>
+    </record>
+    <constant name="DEBUG_EVENTS_OR_COLORMAP"
+              value="34"
+              c:type="GDK_DEBUG_EVENTS_OR_COLORMAP">
+      <source-position filename="gdkprivate-win32.h" line="106"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <constant name="DEBUG_EVENTS_OR_INPUT"
+              value="1026"
+              c:type="GDK_DEBUG_EVENTS_OR_INPUT">
+      <source-position filename="gdkprivate-win32.h" line="107"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <constant name="DEBUG_MISC_OR_COLORMAP"
+              value="33"
+              c:type="GDK_DEBUG_MISC_OR_COLORMAP">
+      <source-position filename="gdkprivate-win32.h" line="109"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <constant name="DEBUG_MISC_OR_EVENTS"
+              value="3"
+              c:type="GDK_DEBUG_MISC_OR_EVENTS">
+      <source-position filename="gdkprivate-win32.h" line="110"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <constant name="DEBUG_PIXMAP_OR_COLORMAP"
+              value="288"
+              c:type="GDK_DEBUG_PIXMAP_OR_COLORMAP">
+      <source-position filename="gdkprivate-win32.h" line="108"/>
+      <type name="gint" c:type="gint"/>
+    </constant>
+    <function-macro name="DRAWABLE_HANDLE"
+                    c:identifier="GDK_DRAWABLE_HANDLE"
+                    introspectable="0">
+      <source-position filename="gdkwin32.h" line="49"/>
+      <parameters>
+        <parameter name="win">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="DRAWABLE_IMPL_WIN32"
+                    c:identifier="GDK_DRAWABLE_IMPL_WIN32"
+                    introspectable="0">
+      <source-position filename="gdkdrawable-win32.h" line="42"/>
+      <parameters>
+        <parameter name="object">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="DRAWABLE_IMPL_WIN32_CLASS"
+                    c:identifier="GDK_DRAWABLE_IMPL_WIN32_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkdrawable-win32.h" line="43"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="DRAWABLE_IMPL_WIN32_GET_CLASS"
+                    c:identifier="GDK_DRAWABLE_IMPL_WIN32_GET_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkdrawable-win32.h" line="46"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="DRAWABLE_IMPL_WIN32_HANDLE"
+                    c:identifier="GDK_DRAWABLE_IMPL_WIN32_HANDLE"
+                    introspectable="0">
+      <source-position filename="gdkwin32.h" line="48"/>
+      <parameters>
+        <parameter name="d">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <record name="DevicePrivate" c:type="GdkDevicePrivate">
+      <source-position filename="gdkinput-win32.h" line="71"/>
+      <field name="info" writable="1">
+        <type name="Gdk.Device" c:type="GdkDevice"/>
+      </field>
+      <field name="axes" writable="1">
+        <type name="Gdk.AxisInfo" c:type="GdkAxisInfo*"/>
+      </field>
+      <field name="button_state" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="last_axis_data" writable="1">
+        <type name="gint" c:type="gint*"/>
+      </field>
+      <field name="hctx" introspectable="0" writable="1">
+        <type c:type="HCTX"/>
+      </field>
+      <field name="cursor" introspectable="0" writable="1">
+        <type c:type="UINT"/>
+      </field>
+      <field name="pktdata" introspectable="0" writable="1">
+        <type c:type="WTPKT"/>
+      </field>
+      <field name="orientation_axes" introspectable="0" writable="1">
+        <array zero-terminated="0" fixed-size="2">
+          <type c:type="AXIS"/>
+        </array>
+      </field>
+    </record>
+    <record name="DrawableImplWin32" c:type="GdkDrawableImplWin32">
+      <source-position filename="gdkdrawable-win32.h" line="59"/>
+      <field name="parent_instance" writable="1">
+        <type name="Gdk.Drawable" c:type="GdkDrawable"/>
+      </field>
+      <field name="wrapper" writable="1">
+        <type name="Gdk.Drawable" c:type="GdkDrawable*"/>
+      </field>
+      <field name="colormap" writable="1">
+        <type name="Gdk.Colormap" c:type="GdkColormap*"/>
+      </field>
+      <field name="handle" introspectable="0" writable="1">
+        <type c:type="HANDLE"/>
+      </field>
+      <field name="hdc_count" writable="1">
+        <type name="guint" c:type="guint"/>
+      </field>
+      <field name="hdc" introspectable="0" writable="1">
+        <type c:type="HDC"/>
+      </field>
+      <field name="saved_dc_bitmap" introspectable="0" writable="1">
+        <type c:type="HBITMAP"/>
+      </field>
+      <field name="cairo_surface" writable="1">
+        <type name="cairo.Surface" c:type="cairo_surface_t*"/>
+      </field>
+    </record>
+    <record name="DrawableImplWin32Class" c:type="GdkDrawableImplWin32Class">
+      <source-position filename="gdkdrawable-win32.h" line="64"/>
+      <field name="parent_class" writable="1">
+        <type name="Gdk.DrawableClass" c:type="GdkDrawableClass"/>
+      </field>
+    </record>
+    <record name="FontPrivateWin32" c:type="GdkFontPrivateWin32">
+      <source-position filename="gdkprivate-win32.h" line="152"/>
+      <field name="base" introspectable="0" writable="1">
+        <type c:type="GdkFontPrivate"/>
+      </field>
+      <field name="fonts" writable="1">
+        <type name="GLib.SList" c:type="GSList*">
+          <type name="gpointer" c:type="gpointer"/>
+        </type>
+      </field>
+      <field name="names" writable="1">
+        <type name="GLib.SList" c:type="GSList*">
+          <type name="gpointer" c:type="gpointer"/>
+        </type>
+      </field>
+    </record>
+    <record name="GCWin32" c:type="GdkGCWin32">
+      <source-position filename="gdkprivate-win32.h" line="214"/>
+      <field name="parent_instance" writable="1">
+        <type name="Gdk.GC" c:type="GdkGC"/>
+      </field>
+      <field name="hcliprgn" introspectable="0" writable="1">
+        <type c:type="HRGN"/>
+      </field>
+      <field name="values_mask" writable="1">
+        <type name="Gdk.GCValuesMask" c:type="GdkGCValuesMask"/>
+      </field>
+      <field name="font" writable="1">
+        <type name="Gdk.Font" c:type="GdkFont*"/>
+      </field>
+      <field name="rop2" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="subwindow_mode" writable="1">
+        <type name="Gdk.SubwindowMode" c:type="GdkSubwindowMode"/>
+      </field>
+      <field name="graphics_exposures" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="pen_width" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="pen_style" introspectable="0" writable="1">
+        <type c:type="DWORD"/>
+      </field>
+      <field name="line_style" writable="1">
+        <type name="Gdk.LineStyle" c:type="GdkLineStyle"/>
+      </field>
+      <field name="cap_style" writable="1">
+        <type name="Gdk.CapStyle" c:type="GdkCapStyle"/>
+      </field>
+      <field name="join_style" writable="1">
+        <type name="Gdk.JoinStyle" c:type="GdkJoinStyle"/>
+      </field>
+      <field name="pen_dashes" introspectable="0" writable="1">
+        <type c:type="DWORD*"/>
+      </field>
+      <field name="pen_num_dashes" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="pen_dash_offset" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="pen_hbrbg" introspectable="0" writable="1">
+        <type c:type="HBRUSH"/>
+      </field>
+      <field name="hdc" introspectable="0" writable="1">
+        <type c:type="HDC"/>
+      </field>
+      <field name="saved_dc" writable="1">
+        <type name="gint" c:type="int"/>
+      </field>
+      <field name="holdpal" introspectable="0" writable="1">
+        <type c:type="HPALETTE"/>
+      </field>
+    </record>
+    <record name="GCWin32Class" c:type="GdkGCWin32Class">
+      <source-position filename="gdkprivate-win32.h" line="219"/>
+      <field name="parent_class" writable="1">
+        <type name="Gdk.GCClass" c:type="GdkGCClass"/>
+      </field>
+    </record>
+    <function-macro name="GC_WIN32"
+                    c:identifier="GDK_GC_WIN32"
+                    introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="113"/>
+      <parameters>
+        <parameter name="object">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="GC_WIN32_CLASS"
+                    c:identifier="GDK_GC_WIN32_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="114"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="GC_WIN32_GET_CLASS"
+                    c:identifier="GDK_GC_WIN32_GET_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="117"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_CORE"
+                    c:identifier="GDK_IS_CORE"
+                    introspectable="0">
+      <source-position filename="gdkinput-win32.h" line="90"/>
+      <parameters>
+        <parameter name="d">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_DRAWABLE_IMPL_WIN32"
+                    c:identifier="GDK_IS_DRAWABLE_IMPL_WIN32"
+                    introspectable="0">
+      <source-position filename="gdkdrawable-win32.h" line="44"/>
+      <parameters>
+        <parameter name="object">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_DRAWABLE_IMPL_WIN32_CLASS"
+                    c:identifier="GDK_IS_DRAWABLE_IMPL_WIN32_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkdrawable-win32.h" line="45"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_GC_WIN32"
+                    c:identifier="GDK_IS_GC_WIN32"
+                    introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="115"/>
+      <parameters>
+        <parameter name="object">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_GC_WIN32_CLASS"
+                    c:identifier="GDK_IS_GC_WIN32_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="116"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_PIXMAP_IMPL_WIN32"
+                    c:identifier="GDK_IS_PIXMAP_IMPL_WIN32"
+                    introspectable="0">
+      <source-position filename="gdkpixmap-win32.h" line="44"/>
+      <parameters>
+        <parameter name="object">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_PIXMAP_IMPL_WIN32_CLASS"
+                    c:identifier="GDK_IS_PIXMAP_IMPL_WIN32_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkpixmap-win32.h" line="45"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_WINDOW_IMPL_WIN32"
+                    c:identifier="GDK_IS_WINDOW_IMPL_WIN32"
+                    introspectable="0">
+      <source-position filename="gdkwindow-win32.h" line="65"/>
+      <parameters>
+        <parameter name="object">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="IS_WINDOW_IMPL_WIN32_CLASS"
+                    c:identifier="GDK_IS_WINDOW_IMPL_WIN32_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkwindow-win32.h" line="66"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="PIXMAP_HBITMAP"
+                    c:identifier="GDK_PIXMAP_HBITMAP"
+                    introspectable="0">
+      <source-position filename="gdkwin32.h" line="47"/>
+      <parameters>
+        <parameter name="pixmap">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="PIXMAP_IMPL_WIN32"
+                    c:identifier="GDK_PIXMAP_IMPL_WIN32"
+                    introspectable="0">
+      <source-position filename="gdkpixmap-win32.h" line="42"/>
+      <parameters>
+        <parameter name="object">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="PIXMAP_IMPL_WIN32_CLASS"
+                    c:identifier="GDK_PIXMAP_IMPL_WIN32_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkpixmap-win32.h" line="43"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="PIXMAP_IMPL_WIN32_GET_CLASS"
+                    c:identifier="GDK_PIXMAP_IMPL_WIN32_GET_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkpixmap-win32.h" line="46"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <record name="PixmapImplWin32" c:type="GdkPixmapImplWin32">
+      <source-position filename="gdkpixmap-win32.h" line="57"/>
+      <field name="parent_instance" writable="1">
+        <type name="Gdk.DrawableImplWin32" c:type="GdkDrawableImplWin32"/>
+      </field>
+      <field name="width" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="height" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="bits" writable="1">
+        <type name="guint8" c:type="guchar*"/>
+      </field>
+      <field name="is_foreign" writable="1" bits="1">
+        <type name="guint" c:type="guint"/>
+      </field>
+      <field name="is_allocated" writable="1" bits="1">
+        <type name="guint" c:type="guint"/>
+      </field>
+    </record>
+    <record name="PixmapImplWin32Class" c:type="GdkPixmapImplWin32Class">
+      <source-position filename="gdkpixmap-win32.h" line="62"/>
+      <field name="parent_class" writable="1">
+        <type name="Gdk.DrawableImplWin32Class"
+              c:type="GdkDrawableImplWin32Class"/>
+      </field>
+    </record>
+    <function-macro name="WIN32_COLORMAP_DATA"
+                    c:identifier="GDK_WIN32_COLORMAP_DATA"
+                    introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="467"/>
+      <parameters>
+        <parameter name="cmap">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="WINDOW_HWND"
+                    c:identifier="GDK_WINDOW_HWND"
+                    introspectable="0">
+      <source-position filename="gdkwin32.h" line="46"/>
+      <parameters>
+        <parameter name="win">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="WINDOW_IMPL_WIN32"
+                    c:identifier="GDK_WINDOW_IMPL_WIN32"
+                    introspectable="0">
+      <source-position filename="gdkwindow-win32.h" line="63"/>
+      <parameters>
+        <parameter name="object">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="WINDOW_IMPL_WIN32_CLASS"
+                    c:identifier="GDK_WINDOW_IMPL_WIN32_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkwindow-win32.h" line="64"/>
+      <parameters>
+        <parameter name="klass">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="WINDOW_IMPL_WIN32_GET_CLASS"
+                    c:identifier="GDK_WINDOW_IMPL_WIN32_GET_CLASS"
+                    introspectable="0">
+      <source-position filename="gdkwindow-win32.h" line="67"/>
+      <parameters>
+        <parameter name="obj">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function-macro name="WINDOW_IS_WIN32"
+                    c:identifier="GDK_WINDOW_IS_WIN32"
+                    introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="122"/>
+      <parameters>
+        <parameter name="win">
+        </parameter>
+      </parameters>
+    </function-macro>
+    <function name="WINDOW_SCREEN"
+              c:identifier="GDK_WINDOW_SCREEN"
+              introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="120"/>
+      <return-value>
+        <type name="Gdk.Screen" c:type="GdkScreen*"/>
+      </return-value>
+      <parameters>
+        <parameter name="win" transfer-ownership="none">
+          <type name="GObject.Object" c:type="GObject*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <enumeration name="Win32DndState" c:type="GdkWin32DndState">
+      <source-position filename="gdkprivate-win32.h" line="448"/>
+      <member name="none" value="0" c:identifier="GDK_WIN32_DND_NONE">
+      </member>
+      <member name="pending" value="1" c:identifier="GDK_WIN32_DND_PENDING">
+      </member>
+      <member name="dropped" value="2" c:identifier="GDK_WIN32_DND_DROPPED">
+      </member>
+      <member name="failed" value="3" c:identifier="GDK_WIN32_DND_FAILED">
+      </member>
+      <member name="dragging" value="4" c:identifier="GDK_WIN32_DND_DRAGGING">
+      </member>
+    </enumeration>
+    <record name="Win32Monitor" c:type="GdkWin32Monitor">
+      <source-position filename="gdkprivate-win32.h" line="389"/>
+      <field name="name" writable="1">
+        <type name="utf8" c:type="gchar*"/>
+      </field>
+      <field name="width_mm" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="height_mm" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="rect" writable="1">
+        <type name="Gdk.Rectangle" c:type="GdkRectangle"/>
+      </field>
+    </record>
+    <enumeration name="Win32PalEntryState" c:type="GdkWin32PalEntryState">
+      <source-position filename="gdkprivate-win32.h" line="165"/>
+      <member name="static" value="0" c:identifier="GDK_WIN32_PE_STATIC">
+      </member>
+      <member name="available" value="1" c:identifier="GDK_WIN32_PE_AVAILABLE">
+      </member>
+      <member name="inuse" value="2" c:identifier="GDK_WIN32_PE_INUSE">
+      </member>
+    </enumeration>
+    <record name="Win32PositionInfo"
+            c:type="GdkWin32PositionInfo"
+            disguised="1">
+      <source-position filename="gdkwindow-win32.h" line="34"/>
+    </record>
+    <record name="Win32SingleFont" c:type="GdkWin32SingleFont">
+      <source-position filename="gdkprivate-win32.h" line="143"/>
+      <field name="hfont" introspectable="0" writable="1">
+        <type c:type="HFONT"/>
+      </field>
+      <field name="charset" introspectable="0" writable="1">
+        <type c:type="UINT"/>
+      </field>
+      <field name="codepage" introspectable="0" writable="1">
+        <type c:type="UINT"/>
+      </field>
+      <field name="fs" introspectable="0" writable="1">
+        <type c:type="FONTSIGNATURE"/>
+      </field>
+    </record>
+    <record name="WindowImplWin32" c:type="GdkWindowImplWin32">
+      <source-position filename="gdkwindow-win32.h" line="108"/>
+      <field name="parent_instance" writable="1">
+        <type name="Gdk.DrawableImplWin32" c:type="GdkDrawableImplWin32"/>
+      </field>
+      <field name="toplevel_window_type" writable="1">
+        <type name="gint8" c:type="gint8"/>
+      </field>
+      <field name="hcursor" introspectable="0" writable="1">
+        <type c:type="HCURSOR"/>
+      </field>
+      <field name="hicon_big" introspectable="0" writable="1">
+        <type c:type="HICON"/>
+      </field>
+      <field name="hicon_small" introspectable="0" writable="1">
+        <type c:type="HICON"/>
+      </field>
+      <field name="leading_surrogate_keydown" introspectable="0" writable="1">
+        <type c:type="wchar_t"/>
+      </field>
+      <field name="leading_surrogate_keyup" introspectable="0" writable="1">
+        <type c:type="wchar_t"/>
+      </field>
+      <field name="hint_flags" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="hints" writable="1">
+        <type name="Gdk.Geometry" c:type="GdkGeometry"/>
+      </field>
+      <field name="native_event_mask" writable="1">
+        <type name="Gdk.EventMask" c:type="GdkEventMask"/>
+      </field>
+      <field name="type_hint" writable="1">
+        <type name="Gdk.WindowTypeHint" c:type="GdkWindowTypeHint"/>
+      </field>
+      <field name="extension_events_mask" writable="1">
+        <type name="Gdk.EventMask" c:type="GdkEventMask"/>
+      </field>
+      <field name="transient_owner" writable="1">
+        <type name="Gdk.Window" c:type="GdkWindow*"/>
+      </field>
+      <field name="transient_children" writable="1">
+        <type name="GLib.SList" c:type="GSList*">
+          <type name="gpointer" c:type="gpointer"/>
+        </type>
+      </field>
+      <field name="num_transients" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="changing_state" writable="1">
+        <type name="gboolean" c:type="gboolean"/>
+      </field>
+      <field name="initial_x" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="initial_y" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="no_bg" writable="1" bits="1">
+        <type name="guint" c:type="guint"/>
+      </field>
+      <field name="inhibit_configure" writable="1" bits="1">
+        <type name="guint" c:type="guint"/>
+      </field>
+      <field name="override_redirect" writable="1" bits="1">
+        <type name="guint" c:type="guint"/>
+      </field>
+    </record>
+    <record name="WindowImplWin32Class" c:type="GdkWindowImplWin32Class">
+      <source-position filename="gdkwindow-win32.h" line="113"/>
+      <field name="parent_class" writable="1">
+        <type name="Gdk.DrawableImplWin32Class"
+              c:type="GdkDrawableImplWin32Class"/>
+      </field>
+    </record>
+    <record name="_DeviceClass" c:type="_GdkDeviceClass">
+      <source-position filename="gdkinput-win32.h" line="50"/>
+      <field name="parent_class" writable="1">
+        <type name="GObject.ObjectClass" c:type="GObjectClass"/>
+      </field>
+    </record>
+    <record name="_InputWindow" c:type="_GdkInputWindow">
+      <source-position filename="gdkinput-win32.h" line="86"/>
+      <field name="windows" writable="1">
+        <type name="GLib.List" c:type="GList*">
+          <type name="gpointer" c:type="gpointer"/>
+        </type>
+      </field>
+      <field name="impl_window" writable="1">
+        <type name="Gdk.Window" c:type="GdkWindow*"/>
+      </field>
+      <field name="root_x" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+      <field name="root_y" writable="1">
+        <type name="gint" c:type="gint"/>
+      </field>
+    </record>
+    <record name="_VisualClass" c:type="_GdkVisualClass">
+      <source-position filename="gdkprivate-win32.h" line="159"/>
+      <field name="parent_class" writable="1">
+        <type name="GObject.ObjectClass" c:type="GObjectClass"/>
+      </field>
+    </record>
+    <function name="win32_begin_direct_draw_libgtk_only"
+              c:identifier="gdk_win32_begin_direct_draw_libgtk_only"
+              introspectable="0">
+      <source-position filename="gdkwin32.h" line="114"/>
+      <return-value>
+        <type name="Gdk.Drawable" c:type="GdkDrawable*"/>
+      </return-value>
+      <parameters>
+        <parameter name="drawable" transfer-ownership="none">
+          <type name="Gdk.Drawable" c:type="GdkDrawable*"/>
+        </parameter>
+        <parameter name="gc" transfer-ownership="none">
+          <type name="Gdk.GC" c:type="GdkGC*"/>
+        </parameter>
+        <parameter name="priv_data"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1">
+          <type name="gpointer" c:type="gpointer*"/>
+        </parameter>
+        <parameter name="x_offset_out" transfer-ownership="none">
+          <type name="gint" c:type="gint*"/>
+        </parameter>
+        <parameter name="y_offset_out" transfer-ownership="none">
+          <type name="gint" c:type="gint*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_drawable_get_handle"
+              c:identifier="gdk_win32_drawable_get_handle"
+              introspectable="0">
+      <source-position filename="gdkwin32.h" line="86"/>
+      <return-value>
+        <type c:type="HGDIOBJ"/>
+      </return-value>
+      <parameters>
+        <parameter name="drawable" transfer-ownership="none">
+          <type name="Gdk.Drawable" c:type="GdkDrawable*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_end_direct_draw_libgtk_only"
+              c:identifier="gdk_win32_end_direct_draw_libgtk_only">
+      <source-position filename="gdkwin32.h" line="119"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="priv_data"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1">
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_handle_table_insert"
+              c:identifier="gdk_win32_handle_table_insert"
+              introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="248"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="handle" transfer-ownership="none">
+          <type c:type="HANDLE*"/>
+        </parameter>
+        <parameter name="data"
+                   transfer-ownership="none"
+                   nullable="1"
+                   allow-none="1">
+          <type name="gpointer" c:type="gpointer"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_handle_table_lookup"
+              c:identifier="gdk_win32_handle_table_lookup">
+      <source-position filename="gdkwin32.h" line="83"/>
+      <return-value transfer-ownership="none" nullable="1">
+        <type name="gpointer" c:type="gpointer"/>
+      </return-value>
+      <parameters>
+        <parameter name="handle" transfer-ownership="none">
+          <type name="Gdk.NativeWindow" c:type="GdkNativeWindow"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_handle_table_remove"
+              c:identifier="gdk_win32_handle_table_remove"
+              introspectable="0">
+      <source-position filename="gdkprivate-win32.h" line="250"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="handle" transfer-ownership="none">
+          <type c:type="HANDLE"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_hdc_get"
+              c:identifier="gdk_win32_hdc_get"
+              introspectable="0">
+      <doc xml:space="preserve"
+           filename="gdkgc-win32.c"
+           line="760">Allocates a Windows device context handle (HDC) for drawing into
+@drawable, and sets it up appropriately according to @usage.
+
+Each #GdkGC can at one time have only one HDC associated with it.
+
+The following flags in @mask are handled:
+
+If %GDK_GC_FOREGROUND is set in @mask, a solid brush of the
+foreground color in @gc is selected into the HDC. The text color of
+the HDC is also set. If the @drawable has a palette (256-color
+mode), the palette is selected and realized.
+
+If any of the line attribute flags (%GDK_GC_LINE_WIDTH,
+%GDK_GC_LINE_STYLE, %GDK_GC_CAP_STYLE and %GDK_GC_JOIN_STYLE) is
+set in @mask, a solid pen of the foreground color and appropriate
+width and stule is created and selected into the HDC. Note that the
+dash properties are not completely implemented.
+
+If the %GDK_GC_FONT flag is set, the background mix mode is set to
+%TRANSPARENT. and the text alignment is set to
+%TA_BASELINE|%TA_LEFT. Note that no font gets selected into the HDC
+by this function.
+
+Some things are done regardless of @mask: If the function in @gc is
+any other than %GDK_COPY, the raster operation of the HDC is
+set. If @gc has a clip mask, the clip region of the HDC is set.
+
+Note that the fill style, tile, stipple, and tile and stipple
+origins in the @gc are ignored by this function. (In general, tiles
+and stipples can't be implemented directly on Win32; you need to do
+multiple pass drawing and blitting to implement tiles or
+stipples. GDK does just that when you call the GDK drawing
+functions with a GC that asks for tiles or stipples.)
+
+When the HDC is no longer used, it should be released by calling
+&lt;function&gt;gdk_win32_hdc_release()&lt;/function&gt; with the same
+parameters.
+
+If you modify the HDC by calling &lt;function&gt;SelectObject&lt;/function&gt;
+you should undo those modifications before calling
+&lt;function&gt;gdk_win32_hdc_release()&lt;/function&gt;.</doc>
+      <source-position filename="gdkwin32.h" line="93"/>
+      <return-value>
+        <doc xml:space="preserve"
+             filename="gdkgc-win32.c"
+             line="808">The HDC.</doc>
+        <type c:type="HDC"/>
+      </return-value>
+      <parameters>
+        <parameter name="drawable" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="gdkgc-win32.c"
+               line="762">destination #GdkDrawable</doc>
+          <type name="Gdk.Drawable" c:type="GdkDrawable*"/>
+        </parameter>
+        <parameter name="gc" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="gdkgc-win32.c"
+               line="763">#GdkGC to use for drawing on @drawable</doc>
+          <type name="Gdk.GC" c:type="GdkGC*"/>
+        </parameter>
+        <parameter name="usage" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="gdkgc-win32.c"
+               line="764">mask indicating what properties needs to be set up</doc>
+          <type name="Gdk.GCValuesMask" c:type="GdkGCValuesMask"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_hdc_release" c:identifier="gdk_win32_hdc_release">
+      <doc xml:space="preserve"
+           filename="gdkgc-win32.c"
+           line="922">This function deallocates the Windows device context allocated by
+&lt;funcion&gt;gdk_win32_hdc_get()&lt;/function&gt;. It should be called with
+the same parameters.</doc>
+      <source-position filename="gdkwin32.h" line="100"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="drawable" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="gdkgc-win32.c"
+               line="924">destination #GdkDrawable</doc>
+          <type name="Gdk.Drawable" c:type="GdkDrawable*"/>
+        </parameter>
+        <parameter name="gc" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="gdkgc-win32.c"
+               line="925">#GdkGC to use for drawing on @drawable</doc>
+          <type name="Gdk.GC" c:type="GdkGC*"/>
+        </parameter>
+        <parameter name="usage" transfer-ownership="none">
+          <doc xml:space="preserve"
+               filename="gdkgc-win32.c"
+               line="926">mask indicating what properties were set up</doc>
+          <type name="Gdk.GCValuesMask" c:type="GdkGCValuesMask"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_icon_to_pixbuf_libgtk_only"
+              c:identifier="gdk_win32_icon_to_pixbuf_libgtk_only"
+              introspectable="0">
+      <source-position filename="gdkwin32.h" line="110"/>
+      <return-value>
+        <type name="GdkPixbuf.Pixbuf" c:type="GdkPixbuf*"/>
+      </return-value>
+      <parameters>
+        <parameter name="hicon" transfer-ownership="none">
+          <type c:type="HICON"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_pixbuf_to_hicon_libgtk_only"
+              c:identifier="gdk_win32_pixbuf_to_hicon_libgtk_only"
+              introspectable="0">
+      <source-position filename="gdkwin32.h" line="111"/>
+      <return-value>
+        <type c:type="HICON"/>
+      </return-value>
+      <parameters>
+        <parameter name="pixbuf" transfer-ownership="none">
+          <type name="GdkPixbuf.Pixbuf" c:type="GdkPixbuf*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_selection_add_targets"
+              c:identifier="gdk_win32_selection_add_targets">
+      <source-position filename="gdkwin32.h" line="104"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="owner" transfer-ownership="none">
+          <type name="Gdk.Window" c:type="GdkWindow*"/>
+        </parameter>
+        <parameter name="selection" transfer-ownership="none">
+          <type name="Gdk.Atom" c:type="GdkAtom"/>
+        </parameter>
+        <parameter name="n_targets" transfer-ownership="none">
+          <type name="gint" c:type="gint"/>
+        </parameter>
+        <parameter name="targets" transfer-ownership="none">
+          <type name="Gdk.Atom" c:type="GdkAtom*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_set_modal_dialog_libgtk_only"
+              c:identifier="gdk_win32_set_modal_dialog_libgtk_only"
+              introspectable="0">
+      <source-position filename="gdkwin32.h" line="112"/>
+      <return-value transfer-ownership="none">
+        <type name="none" c:type="void"/>
+      </return-value>
+      <parameters>
+        <parameter name="window" transfer-ownership="none">
+          <type c:type="HWND"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_window_foreign_new_for_display"
+              c:identifier="gdk_win32_window_foreign_new_for_display"
+              introspectable="0">
+      <source-position filename="gdkwin32.h" line="121"/>
+      <return-value>
+        <type name="Gdk.Window" c:type="GdkWindow*"/>
+      </return-value>
+      <parameters>
+        <parameter name="display" transfer-ownership="none">
+          <type name="Gdk.Display" c:type="GdkDisplay*"/>
+        </parameter>
+        <parameter name="anid" transfer-ownership="none">
+          <type name="Gdk.NativeWindow" c:type="GdkNativeWindow"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_window_get_impl_hwnd"
+              c:identifier="gdk_win32_window_get_impl_hwnd"
+              introspectable="0">
+      <source-position filename="gdkwin32.h" line="80"/>
+      <return-value>
+        <type c:type="HWND"/>
+      </return-value>
+      <parameters>
+        <parameter name="window" transfer-ownership="none">
+          <type name="Gdk.Window" c:type="GdkWindow*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_window_is_win32"
+              c:identifier="gdk_win32_window_is_win32">
+      <source-position filename="gdkwin32.h" line="79"/>
+      <return-value transfer-ownership="none">
+        <type name="gboolean" c:type="gboolean"/>
+      </return-value>
+      <parameters>
+        <parameter name="window" transfer-ownership="none">
+          <type name="Gdk.Window" c:type="GdkWindow*"/>
+        </parameter>
+      </parameters>
+    </function>
+    <function name="win32_window_lookup_for_display"
+              c:identifier="gdk_win32_window_lookup_for_display"
+              introspectable="0">
+      <source-position filename="gdkwin32.h" line="123"/>
+      <return-value>
+        <type name="Gdk.Window" c:type="GdkWindow*"/>
+      </return-value>
+      <parameters>
+        <parameter name="display" transfer-ownership="none">
+          <type name="Gdk.Display" c:type="GdkDisplay*"/>
+        </parameter>
+        <parameter name="anid" transfer-ownership="none">
+          <type name="Gdk.NativeWindow" c:type="GdkNativeWindow"/>
+        </parameter>
+      </parameters>
+    </function>
+  </namespace>
+</repository>

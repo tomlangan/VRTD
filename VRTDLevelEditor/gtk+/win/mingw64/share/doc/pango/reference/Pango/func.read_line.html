@@ -1,0 +1,244 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.read_line</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.read_line"/>
+  <meta property="og:description" content="Reference for Pango.read_line"/>
+  <meta name="twitter:title" content="Pango.read_line"/>
+  <meta name="twitter:description" content="Reference for Pango.read_line"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+
+<div class="section">
+  <h5>Functions</h5>
+  <div class="links">
+  
+  </div>
+</div>
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Function </h3>
+    <h1><a href="index.html">Pango</a>.read_line</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 id="declaration" style="display:flex;">
+        Declaration
+        <a href="#declaration" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-utils.h#L37">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">gint</span>
+<span class="n">pango_read_line</span> <span class="p">(</span>
+  <span class="kt">FILE</span><span class="o">*</span> <span class="n">stream</span><span class="p">,</span>
+  <span class="n">GString</span><span class="o">*</span> <span class="n">str</span>
+<span class="p">)</span>
+</pre></div>
+</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 id="description" style="display:flex;">
+        Description
+        <a href="#description" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-utils.c#L238">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <p>Reads an entire line from a file into a&nbsp;buffer.</p>
+<p>Lines may be delimited with &#8216;\n&#8217;, &#8216;\r&#8217;, &#8216;\n\r&#8217;, or &#8216;\r\n&#8217;. The delimiter
+is not written into the buffer. Text after a &#8216;#&#8217; character is treated as
+a comment and skipped. &#8216;&#39; can be used to escape a # character.
+&#8216;&#39; proceeding a line delimiter combines adjacent lines. A &#8216;&#39; proceeding
+any other character is ignored and written into the output buffer&nbsp;unmodified.</p>
+      </div>
+
+      <div class="docblock">
+        <table>
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    
+    <div class="parameters toggle-wrapper">
+      <h4 id="parameters">
+        Parameters
+        <a href="#parameters" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          
+          <tr class="arg-name">
+            <td><code>stream</code></td>
+            
+            <td><code>FILE*</code></td>
+            
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>a stdio&nbsp;stream</p></td>
+          </tr>
+          
+          <tr><td>&nbsp;</td><td>Can be <code>NULL</code></td></tr>
+          
+          
+          
+          
+          <tr><td>&nbsp;</td><td>Ownership is not transferred to the callee</td></tr>
+          
+          
+          <tr class="arg-name">
+            <td><code>str</code></td>
+            
+            <td><code>GString*</code></td>
+            
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p><code>GString</code> buffer into which to write the&nbsp;result</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          <tr><td>&nbsp;</td><td>Ownership is not transferred to the callee</td></tr>
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+    
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          <tr class="arg-name">
+            <td colspan="2">Returns:&nbsp;<code>gint</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td colspan="2"><p>0 if the stream was already at an <code>EOF</code> character,
+  otherwise the number of lines read (this is useful for maintaining
+  a line number counter which doesn&#8217;t combine lines with&nbsp;&#8216;&#39;)</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+        </table>
+      </div>
+    </div>
+    
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

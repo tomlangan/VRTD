@@ -1,0 +1,295 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PangoOT.Ruleset.new_for</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="PangoOT-1.0"/>
+  
+
+  
+  <meta property="og:title" content="PangoOT.Ruleset.new_for"/>
+  <meta property="og:description" content="Reference for PangoOT.Ruleset.new_for"/>
+  <meta name="twitter:title" content="PangoOT.Ruleset.new_for"/>
+  <meta name="twitter:description" content="Reference for PangoOT.Ruleset.new_for"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">PangoOT</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a href="class.Ruleset.html">Ruleset</a>
+  </div>
+</div>
+<div class="section">
+  <h5>Constructors</h5>
+  <div class="links">
+  
+    <a class="method" href="ctor.Ruleset.new.html">new</a>
+  
+    <a class="method current" href="ctor.Ruleset.new_for.html">new_for</a>
+  
+    <a class="method" href="ctor.Ruleset.new_from_description.html">new_from_description</a>
+  
+  </div>
+</div>
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Constructor</h3>
+    <h1><a href="index.html">PangoOT</a>.<a href="class.Ruleset.html">Ruleset</a>.new_for</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 id="declaration" style="display:flex;">
+        Declaration
+        <a href="#declaration" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-ot.h#L357">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">PangoOTRuleset</span><span class="o">*</span>
+<span class="n">pango_ot_ruleset_new_for</span> <span class="p">(</span>
+  <span class="n">PangoOTInfo</span><span class="o">*</span> <span class="n">info</span><span class="p">,</span>
+  <span class="n">PangoScript</span> <span class="n">script</span><span class="p">,</span>
+  <span class="n">PangoLanguage</span><span class="o">*</span> <span class="n">language</span>
+<span class="p">)</span>
+</pre></div>
+</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 id="description" style="display:flex;">
+        Description
+        <a href="#description" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-ot-ruleset.c#L106">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <p>Creates a new <code>PangoOTRuleset</code> for the given OpenType info, script, and&nbsp;language.</p>
+<p>This function is part of a convenience scheme that highly simplifies
+using a <code>PangoOTRuleset</code> to represent features for a specific pair of script
+and language.  So one can use this function passing in the script and
+language of interest, and later try to add features to the ruleset by just
+specifying the feature name or tag, without having to deal with finding
+script, language, or feature indices&nbsp;manually.</p>
+<p>In excess to what <code>pango_ot_ruleset_new()</code> does, this function&nbsp;will:</p>
+<ul>
+<li>
+<p>Find the <code>PangoOTTag</code> script and language tags associated with
+  <code>script</code> and <code>language</code> using <code>pango_ot_tag_from_script()</code> and
+  <code>pango_ot_tag_from_language()</code>,</p>
+</li>
+<li>
+<p>For each of table types <code>PANGO_OT_TABLE_GSUB</code> and <code>PANGO_OT_TABLE_GPOS</code>,
+  find the script index of the script tag found and the language
+  system index of the language tag found in that script system, using
+  <code>pango_ot_info_find_script()</code> and <code>pango_ot_info_find_language()</code>,</p>
+</li>
+<li>
+<p>For found language-systems, if they have required feature
+  index, add that feature to the ruleset using
+  <code>pango_ot_ruleset_add_feature()</code>,</p>
+</li>
+<li>
+<p>Remember found script and language indices for both table types,
+  and use them in future <code>pango_ot_ruleset_maybe_add_feature()</code> and
+  <code>pango_ot_ruleset_maybe_add_features()</code>.</p>
+</li>
+</ul>
+<p>Because of the way return values of <code>pango_ot_info_find_script()</code> and
+<code>pango_ot_info_find_language()</code> are ignored, this function automatically
+finds and uses the &#8216;<span class="caps">DFLT</span>&#8217; script and the default&nbsp;language-system.</p>
+      </div>
+
+      <div class="docblock">
+        <table>
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    
+    <div class="parameters toggle-wrapper">
+      <h4 id="parameters">
+        Parameters
+        <a href="#parameters" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          
+          <tr class="arg-name">
+            <td><code>info</code></td>
+            <td><a href="class.Info.html"><code>PangoOTInfo</code></a></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>a <code>PangoOTInfo</code>.</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          <tr><td>&nbsp;</td><td>Ownership is not transferred to the callee</td></tr>
+          
+          
+          <tr class="arg-name">
+            <td><code>script</code></td>
+            <td><code>PangoScript</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>a <code>PangoScript</code>.</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <tr class="arg-name">
+            <td><code>language</code></td>
+            <td><code>PangoLanguage*</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>a <code>PangoLanguage</code>.</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          <tr><td>&nbsp;</td><td>Ownership is not transferred to the callee</td></tr>
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+    
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          <tr class="arg-name">
+            <td colspan="2">Returns:&nbsp;<a href="class.Ruleset.html"><code>PangoOTRuleset</code></a></td>
+          </tr>
+          <tr class="arg-description">
+            <td colspan="2"><p>the newly allocated <code>PangoOTRuleset</code>, which
+              should be freed with <code>g_object_unref()</code>.</p></td>
+          </tr>
+          
+          
+          
+          <tr><td>Ownership of the data is transferred to the caller</td></tr>
+          
+          
+        </table>
+      </div>
+    </div>
+    
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

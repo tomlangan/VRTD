@@ -1,0 +1,628 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.Font</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.Font"/>
+  <meta property="og:description" content="Reference for Pango.Font"/>
+  <meta name="twitter:title" content="Pango.Font"/>
+  <meta name="twitter:description" content="Reference for Pango.Font"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="class.Font.html#description">Font</a>
+  </div>
+</div>
+
+
+
+
+<div class="section">
+  <h5>Instance methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.Font.describe.html">describe</a>
+  
+    <a class="method" href="method.Font.describe_with_absolute_size.html">describe_with_absolute_size</a>
+  
+    <a class="method" href="method.Font.get_coverage.html">get_coverage</a>
+  
+    <a class="method" href="method.Font.get_face.html">get_face</a>
+  
+    <a class="method" href="method.Font.get_features.html">get_features</a>
+  
+    <a class="method" href="method.Font.get_font_map.html">get_font_map</a>
+  
+    <a class="method" href="method.Font.get_glyph_extents.html">get_glyph_extents</a>
+  
+    <a class="method" href="method.Font.get_hb_font.html">get_hb_font</a>
+  
+    <a class="method" href="method.Font.get_metrics.html">get_metrics</a>
+  
+    <a class="method" href="method.Font.has_char.html">has_char</a>
+  
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="section">
+  <h5>Functions</h5>
+  <div class="links">
+  
+    <a class="func" href="type_func.Font.descriptions_free.html">descriptions_free</a>
+  
+  </div>
+</div>
+
+
+
+<div class="section">
+  <h5>Virtual methods</h5>
+  <div class="links">
+  
+    <a class="method" href="vfunc.Font.create_hb_font.html">create_hb_font</a>
+  
+    <a class="method" href="vfunc.Font.describe.html">describe</a>
+  
+    <a class="method" href="vfunc.Font.describe_absolute.html">describe_absolute</a>
+  
+    <a class="method" href="vfunc.Font.get_coverage.html">get_coverage</a>
+  
+    <a class="method" href="vfunc.Font.get_features.html">get_features</a>
+  
+    <a class="method" href="vfunc.Font.get_font_map.html">get_font_map</a>
+  
+    <a class="method" href="vfunc.Font.get_glyph_extents.html">get_glyph_extents</a>
+  
+    <a class="method" href="vfunc.Font.get_metrics.html">get_metrics</a>
+  
+  </div>
+</div>
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Class</h3>
+    <h1><a href="index.html">Pango</a>.Font</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 id="description" style="display:flex;">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+          <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-font.h#L525">[src]</a>
+          
+        </h4>
+
+        <pre><code>abstract class Pango.Font : GObject.Object {
+  parent_instance: GObject
+}</pre></code>
+
+        <div class="docblock">
+          <p>A <code>PangoFont</code> is used to represent a font in a
+rendering-system-independent&nbsp;manner.</p>
+        </div>
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+
+    
+    <div class="toggle-wrapper ancestors">
+      <h4 id="ancestors">
+        Ancestors
+        <a href="#ancestors" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <ul>
+        
+          
+          <li class="class">GObject</a></li>
+          
+        
+        </ul>
+      </div>
+    </div>
+    
+
+    
+
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="methods">
+        Instance methods
+        <a href="#methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="method.Font.describe.html">pango_font_describe</a></h6>
+          <div class="docblock">
+            <p>Returns a description of the font, with font size set in&nbsp;points.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Font.describe_with_absolute_size.html">pango_font_describe_with_absolute_size</a></h6>
+          <div class="docblock">
+            <p>Returns a description of the font, with absolute font size set
+in device&nbsp;units.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Font.get_coverage.html">pango_font_get_coverage</a></h6>
+          <div class="docblock">
+            <p>Computes the coverage map for a given font and language&nbsp;tag.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Font.get_face.html">pango_font_get_face</a></h6>
+          <div class="docblock">
+            <p>Gets the <code>PangoFontFace</code> to which <code>font</code> belongs.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Font.get_features.html">pango_font_get_features</a></h6>
+          <div class="docblock">
+            <p>Obtain the OpenType features that are provided by the&nbsp;font.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Font.get_font_map.html">pango_font_get_font_map</a></h6>
+          <div class="docblock">
+            <p>Gets the font map for which the font was&nbsp;created.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Font.get_glyph_extents.html">pango_font_get_glyph_extents</a></h6>
+          <div class="docblock">
+            <p>Gets the logical and ink extents of a glyph within a&nbsp;font.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Font.get_hb_font.html">pango_font_get_hb_font</a></h6>
+          <div class="docblock">
+            <p>Get a <code>hb_font_t</code> object backing this&nbsp;font.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Font.get_metrics.html">pango_font_get_metrics</a></h6>
+          <div class="docblock">
+            <p>Gets overall metric information for a&nbsp;font.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Font.has_char.html">pango_font_has_char</a></h6>
+          <div class="docblock">
+            <p>Returns whether the font provides a glyph for this&nbsp;character.</p>
+          </div>
+          
+        </div>
+      
+      </div>
+
+      
+        
+      
+
+      
+    </div>
+    
+
+    
+
+    
+
+    
+    <div class="class toggle-wrapper default-hide">
+      <h4 id="class-struct">
+        Class structure
+        <a href="#class-struct" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <pre><code>struct PangoFontClass {
+  GObjectClass parent_class;
+  PangoFontDescription* (* describe) (
+    PangoFont* font
+  );
+  PangoCoverage* (* get_coverage) (
+    PangoFont* font,
+    PangoLanguage* language
+  );
+  void (* get_glyph_extents) (
+    PangoFont* font,
+    PangoGlyph glyph,
+    PangoRectangle* ink_rect,
+    PangoRectangle* logical_rect
+  );
+  PangoFontMetrics* (* get_metrics) (
+    PangoFont* font,
+    PangoLanguage* language
+  );
+  PangoFontMap* (* get_font_map) (
+    PangoFont* font
+  );
+  PangoFontDescription* (* describe_absolute) (
+    PangoFont* font
+  );
+  void (* get_features) (
+    PangoFont* font,
+    hb_feature_t* features,
+    guint len,
+    guint* num_features
+  );
+  hb_font_t* (* create_hb_font) (
+    PangoFont* font
+  );
+  
+}</code></pre>
+      </div>
+
+      
+      <div class="docblock">
+        <h6>Class members</h6>
+
+        <table class="members">
+        
+        <tr>
+          <td style="vertical-align:top"><code>parent_class</code></td>
+          <td style="vertical-align:top"><pre><code>GObjectClass</code></pre></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td style="vertical-align:top">No description available.</td>
+        </td>
+        
+        <tr>
+          <td style="vertical-align:top"><code>describe</code></td>
+          <td style="vertical-align:top"><pre><code>PangoFontDescription* (* describe) (
+    PangoFont* font
+  )</code></pre></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td style="vertical-align:top">No description available.</td>
+        </td>
+        
+        <tr>
+          <td style="vertical-align:top"><code>get_coverage</code></td>
+          <td style="vertical-align:top"><pre><code>PangoCoverage* (* get_coverage) (
+    PangoFont* font,
+    PangoLanguage* language
+  )</code></pre></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td style="vertical-align:top">No description available.</td>
+        </td>
+        
+        <tr>
+          <td style="vertical-align:top"><code>get_glyph_extents</code></td>
+          <td style="vertical-align:top"><pre><code>void (* get_glyph_extents) (
+    PangoFont* font,
+    PangoGlyph glyph,
+    PangoRectangle* ink_rect,
+    PangoRectangle* logical_rect
+  )</code></pre></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td style="vertical-align:top">No description available.</td>
+        </td>
+        
+        <tr>
+          <td style="vertical-align:top"><code>get_metrics</code></td>
+          <td style="vertical-align:top"><pre><code>PangoFontMetrics* (* get_metrics) (
+    PangoFont* font,
+    PangoLanguage* language
+  )</code></pre></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td style="vertical-align:top">No description available.</td>
+        </td>
+        
+        <tr>
+          <td style="vertical-align:top"><code>get_font_map</code></td>
+          <td style="vertical-align:top"><pre><code>PangoFontMap* (* get_font_map) (
+    PangoFont* font
+  )</code></pre></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td style="vertical-align:top">No description available.</td>
+        </td>
+        
+        <tr>
+          <td style="vertical-align:top"><code>describe_absolute</code></td>
+          <td style="vertical-align:top"><pre><code>PangoFontDescription* (* describe_absolute) (
+    PangoFont* font
+  )</code></pre></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td style="vertical-align:top">No description available.</td>
+        </td>
+        
+        <tr>
+          <td style="vertical-align:top"><code>get_features</code></td>
+          <td style="vertical-align:top"><pre><code>void (* get_features) (
+    PangoFont* font,
+    hb_feature_t* features,
+    guint len,
+    guint* num_features
+  )</code></pre></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td style="vertical-align:top">No description available.</td>
+        </td>
+        
+        <tr>
+          <td style="vertical-align:top"><code>create_hb_font</code></td>
+          <td style="vertical-align:top"><pre><code>hb_font_t* (* create_hb_font) (
+    PangoFont* font
+  )</code></pre></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td style="vertical-align:top">No description available.</td>
+        </td>
+        
+        </table>
+      </div>
+      
+    </div>
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="virtual-methods">
+        Virtual methods
+        <a href="#virtual-methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+      <div class="">
+        <h6 id="vfunc-create_hb_font"><a href="vfunc.Font.create_hb_font.html">Pango.FontClass.create_hb_font</a></h6>
+
+        <div class="docblock">
+          No description available.
+        </div>
+
+          
+      </div>
+      
+      <div class="">
+        <h6 id="vfunc-describe"><a href="vfunc.Font.describe.html">Pango.FontClass.describe</a></h6>
+
+        <div class="docblock">
+          <p>Returns a description of the font, with font size set in&nbsp;points.</p>
+        </div>
+
+          
+      </div>
+      
+      <div class="">
+        <h6 id="vfunc-describe_absolute"><a href="vfunc.Font.describe_absolute.html">Pango.FontClass.describe_absolute</a></h6>
+
+        <div class="docblock">
+          No description available.
+        </div>
+
+          
+      </div>
+      
+      <div class="">
+        <h6 id="vfunc-get_coverage"><a href="vfunc.Font.get_coverage.html">Pango.FontClass.get_coverage</a></h6>
+
+        <div class="docblock">
+          <p>Computes the coverage map for a given font and language&nbsp;tag.</p>
+        </div>
+
+          
+      </div>
+      
+      <div class="">
+        <h6 id="vfunc-get_features"><a href="vfunc.Font.get_features.html">Pango.FontClass.get_features</a></h6>
+
+        <div class="docblock">
+          <p>Obtain the OpenType features that are provided by the&nbsp;font.</p>
+        </div>
+
+          
+      </div>
+      
+      <div class="">
+        <h6 id="vfunc-get_font_map"><a href="vfunc.Font.get_font_map.html">Pango.FontClass.get_font_map</a></h6>
+
+        <div class="docblock">
+          <p>Gets the font map for which the font was&nbsp;created.</p>
+        </div>
+
+          
+      </div>
+      
+      <div class="">
+        <h6 id="vfunc-get_glyph_extents"><a href="vfunc.Font.get_glyph_extents.html">Pango.FontClass.get_glyph_extents</a></h6>
+
+        <div class="docblock">
+          <p>Gets the logical and ink extents of a glyph within a&nbsp;font.</p>
+        </div>
+
+          
+      </div>
+      
+      <div class="">
+        <h6 id="vfunc-get_metrics"><a href="vfunc.Font.get_metrics.html">Pango.FontClass.get_metrics</a></h6>
+
+        <div class="docblock">
+          <p>Gets overall metric information for a&nbsp;font.</p>
+        </div>
+
+          
+      </div>
+      
+      </div>
+    </div>
+    
+
+     
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="type-functions">
+        Functions
+        <a href="#type-functions" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+      <div class="">
+        <h6><a href="type_func.Font.descriptions_free.html">pango_font_descriptions_free</a></h6>
+
+        <div class="docblock">
+          <p>Frees an array of font&nbsp;descriptions.</p>
+        </div>
+
+        
+      </div>
+      
+      </div>
+    </div>
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

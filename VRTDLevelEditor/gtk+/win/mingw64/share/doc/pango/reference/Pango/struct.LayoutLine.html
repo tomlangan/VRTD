@@ -1,0 +1,346 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.LayoutLine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.LayoutLine"/>
+  <meta property="og:description" content="Reference for Pango.LayoutLine"/>
+  <meta name="twitter:title" content="Pango.LayoutLine"/>
+  <meta name="twitter:description" content="Reference for Pango.LayoutLine"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="struct.LayoutLine.html#description">LayoutLine</a>
+  </div>
+</div>
+
+
+
+
+<div class="section">
+  <h5>Instance methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.LayoutLine.get_extents.html">get_extents</a>
+  
+    <a class="method" href="method.LayoutLine.get_height.html">get_height</a>
+  
+    <a class="method" href="method.LayoutLine.get_pixel_extents.html">get_pixel_extents</a>
+  
+    <a class="method" href="method.LayoutLine.get_x_ranges.html">get_x_ranges</a>
+  
+    <a class="method" href="method.LayoutLine.index_to_x.html">index_to_x</a>
+  
+    <a class="method" href="method.LayoutLine.ref.html">ref</a>
+  
+    <a class="method" href="method.LayoutLine.unref.html">unref</a>
+  
+    <a class="method" href="method.LayoutLine.x_to_index.html">x_to_index</a>
+  
+  </div>
+</div>
+
+
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Struct</h3>
+    <h1><a href="index.html">Pango</a>.LayoutLine</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 style="display:flex;" id="description">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+          <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-layout.h#L101">[src]</a>
+          
+        </h4>
+
+        <pre><code><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">PangoLayoutLine</span> <span class="p">{</span>
+  <span class="n">PangoLayout</span><span class="o">*</span> <span class="n">layout</span><span class="p">;</span>
+  <span class="n">gint</span> <span class="n">start_index</span><span class="p">;</span>
+  <span class="n">gint</span> <span class="n">length</span><span class="p">;</span>
+  <span class="n">GSList</span><span class="o">*</span> <span class="n">runs</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_paragraph_start</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">resolved_dir</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+
+        <div class="docblock">
+          <p>A <code>PangoLayoutLine</code> represents one of the lines resulting from laying
+out a paragraph via <code>PangoLayout</code>.</p>
+<p><code>PangoLayoutLine</code> structures are obtained by calling
+<a href="method.Layout.get_line.html"><code>pango_layout_get_line()</code></a> and are only valid until the text,
+attributes, or settings of the parent <code>PangoLayout</code> are&nbsp;modified.</p>
+        </div>
+
+        
+        <div class="toggle-wrapper">
+          <h6 style="display:flex;">
+            Structure members
+            
+          </h6>
+
+          <div class="docblock">
+            <table>
+            
+              <tr>
+                <td><code>layout</code></td>
+                <td><p>the layout this line belongs to, might be <code>NULL</code></p></td>
+              </tr>
+            
+              <tr>
+                <td><code>start_index</code></td>
+                <td><p>start of line as byte index into&nbsp;layout-&gt;text</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>length</code></td>
+                <td><p>length of line in&nbsp;bytes</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>runs</code></td>
+                <td><p>list of runs in the
+       line, from left to&nbsp;right</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_paragraph_start</code></td>
+                <td><p><code>TRUE</code> if this is the first line of the&nbsp;paragraph</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>resolved_dir</code></td>
+                <td><p><code>Resolved</code> PangoDirection of&nbsp;line</p></td>
+              </tr>
+            
+            </table>
+          </div>
+        </div>
+        
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="methods">
+        Instance methods
+        <a href="#methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="method.LayoutLine.get_extents.html">pango_layout_line_get_extents</a></h6>
+
+          <div class="docblock">
+            <p>Computes the logical and ink extents of a layout line. See
+<code>pango_font_get_glyph_extents()</code> for details about the
+interpretation of the&nbsp;rectangles.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.LayoutLine.get_height.html">pango_layout_line_get_height</a></h6>
+
+          <div class="docblock">
+            <p>Computes the height of the line, i.e. the distance between
+this and the previous lines&nbsp;baseline.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.LayoutLine.get_pixel_extents.html">pango_layout_line_get_pixel_extents</a></h6>
+
+          <div class="docblock">
+            <p>Computes the logical and ink extents of <code>layout_line</code> in device&nbsp;units.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.LayoutLine.get_x_ranges.html">pango_layout_line_get_x_ranges</a></h6>
+
+          <div class="docblock">
+            <p>Gets a list of visual ranges corresponding to a given logical range.
+This list is not necessarily minimal - there may be consecutive
+ranges which are adjacent. The ranges will be sorted from left to
+right. The ranges are with respect to the left edge of the entire
+layout, not with respect to the&nbsp;line.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.LayoutLine.index_to_x.html">pango_layout_line_index_to_x</a></h6>
+
+          <div class="docblock">
+            <p>Converts an index within a line to a X&nbsp;position.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.LayoutLine.ref.html">pango_layout_line_ref</a></h6>
+
+          <div class="docblock">
+            <p>Increase the reference count of a <code>PangoLayoutLine</code> by&nbsp;one.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.LayoutLine.unref.html">pango_layout_line_unref</a></h6>
+
+          <div class="docblock">
+            <p>Decrease the reference count of a <code>PangoLayoutLine</code> by one.
+If the result is zero, the line and all associated memory
+will be&nbsp;freed.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.LayoutLine.x_to_index.html">pango_layout_line_x_to_index</a></h6>
+
+          <div class="docblock">
+            <p>Converts from x offset to the byte index of the corresponding character
+within the text of the layout. If <code>x_pos</code> is outside the line, <code>index_</code> and
+<code>trailing</code> will point to the very first or very last position in the line.
+This determination is based on the resolved direction of the paragraph;
+for example, if the resolved direction is right-to-left, then an X position
+to the right of the line (after it) results in 0 being stored in <code>index_</code>
+and <code>trailing</code>. An X position to the left of the line results in <code>index_</code>
+pointing to the (logical) last grapheme in the line and <code>trailing</code> being
+set to the number of characters in that grapheme. The reverse is true for
+a left-to-right&nbsp;line.</p>
+          </div>
+
+          
+        </div>
+      
+      </div>
+
+    </div>
+    
+
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

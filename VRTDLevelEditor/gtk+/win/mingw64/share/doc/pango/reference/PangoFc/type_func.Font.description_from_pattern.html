@@ -1,0 +1,246 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PangoFc.Font.description_from_pattern</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="PangoFc-1.0"/>
+  
+
+  
+  <meta property="og:title" content="PangoFc.Font.description_from_pattern"/>
+  <meta property="og:description" content="Reference for PangoFc.Font.description_from_pattern"/>
+  <meta name="twitter:title" content="PangoFc.Font.description_from_pattern"/>
+  <meta name="twitter:description" content="Reference for PangoFc.Font.description_from_pattern"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">PangoFc</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a href="class.Font.html">Font</a>
+  </div>
+</div>
+<div class="section">
+  <h5>Functions</h5>
+  <div class="links">
+  
+    <a class="method current" href="type_func.Font.description_from_pattern.html">description_from_pattern</a>
+  
+  </div>
+</div>
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Function</h3>
+    <h1><a href="index.html">PangoFc</a>.<a href="class.Font.html">Font</a>.description_from_pattern</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 id="declaration" style="display:flex;">
+        Declaration
+        <a href="#declaration" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pangofc-fontmap.h#L94">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">PangoFontDescription</span><span class="o">*</span>
+<span class="n">pango_fc_font_description_from_pattern</span> <span class="p">(</span>
+  <span class="n">FcPattern</span><span class="o">*</span> <span class="n">pattern</span><span class="p">,</span>
+  <span class="n">gboolean</span> <span class="n">include_size</span>
+<span class="p">)</span>
+</pre></div>
+</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 id="description" style="display:flex;">
+        Description
+        <a href="#description" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pangofc-fontmap.c#L2709">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <p>Creates a <code>PangoFontDescription</code> that matches the specified
+Fontconfig pattern as closely as&nbsp;possible.</p>
+<p>Many possible Fontconfig pattern values, such as <code>FC_RASTERIZER</code>
+or <code>FC_DPI</code>, don&#8217;t make sense in the context of <code>PangoFontDescription</code>,
+so will be&nbsp;ignored.</p>
+      </div>
+
+      <div class="docblock">
+        <table>
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    
+    <div class="parameters toggle-wrapper">
+      <h4 id="parameters">
+        Parameters
+        <a href="#parameters" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          
+          <tr class="arg-name">
+            <td><code>pattern</code></td>
+            <td><code>FcPattern*</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>a <code>FcPattern</code></p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          <tr><td>&nbsp;</td><td>Ownership is not transferred to the callee</td></tr>
+          
+          
+          <tr class="arg-name">
+            <td><code>include_size</code></td>
+            <td><code>gboolean</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td>&nbsp;</td>
+            <td><p>if <code>TRUE</code>, the pattern will include the size from
+  the <code>pattern</code>; otherwise the resulting pattern will be unsized.
+  (only <code>FC_SIZE</code> is examined, not <code>FC_PIXEL_SIZE</code>)</p></td>
+          </tr>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </table>
+      </div>
+    </div>
+    
+
+    
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          <tr class="arg-name">
+            <td colspan="2">Returns:&nbsp;<code>PangoFontDescription*</code></td>
+          </tr>
+          <tr class="arg-description">
+            <td colspan="2"><p>a new <code>PangoFontDescription</code>. Free with
+  <code>pango_font_description_free()</code>.</p></td>
+          </tr>
+          
+          
+          
+          <tr><td>Ownership of the data is transferred to the caller</td></tr>
+          
+          
+        </table>
+      </div>
+    </div>
+    
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

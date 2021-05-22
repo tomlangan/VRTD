@@ -73,8 +73,7 @@ namespace VRTD.LevelEditor
             Layout.PackStart(EffectsTree, false, false, 0);
             EffectsTree.Show();
 
-            ListStore comboModel = new ListStore(typeof(string));
-            ComboBox comboBox = new ComboBox(comboModel);
+            ComboBoxText comboBox = new ComboBoxText();
             foreach (string name in Enum.GetNames(typeof(ProjectileEffectType)))
             {
                 comboBox.AppendText(name);
@@ -103,7 +102,6 @@ namespace VRTD.LevelEditor
             CellRendererCombo comboCellRenderer = new CellRendererCombo();
             comboCellRenderer.Editable = true;
             comboCellRenderer.Edited += ComboCellRenderer_Edited;
-            comboCellRenderer.Model = comboModel;
             comboCellRenderer.TextColumn = 0;
             comboCellRenderer.HasEntry = false;
 

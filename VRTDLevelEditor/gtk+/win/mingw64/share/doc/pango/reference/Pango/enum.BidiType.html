@@ -1,0 +1,302 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.BidiType</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.BidiType"/>
+  <meta property="og:description" content="Reference for Pango.BidiType"/>
+  <meta name="twitter:title" content="Pango.BidiType"/>
+  <meta name="twitter:description" content="Reference for Pango.BidiType"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="enum.BidiType.html">BidiType</a>
+  </div>
+</div>
+
+
+<div class="section">
+  <h5>Type functions</h5>
+  <div class="links">
+  
+    <a class="func" href="type_func.BidiType.for_unichar.html">for_unichar</a>
+  
+  </div>
+</div>
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Enumeration</h3>
+    <h1><a href="index.html">Pango</a>.BidiType</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 style="display:flex;" id="declaration">
+        Declaration
+        <a href="#declaration" class="anchor"></a>
+        
+      </h4>
+
+      <div class="docblock">
+        <pre><code>enum Pango.BidiType</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 style="display:flex;" id="description">
+        Description
+        <a href="#description" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-bidi-type.h#L33">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+      <p><code>PangoBidiType</code> represents the bidirectional character
+type of a Unicode character as specified by the
+<ulink url="http://www.unicode.org/reports/tr9/">Unicode bidirectional algorithm</ulink>.</p>
+      </div>
+
+      <div class="docblock">
+        <table class="attributes">
+          
+          
+          
+          <tr><td>Deprecated since:</td><td>1.44</td></tr>
+          <tr><td colspan="2"><p>Use fribidi for this&nbsp;information</p></td></tr>
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    <div class="members toggle-wrapper">
+      <h4 id="members">
+        Members
+        <a href="#members" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      <table class="enum-members">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 0">PANGO_BIDI_TYPE_L</code></td>
+          <td><p>Left-to-Right</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 1">PANGO_BIDI_TYPE_LRE</code></td>
+          <td><p>Left-to-Right&nbsp;Embedding</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 2">PANGO_BIDI_TYPE_LRO</code></td>
+          <td><p>Left-to-Right&nbsp;Override</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 3">PANGO_BIDI_TYPE_R</code></td>
+          <td><p>Right-to-Left</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 4">PANGO_BIDI_TYPE_AL</code></td>
+          <td><p>Right-to-Left&nbsp;Arabic</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 5">PANGO_BIDI_TYPE_RLE</code></td>
+          <td><p>Right-to-Left&nbsp;Embedding</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 6">PANGO_BIDI_TYPE_RLO</code></td>
+          <td><p>Right-to-Left&nbsp;Override</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 7">PANGO_BIDI_TYPE_PDF</code></td>
+          <td><p>Pop Directional&nbsp;Format</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 8">PANGO_BIDI_TYPE_EN</code></td>
+          <td><p>European&nbsp;Number</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 9">PANGO_BIDI_TYPE_ES</code></td>
+          <td><p>European Number&nbsp;Separator</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 10">PANGO_BIDI_TYPE_ET</code></td>
+          <td><p>European Number&nbsp;Terminator</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 11">PANGO_BIDI_TYPE_AN</code></td>
+          <td><p>Arabic&nbsp;Number</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 12">PANGO_BIDI_TYPE_CS</code></td>
+          <td><p>Common Number&nbsp;Separator</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 13">PANGO_BIDI_TYPE_NSM</code></td>
+          <td><p>Nonspacing&nbsp;Mark</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 14">PANGO_BIDI_TYPE_BN</code></td>
+          <td><p>Boundary&nbsp;Neutral</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 15">PANGO_BIDI_TYPE_B</code></td>
+          <td><p>Paragraph&nbsp;Separator</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 16">PANGO_BIDI_TYPE_S</code></td>
+          <td><p>Segment&nbsp;Separator</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 17">PANGO_BIDI_TYPE_WS</code></td>
+          <td><p>Whitespace</p></td>
+        </tr>
+      
+        <tr>
+          <td><code title="Value: 18">PANGO_BIDI_TYPE_ON</code></td>
+          <td><p>Other&nbsp;Neutrals</p></td>
+        </tr>
+      
+      </table>
+      </div>
+    </div>
+
+    
+
+    
+    <div class="type-funcs toggle-wrapper">
+      <h4 id="type-functions">
+        Type functions
+        <a href="#type-functions" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="type_func.BidiType.for_unichar.html">pango_bidi_type_for_unichar</a></h6>
+
+          <div class="docblock">
+            <p>Determines the bidirectional type of a&nbsp;character.</p>
+          </div>
+
+          
+        </div>
+      
+    </div>
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

@@ -35,7 +35,6 @@ namespace VRTD.LevelEditor
             Entry entry = (Entry)o;
             string val = entry.Text;
 
-            Gdk.Color col = GtkHelpers.Color("black");
             entry.TooltipText = "";
 
             try
@@ -53,10 +52,9 @@ namespace VRTD.LevelEditor
             catch(Exception ex)
             {
                 entry.TooltipText = ex.Message;
-                col = GtkHelpers.Color("red");
             }
 
-            entry.ModifyText(StateType.Normal, col);
+
         }
 
         private void T_Elapsed(object sender, ElapsedEventArgs e)
@@ -108,6 +106,23 @@ namespace VRTD.LevelEditor
     {
         public enum ValueType { Str, Int, Float, None }
         public static List<DeferredEventHelper> DeferredEvents = new List<DeferredEventHelper>();
+        public static CssProvider cssProvider = null;
+        public static string colorCSS = ".red-background { background-image: none; background-color: red; } " +
+            ".green-background { background-image: none; background-color: green; } " +
+            ".gray-background { background-image: none; background-color: gray; } " +
+            ".blue-background { background-image: none; background-color: blue; } " +
+            ".black-background { background-image: none; background-color: black; } " +
+            ".orange-background { background-image: none; background-color: orange; } " +
+            ".yellow-background { background-image: none; background-color: yellow; } ";
+
+        
+        public static void InitializeColors()
+        {
+            cssProvider = new CssProvider();
+            cssProvider.LoadFromData(colorCSS);
+            Gtk.StyleContext.AddProviderForScreen(Gdk.Screen.Default, cssProvider, 600);
+        }
+
 
         public static void FlushAllDeferredEvents()
         {
@@ -192,13 +207,6 @@ namespace VRTD.LevelEditor
             dropdown.Show();
 
             return box;
-        }
-
-        public static Gdk.Color Color(string name)
-        {
-            Gdk.Color col = new Gdk.Color();
-            Gdk.Color.Parse(name, ref col);
-            return col;
         }
 
     }

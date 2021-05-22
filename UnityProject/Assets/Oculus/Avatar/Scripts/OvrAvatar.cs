@@ -79,7 +79,7 @@ public class OvrAvatar : MonoBehaviour
     [SerializeField]
     internal ovrAvatarAssetLevelOfDetail LevelOfDetail = ovrAvatarAssetLevelOfDetail.Highest;
 #endif
-#if UNITY_ANDROID && UNITY_5_5_OR_NEWER
+#if UNITY_ANDROID && UNITY_5_5_OR_NEWER && !UNITY_EDITOR
     [Tooltip(
         "Enable to use combined meshes to reduce draw calls. Currently only available on mobile devices. " +
         "Will be forced to false on PC.")]
@@ -117,7 +117,6 @@ public class OvrAvatar : MonoBehaviour
     // Avatar asset
     private HashSet<UInt64> assetLoadingIds = new HashSet<UInt64>();
     private bool assetsFinishedLoading = false;
-    private int renderPartCount = 0;
 
     // Material manager
     private OvrAvatarMaterialManager materialManager;
@@ -130,15 +129,6 @@ public class OvrAvatar : MonoBehaviour
     private Vector4 clothingAlphaOffset = new Vector4(0f, 0f, 0f, 1f);
     private UInt64 clothingAlphaTexture = 0;
 
-    // Lipsync
-    private OVRLipSyncMicInput micInput = null;
-    private OVRLipSyncContext lipsyncContext = null;
-    private OVRLipSync.Frame currentFrame = new OVRLipSync.Frame();
-    private float[] visemes = new float[VISEME_COUNT];
-    private AudioSource audioSource;
-    private ONSPAudioSource spatializedSource;
-    private List<float[]> voiceUpdates = new List<float[]>();
-    private static ovrAvatarVisemes RuntimeVisemes;
 
     // Custom hand poses
     private Transform cachedLeftHandCustomPose;
@@ -151,7 +141,7 @@ public class OvrAvatar : MonoBehaviour
     private bool showRightController;
 
     // Consts
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
     private const bool USE_MOBILE_TEXTURE_FORMAT = true;
 #else
     private const bool USE_MOBILE_TEXTURE_FORMAT = false;
@@ -231,9 +221,6 @@ public class OvrAvatar : MonoBehaviour
 
     static OvrAvatar()
     {
-        // This size has to match the 'MarshalAs' attribute in the ovrAvatarVisemes declaration.
-        RuntimeVisemes.visemeParams = new float[32];
-        RuntimeVisemes.visemeParamCount = VISEME_COUNT;
     }
 
     void OnDestroy()
@@ -594,39 +581,6 @@ public class OvrAvatar : MonoBehaviour
 
         Capabilities = 0;
 
-        bool is3Dof = false;
-        var headsetType = OVRPlugin.GetSystemHeadsetType();
-        switch (headsetType)
-        {
-            case OVRPlugin.SystemHeadset.GearVR_R320:
-            case OVRPlugin.SystemHeadset.GearVR_R321:
-            case OVRPlugin.SystemHeadset.GearVR_R322:
-            case OVRPlugin.SystemHeadset.GearVR_R323:
-            case OVRPlugin.SystemHeadset.GearVR_R324:
-            case OVRPlugin.SystemHeadset.GearVR_R325:
-            case OVRPlugin.SystemHeadset.Oculus_Go:
-                is3Dof = true;
-                break;
-            case OVRPlugin.SystemHeadset.Oculus_Quest:
-            case OVRPlugin.SystemHeadset.Rift_S:
-            case OVRPlugin.SystemHeadset.Rift_DK1:
-            case OVRPlugin.SystemHeadset.Rift_DK2:
-            case OVRPlugin.SystemHeadset.Rift_CV1:
-            default:
-                break;
-        }
-
-        // The SDK 3 DOF Arm Model requires the body skeleton to pose itself. It will crash without it
-        // The likely use case here is trying to have an invisible body.
-        // T45010595
-        if (is3Dof && !EnableBody)
-        {
-            AvatarLogger.Log("Forcing the Body component for 3Dof hand tracking, and setting the visibility to 1st person");
-            EnableBody = true;
-            ShowFirstPerson = true;
-            ShowThirdPerson = false;
-        }
-
         if (EnableBody) Capabilities |= ovrAvatarCapabilities.Body;
         if (EnableHands) Capabilities |= ovrAvatarCapabilities.Hands;
         if (EnableBase && EnableBody) Capabilities |= ovrAvatarCapabilities.Base;
@@ -671,19 +625,6 @@ public class OvrAvatar : MonoBehaviour
         if (Driver != null)
         {
             Driver.UpdateTransforms(sdkAvatar);
-
-            foreach (float[] voiceUpdate in voiceUpdates)
-            {
-                CAPI.ovrAvatarPose_UpdateVoiceVisualization(sdkAvatar, voiceUpdate);
-            }
-
-            voiceUpdates.Clear();
-#if AVATAR_INTERNAL
-            if (BlendController != null)
-            {
-                BlendController.UpdateBlend(sdkAvatar);
-            }
-#endif
             CAPI.ovrAvatarPose_Finalize(sdkAvatar, Time.deltaTime);
         }
 
@@ -703,7 +644,7 @@ public class OvrAvatar : MonoBehaviour
                 catch (Exception e)
                 {
                     assetsFinishedLoading = true;
-                    throw; // rethrow the original exception to preserve callstack
+                    throw e; // rethrow the original exception to preserve callstack
                 }
 #if AVATAR_INTERNAL
                 AssetsDoneLoading.Invoke();
@@ -760,10 +701,6 @@ public class OvrAvatar : MonoBehaviour
         showRightController = show;
     }
 
-    public void UpdateVoiceVisualization(float[] voiceSamples)
-    {
-        voiceUpdates.Add(voiceSamples);
-    }
 
     void RecordFrame()
     {
@@ -1064,16 +1001,6 @@ public class OvrAvatar : MonoBehaviour
 
         if (GetComponent<OvrAvatarLocalDriver>() != null)
         {
-            // Use mic.
-            lipsyncContext.audioLoopback = false;
-            if (CanOwnMicrophone && IsValidMic())
-            {
-                micInput = MouthAnchor.gameObject.AddComponent<OVRLipSyncMicInput>();
-                micInput.enableMicSelectionGUI = false;
-                micInput.MicFrequency = 44100;
-                micInput.micControl = OVRLipSyncMicInput.micActivation.ConstantSpeak;
-            }
-
             // Set lipsync animation parameters in SDK
             CAPI.ovrAvatar_SetActionUnitOnsetSpeed(sdkAvatar, ACTION_UNIT_ONSET_SPEED);
             CAPI.ovrAvatar_SetActionUnitFalloffSpeed(sdkAvatar, ACTION_UNIT_FALLOFF_SPEED);
@@ -1173,7 +1100,6 @@ public class OvrAvatar : MonoBehaviour
         ovrAvatarTransform baseTransform = OvrAvatar.CreateOvrAvatarTransform(transform.position, transform.rotation);
         CAPI.ovrAvatar_UpdateWorldTransform(sdkAvatar, baseTransform);
 
-        UpdateFacewave();
     }
 
     private void ConfigureHelpers()
@@ -1191,41 +1117,6 @@ public class OvrAvatar : MonoBehaviour
             MouthAnchor = CreateHelperObject(head, MOUTH_HEAD_OFFSET, MOUTH_HELPER_NAME);
         }
 
-        if (GetComponent<OvrAvatarLocalDriver>() != null)
-        {
-            if (audioSource == null)
-            {
-                audioSource = MouthAnchor.gameObject.AddComponent<AudioSource>();
-            }
-            spatializedSource = MouthAnchor.GetComponent<ONSPAudioSource>();
-
-            if (spatializedSource == null)
-            {
-                spatializedSource = MouthAnchor.gameObject.AddComponent<ONSPAudioSource>();
-            }
-
-            spatializedSource.UseInvSqr = true;
-            spatializedSource.EnableRfl = false;
-            spatializedSource.EnableSpatialization = true;
-            spatializedSource.Far = 100f;
-            spatializedSource.Near = 0.1f;
-
-            // Add phoneme context to the mouth anchor
-            lipsyncContext = MouthAnchor.GetComponent<OVRLipSyncContext>();
-            if (lipsyncContext == null)
-            {
-                lipsyncContext = MouthAnchor.gameObject.AddComponent<OVRLipSyncContext>();
-            }
-
-            lipsyncContext.provider = EnableLaughter
-                ? OVRLipSync.ContextProviders.Enhanced_with_Laughter
-                : OVRLipSync.ContextProviders.Enhanced;
-
-            // Ignore audio callback if microphone is owned by VoIP
-            lipsyncContext.skipAudioSource = !CanOwnMicrophone;
-
-            StartCoroutine(WaitForMouthAudioSource());
-        }
 
         if (GetComponent<OvrAvatarRemoteDriver>() != null)
         {
@@ -1299,47 +1190,4 @@ public class OvrAvatar : MonoBehaviour
         return helper;
     }
 
-    public void UpdateVoiceData(short[] pcmData, int numChannels)
-    {
-      if (lipsyncContext != null && micInput == null)
-      {
-          lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
-      }
-    }
-    public void UpdateVoiceData(float[] pcmData, int numChannels)
-    {
-      if (lipsyncContext != null && micInput == null)
-      {
-          lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
-      }
-    }
-
-
-    private void UpdateFacewave()
-    {
-        if (lipsyncContext != null && (micInput != null || CanOwnMicrophone == false))
-        {
-            // Get the current viseme frame
-            currentFrame = lipsyncContext.GetCurrentPhonemeFrame();
-
-            // Verify length (-1 for laughter)
-            if (currentFrame.Visemes.Length != (VISEME_COUNT - 1))
-            {
-                Debug.LogError("Unexpected number of visemes " + currentFrame.Visemes);
-                return;
-            }
-
-            // Copy to viseme array
-            currentFrame.Visemes.CopyTo(visemes, 0);
-            // Copy laughter as final element
-            visemes[VISEME_COUNT - 1] = EnableLaughter ? currentFrame.laughterScore : 0.0f;
-
-            // Send visemes to native implementation.
-            for (int i = 0; i < VISEME_COUNT; i++)
-            {
-                RuntimeVisemes.visemeParams[i] = visemes[i];
-            }
-            CAPI.ovrAvatar_SetVisemes(sdkAvatar, RuntimeVisemes);
-        }
-    }
 }

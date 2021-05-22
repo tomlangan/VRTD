@@ -1,0 +1,277 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.LogAttr</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.LogAttr"/>
+  <meta property="og:description" content="Reference for Pango.LogAttr"/>
+  <meta name="twitter:title" content="Pango.LogAttr"/>
+  <meta name="twitter:description" content="Reference for Pango.LogAttr"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="struct.LogAttr.html#description">LogAttr</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Struct</h3>
+    <h1><a href="index.html">Pango</a>.LogAttr</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 style="display:flex;" id="description">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+          <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-break.h#L33">[src]</a>
+          
+        </h4>
+
+        <pre><code><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">PangoLogAttr</span> <span class="p">{</span>
+  <span class="n">guint</span> <span class="n">is_line_break</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_mandatory_break</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_char_break</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_white</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_cursor_position</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_word_start</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_word_end</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_sentence_boundary</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_sentence_start</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_sentence_end</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">backspace_deletes_character</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_expandable_space</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">is_word_boundary</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+
+        <div class="docblock">
+          <p>The <code>PangoLogAttr</code> structure stores information about the attributes of a
+single&nbsp;character.</p>
+        </div>
+
+        
+        <div class="toggle-wrapper">
+          <h6 style="display:flex;">
+            Structure members
+            
+          </h6>
+
+          <div class="docblock">
+            <table>
+            
+              <tr>
+                <td><code>is_line_break</code></td>
+                <td><p>if set, can break line in front of&nbsp;character</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_mandatory_break</code></td>
+                <td><p>if set, must break line in front of&nbsp;character</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_char_break</code></td>
+                <td><p>if set, can break here when doing character&nbsp;wrapping</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_white</code></td>
+                <td><p>is whitespace&nbsp;character</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_cursor_position</code></td>
+                <td><p>if set, cursor can appear in front of character.
+  i.e. this is a grapheme boundary, or the first character in the text.
+  This flag implements Unicode&#8217;s
+  <a href="http://www.unicode.org/reports/tr29/">Grapheme Cluster Boundaries</a>&nbsp;semantics.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_word_start</code></td>
+                <td><p>is first character in a&nbsp;word</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_word_end</code></td>
+                <td><p>is first non-word char after a word
+  Note that in degenerate cases, you could have both <code>is_word_start</code>
+  and <code>is_word_end</code> set for some&nbsp;character.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_sentence_boundary</code></td>
+                <td><p>is a sentence boundary.
+  There are two ways to divide sentences. The first assigns all
+  inter-sentence whitespace/control/format chars to some sentence,
+  so all chars are in some sentence; <code>is_sentence_boundary</code> denotes
+  the boundaries there. The second way doesn&#8217;t assign
+  between-sentence spaces, etc. to any sentence, so
+<code>is_sentence_start</code>/<code>is_sentence_end</code> mark the boundaries of those&nbsp;sentences.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_sentence_start</code></td>
+                <td><p>is first character in a&nbsp;sentence</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_sentence_end</code></td>
+                <td><p>is first char after a sentence.
+  Note that in degenerate cases, you could have both <code>is_sentence_start</code>
+  and <code>is_sentence_end</code> set for some character. (e.g. no space after a
+  period, so the next sentence starts right&nbsp;away)</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>backspace_deletes_character</code></td>
+                <td><p>if set, backspace deletes one character
+  rather than the entire grapheme cluster. This field is only meaningful
+  on grapheme boundaries (where <code>is_cursor_position</code> is set). In some languages,
+  the full grapheme (e.g. letter + diacritics) is considered a unit, while in
+  others, each decomposed character in the grapheme is a unit. In the default
+  implementation of <a href="func.break.html"><code>pango_break()</code></a>, this bit is set on all grapheme boundaries
+  except those following Latin, Cyrillic or Greek base&nbsp;characters.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_expandable_space</code></td>
+                <td><p>is a whitespace character that can possibly be
+  expanded for justification purposes. (Since:&nbsp;1.18)</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>is_word_boundary</code></td>
+                <td><p>is a word boundary, as defined by <span class="caps">UAX</span>#29.
+  More specifically, means that this is not a position in the middle of a word.
+  For example, both sides of a punctuation mark are considered word boundaries.
+  This flag is particularly useful when selecting text word-by-word. This flag
+  implements Unicode&#8217;s <a href="http://www.unicode.org/reports/tr29/">Word Boundaries</a>
+  semantics. (Since:&nbsp;1.22)</p></td>
+              </tr>
+            
+            </table>
+          </div>
+        </div>
+        
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+
+    
+
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

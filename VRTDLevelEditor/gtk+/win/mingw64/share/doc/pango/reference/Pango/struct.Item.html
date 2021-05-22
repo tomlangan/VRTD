@@ -1,0 +1,297 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.Item</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.Item"/>
+  <meta property="og:description" content="Reference for Pango.Item"/>
+  <meta name="twitter:title" content="Pango.Item"/>
+  <meta name="twitter:description" content="Reference for Pango.Item"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="struct.Item.html#description">Item</a>
+  </div>
+</div>
+
+
+<div class="section">
+  <h5>Constructors</h5>
+  <div class="links">
+  
+    <a class="ctor" href="ctor.Item.new.html">new</a>
+  
+  </div>
+</div>
+
+
+
+<div class="section">
+  <h5>Instance methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.Item.apply_attrs.html">apply_attrs</a>
+  
+    <a class="method" href="method.Item.copy.html">copy</a>
+  
+    <a class="method" href="method.Item.free.html">free</a>
+  
+    <a class="method" href="method.Item.split.html">split</a>
+  
+  </div>
+</div>
+
+
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Struct</h3>
+    <h1><a href="index.html">Pango</a>.Item</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 style="display:flex;" id="description">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+          <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-item.h#L98">[src]</a>
+          
+        </h4>
+
+        <pre><code><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">PangoItem</span> <span class="p">{</span>
+  <span class="n">gint</span> <span class="n">offset</span><span class="p">;</span>
+  <span class="n">gint</span> <span class="n">length</span><span class="p">;</span>
+  <span class="n">gint</span> <span class="n">num_chars</span><span class="p">;</span>
+  <span class="n">PangoAnalysis</span> <span class="n">analysis</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+
+        <div class="docblock">
+          <p>The <code>PangoItem</code> structure stores information about a segment of&nbsp;text.</p>
+<p>You typically obtain <code>PangoItems</code> by itemizing a piece of text
+with <a href="func.itemize.html"><code>pango_itemize()</code></a>.</p>
+        </div>
+
+        
+        <div class="toggle-wrapper">
+          <h6 style="display:flex;">
+            Structure members
+            
+          </h6>
+
+          <div class="docblock">
+            <table>
+            
+              <tr>
+                <td><code>offset</code></td>
+                <td><p>byte offset of the start of this item in&nbsp;text.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>length</code></td>
+                <td><p>length of this item in&nbsp;bytes.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>num_chars</code></td>
+                <td><p>number of Unicode characters in the&nbsp;item.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>analysis</code></td>
+                <td><p>analysis results for the&nbsp;item.</p></td>
+              </tr>
+            
+            </table>
+          </div>
+        </div>
+        
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+    <div class="toggle-wrapper constructors">
+      <h4 id="constructors">
+        Constructors
+        <a href="#constructors" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="ctor.Item.new.html">pango_item_new</a></h6>
+
+          <div class="docblock">
+            <p>Creates a new <code>PangoItem</code> structure initialized to default&nbsp;values.</p>
+          </div>
+
+          
+        </div>
+      
+      </div>
+    </div>
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="methods">
+        Instance methods
+        <a href="#methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="method.Item.apply_attrs.html">pango_item_apply_attrs</a></h6>
+
+          <div class="docblock">
+            <p>Add attributes to a <code>PangoItem</code>.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Item.copy.html">pango_item_copy</a></h6>
+
+          <div class="docblock">
+            <p>Copy an existing <code>PangoItem</code> structure.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Item.free.html">pango_item_free</a></h6>
+
+          <div class="docblock">
+            <p>Free a <code>PangoItem</code> and all associated&nbsp;memory.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Item.split.html">pango_item_split</a></h6>
+
+          <div class="docblock">
+            <p>Modifies <code>orig</code> to cover only the text after <code>split_index</code>, and
+returns a new item that covers the text before <code>split_index</code> that
+used to be in <code>orig</code>.</p>
+          </div>
+
+          
+        </div>
+      
+      </div>
+
+    </div>
+    
+
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

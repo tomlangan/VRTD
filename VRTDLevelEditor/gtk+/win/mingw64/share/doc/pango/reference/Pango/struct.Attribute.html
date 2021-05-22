@@ -1,0 +1,268 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.Attribute</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.Attribute"/>
+  <meta property="og:description" content="Reference for Pango.Attribute"/>
+  <meta name="twitter:title" content="Pango.Attribute"/>
+  <meta name="twitter:description" content="Reference for Pango.Attribute"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="struct.Attribute.html#description">Attribute</a>
+  </div>
+</div>
+
+
+
+
+<div class="section">
+  <h5>Instance methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.Attribute.copy.html">copy</a>
+  
+    <a class="method" href="method.Attribute.destroy.html">destroy</a>
+  
+    <a class="method" href="method.Attribute.equal.html">equal</a>
+  
+    <a class="method" href="method.Attribute.init.html">init</a>
+  
+  </div>
+</div>
+
+
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Struct</h3>
+    <h1><a href="index.html">Pango</a>.Attribute</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 style="display:flex;" id="description">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+          <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-attributes.h#L283">[src]</a>
+          
+        </h4>
+
+        <pre><code><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">PangoAttribute</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="n">PangoAttrClass</span><span class="o">*</span> <span class="n">klass</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">start_index</span><span class="p">;</span>
+  <span class="n">guint</span> <span class="n">end_index</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+
+        <div class="docblock">
+          <p>The <code>PangoAttribute</code> structure represents the common portions of all&nbsp;attributes.</p>
+<p>Particular types of attributes include this structure as their initial
+portion. The common portion of the attribute holds the range to which
+the value in the type-specific part of the attribute applies and should
+be initialized using <a href="method.Attribute.init.html"><code>pango_attribute_init()</code></a>. By default, an attribute
+will have an all-inclusive range of [0,<code>G_MAXUINT</code>].</p>
+        </div>
+
+        
+        <div class="toggle-wrapper">
+          <h6 style="display:flex;">
+            Structure members
+            
+          </h6>
+
+          <div class="docblock">
+            <table>
+            
+              <tr>
+                <td><code>klass</code></td>
+                <td><p>the class structure holding information about the type of the&nbsp;attribute</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>start_index</code></td>
+                <td><p>the start index of the range (in&nbsp;bytes).</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>end_index</code></td>
+                <td><p>end index of the range (in bytes). The character at this index
+is not included in the&nbsp;range.</p></td>
+              </tr>
+            
+            </table>
+          </div>
+        </div>
+        
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="methods">
+        Instance methods
+        <a href="#methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="method.Attribute.copy.html">pango_attribute_copy</a></h6>
+
+          <div class="docblock">
+            <p>Make a copy of an&nbsp;attribute.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Attribute.destroy.html">pango_attribute_destroy</a></h6>
+
+          <div class="docblock">
+            <p>Destroy a <code>PangoAttribute</code> and free all associated&nbsp;memory.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Attribute.equal.html">pango_attribute_equal</a></h6>
+
+          <div class="docblock">
+            <p>Compare two attributes for equality. This compares only the
+actual value of the two attributes and not the ranges that the
+attributes apply&nbsp;to.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Attribute.init.html">pango_attribute_init</a></h6>
+
+          <div class="docblock">
+            <p>Initializes <code>attr</code><span class="quo">&#8216;</span>s klass to <code>klass</code>, it&#8217;s start_index to
+<code>PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING</code> and end_index to
+<code>PANGO_ATTR_INDEX_TO_TEXT_END</code> such that the attribute applies
+to the entire text by&nbsp;default.</p>
+          </div>
+
+          
+        </div>
+      
+      </div>
+
+    </div>
+    
+
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

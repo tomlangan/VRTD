@@ -1,0 +1,321 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PangoOT.Info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="PangoOT-1.0"/>
+  
+
+  
+  <meta property="og:title" content="PangoOT.Info"/>
+  <meta property="og:description" content="Reference for PangoOT.Info"/>
+  <meta name="twitter:title" content="PangoOT.Info"/>
+  <meta name="twitter:description" content="Reference for PangoOT.Info"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">PangoOT</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="class.Info.html#description">Info</a>
+  </div>
+</div>
+
+
+
+
+<div class="section">
+  <h5>Instance methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.Info.find_feature.html">find_feature</a>
+  
+    <a class="method" href="method.Info.find_language.html">find_language</a>
+  
+    <a class="method" href="method.Info.find_script.html">find_script</a>
+  
+    <a class="method" href="method.Info.list_features.html">list_features</a>
+  
+    <a class="method" href="method.Info.list_languages.html">list_languages</a>
+  
+    <a class="method" href="method.Info.list_scripts.html">list_scripts</a>
+  
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="section">
+  <h5>Functions</h5>
+  <div class="links">
+  
+    <a class="func" href="type_func.Info.get.html">get</a>
+  
+  </div>
+</div>
+
+
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Class</h3>
+    <h1><a href="index.html">PangoOT</a>.Info</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 id="description" style="display:flex;">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+        </h4>
+
+        <pre><code>final class PangoOT.Info : GObject.Object {
+  /* No available fields */
+}</pre></code>
+
+        <div class="docblock">
+          No description available.
+        </div>
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+
+    
+    <div class="toggle-wrapper ancestors">
+      <h4 id="ancestors">
+        Ancestors
+        <a href="#ancestors" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <ul>
+        
+          
+          <li class="class">GObject</a></li>
+          
+        
+        </ul>
+      </div>
+    </div>
+    
+
+    
+
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="methods">
+        Instance methods
+        <a href="#methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="method.Info.find_feature.html">pango_ot_info_find_feature</a></h6>
+          <div class="docblock">
+            <p>Finds the index of a feature.  If the feature is not found, sets
+<code>feature_index</code> to PANGO_OT_NO_FEATURE, which is safe to pass to
+<code>pango_ot_ruleset_add_feature()</code> and similar&nbsp;functions.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Info.find_language.html">pango_ot_info_find_language</a></h6>
+          <div class="docblock">
+            <p>Finds the index of a language and its required feature index.
+If the language is not found, sets <code>language_index</code> to
+PANGO_OT_DEFAULT_LANGUAGE and the required feature of the default language
+system is returned in required_feature_index.  For best compatibility with
+some fonts, also searches the language system tag &#8216;dflt&#8217; before falling
+back to the default language system, but that is transparent to the user.
+The user can simply ignore the return value of this function to
+automatically fall back to the default language&nbsp;system.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Info.find_script.html">pango_ot_info_find_script</a></h6>
+          <div class="docblock">
+            <p>Finds the index of a script.  If not found, tries to find the &#8216;<span class="caps">DFLT</span>&#8217;
+and then &#8216;dflt&#8217; scripts and return the index of that in <code>script_index</code>.
+If none of those is found either, <code>PANGO_OT_NO_SCRIPT</code> is placed in
+<code>script_index</code>.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Info.list_features.html">pango_ot_info_list_features</a></h6>
+          <div class="docblock">
+            <p>Obtains the list of features for the given language of the given&nbsp;script.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Info.list_languages.html">pango_ot_info_list_languages</a></h6>
+          <div class="docblock">
+            <p>Obtains the list of available languages for a given&nbsp;script.</p>
+          </div>
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Info.list_scripts.html">pango_ot_info_list_scripts</a></h6>
+          <div class="docblock">
+            <p>Obtains the list of available&nbsp;scripts.</p>
+          </div>
+          
+        </div>
+      
+      </div>
+
+      
+        
+      
+
+      
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+     
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="type-functions">
+        Functions
+        <a href="#type-functions" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+      <div class="">
+        <h6><a href="type_func.Info.get.html">pango_ot_info_get</a></h6>
+
+        <div class="docblock">
+          <p>Returns the <code>PangoOTInfo</code> structure for the given FreeType font&nbsp;face.</p>
+        </div>
+
+        
+      </div>
+      
+      </div>
+    </div>
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

@@ -112,8 +112,7 @@ namespace VRTD.LevelEditor
             WavesTree.ButtonReleaseEvent += WavesTree_ButtonReleaseEvent;
 
             List<EnemyDescription> enemies = LevelManager.GetEnemies();
-            ListStore comboModel = new ListStore(typeof(string));
-            ComboBox comboBox = new ComboBox(comboModel);
+            ComboBoxText comboBox = new ComboBoxText();
             foreach (EnemyDescription enemy in enemies)
             {
                 comboBox.AppendText(enemy.Name);
@@ -678,40 +677,37 @@ namespace VRTD.LevelEditor
 
         private void UpdateFieldTurretButton(Button b, string name)
         {
-            Gdk.Color col = new Gdk.Color();
-            col = GtkHelpers.Color("grey");
-            b.ModifyBg(StateType.Normal, col);
+            b.StyleContext.AddClass("gray-background");
             b.Label = name;
         }
 
         private void SetFieldButtonType(Button b, char c)
         {
             string s = "";
-            Gdk.Color col = new Gdk.Color();
+
             switch (c)
             {
                 case 'D':
-                    col = GtkHelpers.Color("green");
+                    b.StyleContext.AddClass("green-background");
                     s = "D";
                     break;
                 case 'R':
-                    col = GtkHelpers.Color("black");
+                    b.StyleContext.AddClass("black-background");
                     s = "R";
                     break;
                 case 'T':
-                    col = GtkHelpers.Color("grey");
+                    b.StyleContext.AddClass("gray-background");
                     s = "None";
                     break;
                 case 'E':
-                    col = GtkHelpers.Color("red");
+                    b.StyleContext.AddClass("red-background");
                     s = "E";
                     break;
                 case 'X':
-                    col = GtkHelpers.Color("blue");
+                    b.StyleContext.AddClass("blue-background");
                     s = "X";
                     break;
             }
-            b.ModifyBg(StateType.Normal, col);
             b.Label = s;
         }
 

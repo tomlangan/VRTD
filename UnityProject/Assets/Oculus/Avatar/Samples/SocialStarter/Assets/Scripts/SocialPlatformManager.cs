@@ -543,10 +543,6 @@ public class SocialPlatformManager : MonoBehaviour
 
     public void UpdateVoiceData(short[] pcmData, int numChannels)
     {
-        if (localAvatar != null)
-        {
-            localAvatar.UpdateVoiceData(pcmData, numChannels);
-        }
 
         float voiceMax = 0.0f;
         float[] floats = new float[pcmData.Length];

@@ -1,0 +1,227 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.Analysis"/>
+  <meta property="og:description" content="Reference for Pango.Analysis"/>
+  <meta name="twitter:title" content="Pango.Analysis"/>
+  <meta name="twitter:description" content="Reference for Pango.Analysis"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="struct.Analysis.html#description">Analysis</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Struct</h3>
+    <h1><a href="index.html">Pango</a>.Analysis</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 style="display:flex;" id="description">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+          <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-item.h#L62">[src]</a>
+          
+        </h4>
+
+        <pre><code><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">PangoAnalysis</span> <span class="p">{</span>
+  <span class="n">gpointer</span> <span class="n">shape_engine</span><span class="p">;</span>
+  <span class="n">gpointer</span> <span class="n">lang_engine</span><span class="p">;</span>
+  <span class="n">PangoFont</span><span class="o">*</span> <span class="n">font</span><span class="p">;</span>
+  <span class="n">guint8</span> <span class="n">level</span><span class="p">;</span>
+  <span class="n">guint8</span> <span class="n">gravity</span><span class="p">;</span>
+  <span class="n">guint8</span> <span class="n">flags</span><span class="p">;</span>
+  <span class="n">guint8</span> <span class="n">script</span><span class="p">;</span>
+  <span class="n">PangoLanguage</span><span class="o">*</span> <span class="n">language</span><span class="p">;</span>
+  <span class="n">GSList</span><span class="o">*</span> <span class="n">extra_attrs</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+
+        <div class="docblock">
+          <p>The <code>PangoAnalysis</code> structure stores information about
+the properties of a segment of&nbsp;text.</p>
+        </div>
+
+        
+        <div class="toggle-wrapper">
+          <h6 style="display:flex;">
+            Structure members
+            
+          </h6>
+
+          <div class="docblock">
+            <table>
+            
+              <tr>
+                <td><code>shape_engine</code></td>
+                <td><p>unused</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>lang_engine</code></td>
+                <td><p>unused</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>font</code></td>
+                <td><p>the font for this&nbsp;segment.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>level</code></td>
+                <td><p>the bidirectional level for this&nbsp;segment.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>gravity</code></td>
+                <td><p>the glyph orientation for this segment (A <code>PangoGravity</code>).</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>flags</code></td>
+                <td><p>boolean flags for this segment (Since:&nbsp;1.16).</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>script</code></td>
+                <td><p>the detected script for this segment (A <code>PangoScript</code>) (Since:&nbsp;1.18).</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>language</code></td>
+                <td><p>the detected language for this&nbsp;segment.</p></td>
+              </tr>
+            
+              <tr>
+                <td><code>extra_attrs</code></td>
+                <td><p>extra attributes for this&nbsp;segment.</p></td>
+              </tr>
+            
+            </table>
+          </div>
+        </div>
+        
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+
+    
+
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+prefix=/mingw64
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+datadir=${prefix}/share
+datarootdir=${datadir}
+exec_prefix=${prefix}
+catalogdir=${datadir}/glade/catalogs
+moduledir=${libdir}/glade/modules
+pixmapdir=${datadir}/glade/pixmaps
+
+Name: Glade
+Description: Glade interface designer library
+Version: 3.38.2
+Requires: glib-2.0 >=  2.64.0, gmodule-2.0, gtk+-3.0 >=  3.24.0
+Libs: -L${libdir} -lgladeui-2
+Cflags: -I${includedir}/libgladeui-2.0

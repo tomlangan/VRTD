@@ -1,0 +1,200 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pango.Context.new</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="Pango-1.0"/>
+  
+
+  
+  <meta property="og:title" content="Pango.Context.new"/>
+  <meta property="og:description" content="Reference for Pango.Context.new"/>
+  <meta name="twitter:title" content="Pango.Context.new"/>
+  <meta name="twitter:description" content="Reference for Pango.Context.new"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Pango</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a href="class.Context.html">Context</a>
+  </div>
+</div>
+<div class="section">
+  <h5>Constructors</h5>
+  <div class="links">
+  
+    <a class="method current" href="ctor.Context.new.html">new</a>
+  
+  </div>
+</div>
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Constructor</h3>
+    <h1><a href="index.html">Pango</a>.<a href="class.Context.html">Context</a>.new</h1>
+  </header>
+
+  <section>
+    <div class="declaration toggle-wrapper">
+      <h4 id="declaration" style="display:flex;">
+        Declaration
+        <a href="#declaration" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-context.h#L55">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <pre><code><div class="highlight"><pre><span></span><span class="n">PangoContext</span><span class="o">*</span>
+<span class="n">pango_context_new</span> <span class="p">(</span>
+  <span class="kt">void</span>
+<span class="p">)</span>
+</pre></div>
+</code></pre>
+      </div>
+    </div>
+
+    <div class="description toggle-wrapper">
+      <h4 id="description" style="display:flex;">
+        Description
+        <a href="#description" class="anchor"></a>
+        
+        <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/pango/-/blob/master/pango/pango-context.c#L132">[src]</a>
+        
+      </h4>
+
+      <div class="docblock">
+        <p>Creates a new <code>PangoContext</code> initialized to default&nbsp;values.</p>
+<p>This function is not particularly useful as it should always
+be followed by a <a href="method.Context.set_font_map.html"><code>pango_context_set_font_map()</code></a> call, and the
+function <a href="method.FontMap.create_context.html"><code>pango_font_map_create_context()</code></a> does these two steps
+together and hence users are recommended to use&nbsp;that.</p>
+<p>If you are using Pango as part of a higher-level system,
+that system may have it&#8217;s own way of create a <code>PangoContext</code>.
+For instance, the <span class="caps">GTK</span> toolkit has, among others,
+<code>gtk_widget_get_pango_context()</code>. Use those&nbsp;instead.</p>
+      </div>
+
+      <div class="docblock">
+        <table>
+          
+          
+          
+        </table>
+      </div>
+
+      
+    </div>
+
+    
+
+    
+    <div class="return-value toggle-wrapper">
+      <h4 id="return-value">
+        Return value
+        <a href="#return-value" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <table>
+          <tr class="arg-name">
+            <td colspan="2">Returns:&nbsp;<a href="class.Context.html"><code>PangoContext</code></a></td>
+          </tr>
+          <tr class="arg-description">
+            <td colspan="2"><p>the newly allocated <code>PangoContext</code>, which should
+  be freed with <code>g_object_unref()</code>.</p></td>
+          </tr>
+          
+          
+          
+          <tr><td>Ownership of the data is transferred to the caller</td></tr>
+          
+          
+        </table>
+      </div>
+    </div>
+    
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

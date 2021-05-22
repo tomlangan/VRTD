@@ -81,8 +81,7 @@ namespace VRTD.LevelEditor
             WavesTree.Show();
 
             List<EnemyDescription> enemies = LevelManager.GetEnemies();
-            ListStore comboModel = new ListStore(typeof(string));
-            ComboBox comboBox = new ComboBox(comboModel);
+            ComboBoxText comboBox = new ComboBoxText();
             foreach (EnemyDescription enemy in enemies)
             {
                 comboBox.AppendText(enemy.Name);
@@ -98,7 +97,6 @@ namespace VRTD.LevelEditor
             CellRendererCombo comboCellRenderer = new CellRendererCombo();
             comboCellRenderer.Editable = true;
             comboCellRenderer.Edited += ComboCellRenderer_Edited;
-            comboCellRenderer.Model = comboModel;
             comboCellRenderer.TextColumn = 0;
             comboCellRenderer.HasEntry = false;
 
@@ -176,10 +174,9 @@ namespace VRTD.LevelEditor
             Layout.PackStart(map, false, true, 0);
             map.Show();
 
-            ErrorEntry = new Entry(500);
+            ErrorEntry = new Entry();
             ErrorEntry.IsEditable = false;
             ErrorEntry.Text = "No issues";
-            ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("green"));
             Layout.PackStart(ErrorEntry, false, false, 10);
             ErrorEntry.Show();
 
@@ -566,32 +563,32 @@ namespace VRTD.LevelEditor
 
         private void SetFieldButtonType(Button b, char c)
         {
+
             string s = "";
-            Gdk.Color col = new Gdk.Color();
+
             switch (c)
             {
                 case 'D':
-                    col = GtkHelpers.Color("green");
+                    b.StyleContext.AddClass("green-background");
                     s = "D";
                     break;
                 case 'R':
-                    col = GtkHelpers.Color("black");
+                    b.StyleContext.AddClass("black-background");
                     s = "R";
                     break;
                 case 'T':
-                    col = GtkHelpers.Color("grey");
-                    s = "T";
+                    b.StyleContext.AddClass("gray-background");
+                    s = "None";
                     break;
                 case 'E':
-                    col = GtkHelpers.Color("red");
+                    b.StyleContext.AddClass("red-background");
                     s = "E";
                     break;
                 case 'X':
-                    col = GtkHelpers.Color("blue");
+                    b.StyleContext.AddClass("blue-background");
                     s = "X";
                     break;
             }
-            b.ModifyBg(StateType.Normal, col);
             b.Label = s;
         }
 
@@ -774,20 +771,27 @@ namespace VRTD.LevelEditor
             }
 
 
+            string[] classes = ErrorEntry.StyleContext.ListClasses();
+            foreach (string s in classes)
+            {
+                ErrorEntry.StyleContext.RemoveClass(s);
+            }
+
+
             if (issuesFound)
             {
-                ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("red"));
                 ErrorEntry.Text = "Issues: " + Environment.NewLine + issueText;
+                ErrorEntry.StyleContext.AddClass("red-background");
             }
             else if (warningsFound)
             {
-                ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("orange"));
                 ErrorEntry.Text = "Warnings: " + Environment.NewLine + warningText;
+                ErrorEntry.StyleContext.AddClass("yellow-background");
             }
             else
             {
-                ErrorEntry.ModifyText(StateType.Normal, GtkHelpers.Color("green"));
                 ErrorEntry.Text = "No issues";
+                ErrorEntry.StyleContext.AddClass("green-background");
             }
 
             return true;

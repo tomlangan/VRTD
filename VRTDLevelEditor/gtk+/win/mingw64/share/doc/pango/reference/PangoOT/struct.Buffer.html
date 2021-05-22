@@ -1,0 +1,299 @@
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!--
+SPDX-FileCopyrightText: 2021 GNOME Foundation
+
+SPDX-License-Identifier: Apache-2.0 OR GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PangoOT.Buffer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="pango-name.png"/>
+  <meta property="og:image:alt" content="PangoOT-1.0"/>
+  
+
+  
+  <meta property="og:title" content="PangoOT.Buffer"/>
+  <meta property="og:description" content="Reference for PangoOT.Buffer"/>
+  <meta name="twitter:title" content="PangoOT.Buffer"/>
+  <meta name="twitter:description" content="Reference for PangoOT.Buffer"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="stemmer.js"></script>
+  <script src="main.js"></script>
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar">
+      
+      <div class="section">
+        <img src="pango-name.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" method="GET">
+          <input class="search-input" type="text" name="q" placeholder="Search docs"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">PangoOT</a></h3>
+        <p>API Version: 1.0</p>
+        
+        <p>Library Version: 1.48.4</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="struct.Buffer.html#description">Buffer</a>
+  </div>
+</div>
+
+
+<div class="section">
+  <h5>Constructors</h5>
+  <div class="links">
+  
+    <a class="ctor" href="ctor.Buffer.new.html">new</a>
+  
+  </div>
+</div>
+
+
+
+<div class="section">
+  <h5>Instance methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.Buffer.add_glyph.html">add_glyph</a>
+  
+    <a class="method" href="method.Buffer.clear.html">clear</a>
+  
+    <a class="method" href="method.Buffer.destroy.html">destroy</a>
+  
+    <a class="method" href="method.Buffer.get_glyphs.html">get_glyphs</a>
+  
+    <a class="method" href="method.Buffer.output.html">output</a>
+  
+    <a class="method" href="method.Buffer.set_rtl.html">set_rtl</a>
+  
+    <a class="method" href="method.Buffer.set_zero_width_marks.html">set_zero_width_marks</a>
+  
+  </div>
+</div>
+
+
+
+
+
+    </nav>
+
+    
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+    
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Struct</h3>
+    <h1><a href="index.html">PangoOT</a>.Buffer</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="toggle-wrapper">
+        <h4 style="display:flex;" id="description">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+        </h4>
+
+        <pre><code><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">PangoOTBuffer</span> <span class="p">{</span>
+  <span class="cm">/* No available fields */</span>
+<span class="p">}</span>
+</pre></div>
+</code></pre>
+
+        <div class="docblock">
+          No description available.
+        </div>
+
+        
+
+        <div class="docblock">
+          <table class="attributes">
+            
+            
+            
+          </table>
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+    <div class="toggle-wrapper constructors">
+      <h4 id="constructors">
+        Constructors
+        <a href="#constructors" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="ctor.Buffer.new.html">pango_ot_buffer_new</a></h6>
+
+          <div class="docblock">
+            <p>Creates a new <code>PangoOTBuffer</code> for the given OpenType&nbsp;font.</p>
+          </div>
+
+          
+        </div>
+      
+      </div>
+    </div>
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="methods">
+        Instance methods
+        <a href="#methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="method.Buffer.add_glyph.html">pango_ot_buffer_add_glyph</a></h6>
+
+          <div class="docblock">
+            <p>Appends a glyph to a <code>PangoOTBuffer</code>, with <code>properties</code> identifying which
+features should be applied on this glyph.  See <code>pango_ot_ruleset_add_feature()</code>.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Buffer.clear.html">pango_ot_buffer_clear</a></h6>
+
+          <div class="docblock">
+            <p>Empties a <code>PangoOTBuffer</code>, make it ready to add glyphs&nbsp;to.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Buffer.destroy.html">pango_ot_buffer_destroy</a></h6>
+
+          <div class="docblock">
+            <p>Destroys a <code>PangoOTBuffer</code> and free all associated&nbsp;memory.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Buffer.get_glyphs.html">pango_ot_buffer_get_glyphs</a></h6>
+
+          <div class="docblock">
+            <p>Gets the glyph array contained in a <code>PangoOTBuffer</code>.  The glyphs are
+owned by the buffer and should not be freed, and are only valid as long
+as buffer is not&nbsp;modified.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Buffer.output.html">pango_ot_buffer_output</a></h6>
+
+          <div class="docblock">
+            <p>Exports the glyphs in a <code>PangoOTBuffer</code> into a <code>PangoGlyphString</code>.  This is
+typically used after the OpenType layout processing is over, to convert the
+resulting glyphs into a generic Pango glyph&nbsp;string.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Buffer.set_rtl.html">pango_ot_buffer_set_rtl</a></h6>
+
+          <div class="docblock">
+            <p>Sets whether glyphs will be rendered right-to-left.  This setting
+is needed for proper horizontal positioning of right-to-left&nbsp;scripts.</p>
+          </div>
+
+          
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Buffer.set_zero_width_marks.html">pango_ot_buffer_set_zero_width_marks</a></h6>
+
+          <div class="docblock">
+            <p>Sets whether characters with a mark class should be forced to zero width.
+This setting is needed for proper positioning of Arabic accents,
+but will produce incorrect results with standard OpenType Indic&nbsp;fonts.</p>
+          </div>
+
+          
+        </div>
+      
+      </div>
+
+    </div>
+    
+
+    
+
+  </section>
+</section>
+
+
+    <section id="search" class="content hidden"></section>
+
+    
+    <script src="search.js"></script>
+    
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>
